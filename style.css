@@ -73,3 +73,12 @@ footer p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 .ticket-note { margin: 12px 0 0; }
+
+/* Expand each student's responsibilities without leaving the page. */
+#about .card-grid { align-items: start; }
+.student-details { margin-top: 22px; }
+.student-details summary { cursor: pointer; list-style: none; width: fit-content; }
+.student-details summary::-webkit-details-marker { display: none; }
+.student-details .read-less, .student-details[open] .read-more { display: none; }
+.student-details[open] .read-less { display: inline; }
+.student-bio { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 18px; }
