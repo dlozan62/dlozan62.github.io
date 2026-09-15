@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
 title: College Dining Meal Plan Initiative
-description: A student project focused on improving campus meal plan flexibility, value, and usability.
+description: A living record of our college dining meal plan research, decisions, and project work.
+url: "https://dlozan62.github.io"
+markdown: kramdown
+permalink: pretty
