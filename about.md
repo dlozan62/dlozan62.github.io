@@ -45,8 +45,12 @@ permalink: /about/
       <p class="person-role">Project team member</p>
     </div>
     <p>
-      Responsible for project charter development, documentation, and
-      development logging across sprints.
+      My name is Salvador Rodarte, and I am a graduate student working on the 
+      College Dining Meal Plan Initiative. I help develop the project charter, 
+      organize documentation, and build and update our living project website. 
+      Contributions of mine, include interviewing students, help develop the 
+      project charter, and building and updating our website. 
+      I aim to develop high quality software that meets the needs of the team and our users!
     </p>
   </article>
 
