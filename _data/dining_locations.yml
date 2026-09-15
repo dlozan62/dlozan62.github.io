@@ -1,0 +1,32 @@
+- name: Cafe a la Carte
+  image: cafe-a-la-carte.png
+- name: Texas Western Cafe
+  image: texas-western-cafe.png
+- name: Tech Cafe
+  image: tech-cafe.png
+- name: Starbucks
+  image: starbucks.png
+- name: Jamba Juice
+  image: jamba-juice.png
+- name: Einstein Bros. Bagels
+  image: einstein-bros-bagels.png
+- name: Miner Stop
+  image: miner-stop.png
+- name: Orange and Brew
+  image: orange-and-brew.png
+- name: Chick-fil-A
+  image: chick-fil-a.png
+- name: El Sazon Minero
+  image: el-sazon-minero.png
+- name: The Pick N Shovel
+  image: pick-and-shovel.png
+- name: Mein Bowl
+  image: mein-bowl.png
+- name: Sandella's Flatbread
+  image: sandellas-flatbread.png
+- name: Pizza Hut
+  image: pizza-hut.png
+- name: Panera Bread
+  image: panera-bread.png
+- name: Pick-N-Go
+  image: pick-n-go.png

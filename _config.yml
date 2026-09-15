@@ -3,3 +3,7 @@ description: A living record of our college dining meal plan research, decisions
 url: "https://dlozan62.github.io"
 markdown: kramdown
 permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
