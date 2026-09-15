@@ -5,6 +5,35 @@ description: Sprint 1 research, strategy, charter, and retrospective.
 permalink: /sprints/sprint-1/
 ---
 
+<style>
+  /* Keep the success-criteria label and description in separate columns. */
+  .criteria-list li {
+    grid-template-columns: minmax(11.5rem, max-content) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .criteria-list strong,
+  .criteria-list span {
+    display: block;
+    min-width: 0;
+  }
+
+  .criteria-list span {
+    padding-top: 0.35rem;
+  }
+
+  @media (max-width: 760px) {
+    .criteria-list li {
+      grid-template-columns: 1fr;
+      row-gap: 0.35rem;
+    }
+
+    .criteria-list span {
+      padding-top: 0;
+    }
+  }
+</style>
+
 <header class="page-intro page-intro--sprint">
   <p class="course-line">Sprint 1</p>
   <h1>Research and project foundation.</h1>
