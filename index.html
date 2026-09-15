@@ -3,346 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>College Dining Meal Plan Initiative</title>
-
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="description" content="Explore our student-led campus dining research, meal-plan strategy, and Sprint 1 project charter.">
+<style>
+    /* 1. Colors and basic page styles */
+    :root {
+      --green: #24634c;
+      --ink: #163d32;
+      --muted: #596b62;
+      --paper: #fbfaf6;
+      --line: #dce4d9;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.7 system-ui, sans-serif;
+    }
+    a { color: var(--green); text-underline-offset: 4px; }
+    a:hover { color: var(--ink); }
+    :focus-visible { outline: 3px solid #a16a16; outline-offset: 4px; }
+    [hidden] { display: none !important; }
+    h1, h2 { margin: 0 0 20px; font-family: Georgia, serif; font-weight: 400; line-height: 1.1; }
+    h1 { font-size: clamp(42px, 5.5vw, 76px); }
+    h2 { font-size: clamp(32px, 4vw, 46px); }
+    h3 { margin: 0 0 14px; font-size: 21px; line-height: 1.3; }
+    h4 { margin: 24px 0 10px; color: var(--green); }
+    p { margin: 0 0 16px; color: var(--muted); }
+    ul { padding-left: 24px; color: var(--muted); }
+    li { margin: 8px 0; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: auto; }
+    .narrow { max-width: 980px; }
+    .section { padding: 70px 0; }
+    .alt, .portal-note { background: #eef2e6; }
+    .section-heading { max-width: 660px; margin-bottom: 32px; }
+    .eyebrow, .tag { color: var(--green); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+    /* 2. Navigation: links wrap automatically on small screens */
+    .site-header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .nav-wrap, #main-nav, .hero-actions, .charter-toc, .footer-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-wrap { justify-content: space-between; padding: 18px 0; }
+    .brand { max-width: 240px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    #main-nav a, .charter-toc a { padding: 8px 10px; font-size: 13px; text-decoration: none; border-radius: 6px; }
+    #main-nav a:hover, .charter-toc a:hover { background: #e0e9d7; }
+    .skip-link { position: fixed; top: -100px; left: 16px; padding: 12px; background: white; z-index: 20; }
+    .skip-link:focus { top: 12px; }
+    /* 3. Hero and buttons */
+    .hero { padding: 72px 0; background: linear-gradient(110deg, var(--paper), #e7eedb); }
+    .hero > .container { display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 50px; }
+    h1 em { color: #527645; }
+    .lead { font-size: 18px; }
+    .hero-actions { margin-top: 26px; }
+    .btn { display: inline-block; padding: 12px 18px; border: 1px solid var(--green); border-radius: 8px; font: 600 14px/1.5 system-ui; text-decoration: none; cursor: pointer; }
+    .primary { color: white; background: var(--green); }
+    .primary:hover { color: white; background: var(--ink); }
+    .secondary { color: var(--green); background: transparent; }
+    .secondary:hover { background: #e0e9d7; }
+    .hero-art { padding: 40px 24px; text-align: center; background: var(--ink); border-radius: 150px 150px 20px 20px; }
+    .meal-icon { font-size: 110px; line-height: 1.5; }
+    .hero-art h2 { color: white; font-size: 32px; }
+    .hero-art p, .art-tags { color: #dce8c9; }
+    .art-tags, .hero-meta, .portal-note, footer { font-size: 13px; }
+    .hero-meta { margin-top: 24px; }
+    .portal-note { padding: 18px 0; }
+    /* 4. Reusable cards, charter sections, and table */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; }
+    .card { display: flex; flex-direction: column; padding: 28px; background: #fffefa; border: 1px solid var(--line); border-radius: 14px; }
+    .card p { font-size: 14px; }
+    .card a { margin-top: auto; font-size: 14px; font-weight: 600; }
+    .tag { margin-bottom: 24px; }
+    .muted-card { background: transparent; border-style: dashed; }
+    .charter-block { padding: 28px 0; border-top: 1px solid var(--line); }
+    .charter-block p:last-child { margin-bottom: 0; }
+    #research .charter-block { padding: 26px; margin-bottom: 18px; background: white; border: 1px solid var(--line); border-radius: 12px; }
+    .charter-toc { padding: 14px; margin-bottom: 24px; background: #eef2e6; border-radius: 10px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+    table { width: 100%; min-width: 520px; border-collapse: collapse; text-align: left; font-size: 14px; }
+    th, td { padding: 14px; vertical-align: top; }
+    th { background: #e8eedf; }
+    td { border-top: 1px solid var(--line); }
+    tbody tr:nth-child(even) { background: #f0f3e9; }
+    .download-box { padding: 28px; margin-top: 24px; background: var(--ink); color: white; border-radius: 14px; }
+    .download-box p { color: #dce8c9; }
+    .download-box .btn { margin: 4px 6px 4px 0; color: var(--ink); background: #dceda7; }
+    .download-box .btn:hover { background: #eef4dc; }
+    footer { padding: 26px 0; border-top: 1px solid var(--line); }
+    .footer-row { justify-content: space-between; }
+    footer p { margin: 0; }
+    /* 5. Mobile, reduced motion, and printing */
+    @media (max-width: 700px) {
+      .site-header { position: static; }
+      .hero > .container { grid-template-columns: 1fr; gap: 32px; }
+      .hero-art { width: 100%; max-width: 360px; margin: auto; }
+      .hero, .section { padding: 44px 0; }
+      #main-nav { gap: 2px; }
+      .brand { max-width: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media print {
+      .site-header, .hero-art, .hero-actions, .hero-meta, .portal-note,
+      .charter-toc, .download-box, .skip-link, footer a { display: none; }
+      body { background: white; color: black; font-size: 10pt; }
+      .container { width: 100%; max-width: none; }
+      .hero, .section { padding: 18px 0; background: white; }
+      .hero > .container { display: block; }
+      h1 { font-size: 30pt; }
+      h2 { font-size: 23pt; }
+      h3 { break-after: avoid; }
+      .card, tr { break-inside: avoid; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+    }
+  </style>
 </head>
-
 <body>
-
+<a class="skip-link" href="#main">Skip to content</a>
   <!-- Navigation -->
   <header class="site-header">
     <div class="container nav-wrap">
-
-      <div class="brand">
-        College Dining Meal Plan Initiative
-      </div>
-
-      <nav aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="College Dining home">College Dining Meal Plan Initiative</a>
+<nav id="main-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#about">About Us</a>
         <a href="#sprint1">Sprint 1</a>
         <a href="#research">Research</a>
+        <a href="#strategy">Strategy</a>
         <a href="#charter">Project Charter</a>
       </nav>
-
     </div>
   </header>
-
-
-  <main>
-
+  <main id="main">
     <!-- Hero -->
     <section id="home" class="hero">
       <div class="container">
-
-        <p class="eyebrow">
-          CS 4390/5388 • Software Project Management
-        </p>
-
-        <h1>College Dining Meal Plan Initiative</h1>
-
-        <p class="lead">
-          A student-led project exploring ways to improve campus meal plan
-          flexibility, affordability, value, and usability for students with
-          different dining needs.
-        </p>
-
+        <div class="hero-copy">
+        <p class="eyebrow">CS 4390/5388 • Software Project Management</p>
+        <h1>Campus dining.<br><em>Built around students.</em></h1>
+        <p class="lead">A student-led project exploring ways to improve campus meal plan flexibility, affordability, value, and usability for students with different dining needs.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#charter">
-            View Project Charter
-          </a>
-
-          <a class="btn secondary" href="#research">
-            View Market Research
-          </a>
+          <a class="btn primary" href="#charter">View Project Charter</a>
+          <a class="btn secondary" href="#research">View Market Research</a>
         </div>
-
+        <p class="hero-meta">Student-led initiative · Sprint 1 · Project definition</p>
+      </div>
+        <aside class="hero-art" aria-label="Project focus: flexible campus dining">
+          <div class="meal-icon" aria-hidden="true">🥗</div>
+          <p class="eyebrow">A seat for every student</p>
+          <h2>More choice.<br>Better everyday value.</h2>
+          <p class="art-tags">Flexible plans · Student feedback · Campus dining</p>
+        </aside>
       </div>
     </section>
-
-
+    <div class="portal-note"><div class="container"><span><strong>Sprint 1</strong> / Living Project Portal</span> · <span>Research, strategy &amp; project definition</span></div></div>
     <!-- About Us -->
     <section id="about" class="section">
       <div class="container">
-
         <div class="section-heading">
           <p class="eyebrow">Our Team</p>
           <h2>About Us</h2>
-          <p>
-            Meet the team working on the College Dining Meal Plan Initiative.
-          </p>
+          <p>Meet the team working on the College Dining Meal Plan Initiative.</p>
         </div>
-
         <div class="card-grid">
-
           <article class="card">
             <h3>Zachary Carrejo</h3>
-
-            <p>
-              <strong>Role:</strong>
-              Project Team Member
-            </p>
-
-            <p>
-              Responsible for market research, project charter development,
-              documentation, and Sprint 1 website content.
-            </p>
+            <p><strong>Role:</strong> Project Team Member</p>
+            <p>Responsible for market research, project charter development, documentation, and Sprint 1 website content.</p>
           </article>
-
-
           <article class="card">
             <h3>Salvador Rodarte</h3>
-
-            <p>
-              <strong>Role:</strong>
-              Project Team Member
-            </p>
-
-            <p>
-              Responsible for project charter development, documentation,
-              and development logging across sprints.
-            </p>
+            <p><strong>Role:</strong> Project Team Member</p>
+            <p>Responsible for project charter development, documentation, and development logging across sprints.</p>
           </article>
-
-
           <article class="card muted-card">
             <h3>Additional Team Member</h3>
-
-            <p>
-              Team member information and responsibilities will be added here.
-            </p>
+            <p>Team member information and responsibilities will be added here.</p>
           </article>
-
+          <!-- Replace each placeholder with your classmate's information. -->
+          <article class="card muted-card">
+            <h3>Classmate 4 Name</h3>
+            <p><strong>Role:</strong> Add role here</p>
+            <p>Add this classmate's responsibilities here.</p>
+          </article>
+          <article class="card muted-card">
+            <h3>Classmate 5 Name</h3>
+            <p><strong>Role:</strong> Add role here</p>
+            <p>Add this classmate's responsibilities here.</p>
+          </article>
         </div>
       </div>
     </section>
-
-
     <!-- Sprint 1 Overview -->
     <section id="sprint1" class="section alt">
       <div class="container">
-
         <div class="section-heading">
           <p class="eyebrow">Sprint 1</p>
           <h2>Project Foundation</h2>
-
-          <p>
-            Sprint 1 establishes the research, business strategy, and project
-            charter that guide the College Dining Meal Plan Initiative.
-          </p>
+          <p>Sprint 1 establishes the research, business strategy, and project charter that guide the College Dining Meal Plan Initiative.</p>
         </div>
-
-
         <div class="card-grid">
-
           <article class="card">
             <span class="tag">Market Research</span>
-
             <h3>What Students Told Us</h3>
-
-            <p>
-              Student interviews highlighted affordability, flexibility,
-              food variety, payment options, and concerns about losing
-              unused meal-plan value.
-            </p>
-
-            <a href="#research">
-              Read Research Summary →
-            </a>
+            <p>Student interviews highlighted affordability, flexibility, food variety, payment options, and concerns about losing unused meal-plan value.</p>
+            <a href="#research">Read Research Summary →</a>
           </article>
-
-
           <article class="card">
             <span class="tag">Business Strategy</span>
-
             <h3>Why This Project Matters</h3>
-
-            <p>
-              The project explores whether a more flexible meal plan could
-              provide better value while encouraging students to make more
-              dining purchases on campus.
-            </p>
-
-            <a href="#strategy">
-              Read Business Strategy →
-            </a>
+            <p>The project explores whether a more flexible meal plan could provide better value while encouraging students to make more dining purchases on campus.</p>
+            <a href="#strategy">Read Business Strategy →</a>
           </article>
-
-
           <article class="card">
             <span class="tag">Project Charter</span>
-
             <h3>How the Project Is Defined</h3>
-
-            <p>
-              The charter establishes the project's objective, scope,
-              assumptions, stakeholders, and success criteria.
-            </p>
-
-            <a href="#charter">
-              Read Project Charter →
-            </a>
+            <p>The charter establishes the project's objective, scope, assumptions, stakeholders, and success criteria.</p>
+            <a href="#charter">Read Project Charter →</a>
           </article>
-
         </div>
       </div>
     </section>
-
-
     <!-- Market Research -->
     <section id="research" class="section">
       <div class="container narrow">
-
         <div class="section-heading">
           <p class="eyebrow">Sprint 1 • Market Research</p>
           <h2>Market Research</h2>
         </div>
-
-
         <div class="charter-block">
           <h3>Aggregate Findings</h3>
-
-          <p>
-            Across our interviews, the strongest pattern was that students
-            want a meal plan that feels worth the money. Students have
-            different budgets and eating habits, but several concerns appeared
-            repeatedly: unused money should not expire, students want
-            flexibility in how they spend their balance, and food variety
-            matters.
-          </p>
-
-          <p>
-            We also found that one plan may not work for everyone. Some
-            students preferred a dollar balance because their spending changes
-            from day to day, while others preferred a set number of meals
-            because it is easier to track.
-          </p>
+          <p>Across our interviews, the strongest pattern was that students want a meal plan that feels worth the money. Students have different budgets and eating habits, but several concerns appeared repeatedly: unused money should not expire, students want flexibility in how they spend their balance, and food variety matters.</p>
+          <p>We also found that one plan may not work for everyone. Some students preferred a dollar balance because their spending changes from day to day, while others preferred a set number of meals because it is easier to track.</p>
         </div>
-
-
         <div class="charter-block">
           <h3>Top Pick: Flexible Meal Plan Structure</h3>
-
-          <p>
-            Our strongest idea is a flexible campus meal plan that supports
-            different types of students. The concept may include multiple plan
-            levels, rollover of unused value, and both monthly and upfront
-            payment options.
-          </p>
-
-          <p>
-            We selected this direction because it was supported by repeated
-            student feedback rather than a single interview response.
-          </p>
+          <p>Our strongest idea is a flexible campus meal plan that supports different types of students. The concept may include multiple plan levels, rollover of unused value, and both monthly and upfront payment options.</p>
+          <p>We selected this direction because it was supported by repeated student feedback rather than a single interview response.</p>
         </div>
-
-
         <div class="charter-block">
           <h3>What We Pivoted From</h3>
-
-          <p>
-            We moved away from treating one fixed meal plan as the best
-            solution for every student. Interviews showed that commuters,
-            students living on campus, and graduate students may have very
-            different dining needs.
-          </p>
-
-          <p>
-            Because of this feedback, the project now focuses on flexibility
-            and different levels of meal-plan usage.
-          </p>
+          <p>We moved away from treating one fixed meal plan as the best solution for every student. Interviews showed that commuters, students living on campus, and graduate students may have very different dining needs.</p>
+          <p>Because of this feedback, the project now focuses on flexibility and different levels of meal-plan usage.</p>
         </div>
-
       </div>
     </section>
-
-
     <!-- Business Strategy -->
     <section id="strategy" class="section alt">
       <div class="container narrow">
-
         <div class="section-heading">
           <p class="eyebrow">Sprint 1 • Business Strategy</p>
           <h2>Business Strategy</h2>
         </div>
-
-
         <div class="charter-block">
           <h3>Strategy-to-Project Chain</h3>
-
-          <p>
-            Students are more likely to see value in a campus meal plan when
-            it fits their budget, schedule, and eating habits. Our research
-            suggests that flexibility, rollover, multiple dining options,
-            and easier payment choices are important parts of that value.
-          </p>
-
-          <p>
-            The project exists to test whether a flexible meal-plan structure
-            could make campus dining more attractive to a wider range of
-            students. If validated, the concept could potentially increase
-            meal-plan adoption and keep more student dining spending on campus.
-          </p>
+          <p>Students are more likely to see value in a campus meal plan when it fits their budget, schedule, and eating habits. Our research suggests that flexibility, rollover, multiple dining options, and easier payment choices are important parts of that value.</p>
+          <p>The project exists to test whether a flexible meal-plan structure could make campus dining more attractive to a wider range of students. If validated, the concept could potentially increase meal-plan adoption and keep more student dining spending on campus.</p>
         </div>
-
       </div>
     </section>
-
-
     <!-- Project Charter -->
     <section id="charter" class="section">
       <div class="container narrow">
-
         <div class="section-heading">
           <p class="eyebrow">Sprint 1 • Project Charter</p>
           <h2>Project Charter</h2>
-
-          <p>
-            The project charter defines the purpose, boundaries, assumptions,
-            stakeholders, and measures of success for the initiative.
-          </p>
+          <p>The project charter defines the purpose, boundaries, assumptions, stakeholders, and measures of success for the initiative.</p>
         </div>
-
-
+<div class="charter-toc" role="navigation" aria-label="Project charter contents"><a href="#project-title">Project Title</a>
+          <a href="#objective">Business Objective</a>
+          <a href="#scope">Scope Boundary</a>
+          <a href="#assumptions">Assumptions</a>
+          <a href="#stakeholders">Stakeholder Register</a>
+          <a href="#success">Success Criteria</a></div>
         <!-- Project Title -->
-        <div class="charter-block">
+        <div class="charter-block" id="project-title">
           <h3>1. Project Title</h3>
-
-          <p>
-            <strong>
-              Flexible Campus Dining Meal Plan Initiative
-            </strong>
-          </p>
+          <p><strong> Flexible Campus Dining Meal Plan Initiative </strong></p>
         </div>
-
-
         <!-- Business Objective -->
-        <div class="charter-block">
+        <div class="charter-block" id="objective">
           <h3>2. Business Objective</h3>
-
-          <p>
-            The main goal of our project is to determine whether students
-            would be more interested in purchasing a campus meal plan if it
-            offered greater flexibility and better value for their money.
-          </p>
-
-          <p>
-            Our interviews showed that students have different budgets and
-            eating habits. Because of this, we want to create and validate a
-            meal-plan concept that can work for students who eat on campus
-            frequently as well as students who only eat on campus occasionally.
-          </p>
+          <p>The main goal of our project is to determine whether students would be more interested in purchasing a campus meal plan if it offered greater flexibility and better value for their money.</p>
+          <p>Our interviews showed that students have different budgets and eating habits. Because of this, we want to create and validate a meal-plan concept that can work for students who eat on campus frequently as well as students who only eat on campus occasionally.</p>
         </div>
-
-
         <!-- Scope -->
-        <div class="charter-block">
+        <div class="charter-block" id="scope">
           <h3>3. Scope Boundary</h3>
-
           <h4>In Scope</h4>
-
           <ul>
             <li>Evaluate dollar-balance and set-meal plan structures.</li>
             <li>Explore plan levels for different student dining habits.</li>
@@ -352,10 +306,7 @@
             <li>Consider food variety, healthy choices, and dietary information.</li>
             <li>Gather additional student feedback before implementation recommendations.</li>
           </ul>
-
-
           <h4>Out of Scope</h4>
-
           <ul>
             <li>Building or launching a complete meal-plan system.</li>
             <li>Changing tuition or unrelated university fees.</li>
@@ -364,10 +315,7 @@
             <li>Guaranteeing participation from specific restaurants.</li>
             <li>Building a production mobile application or website during this phase.</li>
           </ul>
-
-
           <h4>Deferred</h4>
-
           <ul>
             <li>Choosing exact prices for every meal-plan option.</li>
             <li>Connecting the plan to university payment or ID systems.</li>
@@ -376,12 +324,9 @@
             <li>Campus-wide implementation.</li>
           </ul>
         </div>
-
-
         <!-- Assumptions -->
-        <div class="charter-block">
+        <div class="charter-block" id="assumptions">
           <h3>4. Assumptions</h3>
-
           <ul>
             <li>The university could offer more than one meal-plan structure.</li>
             <li>Current systems could support a balance, meal count, or hybrid plan.</li>
@@ -391,83 +336,66 @@
             <li>A flexible plan could be priced to work for both students and campus dining.</li>
           </ul>
         </div>
-
-
         <!-- Stakeholders -->
-        <div class="charter-block">
+        <div class="charter-block" id="stakeholders">
           <h3>5. Stakeholder Register</h3>
-
-          <div class="table-wrap">
+          <div class="table-wrap" role="region" aria-label="Stakeholder register" tabindex="0">
             <table>
-
               <thead>
                 <tr>
-                  <th>Stakeholder</th>
-                  <th>Why They Are Involved</th>
-                  <th>Influence</th>
+                  <th scope="col">Stakeholder</th>
+                  <th scope="col">Why They Are Involved</th>
+                  <th scope="col">Influence</th>
                 </tr>
               </thead>
-
               <tbody>
-
                 <tr>
                   <td>Students</td>
                   <td>Main users of the meal plan and primary source of feedback.</td>
                   <td>High</td>
                 </tr>
-
                 <tr>
                   <td>Commuter Students</td>
                   <td>Need plans that avoid wasting money when they are not on campus every day.</td>
                   <td>High</td>
                 </tr>
-
                 <tr>
                   <td>Students Living on Campus</td>
                   <td>May need larger or more frequent-use meal plans.</td>
                   <td>High</td>
                 </tr>
-
                 <tr>
                   <td>Graduate Students</td>
                   <td>May prefer flexible spending because of different schedules.</td>
                   <td>Medium</td>
                 </tr>
-
                 <tr>
                   <td>Campus Dining Administration</td>
                   <td>Would evaluate whether the plan is financially and operationally feasible.</td>
                   <td>High</td>
                 </tr>
-
                 <tr>
                   <td>University Administration</td>
                   <td>Would approve major policy, payment, or implementation changes.</td>
                   <td>High</td>
                 </tr>
-
                 <tr>
                   <td>Dining Locations / Vendors</td>
                   <td>Would be affected by where and how meal-plan value can be used.</td>
                   <td>Medium</td>
                 </tr>
-
                 <tr>
                   <td>Project Team</td>
                   <td>Responsible for research, planning, validation, and documentation.</td>
                   <td>High</td>
                 </tr>
-
               </tbody>
             </table>
           </div>
         </div>
-
-
         <!-- Success Criteria -->
-        <div class="charter-block">
+        <div class="charter-block" id="success">
           <h3>6. Success Criteria</h3>
-
           <ul>
             <li>At least 80% of students in the next validation round support rollover.</li>
             <li>At least 70% say the proposed plan provides better value or flexibility than one fixed plan.</li>
@@ -477,46 +405,33 @@
             <li>Support every major part of the final concept with research or validation.</li>
           </ul>
         </div>
-
-
         <!-- PDF -->
         <div class="download-box">
-
           <h3>Project Charter PDF</h3>
-
-          <p>
-            View or download the complete Sprint 1 project charter.
-          </p>
-
+          <p>View or download the complete Sprint 1 project charter.</p>
           <a
             class="btn primary"
-            href="assets/pdfs/Meal plan.pdf"
+            href="assets/pdfs/Meal%20plan.pdf"
             target="_blank"
             rel="noopener"
-          >
-            View Project Charter PDF
-          </a>
-
+          >View Project Charter PDF</a>
+<button type="button" class="btn secondary" id="print-page" hidden>Print / Save page as PDF</button>
         </div>
-
       </div>
     </section>
-
   </main>
-
-
   <!-- Footer -->
   <footer>
-    <div class="container">
-
-      <p>
-        College Dining Meal Plan Initiative
-        • CS 4390/5388
-        • Sprint 1 Living Project Portal
-      </p>
-
+    <div class="container footer-row">
+      <p>College Dining Meal Plan Initiative • CS 4390/5388 • Sprint 1 Living Project Portal</p>
+      <a href="#home">Back to top ↑</a>
     </div>
   </footer>
-
+<script>
+    // Show the print button when JavaScript is available.
+    const printButton = document.querySelector('#print-page');
+    printButton.hidden = false;
+    printButton.addEventListener('click', () => window.print());
+  </script>
 </body>
 </html>
