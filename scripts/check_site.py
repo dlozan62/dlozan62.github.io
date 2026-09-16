@@ -10,7 +10,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "_site"
-PAGES = ("index.html", "about/index.html", "sprints/index.html", "sprints/sprint-1/index.html")
+REQUIRED_PAGES = (
+    "index.html",
+    "about/index.html",
+    "sprints/index.html",
+    "sprints/sprint-1/index.html",
+)
 CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)
 ORPHAN_HEADING_TEXT = re.compile(r"</h[1-6]>\s*[A-Za-z](?=\s*<)")
 CSS_URL = re.compile(r"url\(\s*['\"]?([^)'\"]+)['\"]?\s*\)")
@@ -62,12 +67,13 @@ def main():
         if source.suffix == ".html" and ORPHAN_HEADING_TEXT.search(contents):
             errors.append(f"{source.relative_to(ROOT)} contains text outside a heading")
 
-    parsed_pages = {}
-    for relative_path in PAGES:
-        page_path = SITE / relative_path
-        if not page_path.is_file():
+    for relative_path in REQUIRED_PAGES:
+        if not (SITE / relative_path).is_file():
             errors.append(f"missing generated page: {relative_path}")
-            continue
+
+    parsed_pages = {}
+    for page_path in SITE.rglob("*.html"):
+        relative_path = page_path.relative_to(SITE)
         page = Page()
         page.feed(page_path.read_text(encoding="utf-8"))
         parsed_pages[page_path] = page

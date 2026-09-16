@@ -41,7 +41,7 @@ different port:
 bundle exec jekyll serve --livereload --port 4001
 ```
 
-GitHub Pages builds from `main`. The main source pages are `index.html`,
+The main source pages are `index.html`,
 `about.html`, `sprints.html`, and `sprint-1.html`. Each page keeps a small
 Jekyll front matter block for its title, description, permalink, and shared
 layout.
@@ -60,11 +60,19 @@ Run the same checks used by GitHub Actions:
 ```sh
 bundle exec jekyll build
 bundle exec sass assets/css/style.css /tmp/site-check.css --no-source-map
+python3 -m unittest discover -s tests -v
 python3 scripts/check_site.py
 ```
 
 The checks catch CSS syntax errors, merge-conflict markers, missing pages and
-assets, broken internal links, duplicate IDs, and missing image alt text.
+assets, broken internal links, duplicate IDs, and missing image alt text on
+every generated HTML page, including future sprints.
+
+The workflow builds and checks pull requests, then deploys the checked `_site`
+artifact after a successful push to `main`. To make this workflow the publishing
+gate, set **Settings → Pages → Build and deployment → Source** to **GitHub
+Actions**. If Source remains **Deploy from a branch**, GitHub Pages can publish
+from `main` before these checks finish.
 
 ## AI use
 
