@@ -17,14 +17,29 @@ Sprint 1 is published. Sprints 2 through 6 will be added as they close.
 
 ## Local preview
 
-Needs Ruby and Bundler.
+This is a Jekyll site, so use Jekyll's development server instead of the VS
+Code/Cursor **Live Server** extension. Live Server only serves the source files;
+it does not process Liquid, front matter, or `_layouts`.
 
-```
-bundle install
-bundle exec jekyll serve
+The project uses Ruby 3.3.12. On this Apple Silicon Mac, select the installed
+Homebrew Ruby before running Bundler:
+
+```sh
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+ruby -v
+bundle check || bundle install
+bundle exec jekyll serve --livereload
 ```
 
-Then open http://127.0.0.1:4000
+Open <http://127.0.0.1:4000>. In VS Code or Cursor, the same URL can be opened
+inside the editor with **Simple Browser: Show** from the command palette.
+
+If port 4000 is already occupied, either use the existing preview or choose a
+different port:
+
+```sh
+bundle exec jekyll serve --livereload --port 4001
+```
 
 GitHub Pages builds from `main`. The main source pages are `index.html`,
 `about.html`, `sprints.html`, and `sprint-1.html`. Each page keeps a small
@@ -34,10 +49,22 @@ layout.
 ## Project structure
 
 - `_layouts/default.html` contains the shared document shell, navigation, and footer.
-- `_data/dining_locations.yml` stores the dining-location names and image filenames.
 - `assets/css/style.css` contains the design tokens, components, page layouts, and responsive rules.
-- `assets/js/site.js` contains small progressive enhancements. Core content remains available without JavaScript.
+- `assets/js/site.js` handles only the mobile navigation. Core content remains available without JavaScript.
 - `assets/images` and `assets/pdfs` contain the published media and downloadable document.
+
+## Before publishing
+
+Run the same checks used by GitHub Actions:
+
+```sh
+bundle exec jekyll build
+bundle exec sass assets/css/style.css /tmp/site-check.css --no-source-map
+python3 scripts/check_site.py
+```
+
+The checks catch CSS syntax errors, merge-conflict markers, missing pages and
+assets, broken internal links, duplicate IDs, and missing image alt text.
 
 ## AI use
 
