@@ -29,6 +29,58 @@ permalink: /
   </div>
 </section>
 
+<section class="sprint-accordion" aria-labelledby="sprint-heading">
+  <header>
+    <h2 id="sprint-heading">Six Sprints.<br>Our Living Record.</h2>
+    <div>
+      <p>Select a sprint to see what the team has published so far.</p>
+      <a class="text-link" href="{{ '/sprints/' | relative_url }}">View the sprint archive</a>
+    </div>
+  </header>
+
+  <div class="sprint-accordion__items">
+    <details class="sprint-slice" name="sprints" open>
+      <summary>
+        <span aria-hidden="true">1</span>
+        <strong>Research foundation</strong>
+        <small>Current</small>
+      </summary>
+      <div class="sprint-slice__body">
+        <h3>Market Research and Project Foundation</h3>
+        <p>
+          Interview findings, the flexible meal-plan direction, business
+          strategy, project charter, and retrospective.
+        </p>
+        <ul>
+          <li>Market research</li>
+          <li>Top-pick deep dive</li>
+          <li>Business strategy</li>
+          <li>Project charter</li>
+        </ul>
+        <div class="sprint-slice__links">
+          <a href="{{ '/sprints/sprint-1/' | relative_url }}">Open Sprint 1</a>
+          <a href="{{ '/assets/pdfs/sprint-1-project-document.pdf' | relative_url }}" download>Download PDF</a>
+        </div>
+      </div>
+    </details>
+
+    {% for sprint in (2..6) %}
+      <details class="sprint-slice" name="sprints">
+        <summary>
+          <span aria-hidden="true">{{ sprint }}</span>
+          <strong>Sprint {{ sprint }}</strong>
+          <small>Planned</small>
+        </summary>
+        <div class="sprint-slice__body">
+          <h3>Sprint {{ sprint }}</h3>
+          <p>This record will be published after the sprint closes.</p>
+          <p class="sprint-slice__empty">No project materials have been published for this sprint yet.</p>
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</section>
+
 <section class="research-intro" aria-labelledby="research-question">
   <p>Current research question</p>
   <h2 id="research-question">
@@ -55,18 +107,10 @@ permalink: /
   </div>
 </section>
 
-<section class="project-paths" aria-label="Explore the project">
-  <a href="{{ '/sprints/' | relative_url }}">
-    <span class="document-label">Project archive</span>
-    <strong>Follow the work, sprint by sprint.</strong>
-    <span>Browse all six sprint records <span aria-hidden="true">↗</span></span>
-  </a>
-  <a href="{{ '/about/' | relative_url }}">
-    <span class="document-label">Project team</span>
-    <strong>Meet the people behind the work.</strong>
-    <span>View team profiles <span aria-hidden="true">↗</span></span>
-  </a>
-</section>
+<aside class="team-route">
+  <p>Meet the team behind the project.</p>
+  <a href="{{ '/about/' | relative_url }}">Meet the team <span aria-hidden="true">↗</span></a>
+</aside>
 
 <aside class="disclosure" aria-labelledby="ai-disclosure-title">
   <h2 id="ai-disclosure-title" class="disclosure__title">AI use disclosure</h2>
