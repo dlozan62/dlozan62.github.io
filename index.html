@@ -5,6 +5,84 @@ description: A living record of our college dining research, decisions, and proj
 permalink: /
 ---
 
+<style>
+  .team-route {
+    min-height: 0;
+    margin: 0;
+    padding: 3rem 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    border-top: 1px solid #cbd3dc;
+  }
+
+  .team-route p {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .team-route a {
+    margin: 0;
+    color: inherit;
+    font-weight: 700;
+    white-space: nowrap;
+    text-underline-offset: 0.25rem;
+  }
+
+  .disclosure {
+    min-height: 0;
+    margin: 0 0 3rem;
+    padding: 2.5rem;
+
+    display: grid;
+    grid-template-columns: minmax(180px, 280px) 1fr;
+    align-items: start;
+    gap: 2.5rem;
+
+    background: #eef2f5;
+    border-left: 6px solid #f57c00;
+  }
+
+  .disclosure__title,
+  .disclosure p {
+    margin: 0;
+  }
+
+  .disclosure__title {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .disclosure p {
+    max-width: 950px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    .team-route {
+      padding: 2rem 1.25rem;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .team-route p {
+      font-size: 2rem;
+    }
+
+    .disclosure {
+      margin-bottom: 2rem;
+      padding: 1.75rem 1.25rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
 <section class="exhibit-hero" aria-labelledby="hero-title">
   <img
     class="exhibit-hero__image"
@@ -14,15 +92,26 @@ permalink: /
     height="1024"
     fetchpriority="high"
   >
+
   <div class="exhibit-hero__wash" aria-hidden="true"></div>
+
   <div class="exhibit-hero__content">
     <p>CS 4390/5388 Software Project Management</p>
+
     <h1 id="hero-title">Meal plans that fit.</h1>
+
     <div class="exhibit-hero__actions">
-      <a class="button button--orange" href="{{ '/sprints/sprint-1/' | relative_url }}">
+      <a
+        class="button button--orange"
+        href="{{ '/sprints/sprint-1/' | relative_url }}"
+      >
         Explore the research
       </a>
-      <a class="button button--glass" href="{{ '/about/' | relative_url }}">
+
+      <a
+        class="button button--glass"
+        href="{{ '/about/' | relative_url }}"
+      >
         Meet the team
       </a>
     </div>
@@ -31,10 +120,20 @@ permalink: /
 
 <section class="sprint-accordion" aria-labelledby="sprint-heading">
   <header>
-    <h2 id="sprint-heading">Six Sprints.<br>Our Living Record.</h2>
+    <h2 id="sprint-heading">
+      Six Sprints.<br>
+      Our Living Record.
+    </h2>
+
     <div>
       <p>Select a sprint to see what the team has published so far.</p>
-      <a class="text-link" href="{{ '/sprints/' | relative_url }}">View the sprint archive</a>
+
+      <a
+        class="text-link"
+        href="{{ '/sprints/' | relative_url }}"
+      >
+        View the sprint archive
+      </a>
     </div>
   </header>
 
@@ -45,21 +144,33 @@ permalink: /
         <strong>Research foundation</strong>
         <small>Current</small>
       </summary>
+
       <div class="sprint-slice__body">
         <h3>Market Research and Project Foundation</h3>
+
         <p>
           Interview findings, the flexible meal-plan direction, business
           strategy, project charter, and retrospective.
         </p>
+
         <ul>
           <li>Market research</li>
           <li>Top-pick deep dive</li>
           <li>Business strategy</li>
           <li>Project charter</li>
         </ul>
+
         <div class="sprint-slice__links">
-          <a href="{{ '/sprints/sprint-1/' | relative_url }}">Open Sprint 1</a>
-          <a href="{{ '/assets/pdfs/sprint-1-project-document.pdf' | relative_url }}" download>Download PDF</a>
+          <a href="{{ '/sprints/sprint-1/' | relative_url }}">
+            Open Sprint 1
+          </a>
+
+          <a
+            href="{{ '/assets/pdfs/sprint-1-project-document.pdf' | relative_url }}"
+            download
+          >
+            Download PDF
+          </a>
         </div>
       </div>
     </details>
@@ -71,10 +182,17 @@ permalink: /
           <strong>Sprint {{ sprint }}</strong>
           <small>Planned</small>
         </summary>
+
         <div class="sprint-slice__body">
           <h3>Sprint {{ sprint }}</h3>
-          <p>This record will be published after the sprint closes.</p>
-          <p class="sprint-slice__empty">No project materials have been published for this sprint yet.</p>
+
+          <p>
+            This record will be published after the sprint closes.
+          </p>
+
+          <p class="sprint-slice__empty">
+            No project materials have been published for this sprint yet.
+          </p>
         </div>
       </details>
     {% endfor %}
@@ -83,9 +201,11 @@ permalink: /
 
 <section class="research-intro" aria-labelledby="research-question">
   <p>Current research question</p>
+
   <h2 id="research-question">
     What happens when students cannot trust campus dining information?
   </h2>
+
   <div class="research-intro__visual">
     <img
       src="{{ '/assets/images/team-work-session.jpg' | relative_url }}"
@@ -95,13 +215,18 @@ permalink: /
       loading="lazy"
     >
   </div>
+
   <div class="research-intro__copy">
     <p>
       The current phase broadens the investigation beyond price. The team is
       studying menu accuracy, unavailable food, location hours, allergies,
       dietary needs, and the workarounds students use when information fails.
     </p>
-    <a class="text-link" href="{{ '/sprints/sprint-1/#interview-method' | relative_url }}">
+
+    <a
+      class="text-link"
+      href="{{ '/sprints/sprint-1/#interview-method' | relative_url }}"
+    >
       See our interview method
     </a>
   </div>
@@ -109,11 +234,17 @@ permalink: /
 
 <aside class="team-route">
   <p>Meet the team behind the project.</p>
-  <a href="{{ '/about/' | relative_url }}">Meet the team <span aria-hidden="true">↗</span></a>
+
+  <a href="{{ '/about/' | relative_url }}">
+    Meet the team <span aria-hidden="true">↗</span>
+  </a>
 </aside>
 
 <aside class="disclosure" aria-labelledby="ai-disclosure-title">
-  <h2 id="ai-disclosure-title" class="disclosure__title">AI use disclosure</h2>
+  <h2 id="ai-disclosure-title" class="disclosure__title">
+    AI use disclosure
+  </h2>
+
   <p>
     AI tools support website design, development, and permitted grammar
     editing. The team authors the project research, analysis, and conclusions.
