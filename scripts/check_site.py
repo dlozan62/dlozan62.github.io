@@ -20,6 +20,7 @@ CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)
 ORPHAN_HEADING_TEXT = re.compile(r"</h[1-6]>\s*[A-Za-z](?=\s*<)")
 CSS_URL = re.compile(r"url\(\s*['\"]?([^)'\"]+)['\"]?\s*\)")
 SOURCE_TYPES = {".css", ".html", ".js", ".md", ".yml", ".py"}
+IGNORED_SOURCE_DIRS = {".git", "_site", ".jekyll-cache", "vendor", "node_modules", ".venv"}
 
 
 class Page(HTMLParser):
@@ -59,7 +60,7 @@ def main():
     for source in ROOT.rglob("*"):
         if not source.is_file() or source.suffix not in SOURCE_TYPES:
             continue
-        if {".git", "_site", ".jekyll-cache"} & set(source.relative_to(ROOT).parts):
+        if IGNORED_SOURCE_DIRS & set(source.relative_to(ROOT).parts):
             continue
         contents = source.read_text(encoding="utf-8")
         if CONFLICT_MARKER.search(contents):
