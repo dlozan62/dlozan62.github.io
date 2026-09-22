@@ -1,0 +1,142 @@
+---
+layout: default
+title: Sprint 2 project charter
+description: The Campus Dining Availability System objective, scope, approach, assumptions, stakeholders, risks, and stage gates.
+permalink: /sprints/sprint-2/project-charter/
+---
+
+<article class="document-page" data-pdf-title="Campus Dining Availability System Project Charter">
+  <header class="document-page__header">
+    <p class="course-line">Sprint 2 public document</p>
+    <h1>Current project charter</h1>
+    <p>
+      <strong>Course:</strong> CS 4390 and CS 5388 Software Project Management<br>
+      <strong>Date:</strong> September 2026<br>
+      <strong>Current stage:</strong> Validation through prototype evaluation
+    </p>
+    <a class="button" href="{{ '/assets/pdfs/campus-dining-availability-system-project-charter.pdf' | relative_url }}" download>Download matching PDF</a>
+  </header>
+
+  <div class="document-page__body">
+    <section>
+      <h2>Project decision and evidence</h2>
+      <p>
+        The team selected a real-time campus dining availability system after
+        comparing food availability, dining hours and service status, meal-plan
+        rollover, customizable meal plans, and dining alerts. The selected
+        direction is to test current status information for dining items,
+        stations, kitchens, counters, and temporary service changes.
+      </p>
+      <ul>
+        <li><strong>12 focused availability interviews:</strong> primary evidence for the current direction.</li>
+        <li><strong>13 meal-plan preference responses:</strong> background from the earlier direction, not validation for the availability system.</li>
+        <li><strong>Five candidate ideas:</strong> options compared before the project was narrowed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Problem statement and business objective</h2>
+      <p>
+        Students sometimes arrive at a campus dining location and discover that
+        an item, station, kitchen service, counter, or required option is
+        unavailable. When earlier information does not show the change, they may
+        lose time, substitute a meal, remain hungry, or spend more than planned.
+      </p>
+      <p>
+        The first business objective is to find out whether current information
+        can help students avoid wasted trips, delays, substitutions, and
+        unexpected spending when they decide where to eat on campus.
+      </p>
+    </section>
+
+    <section>
+      <h2>Scope boundary</h2>
+      <div class="document-columns">
+        <div><h3>In scope</h3><ul><li>13 additional focused interviews</li><li>Functional and nonfunctional requirements</li><li>Status and outage definitions</li><li>Update and verification workflow</li><li>Low-fidelity and interactive prototypes</li><li>Usability tests and feasibility findings</li></ul></div>
+        <div><h3>Out of scope</h3><ul><li>Production website or mobile app</li><li>Live UTEP or vendor integrations</li><li>Guaranteed real-time accuracy</li><li>Staffing, policy, pricing, payment, or rollover changes</li><li>Replacement of official systems</li><li>Unapproved staff or vendor commitments</li></ul></div>
+        <div><h3>Deferred</h3><ul><li>Production application development</li><li>Menu, inventory, or point-of-sale integrations</li><li>Push notifications and user accounts</li><li>Analytics and role administration</li><li>A limited pilot and campus-wide rollout</li><li>Operational ownership and service commitments</li></ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Project approach</h2>
+      <ol>
+        <li><strong>Validation:</strong> reach 25 focused availability interviews and decide whether the problem is repeated, specific, and costly enough to continue.</li>
+        <li><strong>Requirements:</strong> rank needed status changes, define freshness, and identify who could report and verify each change.</li>
+        <li><strong>Prototype:</strong> build a testable flow that shows location, availability, status details, and when information was updated.</li>
+        <li><strong>Usability and feasibility:</strong> test with students and review operational limits before considering a pilot proposal.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Assumptions and dependencies</h2>
+      <ul>
+        <li>Students will check availability before walking to a dining location.</li>
+        <li>Available, Low Stock, Sold Out, Closed, and Service Outage will be clear enough to support a decision.</li>
+        <li>Availability can be updated often enough to remain useful.</li>
+        <li>An approved source can report changes without excessive work.</li>
+        <li>Students from different groups experience the problem.</li>
+        <li>The project can show stale or uncertain information honestly.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Stakeholders and team responsibilities</h2>
+      <div class="table-wrap"><table><thead><tr><th>Stakeholder</th><th>Interest or responsibility</th><th>Influence</th></tr></thead><tbody>
+        <tr><td>Students</td><td>Use dining information and provide research and usability feedback</td><td>High</td></tr>
+        <tr><td>Commuter students</td><td>May have limited time between classes</td><td>High</td></tr>
+        <tr><td>Students living on campus</td><td>May use several dining locations often</td><td>High</td></tr>
+        <tr><td>Graduate students</td><td>May have varied schedules</td><td>Medium</td></tr>
+        <tr><td>Campus dining administration</td><td>Reviews feasibility, ownership, and staff work</td><td>High</td></tr>
+        <tr><td>Dining locations and vendors</td><td>May supply or verify status information</td><td>High</td></tr>
+        <tr><td>UTEP administration and technology teams</td><td>Would review policy, access, security, and integration</td><td>High</td></tr>
+        <tr><td>Team 10</td><td>Conducts research, defines requirements, prototypes, and evaluates results</td><td>High</td></tr>
+      </tbody></table></div>
+      <p>
+        Zachary Carrejo focuses on website and documentation. Salvador Rodarte
+        supports interviews, research synthesis, charter work, and prototype
+        development. Daniel Lozano supports requirements, data design,
+        documentation, and technical development. Jacob Ordonez supports the
+        website and prototype. Team 10 shares charter decisions.
+      </p>
+    </section>
+
+    <section>
+      <h2>Risks and planned responses</h2>
+      <ul>
+        <li><strong>Stale information:</strong> show update times, define stale states, and test verification paths.</li>
+        <li><strong>Staff workload:</strong> test the shortest update flow and compare possible reporting approaches.</li>
+        <li><strong>No live-system access:</strong> use realistic sample data and document integration questions.</li>
+        <li><strong>Research sample bias:</strong> recruit across student types, schedules, and dining locations.</li>
+        <li><strong>Scope growth:</strong> use this boundary and record requests before adding work.</li>
+        <li><strong>Unclear ownership:</strong> do not recommend a pilot until reporting, verification, and correction responsibilities are documented.</li>
+        <li><strong>Accessibility and privacy:</strong> use readable labels, keyboard-friendly interactions, color-independent cues, and minimal participant data.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Proposed success criteria and stage gates</h2>
+      <ul>
+        <li>Reach 25 focused availability interviews while keeping meal-plan responses separate.</li>
+        <li>Document each status, data source, owner, freshness expectation, and stale-state behavior.</li>
+        <li>Let a student identify whether an item or service is Available, Low Stock, Sold Out, Closed, or affected by a Service Outage.</li>
+        <li>Test with at least five participants, with at least four completing the main task without help.</li>
+        <li>Document a realistic update owner, workflow, and data source before recommending a pilot.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Governance and open decisions</h2>
+      <p>
+        Team 10 reviews research findings and scope changes together because no
+        project lead has been chosen and responsibility is shared.
+      </p>
+      <ul>
+        <li>Which changes are important enough to publish or notify?</li>
+        <li>How quickly must each type of information be updated?</li>
+        <li>Who can report and verify a change without excessive staff work?</li>
+        <li>Should value be measured through time saved, cost avoided, or fewer disrupted meals?</li>
+      </ul>
+    </section>
+  </div>
+</article>

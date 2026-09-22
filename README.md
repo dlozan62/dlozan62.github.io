@@ -1,4 +1,4 @@
-# College Dining Meal Plan Initiative
+# Campus Dining Availability System
 
 A living project website for CS 4390/5388 Software Project Management. Each sprint records the team's research, decisions, and deliverables.
 
@@ -23,6 +23,20 @@ bundle exec sass assets/css/style.css /tmp/site-check.css --no-source-map
 python3 -m unittest discover -s tests -v
 python3 scripts/check_site.py
 ```
+
+## Export public PDFs
+
+Build the site first, then generate the public PDF copies from the same page
+text. The export script requires ReportLab.
+
+```sh
+bundle exec jekyll build
+python3 scripts/export_public_pdfs.py
+```
+
+The `private/` directory keeps source packets and superseded documents out of
+the generated portal. Retrospectives, peer evaluations, and individual
+estimation memos must not be added to the public site.
 
 ## Publish
 

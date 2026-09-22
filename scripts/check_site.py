@@ -16,7 +16,22 @@ REQUIRED_PAGES = (
     "sprints/index.html",
     "sprints/sprint-1/index.html",
     "sprints/sprint-2/index.html",
+    "sprints/sprint-1/market-research/index.html",
+    "sprints/sprint-1/business-strategy/index.html",
+    "sprints/sprint-1/project-charter/index.html",
+    "sprints/sprint-2/research-evidence/index.html",
+    "sprints/sprint-2/project-charter/index.html",
+    "sprints/sprint-2/change-log/index.html",
 )
+PUBLIC_DOCUMENTS = {
+    "sprints/sprint-1/market-research/index.html": "assets/pdfs/sprint-1-market-research.pdf",
+    "sprints/sprint-1/business-strategy/index.html": "assets/pdfs/sprint-1-business-strategy.pdf",
+    "sprints/sprint-1/project-charter/index.html": "assets/pdfs/sprint-1-project-charter.pdf",
+    "sprints/sprint-2/research-evidence/index.html": "assets/pdfs/sprint-2-research-evidence.pdf",
+    "sprints/sprint-2/project-charter/index.html": "assets/pdfs/campus-dining-availability-system-project-charter.pdf",
+    "sprints/sprint-2/change-log/index.html": "assets/pdfs/sprint-2-change-log.pdf",
+}
+PRIVATE_PUBLIC_TARGET = re.compile(r"(?:retrospective|peer-evaluation|individual-estimation-memo)", re.IGNORECASE)
 CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)
 ORPHAN_HEADING_TEXT = re.compile(r"</h[1-6]>\s*[A-Za-z](?=\s*<)")
 CSS_URL = re.compile(r"url\(\s*['\"]?([^)'\"]+)['\"]?\s*\)")
@@ -87,6 +102,10 @@ def main():
 
     for page_path, page in parsed_pages.items():
         for reference in page.references:
+            if PRIVATE_PUBLIC_TARGET.search(unquote(urlparse(reference).path)):
+                errors.append(
+                    f"{page_path.relative_to(SITE)} links to a private sprint artifact: {reference}"
+                )
             resolved = target_for(page_path, reference)
             if resolved is None:
                 continue
@@ -104,6 +123,16 @@ def main():
             resolved = target_for(css_path, reference)
             if resolved and not resolved[0].is_file():
                 errors.append(f"stylesheet has missing target: {reference}")
+
+    for relative_page, relative_pdf in PUBLIC_DOCUMENTS.items():
+        page_path = SITE / relative_page
+        pdf_path = SITE / relative_pdf
+        expected_reference = "/" + relative_pdf
+        page = parsed_pages.get(page_path)
+        if page and expected_reference not in page.references:
+            errors.append(f"{relative_page} does not link to its matching PDF: {expected_reference}")
+        if not pdf_path.is_file():
+            errors.append(f"missing public document PDF: {relative_pdf}")
 
     if errors:
         print("Site check failed:\n- " + "\n- ".join(errors), file=sys.stderr)
