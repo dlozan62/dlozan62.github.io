@@ -7,10 +7,11 @@ permalink: /sprints/sprint-2/
 
 <header class="page-intro page-intro--sprint">
   <p class="course-line">Sprint 2</p>
-  <h1>From broad signals to one real problem.</h1>
+  <h1>Sprint 2: Narrowed Market Research</h1>
   <p>
-    The team compared five candidate ideas, followed the strongest repeated
-    signal, and narrowed the project to real-time campus dining availability.
+    Our team started with five candidate ideas and compared them using the
+    interview results. We narrowed the project to real-time campus dining
+    availability because it was one of the most repeated problems.
   </p>
   <a
     class="button"
@@ -36,7 +37,7 @@ permalink: /sprints/sprint-2/
   <section id="overview" class="sprint-summary" aria-labelledby="overview-title">
     <div>
       <p class="document-label">Sprint at a glance</p>
-      <h2 id="overview-title">The evidence changed the direction.</h2>
+      <h2 id="overview-title">How we narrowed the project</h2>
     </div>
     <dl class="evidence-stats">
       <div>
@@ -61,49 +62,50 @@ permalink: /sprints/sprint-2/
   <section id="candidates" class="charter-detail">
     <div class="charter-detail__heading">
       <p class="document-label">Candidate ideas</p>
-      <h2>Five problems worth testing</h2>
+      <h2>The five candidate ideas</h2>
     </div>
     <ol class="candidate-grid">
       <li>
         <span>01</span>
         <h3>Real-time food availability</h3>
         <p>
-          Students can travel to a dining location expecting a specific item,
-          only to discover that it is sold out. The result can be wasted time,
-          an unwanted substitution, or added cost.
+          Students sometimes travel to a campus dining location expecting a
+          specific item, only to find out that it is sold out. This can waste
+          time or cause them to spend more money on another meal.
         </p>
-        <strong>Signal</strong>
-        <p>Show items and stations as available, low stock, or sold out.</p>
+        <strong>Candidate idea</strong>
+        <p>Show whether items and stations are available, low stock, or sold out.</p>
       </li>
       <li>
         <span>02</span>
         <h3>Dining hours and service status</h3>
         <p>
-          Posted hours can say that a location is open without showing that a
-          kitchen, counter, or piece of equipment is already unavailable.
+          Posted hours do not always show whether every part of a dining
+          location is operating. A location may be open even when its kitchen,
+          counter, or equipment is unavailable.
         </p>
-        <strong>Signal</strong>
-        <p>Separate location hours from live kitchen and counter status.</p>
+        <strong>Candidate idea</strong>
+        <p>Show separate hours and live status for kitchens and counters.</p>
       </li>
       <li>
         <span>03</span>
         <h3>Meal-plan rollover</h3>
         <p>
-          Students worry about paying for meal-plan value that disappears when
-          it is not used before an expiration date.
+          Students are concerned about losing meal-plan money when they do not
+          use it before it expires.
         </p>
-        <strong>Signal</strong>
-        <p>Carry unused value forward and make the remaining balance clear.</p>
+        <strong>Candidate idea</strong>
+        <p>Let unused money roll over and clearly show the remaining balance.</p>
       </li>
       <li>
         <span>04</span>
         <h3>Customizable meal plans</h3>
         <p>
-          Different budgets and eating habits make a single fixed plan a poor
-          fit for some students.
+          Students have different budgets and eating habits, so one meal-plan
+          structure may not work well for everyone.
         </p>
-        <strong>Signal</strong>
-        <p>Offer dollar-balance, set-meal, or hybrid structures.</p>
+        <strong>Candidate idea</strong>
+        <p>Offer dollar-balance, set-meal, or combined plan options.</p>
       </li>
       <li>
         <span>05</span>
@@ -112,8 +114,8 @@ permalink: /sprints/sprint-2/
           Students often learn about sold-out items, restocking problems, and
           equipment failures only after they arrive.
         </p>
-        <strong>Signal</strong>
-        <p>Notify students when a meaningful availability change occurs.</p>
+        <strong>Candidate idea</strong>
+        <p>Notify students when an item, station, or service becomes unavailable.</p>
       </li>
     </ol>
   </section>
@@ -123,44 +125,44 @@ permalink: /sprints/sprint-2/
     <p class="decision-panel__eyebrow">Selected direction</p>
     <h2>Real-Time Campus Dining Availability System</h2>
     <p>
-      The strongest repeated problem was the gap between what students expected
-      and what was actually available when they arrived. Interviewees reported
-      sold-out ribs and soup, missing sandwiches, empty grab-and-go cases,
-      unavailable milk options, cleared stations, and a kitchen that closed
-      before the café. These failures led to detours, delays, substitutions,
-      hunger, and extra spending.
+      One of the most common problems was that students expected an item or
+      service to be available, but found out otherwise when they arrived.
+      Students reported sold-out ribs and soup, missing sandwiches, empty
+      grab-and-go cases, unavailable milk options, cleared stations, and a
+      kitchen that closed before the café. These problems caused detours,
+      delays, substitutions, hunger, and extra spending.
     </p>
     <p>
-      Because the pattern appeared across independent conversations and carried
-      concrete consequences, the team chose to focus on current item, station,
-      and service information before a student walks to a dining location.
+      Because this issue appeared in several interviews and had clear
+      consequences, our team chose to focus on current item, station, and
+      service information that students can check before walking to a dining
+      location.
     </p>
   </section>
 
   <section id="evidence" class="deliverable">
     <div class="deliverable__title">
       <p class="document-label">Interview evidence</p>
-      <h2>What happened in practice</h2>
+      <h2>What students experienced</h2>
     </div>
     <div class="prose">
-      <h3>Availability failed at the point of arrival</h3>
+      <h3>Students often found out after they arrived</h3>
       <p>
-        The focused interviews repeatedly show students discovering a change at
-        the counter, in an empty case, or from a paper sign—not in the digital
-        source they checked beforehand.
+        Several students only learned about a change after reaching the counter,
+        seeing an empty case, or reading a paper sign. The website or menu they
+        checked beforehand did not show the update.
       </p>
       <ul class="evidence-list">
-        <li><strong>$18 and 40 minutes:</strong> a café was open, but its kitchen was closed, so one participant ordered delivery to the lab.</li>
-        <li><strong>25-minute detour:</strong> an empty grab-and-go case sent one participant across campus for pizza.</li>
-        <li><strong>$6 extra:</strong> sold-out ribs led one participant to buy a snack and wait until after class for a full meal.</li>
-        <li><strong>Repeated substitutions:</strong> sold-out soup, missing sandwiches, unavailable oat milk, and cleared stations changed what students ate.</li>
+        <li>A café was open, but its kitchen was closed. One participant <strong>spent $18 and waited roughly 40 minutes</strong> for a delivery to the lab.</li>
+        <li>An empty grab-and-go case caused one participant to take a <strong>25-minute detour</strong> across campus for pizza.</li>
+        <li>When the ribs were sold out, one participant <strong>spent about $6 extra</strong> on a snack and waited until after class for a full meal.</li>
+        <li>Sold-out soup, missing sandwiches, unavailable oat milk, and cleared stations caused several students to <strong>choose something else</strong>.</li>
       </ul>
-      <h3>Not every experience failed</h3>
+      <h3>The information was sometimes accurate</h3>
       <p>
         Several participants found that posted hours or menus matched reality.
-        That disconfirming evidence matters: the opportunity is not to replace
-        every menu, but to communicate the changes that static information
-        misses.
+        The problem did not happen every time. Our goal is to communicate the
+        changes that regular menu and hours pages may not show.
       </p>
     </div>
   </section>
@@ -168,7 +170,7 @@ permalink: /sprints/sprint-2/
   <section id="method" class="deliverable">
     <div class="deliverable__title">
       <p class="document-label">Research protocol</p>
-      <h2>Behavior before opinion</h2>
+      <h2>How we conducted the interviews</h2>
     </div>
     <div class="prose">
       <h3>The focused interview</h3>
@@ -179,17 +181,16 @@ permalink: /sprints/sprint-2/
       </p>
       <h3>Mom Test rules</h3>
       <p>
-        Interviewers discussed the participant’s life instead of pitching a
-        solution, asked about specific past behavior, and listened for repeated
-        problems, workarounds, consequences, and evidence that challenged the
-        emerging direction.
+        We asked participants about specific past experiences instead of
+        pitching a solution. We listened for repeated problems, workarounds,
+        consequences, and examples that did not support our project idea.
       </p>
       <h3>What the packet contains</h3>
       <p>
-        The submitted PDF includes 25 Phase 2 response sheets: 12 use the
-        focused menu-and-availability protocol, while 13 capture meal-plan
+        The submitted PDF includes 25 Phase 2 response sheets. Twelve use the
+        focused menu-and-availability questions, while 13 cover meal-plan
         preferences such as price, rollover, payment timing, and plan structure.
-        This page keeps those evidence streams distinct.
+        We kept these two groups separate on this page.
       </p>
     </div>
   </section>
@@ -197,20 +198,21 @@ permalink: /sprints/sprint-2/
   <section id="objective" class="deliverable">
     <div class="deliverable__title">
       <p class="document-label">First-draft business objective</p>
-      <h2>Reduce avoidable dining disruption</h2>
+      <h2>Help students avoid wasted trips and extra costs</h2>
     </div>
     <div class="prose">
       <p>
-        Validate whether timely item-, station-, and service-level availability
-        information can reduce wasted trips, delays, substitutions, and
-        unexpected spending for students choosing where to eat on campus.
+        Our first objective is to find out whether current information about
+        items, stations, and services can reduce wasted trips, delays,
+        substitutions, and unexpected spending when students choose where to
+        eat on campus.
       </p>
       <h3>Next validation questions</h3>
       <ul>
         <li>Which status changes are important enough to publish or notify?</li>
         <li>How quickly must availability data be updated to remain trustworthy?</li>
         <li>Who can report and verify changes without adding excessive staff work?</li>
-        <li>Which consequence—time, cost, or meal disruption—best measures value?</li>
+        <li>Should we measure the value through time, cost, or meal disruption?</li>
       </ul>
     </div>
   </section>
