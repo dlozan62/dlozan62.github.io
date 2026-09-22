@@ -28,7 +28,6 @@ DOCUMENTS = {
     "sprints/sprint-1/business-strategy/index.html": "sprint-1-business-strategy.pdf",
     "sprints/sprint-1/project-charter/index.html": "sprint-1-project-charter.pdf",
     "sprints/sprint-2/research-evidence/index.html": "sprint-2-research-evidence.pdf",
-    "sprints/sprint-2/project-charter/index.html": "campus-dining-availability-system-project-charter.pdf",
     "sprints/sprint-2/change-log/index.html": "sprint-2-change-log.pdf",
 }
 
@@ -66,10 +65,6 @@ class DocumentParser(HTMLParser):
             return
         if not self.in_article:
             return
-        if tag == "br":
-            if self.active:
-                self.buffer.append("<br/>")
-            return
         self.depth += 1
         if self.skip_depth:
             self.skip_depth += 1
@@ -87,6 +82,8 @@ class DocumentParser(HTMLParser):
         if tag in {"h1", "h2", "h3", "p", "li", "th", "td"}:
             self.active = tag
             self.buffer = []
+        elif tag == "br" and self.active:
+            self.buffer.append("<br/>")
 
     def handle_endtag(self, tag):
         if not self.in_article:
@@ -135,12 +132,11 @@ def export(source, destination):
     parser = DocumentParser()
     parser.feed(source.read_text(encoding="utf-8"))
     styles = getSampleStyleSheet()
-    styles.add(ParagraphStyle(name="DocTitle", parent=styles["Title"], fontName="Helvetica-Bold", fontSize=21, leading=24, textColor=colors.HexColor("#041E42"), alignment=TA_CENTER, spaceAfter=15))
-    styles.add(ParagraphStyle(name="DocH2", parent=styles["Heading2"], fontName="Helvetica-Bold", fontSize=16, leading=18, textColor=colors.HexColor("#041E42"), spaceBefore=9, spaceAfter=5, keepWithNext=True))
+    styles.add(ParagraphStyle(name="DocTitle", parent=styles["Title"], fontName="Helvetica-Bold", fontSize=26, leading=29, textColor=colors.HexColor("#041E42"), alignment=TA_CENTER, spaceAfter=15))
+    styles.add(ParagraphStyle(name="DocH2", parent=styles["Heading2"], fontName="Helvetica-Bold", fontSize=16.5, leading=19, textColor=colors.HexColor("#041E42"), spaceBefore=11, spaceAfter=6, keepWithNext=True))
     styles.add(ParagraphStyle(name="DocH3", parent=styles["Heading3"], fontName="Helvetica-Bold", fontSize=11.5, leading=14, textColor=colors.HexColor("#A84400"), spaceBefore=8, spaceAfter=4, keepWithNext=True))
-    styles.add(ParagraphStyle(name="DocBody", parent=styles["BodyText"], fontName="Helvetica", fontSize=9, leading=12, textColor=colors.HexColor("#334155"), spaceAfter=5))
-    styles.add(ParagraphStyle(name="DocBullet", parent=styles["BodyText"], fontName="Helvetica", fontSize=9, leading=11.5, leftIndent=16, firstLineIndent=-10, textColor=colors.HexColor("#334155"), spaceAfter=2.5))
-    styles.add(ParagraphStyle(name="DocTableHeader", parent=styles["DocBody"], fontName="Helvetica-Bold", textColor=colors.white))
+    styles.add(ParagraphStyle(name="DocBody", parent=styles["BodyText"], fontName="Helvetica", fontSize=9.2, leading=12.5, textColor=colors.HexColor("#334155"), spaceAfter=6))
+    styles.add(ParagraphStyle(name="DocBullet", parent=styles["BodyText"], fontName="Helvetica", fontSize=9.2, leading=12, leftIndent=16, firstLineIndent=-10, textColor=colors.HexColor("#334155"), spaceAfter=3))
 
     story = []
     title_seen = False
@@ -151,8 +147,6 @@ def export(source, destination):
             story.append(Paragraph(escape(value), styles["DocTitle"]))
             title_seen = True
         elif kind == "h2":
-            if value == "What could go wrong and how we would respond":
-                story.append(PageBreak())
             story.append(Paragraph(escape(value), styles["DocH2"]))
         elif kind == "h3":
             story.append(Paragraph(escape(value), styles["DocH3"]))
@@ -161,13 +155,7 @@ def export(source, destination):
         elif kind == "li":
             story.append(Paragraph(escape(value), styles["DocBullet"], bulletText="-"))
         elif kind == "table":
-            rows = [
-                [
-                    Paragraph(escape(cell), styles["DocTableHeader"] if row_index == 0 else styles["DocBody"])
-                    for cell in row
-                ]
-                for row_index, row in enumerate(value)
-            ]
+            rows = [[Paragraph(escape(cell), styles["DocBody"]) for cell in row] for row in value]
             if rows:
                 width = 7.1 * inch / max(len(row) for row in rows)
                 table = Table(rows, colWidths=[width] * max(len(row) for row in rows), repeatRows=1)
@@ -189,8 +177,8 @@ def export(source, destination):
         pagesize=LETTER,
         rightMargin=0.65 * inch,
         leftMargin=0.65 * inch,
-        topMargin=0.5 * inch,
-        bottomMargin=0.55 * inch,
+        topMargin=0.55 * inch,
+        bottomMargin=0.58 * inch,
         title=next((value for kind, value in parser.blocks if kind == "h1"), destination.stem),
         author="Team 10",
     )
