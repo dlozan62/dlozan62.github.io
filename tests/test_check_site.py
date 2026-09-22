@@ -52,7 +52,7 @@ class GeneratedSiteTests(TestCase):
             stylesheet.parent.mkdir(parents=True)
             stylesheet.write_text("", encoding="utf-8")
             future_page = site / "sprints/sprint-2/index.html"
-            future_page.parent.mkdir(parents=True)
+            future_page.parent.mkdir(parents=True, exist_ok=True)
             future_page.write_text('<img src="/missing.png">', encoding="utf-8")
 
             errors = StringIO()
