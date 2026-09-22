@@ -363,6 +363,68 @@ h3 {
   font-size: 1.08rem;
 }
 
+.start-here {
+  max-width: var(--container);
+  margin: auto;
+  padding: clamp(4rem, 7vw, 7rem) 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.start-here > header {
+  max-width: 48rem;
+  margin-bottom: 3rem;
+}
+
+.start-here > header h2 {
+  margin: 0 0 1rem;
+}
+
+.start-here > header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.start-here ol {
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  list-style: none;
+}
+
+.start-here li {
+  min-height: 18rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  border-right: 1px solid var(--line);
+  background: var(--white);
+}
+
+.start-here li:last-child {
+  border-right: 0;
+}
+
+.start-here li > span {
+  color: var(--orange);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.start-here h3 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+}
+
+.start-here li p {
+  margin: 0;
+  color: var(--muted);
+}
+
 /* Home: sprint record and research question
    ========================================================================== */
 
@@ -1474,7 +1536,7 @@ h3 {
   .exhibit-hero__actions .button {
     width: min(100%, 20rem);
   }
-  .sprint-accordion, .research-intro, .team-route, .page-intro, .people-list, .photo-callout, .deliverables, .sprint-index, .problem-statement, .document-page {
+  .sprint-accordion, .research-intro, .team-route, .page-intro, .people-list, .photo-callout, .deliverables, .sprint-index, .problem-statement, .start-here, .document-page {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -1558,6 +1620,17 @@ h3 {
   }
   .problem-statement .document-label {
     grid-column: auto;
+  }
+  .start-here ol {
+    grid-template-columns: 1fr;
+  }
+  .start-here li {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .start-here li:last-child {
+    border-bottom: 0;
   }
   .on-page-nav {
     position: static;
