@@ -1,6 +1,6 @@
-# College Dining Meal Plan Initiative
+# Campus Dining Availability System
 
-A living project website for CS 4390/5388 Software Project Management. Each sprint records the team's research, decisions, and deliverables.
+A living project website for CS 4390/5388 Software Project Management. Sprint 1 records the team's move from meal-plan research to a campus dining availability system; Sprint 2 is a planned outline.
 
 [View the website](https://dlozan62.github.io)
 
@@ -30,4 +30,4 @@ The [GitHub Actions workflow](.github/workflows/site-check.yml) checks the site 
 
 ## AI use
 
-AI tools support website design, development, and permitted grammar editing. The team authors the project research, analysis, and conclusions.
+AI assisted with website design, development, and drafts of the web summaries. The Sprint 1 source research and charter are linked on the site. Individual AI-use disclosures are pending.

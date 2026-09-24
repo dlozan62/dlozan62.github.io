@@ -2,3 +2,9 @@ _site/
 .jekyll-cache/
 .sass-cache/
 .DS_Store
+AGENTS.md
+.agents/
+.codex/
+.omp/
+output/
+tmp/

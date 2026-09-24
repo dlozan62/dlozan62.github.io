@@ -15,6 +15,9 @@ REQUIRED_PAGES = (
     "about/index.html",
     "sprints/index.html",
     "sprints/sprint-1/index.html",
+    "sprints/sprint-1/market-research/index.html",
+    "sprints/sprint-1/business-strategy/index.html",
+    "sprints/sprint-1/project-charter/index.html",
     "sprints/sprint-2/index.html",
 )
 CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)

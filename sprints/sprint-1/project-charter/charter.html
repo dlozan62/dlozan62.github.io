@@ -1,0 +1,632 @@
+---
+layout: default
+title: Project Charter
+description: Team 10's current charter for a campus dining availability system.
+permalink: /sprints/sprint-1/project-charter/
+---
+
+<div class="charter-page">
+  <header class="page-intro page-intro--sprint charter-page__intro">
+    <p class="course-line">Sprint 1 · Team 10</p>
+    <h1>Campus Dining Availability System</h1>
+    <p>
+      This is the current project charter. It records the problem, evidence,
+      project boundaries, planned work, and decisions the team still needs to
+      make.
+    </p>
+    <a
+      class="button"
+      href="{{ '/assets/pdfs/campus-dining-availability-system-project-charter.pdf' | relative_url }}"
+      download
+    >
+      Download the current charter PDF
+    </a>
+  </header>
+
+  <nav class="on-page-nav" aria-label="Project charter sections">
+    <ul>
+      <li><a href="#project-title">1. Project title</a></li>
+      <li><a href="#decision-evidence">2. Decision and evidence</a></li>
+      <li><a href="#problem-objective">3. Problem and objective</a></li>
+      <li><a href="#scope">4. Scope boundary</a></li>
+      <li><a href="#approach">5. Project approach</a></li>
+      <li><a href="#assumptions">6. Assumptions</a></li>
+      <li><a href="#stakeholders">7. Stakeholders and team</a></li>
+      <li><a href="#risks">8. Risks</a></li>
+      <li><a href="#success-criteria">9. Success criteria</a></li>
+      <li><a href="#governance">10. Governance</a></li>
+    </ul>
+  </nav>
+
+  <div class="charter-page__sections">
+    <section id="project-title" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 01</p>
+        <h2>Project title</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <h3>Team 10 Project Charter</h3>
+        <p><strong>Campus Dining Availability System</strong></p>
+
+        <h3>Project information</h3>
+        <dl class="charter-facts">
+          <div class="charter-facts__item">
+            <dt>Course</dt>
+            <dd>CS 4390 and CS 5388 Software Project Management</dd>
+          </div>
+          <div class="charter-facts__item">
+            <dt>Date</dt>
+            <dd>September 2026</dd>
+          </div>
+          <div class="charter-facts__item">
+            <dt>Current stage</dt>
+            <dd>Validation through prototype evaluation</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="decision-evidence" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 02</p>
+        <h2>Project decision and evidence</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <p>
+          Our team selected a real-time campus dining availability system after
+          comparing five candidate ideas: food availability, dining hours and
+          service status, meal-plan rollover, customizable meal plans, and
+          dining alerts. The interviews showed repeated cases in which students
+          expected an item or service to be available but learned about a change
+          only after arriving.
+        </p>
+        <p>
+          The selected direction is to test a system that lets students check
+          the current status of dining items, stations, kitchens, counters, and
+          temporary service changes before walking to a location.
+        </p>
+
+        <h3>Evidence used for the decision</h3>
+        <div class="charter-table-wrap" role="region" aria-label="Evidence counts table" tabindex="0">
+          <table class="charter-table">
+            <caption>Evidence groups and how each group is used</caption>
+            <thead>
+              <tr>
+                <th scope="col">Evidence group</th>
+                <th scope="col">Count</th>
+                <th scope="col">How it is used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Focused availability interviews</th>
+                <td>12</td>
+                <td>Primary evidence for the current project direction.</td>
+              </tr>
+              <tr>
+                <th scope="row">Meal-plan preference responses</th>
+                <td>13</td>
+                <td>
+                  Background from the earlier meal-plan direction. These
+                  responses do not validate the availability system.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Candidate ideas</th>
+                <td>5</td>
+                <td>Options compared before the team narrowed the project.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Examples from focused interviews</h3>
+        <ul>
+          <li>
+            A cafe was open, but its kitchen had closed. The participant
+            ordered delivery to the lab, spent about $18, and waited roughly 40
+            minutes.
+          </li>
+          <li>
+            An empty grab-and-go case led one participant to walk across campus
+            for pizza. The detour took about 25 minutes.
+          </li>
+          <li>
+            A participant found that the ribs were sold out, spent about $6
+            extra on a snack, and waited until after class for a full meal.
+          </li>
+          <li>
+            Students also reported sold-out soup, missing sandwiches,
+            unavailable oat milk, cleared stations, and equipment or service
+            changes.
+          </li>
+        </ul>
+        <p>
+          The information was accurate in some interviews. Posted hours or
+          menus sometimes matched what students found. The project is therefore
+          focused on changes that normal hours and menu pages may not show, not
+          on replacing information that already works.
+        </p>
+      </div>
+    </section>
+
+    <section id="problem-objective" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 03</p>
+        <h2>Problem statement and business objective</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <h3>Problem statement</h3>
+        <p>
+          Students sometimes arrive at a campus dining location and discover
+          that an item, station, kitchen service, counter, or required option is
+          unavailable. When the information they checked beforehand does not
+          show the change, they may lose time, substitute a meal, remain hungry,
+          or spend more than planned.
+        </p>
+
+        <h3>First business objective</h3>
+        <p>
+          Our first objective is to find out whether current information about
+          dining items, stations, and services can help students avoid wasted
+          trips, delays, substitutions, and unexpected spending when they
+          decide where to eat on campus.
+        </p>
+      </div>
+    </section>
+
+    <section id="scope" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 04</p>
+        <h2>Scope boundary</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <p>
+          This phase covers research, requirements, and prototype evaluation.
+          It does not include production deployment.
+        </p>
+        <div class="charter-table-wrap" role="region" aria-label="Project scope table" tabindex="0">
+          <table class="charter-table">
+            <caption>Work included in this phase and boundaries for later work</caption>
+            <thead>
+              <tr>
+                <th scope="col">In scope</th>
+                <th scope="col">Out of scope</th>
+                <th scope="col">Deferred until later</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Complete 13 additional focused availability interviews.</td>
+                <td>Launch a production website or mobile app.</td>
+                <td>Production application development.</td>
+              </tr>
+              <tr>
+                <td>Define functional and nonfunctional requirements.</td>
+                <td>Connect to live UTEP or vendor systems.</td>
+                <td>Live menu, inventory, or point-of-sale integrations.</td>
+              </tr>
+              <tr>
+                <td>Define statuses for items, stations, kitchens, counters, and outages.</td>
+                <td>Guarantee real-time or perfectly accurate information.</td>
+                <td>Push notifications and user accounts.</td>
+              </tr>
+              <tr>
+                <td>Design a practical update and verification workflow.</td>
+                <td>Change staffing, dining policy, meal-plan pricing, payment, or rollover rules.</td>
+                <td>Analytics, reporting dashboards, and role administration.</td>
+              </tr>
+              <tr>
+                <td>Create low-fidelity and interactive prototypes.</td>
+                <td>Replace official dining systems or begin a campus-wide rollout.</td>
+                <td>A limited pilot, followed by campus-wide implementation if approved.</td>
+              </tr>
+              <tr>
+                <td>Run usability tests and document feasibility findings.</td>
+                <td>Commit university staff or vendors to work they have not approved.</td>
+                <td>Operational ownership and service-level commitments.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 05</p>
+        <h2>Project approach</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <div class="charter-table-wrap" role="region" aria-label="Project phases table" tabindex="0">
+          <table class="charter-table">
+            <caption>Planned phases, work, and outputs or decisions</caption>
+            <thead>
+              <tr>
+                <th scope="col">Phase</th>
+                <th scope="col">Work</th>
+                <th scope="col">Output and decision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Validation</th>
+                <td>
+                  Conduct 13 more focused availability interviews using the
+                  same behavior-based method. Include different student types
+                  and dining locations.
+                </td>
+                <td>
+                  Reach 25 focused availability interviews. Decide whether the
+                  problem is repeated, specific, and costly enough to continue.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Requirements</th>
+                <td>
+                  Rank the status changes students need, define update
+                  freshness, and identify who could report and verify each
+                  change.
+                </td>
+                <td>Approved prototype requirements and a documented data workflow.</td>
+              </tr>
+              <tr>
+                <th scope="row">Prototype</th>
+                <td>
+                  Create a low-fidelity flow, review it with the team, and build
+                  an interactive prototype for the main task.
+                </td>
+                <td>
+                  A testable prototype that shows availability, location,
+                  status details, and when information was updated.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Usability and feasibility</th>
+                <td>
+                  Test the prototype with students and review operational
+                  limits with relevant stakeholders.
+                </td>
+                <td>
+                  Usability findings, feasibility findings, and a recommendation
+                  to revise, pause, or prepare a pilot proposal.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Interview method</h3>
+        <ul>
+          <li>
+            Ask about recent behavior and specific dining experiences instead
+            of asking whether someone likes the proposed system.
+          </li>
+          <li>
+            Record what the participant expected, what was actually available,
+            how they found out, what they did next, and the time or money
+            involved.
+          </li>
+          <li>
+            Record examples that do not support the project, including cases
+            where the existing information was correct.
+          </li>
+          <li>
+            Do not record a conversation without consent, and identify
+            participants by a role or descriptor instead of a full name.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="assumptions" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 06</p>
+        <h2>Assumptions and dependencies</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <p>
+          These statements are not proven facts. The team will test them before
+          treating the project as feasible.
+        </p>
+        <div class="charter-table-wrap" role="region" aria-label="Assumptions and checks table" tabindex="0">
+          <table class="charter-table">
+            <caption>Assumptions and how the team plans to check them</caption>
+            <thead>
+              <tr>
+                <th scope="col">Assumption or dependency</th>
+                <th scope="col">How the team will check it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Students will check availability before walking to a dining location.</th>
+                <td>Ask about current checking behavior and test whether participants use the information in the prototype.</td>
+              </tr>
+              <tr>
+                <th scope="row">A small set of statuses will be clear enough to support a dining decision.</th>
+                <td>Test Available, Low Stock, Sold Out, Closed, and Service Outage labels during prototype sessions.</td>
+              </tr>
+              <tr>
+                <th scope="row">Availability can be updated often enough to remain useful.</th>
+                <td>Define an acceptable freshness target and identify the source and owner of each update.</td>
+              </tr>
+              <tr>
+                <th scope="row">Dining staff or another approved source can report changes without excessive work.</th>
+                <td>Map the shortest update workflow and review it with an operational stakeholder before a pilot is proposed.</td>
+              </tr>
+              <tr>
+                <th scope="row">Students from different groups experience the problem.</th>
+                <td>Include commuters, students living on campus, graduate students, and other frequent dining users in the next interviews.</td>
+              </tr>
+              <tr>
+                <th scope="row">The project can show stale or uncertain information honestly.</th>
+                <td>Prototype a visible last-updated time and a clear stale or unverified state.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 07</p>
+        <h2>Stakeholders and team responsibilities</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <h3>Stakeholders</h3>
+        <div class="charter-table-wrap" role="region" aria-label="Stakeholder responsibilities table" tabindex="0">
+          <table class="charter-table">
+            <caption>Stakeholder interests, responsibilities, and influence</caption>
+            <thead>
+              <tr>
+                <th scope="col">Stakeholder</th>
+                <th scope="col">Interest or responsibility</th>
+                <th scope="col">Influence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Students</th>
+                <td>Use dining information and provide research and usability feedback.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">Commuter students</th>
+                <td>May have limited time between classes and may be affected by unnecessary trips.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">Students living on campus</th>
+                <td>May use campus dining often and encounter availability changes across several locations.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">Graduate students</th>
+                <td>May have varied schedules and limited time to change dining plans.</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <th scope="row">Campus dining administration</th>
+                <td>Reviews operational feasibility, ownership, and the effect on staff work.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">Dining locations and vendors</th>
+                <td>May supply or verify item, station, and service status information.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">UTEP administration and technology teams</th>
+                <td>Would review policy, access, security, and integration needs before any pilot.</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <th scope="row">Team 10</th>
+                <td>Conducts research, defines requirements, builds the prototype, records decisions, and evaluates results.</td>
+                <td>High</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Current team roles</h3>
+        <div class="charter-table-wrap" role="region" aria-label="Current team roles table" tabindex="0">
+          <table class="charter-table">
+            <caption>Team members and their documented charter responsibilities</caption>
+            <thead>
+              <tr>
+                <th scope="col">Team member</th>
+                <th scope="col">Documented focus</th>
+                <th scope="col">Charter responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Zachary Carrejo</th>
+                <td>Website and documentation</td>
+                <td>Maintain project documentation and present research and scope clearly.</td>
+              </tr>
+              <tr>
+                <th scope="row">Salvador Rodarte</th>
+                <td>Research and development</td>
+                <td>Support interviews, research synthesis, charter work, and prototype development.</td>
+              </tr>
+              <tr>
+                <th scope="row">Daniel Lozano</th>
+                <td>Database and development</td>
+                <td>Support requirements, data design, documentation, and technical development.</td>
+              </tr>
+              <tr>
+                <th scope="row">Jacob Ordonez</th>
+                <td>Website development</td>
+                <td>Support website and prototype development and help present dining information clearly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="charter-note">
+          Team 10 shares charter decisions. No project manager is assigned in
+          the current source material.
+        </p>
+      </div>
+    </section>
+
+    <section id="risks" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 08</p>
+        <h2>Risks and planned responses</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <div class="charter-table-wrap" role="region" aria-label="Risks and responses table" tabindex="0">
+          <table class="charter-table">
+            <caption>Project risks, why they matter, and planned responses</caption>
+            <thead>
+              <tr>
+                <th scope="col">Risk</th>
+                <th scope="col">Why it matters</th>
+                <th scope="col">Planned response</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Stale information</th>
+                <td>Incorrect status information could reduce trust and cause the same problems the project is meant to address.</td>
+                <td>Show when information was updated, define stale states, and test an escalation or verification path.</td>
+              </tr>
+              <tr>
+                <th scope="row">Staff workload</th>
+                <td>Frequent manual updates may not be practical during busy service periods.</td>
+                <td>Test the shortest possible update flow and compare manual, system, and shared reporting options.</td>
+              </tr>
+              <tr>
+                <th scope="row">No access to live systems</th>
+                <td>The team may not be able to use university or vendor data during this course phase.</td>
+                <td>Use realistic sample data for the prototype and document the integration questions that remain.</td>
+              </tr>
+              <tr>
+                <th scope="row">Research sample bias</th>
+                <td>A narrow participant group may overstate or miss parts of the problem.</td>
+                <td>Recruit across student types, schedules, and dining locations and use the same core interview questions.</td>
+              </tr>
+              <tr>
+                <th scope="row">Scope growth</th>
+                <td>Meal plans, notifications, payments, and production integrations could distract from the current question.</td>
+                <td>Use the scope boundary in this charter and record requested changes before adding work.</td>
+              </tr>
+              <tr>
+                <th scope="row">Unclear ownership</th>
+                <td>Availability information needs an approved source and someone responsible for corrections.</td>
+                <td>Do not recommend a pilot until the team documents who reports, verifies, and resolves disputed information.</td>
+              </tr>
+              <tr>
+                <th scope="row">Accessibility and privacy</th>
+                <td>A prototype that is hard to use or collects unnecessary personal information would exclude users or create risk.</td>
+                <td>Use readable status labels, keyboard-friendly interactions, color-independent cues, and minimal participant data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="success-criteria" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 09</p>
+        <h2>Proposed success criteria and stage gates</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <p class="charter-note">
+          The targets below guide future work. They are proposed project
+          criteria, not findings from the completed interviews.
+        </p>
+        <div class="charter-table-wrap" role="region" aria-label="Proposed success criteria table" tabindex="0">
+          <table class="charter-table">
+            <caption>Proposed targets and decisions for each project gate</caption>
+            <thead>
+              <tr>
+                <th scope="col">Gate</th>
+                <th scope="col">Proposed criterion</th>
+                <th scope="col">Decision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Research complete</th>
+                <td>
+                  Conduct 13 additional focused interviews, for 25 focused
+                  availability interviews in total. Keep meal-plan responses
+                  separate.
+                </td>
+                <td>Continue only if repeated examples show a clear problem and consequence across independent conversations.</td>
+              </tr>
+              <tr>
+                <th scope="row">Requirements ready</th>
+                <td>
+                  Prioritize item, station, kitchen or counter, and outage
+                  statuses. Document the source, owner, freshness expectation,
+                  and stale-data behavior for each required status.
+                </td>
+                <td>Proceed when the prototype requirements and update workflow are specific enough to test.</td>
+              </tr>
+              <tr>
+                <th scope="row">Prototype ready</th>
+                <td>
+                  A student can select a location and identify whether an item
+                  or service is Available, Low Stock, Sold Out, Closed, or
+                  affected by a Service Outage. Every changing status shows when
+                  it was last updated or that it is stale or unverified.
+                </td>
+                <td>Begin usability testing after the team completes an internal walkthrough with no blocking errors.</td>
+              </tr>
+              <tr>
+                <th scope="row">Usability reviewed</th>
+                <td>
+                  Test with at least five participants. At least four should
+                  complete the main availability-checking task without
+                  assistance.
+                </td>
+                <td>Revise the prototype if the task result, wording, freshness, or navigation causes repeated confusion.</td>
+              </tr>
+              <tr>
+                <th scope="row">Feasibility reviewed</th>
+                <td>Document a realistic update owner, workflow, and data source before recommending a pilot.</td>
+                <td>Recommend a pilot proposal only if the operational path is credible and stakeholders have reviewed the open issues.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" class="charter-section">
+      <header class="charter-section__heading">
+        <p class="document-label">Section 10</p>
+        <h2>Governance and open decisions to take</h2>
+      </header>
+      <div class="charter-section__content prose">
+        <h3>Decision process</h3>
+        <p>
+          Team 10 will review research findings and scope changes together
+          because no project lead has been chosen and responsibility is being
+          shared equally.
+        </p>
+
+        <h3>Open decisions</h3>
+        <ul>
+          <li>Which changes are important enough to publish or notify?</li>
+          <li>How quickly must each type of information be updated?</li>
+          <li>Who can report and verify a change without adding excessive staff work?</li>
+          <li>Should project value be measured mainly through time saved, cost avoided, or fewer disrupted meals?</li>
+        </ul>
+
+        <p>
+          <a href="{{ '/assets/pdfs/campus-dining-availability-system-project-charter.pdf' | relative_url }}">
+            Download the authoritative six-page charter PDF
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
