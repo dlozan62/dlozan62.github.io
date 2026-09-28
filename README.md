@@ -1,6 +1,6 @@
 # Campus Dining Availability System
 
-A living project website for CS 4390/5388 Software Project Management. Sprint 1 records the team's move from meal-plan research to a campus dining availability system; Sprint 2 is a planned outline.
+A living project website for CS 4390/5388 Software Project Management. Sprint 1 records the team's move from meal-plan research to a campus dining availability system. Sprint 2 links a PDF conversion of Team 10's original estimation starter and reserves a page for the unfinished Estimation Activity 2.
 
 [View the website](https://dlozan62.github.io)
 
