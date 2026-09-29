@@ -1,60 +1,45 @@
 ---
 layout: default
 title: Sprint 2
-description: Team 10's estimation starter and worked Activity 2, with scope, methods, assumptions, and matching PDF downloads.
+description: Download Team 10's original estimation starter as PDF and follow the upcoming Activity 2.
 permalink: /sprints/sprint-2/
 ---
 
-<div class="charter-page">
-  <header class="page-intro page-intro--sprint charter-page__intro">
-    <p class="course-line">Sprint 2 · Team 10 · Campus Dining</p>
-    <h1>Project estimation.</h1>
-    <p>We started with the capabilities our dining system would need, our own experience, and similar products. We then selected one slice and estimated it with function points and use-case points.</p>
-    <a class="button" href="{{ '/assets/pdfs/sprint-2-estimation-starter.pdf' | relative_url }}" download>Download starter PDF</a>
-    <a class="text-link" href="{{ '/assets/pdfs/sprint-2-estimation-activity-2.pdf' | relative_url }}" download>Download Activity 2 PDF</a>
-  </header>
+<header class="page-intro page-intro--sprint sprint-lead">
+  <p class="course-line">Sprint 2 · work in progress</p>
+  <h1>From project ideas to an estimate.</h1>
+  <p>
+    Team 10's Project Estimation Starter is available as a PDF of the original
+    Word file. The team has not completed Estimation Activity 2 or approved an
+    effort range yet.
+  </p>
+  <a class="button" href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}" download>Download the original starter PDF</a>
+  <a class="text-link" href="{{ '/sprints/sprint-2/estimation-activity-2/' | relative_url }}">See the Activity 2 handoff</a>
+</header>
 
-  <nav class="on-page-nav" aria-label="Sprint 2 sections">
-    <ul>
-      <li><a href="#estimation-starter">Project Estimation Starter</a></li>
-      <li><a href="#starter-products">Similar products</a></li>
-      <li><a href="#activity-2">Estimation Activity 2</a></li>
-      <li><a href="#activity-calculations">Method calculations</a></li>
-      <li><a href="#activity-estimate">Dated estimate</a></li>
-      <li><a href="#remaining-work">Remaining Sprint 2 work</a></li>
-      <li><a href="{{ '/sprints/sprint-2/change-log/' | relative_url }}">Change log</a></li>
-    </ul>
-  </nav>
-
-  <div class="charter-page__sections">
-    <section id="estimation-starter" class="charter-section">
-      <header class="charter-section__heading"><p class="document-label">Assignment 1 · Team 10</p><h2>Project Estimation Starter</h2></header>
-      <div class="charter-section__content prose">
-        <p>Our first look at the project's size: five capabilities, the work behind them, a past team project, and three similar products.</p>
-        <a class="text-link" href="{{ '/assets/pdfs/sprint-2-estimation-starter.pdf' | relative_url }}" download>Download starter PDF</a>
-      </div>
-    </section>
-    {% include sprint-2-starter.html %}
-
-    <section id="activity-2" class="charter-section">
-      <header class="charter-section__heading"><p class="document-label">Assignment 2 · September 28, 2026</p><h2>Estimation Activity 2</h2></header>
-      <div class="charter-section__content prose">
-        <p>Our selected slice covers student access to dining locations, hours, menus, sold-out items, dietary filtering, and mobile viewing. The six stories total 22 points.</p>
-        <p>The estimate is 270 to 560 team hours, with an expected value of about 438 hours. At an assumed $60/hour, the cost range is $16,200 to $33,600. With 4 people working an assumed 30 productive hours each per week, the range is 2.3 to 4.7 weeks.</p>
-        <a class="text-link" href="{{ '/assets/pdfs/sprint-2-estimation-activity-2.pdf' | relative_url }}" download>Download Activity 2 PDF</a>
-      </div>
-    </section>
-    {% include sprint-2-activity.html %}
-
-    <section id="remaining-work" class="charter-section">
-      <header class="charter-section__heading"><p class="document-label">Current status</p><h2>Remaining Sprint 2 work</h2></header>
-      <div class="charter-section__content prose">
-        <p>The Estimation Appendix is recorded above. The Business Case, team-written go/no-go recommendation, and ROI Analysis are still pending.</p>
-        <p>The team still needs to identify the starter's "Interview X" reference and document the functions and use cases behind the estimate counts. The current <a href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">Sprint 1 charter</a> covers research, requirements, and prototype evaluation.</p>
-        <p class="source-note">Individual estimation memos, retrospectives, and peer evaluations are private. Sprint 2 contribution and AI-use disclosures still need team review.</p>
-        <p>AI assisted with website implementation, formatting the team answers, clarity edits, and the Waitwhile source check.</p>
-        <a class="text-link" href="{{ '/sprints/sprint-2/change-log/' | relative_url }}">Read the Sprint 2 change log</a>
-      </div>
-    </section>
-  </div>
+<div class="deliverables sprint-guide">
+  <section class="charter-detail" aria-labelledby="planned-title">
+    <div class="charter-detail__heading">
+      <p class="document-label">Current record</p>
+      <h2 id="planned-title">What is available now</h2>
+    </div>
+    <ol class="document-route document-route--planned">
+      <li><div><span>01</span><h3>Estimation starter</h3><p>The original Team 10 worksheet, converted to PDF with its layout and content preserved.</p></div><a href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}" download>Download PDF</a></li>
+      <li><div><span>02</span><h3>Estimation Activity 2</h3><p>A stable place for the selected slice, two methods, assumptions, and final range once the team completes the activity.</p></div><a href="{{ '/sprints/sprint-2/estimation-activity-2/' | relative_url }}">See the handoff</a></li>
+      <li><div><span>03</span><h3>Business case and ROI</h3><p>Value analysis, team-written go/no-go reasoning, and return-on-investment work remain to be developed.</p></div><strong>Pending</strong></li>
+    </ol>
+    <p class="source-note">Individual estimation memos, peer evaluations, and the sprint retrospective remain private.</p>
+  </section>
+  <section class="charter-detail" aria-labelledby="scope-boundary-title">
+    <div class="charter-detail__heading"><p class="document-label">Scope boundary</p><h2 id="scope-boundary-title">Ideas for a release, not an approved build</h2></div>
+    <div class="prose">
+      <p>The starter calls its capability list “Release 1.” The <a href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">current Sprint 1 charter</a> limits this phase to research, requirements, and prototype evaluation. Production deployment and live campus integrations are deferred.</p>
+    </div>
+  </section>
+  <section class="charter-detail" aria-labelledby="sprint-2-change-title">
+    <div class="charter-detail__heading"><p class="document-label">Change log · September 28, 2026</p><h2 id="sprint-2-change-title">What was added and why</h2></div>
+    <div class="prose">
+      <p>We added a PDF download of the original Team 10 estimation starter and a route for the unfinished Activity 2. This makes the source worksheet available for the future appendix without changing the Sprint 1 charter or establishing a cost or schedule commitment.</p>
+    </div>
+  </section>
 </div>
