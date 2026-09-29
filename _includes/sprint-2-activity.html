@@ -1,0 +1,163 @@
+<!-- Team answers from Lesson 9 Part 2; shared with the PDF generator. -->
+<section id="activity-slice" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 1</p><h2>Our selected slice</h2></header>
+<div class="charter-section__content prose">
+<div class="charter-table-wrap" role="region" aria-label="Selected slice and boundary" tabindex="0">
+<table class="charter-table">
+<caption>Selected slice and boundary</caption>
+<thead><tr><th scope="col">Question</th><th scope="col">Our slice</th></tr></thead>
+<tbody>
+<tr><th scope="row">Slice name (one or two major parts)</th><td>Student visibility of campus dining options, locations, and sold-out items within each menu + mobile visibility.</td></tr>
+<tr><th scope="row">Why we chose it</th><td>We want a one-stop solution for finding campus dining availability before students make a pointless commute.</td></tr>
+<tr><th scope="row">Screens or forms where users enter data</th><td>Web browsers or mobile devices.</td></tr>
+<tr><th scope="row">Reports, results, or lookups users see</th><td>Open dining options, available/sold-out items for each menu.</td></tr>
+<tr><th scope="row">Data the slice stores</th><td>Per location times, menus and dining option availability.</td></tr>
+<tr><th scope="row">Other systems it connects to</th><td>N/A</td></tr>
+<tr><th scope="row">Out of the slice (not included)</th><td>Students can view a current crowd level and estimate wait time at each location.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Stories in the slice</h3>
+<div class="charter-table-wrap" role="region" aria-label="Six user stories, totaling 22 points" tabindex="0">
+<table class="charter-table">
+<caption>Six user stories, totaling 22 points</caption>
+<thead><tr><th scope="col">User story</th><th scope="col">MoSCoW</th><th scope="col">Points</th></tr></thead>
+<tbody>
+<tr><th scope="row">As a student, I want to view campus dining locations so that I can see what dining options are available</th><td>Must</td><td>3</td></tr>
+<tr><th scope="row">As a student, I want to view each dining location&#x27;s hours and open/closed status so that I know when I can visit.</th><td>Must</td><td>3</td></tr>
+<tr><th scope="row">As a student, I want to view menu items for each dining location so that I can decide where to eat.</th><td>Must</td><td>3</td></tr>
+<tr><th scope="row">As a student, I want to see whether menu items are available or sold out so that I do not waste time going somewhere for an unavailable item.</th><td>Must</td><td>5</td></tr>
+<tr><th scope="row">As a student, I want to filter dining options based on dietary restrictions or preferences so that I can find suitable food.</th><td>Should</td><td>5</td></tr>
+<tr><th scope="row">As a student, I want the dining information to work well on my phone so that I can quickly check dining options while on campus</th><td>Should</td><td>3</td></tr>
+<tr><th scope="row">Total points</th><td></td><td>22</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="activity-methods" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 2</p><h2>Our two methods</h2></header>
+<div class="charter-section__content prose">
+<p>Our two methods: 1. Function Points 2. Use-Case Points</p>
+<p>Why these two use different starting information: Function Points estimate the system based on what users enter, view, and what data the system stores, while Use-Case Points estimate the system based on the actors who interact with it and the use cases they perform.</p>
+</div>
+</section>
+<section id="activity-calculations" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 3</p><h2>The two estimates</h2></header>
+<div class="charter-section__content prose">
+<h3>Function points</h3>
+<div class="charter-table-wrap" role="region" aria-label="Function-point counts and weights" tabindex="0">
+<table class="charter-table">
+<caption>Function-point counts and weights</caption>
+<thead><tr><th scope="col">Category</th><th scope="col">Count</th><th scope="col">Weight</th><th scope="col">Points</th></tr></thead>
+<tbody>
+<tr><th scope="row">External Inputs (EI)</th><td>2</td><td>4</td><td>8</td></tr>
+<tr><th scope="row">External Outputs (EO)</th><td>1</td><td>5</td><td>5</td></tr>
+<tr><th scope="row">External Inquiries (EQ)</th><td>3</td><td>4</td><td>12</td></tr>
+<tr><th scope="row">Internal Logical Files (ILF)</th><td>2</td><td>10</td><td>20</td></tr>
+<tr><th scope="row">External Interface Files (EIF)</th><td>0</td><td>7</td><td>0</td></tr>
+<tr><th scope="row">Total function points</th><td></td><td></td><td>45</td></tr>
+</tbody>
+</table>
+</div>
+<p>Rate: low 6 and high 12 hours per FP</p>
+<p>Assumption or source: Based on the suggested 6 to 12 hours per function point range provided in the activity.</p>
+<p>Effort: 45 FP × 6 h = 270 hours (low); 45 FP × 12 h = 540 hours (high)</p>
+<h3>Use-case points</h3>
+<div class="charter-table-wrap" role="region" aria-label="Use-case-point calculation" tabindex="0">
+<table class="charter-table">
+<caption>Use-case-point calculation</caption>
+<thead><tr><th scope="col">Item</th><th scope="col">Calculation</th><th scope="col">Value</th></tr></thead>
+<tbody>
+<tr><th scope="row">Actor weight (UAW)</th><td>Sum of actor weights</td><td>3</td></tr>
+<tr><th scope="row">Use case weight (UUCW)</th><td>Sum of use case weights</td><td>25</td></tr>
+<tr><th scope="row">Unadjusted (UUCP)</th><td>UAW + UUCW</td><td>28</td></tr>
+<tr><th scope="row">Technical factor (TCF)</th><td>Assumed factor</td><td>1.0</td></tr>
+<tr><th scope="row">Environment factor (ECF)</th><td>Assumed factor</td><td>1.0</td></tr>
+<tr><th scope="row">Use-case points (UCP)</th><td>UUCP × TCF × ECF</td><td>28</td></tr>
+<tr><th scope="row">Rate (hours per UCP)</th><td>Assumed productivity rate</td><td>20</td></tr>
+<tr><th scope="row">Effort (hours)</th><td>UCP × rate</td><td>560</td></tr>
+</tbody>
+</table>
+</div>
+<p>UAW is the actor weight; UUCW is the use-case weight; UUCP is the unadjusted total. TCF and ECF are the technical and environment factors. The 1.0 factors and the rate of 20 hours per UCP are assumptions.</p>
+<p class="charter-note">The worksheet gives category counts and actor/use-case weights, but it does not name the counted functions, actors, use cases, or transaction steps. These details still need to be recorded so the team can explain the totals.</p>
+</div>
+</section>
+<section id="activity-team" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 4</p><h2>Our team-size check</h2></header>
+<div class="charter-section__content prose">
+<div class="charter-table-wrap" role="region" aria-label="Team-size check recorded in the activity" tabindex="0">
+<table class="charter-table">
+<caption>Team-size check recorded in the activity</caption>
+<thead><tr><th scope="col">Check</th><th scope="col">Yes / No</th></tr></thead>
+<tbody>
+<tr><th scope="row">Our team is five or six people at most.</th><td>yes</td></tr>
+<tr><th scope="row">We counted our communication paths: n(n - 1) ÷ 2 = 6</th><td>yes</td></tr>
+<tr><th scope="row">We added explicit work for integrating the pieces of the slice.</th><td>yes</td></tr>
+<tr><th scope="row">We did not assume that more people means proportionally more output.</th><td>yes</td></tr>
+<tr><th scope="row">We estimated for the team we have.</th><td>yes</td></tr>
+<tr><th scope="row">We adjusted, not copied, timelines from much larger teams.</th><td>no</td></tr>
+</tbody>
+</table>
+</div>
+<p>With 4 people, communication paths = 4 × (4 - 1) ÷ 2 = 6.</p>
+<p class="charter-note">The final check is marked &quot;No&quot; in the worksheet. Activity 2 does not use an analogous estimate or a larger team&#x27;s timeline; it uses function points and use-case points. The integration-work check is marked &quot;Yes,&quot; but no separate integration allowance is shown.</p>
+</div>
+</section>
+<section id="activity-comparison" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 5</p><h2>Why the estimates differ</h2></header>
+<div class="charter-section__content prose">
+<div class="charter-table-wrap" role="region" aria-label="Function points compared with use-case points" tabindex="0">
+<table class="charter-table">
+<caption>Function points compared with use-case points</caption>
+<thead><tr><th scope="col">Comparison</th><th scope="col">Method 1</th><th scope="col">Method 2</th></tr></thead>
+<tbody>
+<tr><th scope="row">Method</th><td>Function Points</td><td>Use-Case Points</td></tr>
+<tr><th scope="row">Estimate in hours (low to high)</th><td>270 to 540 hours</td><td>560 hours</td></tr>
+<tr><th scope="row">Middle value in hours</th><td>405 hours</td><td>560 hours</td></tr>
+<tr><th scope="row">Input that drives it most</th><td>Productivity rate (hours per FP)</td><td>Rate (hours per UCP)</td></tr>
+<tr><th scope="row">Is that input measured or assumed?</th><td>Assumed</td><td>Assumed</td></tr>
+</tbody>
+</table>
+</div>
+<p>For Method 1, the middle value is: (270 + 540) ÷ 2 = 405 hours</p>
+<p>For Method 2, 560 hours is both the estimate and the middle value.</p>
+<p>Gap 560 ÷ 405 = 1.38</p>
+<h3>Do your two methods depend on the same assumption?</h3>
+<p>No. Function Points depend on the system&#x27;s inputs, outputs, inquiries, stored data, and productivity rate, while Use-Case Points depend on the actors, use-case complexity, and hours per UCP.</p>
+<h3>Which single input moves the answer most?</h3>
+<p>The Function Point productivity rate moves the answer the most. At 6 hours per FP, the estimate is 270 hours, while at 12 hours per FP, it increases to 540 hours.</p>
+<h3>What information would narrow the gap, and when could you get it?</h3>
+<p>Actual team productivity data would narrow the gap. Once development begins, we could measure the actual hours needed to complete features and use cases instead of relying on assumed productivity rates.</p>
+<h3>Our explanation of the gap</h3>
+<p>The Function Point method produced an estimate of 270 to 540 hours with a middle value of 405 hours, while the Use-Case Point method produced an estimate of 560 hours. The gap between the middle values is about 1.38. The estimates differ because Function Points measure inputs, outputs, inquiries, and stored data, while Use-Case Points measure actors and the complexity of their interactions with the system. Both methods also rely on assumed productivity rates because we do not yet have actual development data. Collecting real productivity data during development would help reduce this uncertainty.</p>
+</div>
+</section>
+<section id="activity-estimate" class="charter-section">
+<header class="charter-section__heading"><p class="document-label">Activity 2 · Step 6</p><h2>Our dated estimate</h2></header>
+<div class="charter-section__content prose">
+<div class="charter-table-wrap" role="region" aria-label="Estimation appendix dated September 28, 2026" tabindex="0">
+<table class="charter-table">
+<caption>Estimation appendix dated September 28, 2026</caption>
+<thead><tr><th scope="col">Field</th><th scope="col">Our estimate</th></tr></thead>
+<tbody>
+<tr><th scope="row">Slice estimated</th><td>Student visibility of campus dining options, locations, menu availability/sold-out items, dietary filtering, and mobile visibility.</td></tr>
+<tr><th scope="row">Range in hours (low to high)</th><td>270 to 560 hours</td></tr>
+<tr><th scope="row">Expected hours: (O + 4M + P) ÷ 6, and why we chose M</th><td>438 hours. O = 270, M = 450, P = 560. (270 + 4(450) + 560) ÷ 6 = 438.3 hours. We chose 450 as the most likely value because it falls between the results of our two estimation methods.</td></tr>
+<tr><th scope="row">Cost range and loaded rate used</th><td>$16,200 to $33,600 using an assumed loaded rate of $60/hour.</td></tr>
+<tr><th scope="row">Calendar estimate in weeks, and hours per week assumed</th><td>2.3 to 4.7 weeks. Assumes 4 team members × 30 productive hours/person/week = 120 team hours/week. Expected time ≈ 3.7 weeks.</td></tr>
+<tr><th scope="row">Methods used</th><td>Function Points and Use-Case Points</td></tr>
+<tr><th scope="row">Key assumptions</th><td>6 to 12 hours per FP; TCF = 1.0; ECF = 1.0; 20 hours per UCP; $60/hour loaded rate; 30 productive hours/person/week.</td></tr>
+<tr><th scope="row">Team size assumed</th><td>4 people</td></tr>
+<tr><th scope="row">What would change this estimate</th><td>Changes in project scope, additional features or integrations, actual team productivity, use-case complexity, and changes to dining/menu data requirements.</td></tr>
+<tr><th scope="row">Date of this estimate</th><td>September 28, 2026</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Cost and calendar calculations</h3>
+<p>Cost: 270 × $60 = $16,200; 560 × $60 = $33,600. The $60/hour loaded rate is an assumption.</p>
+<p>Team capacity: 4 people × 30 productive hours/person/week = 120 team hours/week. Low: 270 ÷ 120 = 2.25 weeks, rounded to 2.3. High: 560 ÷ 120 = 4.67 weeks, rounded to 4.7. Expected: 438.3 ÷ 120 = 3.65 weeks, rounded to 3.7.</p>
+<p class="charter-note">This estimate covers the selected student-facing slice. Crowd levels and estimated wait times are outside it. The starter&#x27;s 2-to-3-month first-release estimate covers a different boundary. Neither figure is a production schedule commitment.</p>
+</div>
+</section>
