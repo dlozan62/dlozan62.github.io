@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sprints
-description: Browse each project sprint and its supporting documents.
+description: Every DineCheck sprint and its documents, from the Sprint 1 research to the Sprint 2 business case.
 permalink: /sprints/
 ---
 
@@ -9,25 +9,25 @@ permalink: /sprints/
   <p class="course-line">Project archive</p>
   <h1>Our project work by sprint</h1>
   <p>
-    Sprint 1 holds the research and charter. Sprint 2 now includes the team's
-    original estimation starter PDF and a prepared Activity 2 destination. Private
-    reflections belong in Blackboard.
+    Each sprint adds a page; earlier ones stay as they were. Sprint 1 holds the
+    research and charter. Sprint 2 holds the business case, estimate, ROI, and
+    changelog. Retrospectives and peer evaluations go to Blackboard only.
   </p>
 </header>
 
 <ol class="sprint-index" aria-label="Sprint index">
   <li>
-    <a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-1/' | relative_url }}">
+    <a class="sprint-index__active" href="{{ '/sprints/sprint-1/' | relative_url }}">
       <span>Sprint 1</span>
       <strong>Research, strategy, and charter</strong>
-      <small>Current record</small>
+      <small>Complete</small>
     </a>
   </li>
   <li>
-    <a href="{{ '/sprints/sprint-2/' | relative_url }}">
+    <a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-2/' | relative_url }}">
       <span>Sprint 2</span>
-      <strong>Estimation starter and Activity 2</strong>
-      <small>In progress</small>
+      <strong>Business case, estimate, and ROI</strong>
+      <small>Current</small>
     </a>
   </li>
   {% for sprint in (3..6) %}

@@ -1,5 +1,7 @@
-title: Campus Dining Availability System
-description: A living record of the team's campus dining research, project decisions, and current availability system charter.
+title: DineCheck
+tagline: "What's open, what's left."
+descriptor: Campus Dining Availability System
+description: "DineCheck shows students what is open and what is sold out at campus dining locations before they walk over. Team 10's living project portal for CS 4390/5388."
 url: "https://dlozan62.github.io"
 exclude:
   - Gemfile
@@ -8,6 +10,7 @@ exclude:
   - CONTEXT.md
   - docs
   - living-portal-sprint1-handoff-2026-09-24.md
+  - handoff
   - output
   - scripts
   - tests

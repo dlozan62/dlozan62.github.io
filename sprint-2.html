@@ -1,45 +1,603 @@
 ---
 layout: default
 title: Sprint 2
-description: Download Team 10's original estimation starter as PDF and follow the upcoming Activity 2.
+description: Team 10's Sprint 2 record for DineCheck, covering the business case, estimation appendix, and ROI analysis.
 permalink: /sprints/sprint-2/
 ---
 
 <header class="page-intro page-intro--sprint sprint-lead">
-  <p class="course-line">Sprint 2 · work in progress</p>
-  <h1>From project ideas to an estimate.</h1>
+  <p class="course-line">Sprint 2 · Business case · Due October 6, 2026</p>
+  <h1>Is it worth building?</h1>
   <p>
-    Team 10's Project Estimation Starter is available as a PDF of the original
-    Word file. The team has not completed Estimation Activity 2 or approved an
-    effort range yet.
+    Sprint 1 found the problem. This sprint we sized one slice of DineCheck,
+    priced it at $60 an hour, and checked whether it could pay for itself.
   </p>
-  <a class="button" href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}" download>Download the original starter PDF</a>
-  <a class="text-link" href="{{ '/sprints/sprint-2/estimation-activity-2/' | relative_url }}">See the Activity 2 handoff</a>
 </header>
 
-<div class="deliverables sprint-guide">
-  <section class="charter-detail" aria-labelledby="planned-title">
-    <div class="charter-detail__heading">
-      <p class="document-label">Current record</p>
-      <h2 id="planned-title">What is available now</h2>
+<nav class="on-page-nav" aria-label="Sprint 2 documents">
+  <ul>
+    <li><a href="#business-case">Business case</a></li>
+    <li><a href="#estimation-appendix">Estimation appendix</a></li>
+    <li><a href="#roi">ROI analysis</a></li>
+    <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Changelog</a></li>
+  </ul>
+</nav>
+
+<div class="charter-page">
+
+  <!-- ===================================================================
+       Business case
+       =================================================================== -->
+  <section id="business-case" class="doc-part" aria-labelledby="business-case-title">
+    <header class="doc-part__header">
+      <h2 id="business-case-title">Business case</h2>
+      <p>Who would gain from DineCheck and what the first slice would cost, then what could go wrong. Our go/no-go recommendation is at the end.</p>
+    </header>
+
+    <div class="charter-page__sections">
+      <section id="decision" class="charter-section" aria-labelledby="decision-title">
+        <header class="charter-section__heading"><h3 id="decision-title">What is being decided</h3></header>
+        <div class="charter-section__content prose">
+          <p>
+            The request is to build one slice of DineCheck: students can see which
+            dining locations are open, what is on each menu, and which items are
+            sold out, and dining staff get a form to mark items sold out. The slice
+            is defined in the <a href="#slice">estimation appendix</a>.
+          </p>
+          <p>
+            It would take an expected 694 team hours (range 294 to 1,150) and a
+            budget request of $45,919. Crowd levels, wait times, point-of-sale
+            integration, and a campus-wide launch are not part of this decision.
+          </p>
+        </div>
+      </section>
+
+      <section id="problem" class="charter-section" aria-labelledby="problem-title">
+        <header class="charter-section__heading"><h3 id="problem-title">Students find out after they arrive</h3></header>
+        <div class="charter-section__content prose">
+          <p>
+            Students often learn a dining location is closed or an item is sold
+            out only after they get there. In our twelve focused interviews from
+            Sprint 1, one student found a cafe open after its kitchen had closed
+            and spent about $18 on delivery. Another walked 25 minutes across
+            campus for pizza after finding an empty grab-and-go case. A third paid
+            about $6 for a snack when the ribs ran out.
+          </p>
+          <p>
+            Posted hours and menus were sometimes right, but they don't show what
+            changes during the day, like an item running out over lunch or a
+            counter closing early. Those changes are what DineCheck is for.
+          </p>
+          <p class="source-note">Twelve interviews show the problem exists. They don't show how often it happens across campus. See <a href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Sprint 1 market research</a>.</p>
+        </div>
+      </section>
+
+      <section id="value" class="charter-section" aria-labelledby="value-title">
+        <header class="charter-section__heading"><h3 id="value-title">Value analysis</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Value by stakeholder</caption>
+              <thead><tr><th scope="col">Who</th><th scope="col">What they could gain</th><th scope="col">How solid it is</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Students</th><td>Fewer wasted trips, less time lost between classes, fewer last-minute delivery orders or snack substitutes.</td><td>Seen in interviews. Priced in the ROI analysis at $13,594 a year under assumed usage.</td></tr>
+                <tr><th scope="row">Dining staff</th><td>Fewer students arriving for something that is gone, and fewer questions at the counter.</td><td>Not tested. Staff also take on a new task: marking items sold out.</td></tr>
+                <tr><th scope="row">Dining services and the university</th><td>A clearer picture of what sells out and when, which could help with stocking.</td><td>Not measured. No savings or revenue has been established.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p>
+              Money is the weak part of this case. Priced only as student time at
+              minimum wage, the slice returns $40,781 over three years against a
+              three-year cost of $59,959, an ROI of −32%. It breaks even at about
+              735 weekly users. The full numbers are in the <a href="#roi">ROI analysis</a>.
+            </p>
+            <p>
+              The value we can't price yet is trust: whether students believe the
+              status enough to change where they walk. The charter's prototype
+              and usability gates are set up to test that.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cost" class="charter-section" aria-labelledby="cost-title">
+        <header class="charter-section__heading"><h3 id="cost-title">What the slice costs</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Cost summary at $60/hour (instructor-provided rate for CS 4390/5388)</caption>
+              <tbody>
+                <tr><th scope="row">Effort</th><td>694 h expected (294–1,150 h)</td></tr>
+                <tr><th scope="row">Base build estimate</th><td>$42,640</td></tr>
+                <tr><th scope="row">Cost baseline (with $1,092 contingency)</th><td>$43,732</td></tr>
+                <tr><th scope="row">Total budget request (with 5% management reserve)</th><td>$45,919</td></tr>
+                <tr><th scope="row">Operating cost</th><td>$4,680 a year</td></tr>
+                <tr><th scope="row">Calendar</th><td>About 5.8 weeks for four people (2.5–9.6)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="risks" class="charter-section" aria-labelledby="risks-title">
+        <header class="charter-section__heading"><h3 id="risks-title">What could sink it</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Risks that bear on the decision</caption>
+              <thead><tr><th scope="col">Risk</th><th scope="col">Why it matters</th><th scope="col">Response</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Staff don't update on time</th><td>Even if dining services requires it, a busy line at noon comes first. A sold-out mark that shows up after students have already walked over is no better than what they have now. This is the biggest risk to the value, and it isn't in the size count.</td><td>Keep the staff update to one tap per item. Test it with an operational stakeholder before any pilot. Show the update time on every status.</td></tr>
+                <tr><th scope="row">Stale data</th><td>Wrong status costs trust faster than no status.</td><td>Show "last updated" times and a stale state; priced in contingency.</td></tr>
+                <tr><th scope="row">Estimate is off</th><td>The two methods disagree by a factor of 2.09, and both rates are assumed.</td><td>Log hours on the first screen and re-estimate. Contingency covers named risks only.</td></tr>
+                <tr><th scope="row">Low usage</th><td>Below about 735 weekly users the student-time return doesn't cover cost.</td><td>Measure intent to use in the next 13 interviews and in prototype tests.</td></tr>
+                <tr><th scope="row">Scope growth</th><td>Crowd levels, wait times, and notifications are tempting additions.</td><td>Hold the slice boundary; log any request in the changelog first.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source-note">The full project risk list is in the <a href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}#risks">charter</a>.</p>
+        </div>
+      </section>
+
+      <section id="options" class="charter-section" aria-labelledby="options-title">
+        <header class="charter-section__heading"><h3 id="options-title">What the sponsor can choose</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Options on the table</caption>
+              <thead><tr><th scope="col">Option</th><th scope="col">Cost</th><th scope="col">What it gets you</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Do nothing</th><td>$0</td><td>Students keep relying on posted hours and menus.</td></tr>
+                <tr><th scope="row">Build the slice as estimated</th><td>$45,919 request; $4,680 a year</td><td>Student views plus the staff update form, ready for a trial at one or more locations.</td></tr>
+                <tr><th scope="row">Prototype and test first</th><td>Within the current charter's research and prototype scope</td><td>Evidence on staff update timing and student trust before committing the full build.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="go-no-go" class="charter-section" aria-labelledby="go-title">
+        <header class="charter-section__heading"><h3 id="go-title">Go/no-go</h3></header>
+        <div class="charter-section__content prose">
+          <div class="team-decision">
+            <p class="team-decision__verdict">Go, with conditions</p>
+            <p>The team decided to go ahead with the slice and project. It seems feasible, useful and straightforward. Let's build on the condition that we stress test and manage a close collaboration with the university and the restaurant on campus, because success depends on staff updating the menu inventory and times. Another business idea is passing the costs to the university as a service rather than the students.</p>
+          </div>
+        </div>
+      </section>
     </div>
-    <ol class="document-route document-route--planned">
-      <li><div><span>01</span><h3>Estimation starter</h3><p>The original Team 10 worksheet, converted to PDF with its layout and content preserved.</p></div><a href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}" download>Download PDF</a></li>
-      <li><div><span>02</span><h3>Estimation Activity 2</h3><p>A stable place for the selected slice, two methods, assumptions, and final range once the team completes the activity.</p></div><a href="{{ '/sprints/sprint-2/estimation-activity-2/' | relative_url }}">See the handoff</a></li>
-      <li><div><span>03</span><h3>Business case and ROI</h3><p>Value analysis, team-written go/no-go reasoning, and return-on-investment work remain to be developed.</p></div><strong>Pending</strong></li>
-    </ol>
-    <p class="source-note">Individual estimation memos, peer evaluations, and the sprint retrospective remain private.</p>
   </section>
-  <section class="charter-detail" aria-labelledby="scope-boundary-title">
-    <div class="charter-detail__heading"><p class="document-label">Scope boundary</p><h2 id="scope-boundary-title">Ideas for a release, not an approved build</h2></div>
-    <div class="prose">
-      <p>The starter calls its capability list “Release 1.” The <a href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">current Sprint 1 charter</a> limits this phase to research, requirements, and prototype evaluation. Production deployment and live campus integrations are deferred.</p>
+
+  <!-- ===================================================================
+       Estimation appendix: mirrors "Lesson 9 Part 2 Estimation Activity-3.docx"
+       =================================================================== -->
+  <section id="estimation-appendix" class="doc-part" aria-labelledby="appendix-title">
+    <header class="doc-part__header">
+      <h2 id="appendix-title">Estimation appendix</h2>
+      <p>One slice of DineCheck estimated twice, with function points and use-case points. Revised October 5, 2026: we added the dining-staff actor and the staff update form, then recounted both methods. First completed September 28, 2026.</p>
+      <a class="button" href="{{ '/assets/pdfs/sprint-2-estimation-appendix.pdf' | relative_url }}" download>Download the estimation appendix (PDF)</a>
+    </header>
+
+    <div class="charter-page__sections">
+      <section id="slice" class="charter-section" aria-labelledby="slice-title">
+        <header class="charter-section__heading"><p class="document-label">Step 1</p><h3 id="slice-title">Our slice</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Slice definition and boundary</caption>
+              <tbody>
+                <tr><th scope="row">Slice name</th><td>Student visibility of campus dining options, locations, and sold-out items within each menu + mobile visibility, plus the staff update form that keeps sold-out status current.</td></tr>
+                <tr><th scope="row">Why we chose it</th><td>One of the core problems we are attempting to solve is a one-stop solution to finding campus dining availability before engaging pointless commute for students.</td></tr>
+                <tr><th scope="row">Screens or forms where users enter data</th><td>Staff update form (location hours, menu items, sold-out status). Students choose dietary filters on the location list and menu view.</td></tr>
+                <tr><th scope="row">Reports, results, or lookups users see</th><td>Location list (open dining options) and menu view (available/sold-out items for each menu).</td></tr>
+                <tr><th scope="row">Data the slice stores</th><td>Per location times, menus and dining option availability.</td></tr>
+                <tr><th scope="row">Other systems it connects to</th><td>N/A. Sold-out status comes from dining staff through the staff update form, not from a point-of-sale system.</td></tr>
+                <tr><th scope="row">Out of the slice</th><td>Students can view a current crowd level and estimate wait time at each location.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Stories in the slice</caption>
+              <thead><tr><th scope="col">User story</th><th scope="col">MoSCoW</th><th scope="col">Points</th></tr></thead>
+              <tbody>
+                <tr><td>As a student, I want to view campus dining locations so that I can see what dining options are available</td><td>Must</td><td class="num">3</td></tr>
+                <tr><td>As a student, I want to view each dining location's hours and open/closed status so that I know when I can visit.</td><td>Must</td><td class="num">3</td></tr>
+                <tr><td>As a student, I want to view menu items for each dining location so that I can decide where to eat.</td><td>Must</td><td class="num">3</td></tr>
+                <tr><td>As a student, I want to see whether menu items are available or sold out so that I do not waste time going somewhere for an unavailable item.</td><td>Must</td><td class="num">5</td></tr>
+                <tr><td>As a student, I want to filter dining options based on dietary restrictions or preferences so that I can find suitable food.</td><td>Should</td><td class="num">5</td></tr>
+                <tr><td>As a student, I want the dining information to work well on my phone so that I can quickly check dining options while on campus</td><td>Should</td><td class="num">3</td></tr>
+                <tr class="row-added"><td>As dining staff, I want to mark an item sold out or back in stock so that students see the change before they walk over. <em>(Added October 5.)</em></td><td>Must</td><td class="num">Not sized</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Total points</th><td></td><td class="num">22</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="methods" class="charter-section" aria-labelledby="methods-title">
+        <header class="charter-section__heading"><p class="document-label">Step 2</p><h3 id="methods-title">Two methods</h3></header>
+        <div class="charter-section__content prose">
+          <p><strong>Our two methods:</strong> 1. Function Points 2. Use-Case Points</p>
+          <p><strong>Why these two use different starting information:</strong> Function Points estimate the system based on what users enter, view, and what data the system stores, while Use-Case Points estimate the system based on the actors who interact with it and the use cases they perform.</p>
+        </div>
+      </section>
+
+      <section id="function-points" class="charter-section" aria-labelledby="fp-title">
+        <header class="charter-section__heading"><p class="document-label">Step 3A</p><h3 id="fp-title">Function points</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Weighted count</caption>
+              <thead><tr><th scope="col">Category</th><th scope="col">Count</th><th scope="col">Weight</th><th scope="col">Points</th></tr></thead>
+              <tbody>
+                <tr class="row-added"><th scope="row">External Inputs (EI)</th><td>3</td><td>4</td><td>12</td></tr>
+                <tr><th scope="row">External Outputs (EO)</th><td>1</td><td>5</td><td>5</td></tr>
+                <tr><th scope="row">External Inquiries (EQ)</th><td>3</td><td>4</td><td>12</td></tr>
+                <tr><th scope="row">Internal Logical Files (ILF)</th><td>2</td><td>10</td><td>20</td></tr>
+                <tr><th scope="row">External Interface Files (EIF)</th><td>0</td><td>7</td><td>0</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Total function points</th><td></td><td></td><td>49</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Counted items: each item in the count above, by name</caption>
+              <thead><tr><th scope="col">Category</th><th scope="col">Counted items</th><th scope="col">Screen</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">External Inputs (EI): 3</th><td>EI-1 Update location hours and open/closed status. EI-2 Add or edit menu items. EI-3 Mark an item sold out or back in stock (added October 5).</td><td>Staff update form</td></tr>
+                <tr><th scope="row">External Outputs (EO): 1</th><td>EO-1 Open-now status, calculated from stored hours and the current time.</td><td>Location list</td></tr>
+                <tr><th scope="row">External Inquiries (EQ): 3</th><td>EQ-1 List dining locations. EQ-2 Show a location's menu with each item's availability. EQ-3 Filter locations and items by dietary need.</td><td>Location list, menu view</td></tr>
+                <tr><th scope="row">Internal Logical Files (ILF): 2</th><td>ILF-1 Dining locations (name, hours, status). ILF-2 Menu items (location, dietary tags, availability, last updated).</td><td>None (stored data)</td></tr>
+                <tr><th scope="row">External Interface Files (EIF): 0</th><td>None. No outside system feeds the slice.</td><td>None</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <dl class="charter-facts">
+            <div class="charter-facts__item"><dt>Rate</dt><dd>Low 6 and high 12 hours per FP</dd></div>
+            <div class="charter-facts__item"><dt>Assumption or source</dt><dd>Based on the suggested 6–12 hours per function point range provided in the activity.</dd></div>
+            <div class="charter-facts__item"><dt>Effort</dt><dd>49 FP × 6 h = 294 hours (low); 49 FP × 12 h = 588 hours (high)</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="use-case-points" class="charter-section" aria-labelledby="ucp-title">
+        <header class="charter-section__heading"><p class="document-label">Step 3B</p><h3 id="ucp-title">Use-case points</h3></header>
+        <div class="charter-section__content">
+          <div class="prose">
+            <p><strong>Actors and use cases:</strong> The Student is a complex actor (3) because the student interacts with the system through a screen. Dining staff are also a complex actor (3) because they use the staff update form, so UAW = 6. The five student use cases are each simple (5), giving 25. The two staff use cases add 10 (average) and 5 (simple), so UUCW = 40. The mobile visibility story is treated as a usability requirement rather than a separate use case.</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Actors and use cases (1–3 steps simple = 5, 4–7 average = 10)</caption>
+              <thead><tr><th scope="col">Actor or use case</th><th scope="col">Steps (user and system exchanges)</th><th scope="col">Weight</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Student (actor)</th><td>Uses the location list and menu view: a person using a screen.</td><td>Complex, 3</td></tr>
+                <tr class="row-added"><th scope="row">Dining staff (actor, added October 5)</th><td>Uses the staff update form: a person using a screen.</td><td>Complex, 3</td></tr>
+                <tr><th scope="row">UC-1 View campus dining locations</th><td>2: student opens DineCheck; system lists the dining locations.</td><td>Simple, 5</td></tr>
+                <tr><th scope="row">UC-2 View hours and open status</th><td>2: student picks a location; system shows its hours and whether it is open.</td><td>Simple, 5</td></tr>
+                <tr><th scope="row">UC-3 View menu items</th><td>2: student opens the menu view; system lists that location's menu items.</td><td>Simple, 5</td></tr>
+                <tr><th scope="row">UC-4 View item availability</th><td>2: student checks an item; system shows available or sold out and when it was last updated.</td><td>Simple, 5</td></tr>
+                <tr><th scope="row">UC-5 Filter by dietary need</th><td>3: student opens the filters; student picks restrictions or preferences; system shows the matching options.</td><td>Simple, 5</td></tr>
+                <tr class="row-added"><th scope="row">UC-6 Mark an item sold out (added)</th><td>4: staff signs in; system shows that location's menu; staff marks an item sold out or back in stock; system saves it with the time and updates the menu view.</td><td>Average, 10</td></tr>
+                <tr class="row-added"><th scope="row">UC-7 Update hours and menu (added)</th><td>3: staff opens hours and menu; system shows the current entries; staff saves changes and the system confirms them.</td><td>Simple, 5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p><strong>Assumptions:</strong> TCF and ECF are assumed to be 1.0 because the full factor lists were not scored. The rate is assumed to be 15 to 25 hours per UCP, with Karner's starting rate of 20 hours in the middle, because we have no productivity data of our own. Effort: 46 × 15 = 690 hours (low); 46 × 25 = 1,150 hours (high); middle 920 hours.</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Use-case-point calculation</caption>
+              <thead><tr><th scope="col">Item</th><th scope="col">Calculation</th><th scope="col">Value</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Actor weight (UAW)</th><td>Sum of actor weights</td><td>6</td></tr>
+                <tr><th scope="row">Use case weight (UUCW)</th><td>Sum of use case weights</td><td>40</td></tr>
+                <tr><th scope="row">Unadjusted (UUCP)</th><td>UAW + UUCW</td><td>46</td></tr>
+                <tr><th scope="row">Technical factor (TCF)</th><td>1.0 unless you scored it</td><td>1.0</td></tr>
+                <tr><th scope="row">Environment factor (ECF)</th><td>1.0 unless you scored it</td><td>1.0</td></tr>
+                <tr><th scope="row">Use-case points (UCP)</th><td>UUCP × TCF × ECF</td><td>46</td></tr>
+                <tr><th scope="row">Rate (hours per UCP)</th><td>20 unless you have a source</td><td>15–25</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Effort (hours)</th><td>UCP × rate</td><td>690–1,150</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="team-size" class="charter-section" aria-labelledby="team-size-title">
+        <header class="charter-section__heading"><p class="document-label">Step 4</p><h3 id="team-size-title">Team-size check</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Checks from Session 9, slides 19 to 24</caption>
+              <thead><tr><th scope="col">Check</th><th scope="col">Yes / No</th><th scope="col">Why it matters</th></tr></thead>
+              <tbody>
+                <tr><td>Our team is five or six people at most.</td><td>yes</td><td>Beyond six, split into two teams.</td></tr>
+                <tr><td>We counted our communication paths: n(n − 1) ÷ 2 = 6</td><td>yes</td><td>Five people share 10 paths; ten share 45.</td></tr>
+                <tr><td>We added explicit work for integrating the pieces of the slice.</td><td>yes</td><td>Breaking work into pieces hides the cost of putting it back together.</td></tr>
+                <tr><td>We did not assume that more people means proportionally more output.</td><td>yes</td><td>Coordination grows faster than headcount.</td></tr>
+                <tr><td>We estimated for the team we have.</td><td>yes</td><td>Not for a larger team we wish we had.</td></tr>
+                <tr><td>We adjusted, not copied, timelines from much larger teams.</td><td>N/A</td><td>Their effort includes their coordination costs.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p><strong>Integration work:</strong> about 87 of the 694 expected hours are testing and integration (the Testing role in our one-page budget), such as connecting the staff update form to the menu view and checking that a sold-out mark reaches students. These hours are inside the estimate, not added on top.</p>
+            <p><strong>Larger-team timelines (N/A):</strong> we used function points and use-case points, not an analogous estimate, so no larger team's timeline went into these numbers.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="comparison" class="charter-section" aria-labelledby="comparison-title">
+        <header class="charter-section__heading"><p class="document-label">Step 5</p><h3 id="comparison-title">Comparing the two estimates</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Function points compared with use-case points</caption>
+              <thead><tr><th scope="col"></th><th scope="col">Method 1</th><th scope="col">Method 2</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Method</th><td>Function Points</td><td>Use-Case Points</td></tr>
+                <tr><th scope="row">Estimate in hours (low to high)</th><td>294–588 hours</td><td>690–1,150 hours</td></tr>
+                <tr><th scope="row">Middle value in hours</th><td>441 hours</td><td>920 hours</td></tr>
+                <tr><th scope="row">Input that drives it most</th><td>Productivity rate (hours per FP)</td><td>Rate (hours per UCP)</td></tr>
+                <tr><th scope="row">Is that input measured or assumed?</th><td>Assumed</td><td>Assumed</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p>For Method 1, the middle value is: (294 + 588) ÷ 2 = 441 hours</p>
+            <p>For Method 2, the middle value is: (690 + 1,150) ÷ 2 = 920 hours, the same as 46 UCP × 20 hours.</p>
+            <p>Gap 920 ÷ 441 = 2.09</p>
+            <p><strong>Do your two methods depend on the same assumption?</strong> No. Function Points depend on the system's inputs, outputs, inquiries, stored data, and productivity rate, while Use-Case Points depend on the actors, use-case complexity, and hours per UCP.</p>
+            <p><strong>Which single input moves the answer most?</strong> The Function Point productivity rate moves the answer the most. At 6 hours per FP, the estimate is 294 hours, while at 12 hours per FP, it increases to 588 hours. For use-case points, moving from 15 to 25 hours per UCP takes the estimate from 690 to 1,150 hours.</p>
+            <p><strong>What information would narrow the gap, and when could you get it?</strong> Actual team productivity data would narrow the gap. Once development begins, we could measure the actual hours needed to complete features and use cases instead of relying on assumed productivity rates.</p>
+            <p><strong>Our explanation of the gap:</strong> The Function Point method produced an estimate of 294–588 hours with a middle value of 441 hours, while the Use-Case Point method produced 690–1,150 hours with a middle value of 920 hours. The gap between the middle values is about 2.09; it was 1.38 before we added the dining-staff actor. Adding the staff side added one input to the function points (+4 FP) but an actor and two use cases to the use-case points (+18 UCP), and use-case points give every use case at least 5 points even when it is a small lookup. Both methods also rely on assumed productivity rates because we do not yet have actual development data. Collecting real productivity data during development would help reduce this uncertainty.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-range" class="charter-section" aria-labelledby="final-title">
+        <header class="charter-section__heading"><p class="document-label">Step 6</p><h3 id="final-title">Our estimate</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Estimate dated October 5, 2026</caption>
+              <tbody>
+                <tr><th scope="row">Slice estimated</th><td>Student visibility of campus dining options, locations, menu availability/sold-out items, dietary filtering, and mobile visibility, plus the staff update form.</td></tr>
+                <tr><th scope="row">Range in hours (low to high)</th><td>294–1,150 hours</td></tr>
+                <tr><th scope="row">Expected hours: (O + 4M + P) ÷ 6, and why we chose M</th><td>694 hours. O = 294, M = 680, P = 1,150. (294 + 4(680) + 1,150) ÷ 6 = 694 hours. We chose M = 680 because it sits halfway between the two methods' middle values: (441 + 920) ÷ 2 = 680.5, rounded down. Both rates are assumed, so we had no evidence to favor one method.</td></tr>
+                <tr><th scope="row">Cost range and loaded rate used</th><td>$17,640–$69,000 (expected $41,640) using a loaded rate of $60/hour, the instructor-provided rate for CS 4390/5388.</td></tr>
+                <tr><th scope="row">Calendar estimate in weeks, and hours per week assumed</th><td>2.5–9.6 weeks. Assumes 4 team members × 30 productive hours/person/week = 120 team hours/week. Expected time ≈ 5.8 weeks.</td></tr>
+                <tr><th scope="row">Methods used</th><td>Function Points and Use-Case Points</td></tr>
+                <tr><th scope="row">Key assumptions</th><td>6–12 hours per FP; 15–25 hours per UCP; TCF = 1.0; ECF = 1.0; $60/hour loaded rate; 30 productive hours/person/week; about 87 hours of testing and integration inside the estimate.</td></tr>
+                <tr><th scope="row">Team size assumed</th><td>4 people</td></tr>
+                <tr><th scope="row">What would change this estimate</th><td>Changes in project scope, additional features or integrations, actual team productivity, use-case complexity, and changes to dining/menu data requirements.</td></tr>
+                <tr><th scope="row">Date of this estimate</th><td>October 5, 2026 (revised; first completed September 28, 2026)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source-note">Source worksheet: Team 10's <a href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}">Project Estimation Starter (PDF)</a>. Each member's individual estimation memo goes to Blackboard and is not published here.</p>
+        </div>
+      </section>
     </div>
   </section>
-  <section class="charter-detail" aria-labelledby="sprint-2-change-title">
-    <div class="charter-detail__heading"><p class="document-label">Change log · September 28, 2026</p><h2 id="sprint-2-change-title">What was added and why</h2></div>
-    <div class="prose">
-      <p>We added a PDF download of the original Team 10 estimation starter and a route for the unfinished Activity 2. This makes the source worksheet available for the future appendix without changing the Sprint 1 charter or establishing a cost or schedule commitment.</p>
+
+  <!-- ===================================================================
+       ROI analysis: mirrors "Team 10 — Campus Dining System.docx"
+       =================================================================== -->
+  <section id="roi" class="doc-part" aria-labelledby="roi-title">
+    <header class="doc-part__header">
+      <h2 id="roi-title">ROI analysis</h2>
+      <p>One-page budget and ROI analysis, revised October 5, 2026. Loaded rate: $60/hour, the instructor-provided rate for CS 4390/5388.</p>
+      <a class="button" href="{{ '/assets/pdfs/sprint-2-roi-analysis.pdf' | relative_url }}" download>Download the ROI analysis (PDF)</a>
+    </header>
+
+    <div class="charter-page__sections">
+      <section id="roi-assumptions" class="charter-section" aria-labelledby="roi-assumptions-title">
+        <header class="charter-section__heading"><h3 id="roi-assumptions-title">1. Write the assumptions</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <thead><tr><th scope="col">Cost driver / assumption</th><th scope="col">Owner</th></tr></thead>
+              <tbody>
+                <tr><td>Campus dining/menu data is available and does not require a complex outside integration.</td><td>Developer</td></tr>
+                <tr><td>Web and mobile use one responsive application instead of separate native apps.</td><td>Developer</td></tr>
+                <tr><td>Crowd levels and estimated wait times remain outside this project slice.</td><td>Project manager</td></tr>
+                <tr><td>Testing and deployment can be completed using the team's existing development environment.</td><td>Developer</td></tr>
+                <tr><td>Project scope stays limited to dining locations, hours, menus, dietary filtering, and item availability.</td><td>Project manager</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="roi-staff" class="charter-section" aria-labelledby="roi-staff-title">
+        <header class="charter-section__heading"><h3 id="roi-staff-title">2. Convert and staff</h3></header>
+        <div class="charter-section__content">
+          <div class="prose">
+            <p>From Session 9, our planning estimate is 694 team hours. This is the expected (PERT) value from our revised estimation worksheet, which gives a range of 294 to 1,150 hours.</p>
+            <p>694 ÷ 130 = 5.34 FTE-months (130 productive hours per FTE-month)</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Staffing plan in FTE-months</caption>
+              <thead><tr><th scope="col">Role</th><th scope="col">Month 1</th><th scope="col">Month 2</th><th scope="col">Total</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Project Manager</th><td>0.17</td><td>0.03</td><td>0.20</td></tr>
+                <tr><th scope="row">Developers</th><td>2.68</td><td>1.22</td><td>3.90</td></tr>
+                <tr><th scope="row">Testing</th><td>0.25</td><td>0.42</td><td>0.67</td></tr>
+                <tr><th scope="row">UX / Mobile</th><td>0.41</td><td>0.16</td><td>0.57</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Total</th><td>3.51</td><td>1.83</td><td>5.34</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="roi-price" class="charter-section" aria-labelledby="roi-price-title">
+        <header class="charter-section__heading"><h3 id="roi-price-title">3. Price it</h3></header>
+        <div class="charter-section__content">
+          <div class="prose">
+            <p>694 hours × $60/hour = $41,640 (5.34 FTE-months at $7,800 per FTE-month, which is $60 × 130 hours)</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Labor</caption>
+              <thead><tr><th scope="col">Role</th><th scope="col">FTE-months</th><th scope="col">Loaded rate</th><th scope="col">Cost</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Project Manager</th><td>0.20 (26 h)</td><td>$60/hour</td><td>$1,560</td></tr>
+                <tr><th scope="row">Developers</th><td>3.90 (507 h)</td><td>$60/hour</td><td>$30,420</td></tr>
+                <tr><th scope="row">UX / Mobile</th><td>0.57 (74 h)</td><td>$60/hour</td><td>$4,440</td></tr>
+                <tr><th scope="row">Testing</th><td>0.67 (87 h)</td><td>$60/hour</td><td>$5,220</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Labor Total</th><td>5.34 (694 h)</td><td></td><td>$41,640</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Non-labor costs</caption>
+              <thead><tr><th scope="col">Item</th><th scope="col">How computed</th><th scope="col">Cost</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Hosting / infrastructure</th><td>$150/month × 2 months</td><td>$300</td></tr>
+                <tr><th scope="row">Developer / Testing tools</th><td>Project allowance</td><td>$300</td></tr>
+                <tr><th scope="row">Domain/deployment setup</th><td>Project allowance</td><td>$100</td></tr>
+                <tr><th scope="row">Database/cloud services</th><td>Project allowance</td><td>$300</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Non-Labor Total</th><td></td><td>$1,000</td></tr></tfoot>
+            </table>
+          </div>
+          <p class="lead-line"><strong>Base Build Estimate</strong> = Labor + Non-Labor = $41,640 + $1,000 = $42,640</p>
+        </div>
+      </section>
+
+      <section id="roi-risks" class="charter-section" aria-labelledby="roi-risks-title">
+        <header class="charter-section__heading"><h3 id="roi-risks-title">4. Price the risks</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Named risks</caption>
+              <thead><tr><th scope="col">Risk</th><th scope="col">Chance</th><th scope="col">Extra hours</th><th scope="col">EMV</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Menu data needs extra cleanup or access work</th><td>30%</td><td>24</td><td>$432</td></tr>
+                <tr><th scope="row">Stale availability data needs more testing and rework</th><td>25%</td><td>20</td><td>$300</td></tr>
+                <tr><th scope="row">Requests grow the agreed slice</th><td>20%</td><td>30</td><td>$360</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Contingency reserve</th><td></td><td></td><td>$1,092</td></tr></tfoot>
+            </table>
+          </div>
+          <p class="source-note">EMV = chance × extra hours × $60. Chances and extra hours are team assumptions carried from our September 29 draft budget. The project manager controls contingency; the sponsor controls management reserve.</p>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Budget request</caption>
+              <thead><tr><th scope="col">Line</th><th scope="col">How computed</th><th scope="col">Amount</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Base build estimate</th><td>Labor + non-labor</td><td>$42,640</td></tr>
+                <tr><th scope="row">Contingency reserve</th><td>Sum of EMV</td><td>$1,092</td></tr>
+                <tr class="row-subtotal"><th scope="row">Cost baseline</th><td>Base + contingency</td><td>$43,732</td></tr>
+                <tr><th scope="row">Management reserve</th><td>5% of the cost baseline</td><td>$2,187</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Total budget request</th><td>Baseline + management reserve</td><td>$45,919</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="charter-note">
+            <p><strong>Sanity check:</strong> one PERT spread from the estimate is about 143 hours ($8,560). Contingency covers the three named risks, not a normal estimating miss.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="roi-operating" class="charter-section" aria-labelledby="roi-operating-title">
+        <header class="charter-section__heading"><h3 id="roi-operating-title">5. Operating cost</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Per year, separate from the build</caption>
+              <thead><tr><th scope="col">Item</th><th scope="col">How computed</th><th scope="col">Cost</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Hosting / infrastructure</th><td>$150/month × 12 months</td><td>$1,800</td></tr>
+                <tr><th scope="row">Maintenance</th><td>4 hours/month × 12 × $60</td><td>$2,880</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Operating Total</th><td></td><td>$4,680</td></tr></tfoot>
+            </table>
+          </div>
+          <p class="source-note">Staff time spent marking items sold out is not included. It is an adoption risk covered in the <a href="#risks">business case</a>.</p>
+        </div>
+      </section>
+
+      <section id="roi-return" class="charter-section" aria-labelledby="roi-return-title">
+        <header class="charter-section__heading"><h3 id="roi-return-title">6. ROI analysis</h3></header>
+        <div class="charter-section__content">
+          <div class="prose">
+            <p>DineCheck does not sell anything, so the return is the value of wasted trips students no longer make. Every input below is an assumption except the wage.</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Return model inputs</caption>
+              <thead><tr><th scope="col">Input</th><th scope="col">Value</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Students who check DineCheck in a week</th><td>500</td><td>Assumption</td></tr>
+                <tr><th scope="row">Wasted trips avoided per user per week</th><td>0.5</td><td>Assumption (one every two weeks)</td></tr>
+                <tr><th scope="row">Minutes saved per avoided trip</th><td>15</td><td>Assumption, below the 25-minute walk in our interviews</td></tr>
+                <tr><th scope="row">Value of an hour of student time</th><td>$7.25</td><td>U.S. federal minimum wage</td></tr>
+                <tr><th scope="row">Teaching weeks per year</th><td>30</td><td>Assumption (two 15-week semesters)</td></tr>
+                <tr><th scope="row">Benefit horizon</th><td>3 years</td><td>Assumption, as in Session 11</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p>Return: 500 × 0.5 × 30 = 7,500 avoided trips a year. 7,500 × 15 minutes ÷ 60 = 1,875 hours × $7.25 = $13,594 a year, or $40,781 over three years.</p>
+          </div>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Three-year ROI</caption>
+              <thead><tr><th scope="col">Line</th><th scope="col">How computed</th><th scope="col">Amount</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Total cost, 3 years</th><td>$45,919 + 3 × $4,680</td><td>$59,959</td></tr>
+                <tr><th scope="row">Total return, 3 years</th><td>3 × $13,594</td><td>$40,781</td></tr>
+                <tr><th scope="row">Net</th><td>Return − cost</td><td>−$19,177</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">ROI</th><td>Net ÷ cost</td><td>−32%</td></tr></tfoot>
+            </table>
+          </div>
+          <p class="source-note">Break-even: about 735 weekly users, or about 22 minutes saved per avoided trip, with the other inputs unchanged.</p>
+        </div>
+      </section>
+
+      <section id="roi-sensitivity" class="charter-section" aria-labelledby="roi-sensitivity-title">
+        <header class="charter-section__heading"><h3 id="roi-sensitivity-title">7. Sensitivity</h3></header>
+        <div class="charter-section__content">
+          <p class="lead-line">Every 100 weekly users is worth about $8,156 over three years. Build size matters as well: at the low end of the estimate (294 hours) the three-year ROI is +17%; at the high end (1,150 hours) it is −54%.</p>
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Three-year ROI by weekly users and minutes saved</caption>
+              <thead><tr><th scope="col">Weekly users</th><th scope="col">10 min saved</th><th scope="col">15 min saved</th><th scope="col">25 min saved</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">250</th><td>−77%</td><td>−66%</td><td>−43%</td></tr>
+                <tr><th scope="row">500</th><td>−55%</td><td class="cell-base">−32%</td><td>+13%</td></tr>
+                <tr><th scope="row">1,000</th><td>−9%</td><td>+36%</td><td>+127%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source-note">Left out on purpose: money students spend when a plan falls through and any benefit to dining services. We have no basis for averaging them yet. Sources: Session 11 Part 1, <em>Building the Budget</em>, slides 27 to 39; U.S. Department of Labor, <a href="https://www.dol.gov/agencies/whd/minimum-wage">federal minimum wage</a>.</p>
+        </div>
+      </section>
     </div>
   </section>
+
+  <aside class="disclosure disclosure--page" aria-labelledby="sprint-2-ai-title">
+    <h2 id="sprint-2-ai-title" class="disclosure__title">AI use disclosure</h2>
+    <p>
+      Claude Code, an AI coding assistant, helped revise the estimate, edit the
+      Word documents, and draft the value analysis, ROI model, changelog, and
+      this page. The go/no-go decision and its reasoning are the team's own.
+    </p>
+  </aside>
+
+  <nav class="sprint-pager" aria-label="Sprint navigation">
+    <a href="{{ '/sprints/sprint-1/' | relative_url }}" rel="prev"><span>Previous</span>Sprint 1: Research and charter</a>
+    <a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}"><span>Sprint 2</span>Changelog</a>
+  </nav>
 </div>

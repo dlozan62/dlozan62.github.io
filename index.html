@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Home
-description: A living record of our college dining research, decisions, and project work.
+description: "DineCheck: what's open, what's left. Team 10's living record of the research, estimates, and decisions behind a campus dining availability system."
 permalink: /
 ---
 
@@ -16,14 +16,18 @@ permalink: /
   >
   <div class="exhibit-hero__wash" aria-hidden="true"></div>
   <div class="exhibit-hero__content">
-    <p>CS 4390/5388 Software Project Management</p>
-  <h1 id="hero-title">Know before you go.</h1>
+    <h1 id="hero-title">{{ site.title }}</h1>
+    <p class="exhibit-hero__tagline">{{ site.tagline }}</p>
+    <p class="exhibit-hero__problem">
+      Students often learn a dining location is closed or an item is sold out
+      only after they arrive.
+    </p>
     <div class="exhibit-hero__actions">
-      <a class="button button--orange" href="{{ '/sprints/sprint-1/' | relative_url }}">
-        Explore Sprint 1
+      <a class="button button--orange" href="{{ '/sprints/sprint-2/' | relative_url }}">
+        See Sprint 2: the business case
       </a>
-      <a class="button button--glass" href="{{ '/about/' | relative_url }}">
-        Meet the team
+      <a class="button button--glass" href="{{ '/sprints/sprint-1/' | relative_url }}">
+        Start with Sprint 1
       </a>
     </div>
   </div>
@@ -39,11 +43,11 @@ permalink: /
   </header>
 
   <div class="sprint-accordion__items">
-    <details class="sprint-slice" name="sprints" open>
+    <details class="sprint-slice" name="sprints">
       <summary>
         <span aria-hidden="true">1</span>
         <strong>Research and charter</strong>
-        <small>Current</small>
+        <small>Complete</small>
       </summary>
       <div class="sprint-slice__body">
         <h3>From meal plans to availability</h3>
@@ -64,27 +68,27 @@ permalink: /
       </div>
     </details>
 
-    <details class="sprint-slice" name="sprints">
+    <details class="sprint-slice" name="sprints" open>
       <summary>
         <span aria-hidden="true">2</span>
         <strong>Business case</strong>
-        <small>In progress</small>
+        <small>Current</small>
       </summary>
       <div class="sprint-slice__body">
-        <h3>From scope to size</h3>
+        <h3>Is it worth building?</h3>
         <p>
-          Download the team's original estimation starter as PDF. Estimation
-          Activity 2 has a prepared page for the worked estimate once completed.
+          One slice of DineCheck, sized two ways, priced, and weighed against
+          what it could return.
         </p>
         <ul>
-          <li>Estimation starter</li>
-          <li>Activity 2 handoff</li>
-          <li>Business case pending</li>
-          <li>ROI analysis pending</li>
+          <li>Business case</li>
+          <li>Estimation appendix</li>
+          <li>ROI analysis</li>
+          <li>Changelog</li>
         </ul>
         <div class="sprint-slice__links">
-          <a href="{{ '/assets/pdfs/sprint-2-estimation-starter-team10.pdf' | relative_url }}" download>Download starter PDF</a>
-          <a href="{{ '/sprints/sprint-2/estimation-activity-2/' | relative_url }}">Activity 2</a>
+          <a href="{{ '/sprints/sprint-2/' | relative_url }}">Open Sprint 2</a>
+          <a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Changelog</a>
         </div>
       </div>
     </details>
@@ -142,6 +146,5 @@ permalink: /
   <p>
     AI assisted with website design, development, and drafts of these web
     summaries. The source research and current charter are linked on Sprint 1.
-    Individual AI-use disclosures for Sprint 1 are pending.
   </p>
 </aside>
