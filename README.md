@@ -1,6 +1,6 @@
 # DineCheck
 
-*What's open, what's left.* DineCheck is Team 10's campus dining availability system, and this repository holds its living project website for CS 4390/5388 Software Project Management. Sprint 1 records the move from meal-plan research to dining availability. Sprint 2 holds the business case, estimation appendix, and ROI analysis on one page, plus a changelog subpage. Each document has one PDF, converted from its Word file in `assets/documents/`.
+*What's open, what's left.* DineCheck is Team 10's campus dining availability system, and this repository holds its living project website for CS 4390/5388 Software Project Management. Sprint 1 records the move from meal-plan research to dining availability. Sprint 2 holds the estimation appendix and one-page budget on one page, plus a changelog subpage. There is no separate business case. The appendix, budget, and changelog each have one PDF, converted from the matching Word file in `assets/documents/`.
 
 [View the website](https://dlozan62.github.io)
 

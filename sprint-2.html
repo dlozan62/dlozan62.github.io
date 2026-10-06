@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sprint 2
-description: Team 10's Sprint 2 record for DineCheck, covering the business case, estimation appendix, and ROI analysis.
+description: Team 10's Sprint 2 record for DineCheck, covering the business case, estimation appendix, and one-page budget.
 permalink: /sprints/sprint-2/
 ---
 
@@ -9,8 +9,8 @@ permalink: /sprints/sprint-2/
   <p class="course-line">Sprint 2 · Business case · Due October 6, 2026</p>
   <h1>Is it worth building?</h1>
   <p>
-    Sprint 1 found the problem. This sprint we sized one slice of DineCheck,
-    priced it at $60 an hour, and checked whether it could pay for itself.
+    Sprint 1 found the problem. This sprint we sized one slice of DineCheck
+    and priced it at $60 an hour.
   </p>
 </header>
 
@@ -18,7 +18,7 @@ permalink: /sprints/sprint-2/
   <ul>
     <li><a href="#business-case">Business case</a></li>
     <li><a href="#estimation-appendix">Estimation appendix</a></li>
-    <li><a href="#roi">One-page budget and ROI</a></li>
+    <li><a href="#budget">One-page budget</a></li>
     <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Changelog</a></li>
   </ul>
 </nav>
@@ -80,7 +80,7 @@ permalink: /sprints/sprint-2/
               <caption>Value by stakeholder</caption>
               <thead><tr><th scope="col">Who</th><th scope="col">What they could gain</th><th scope="col">How solid it is</th></tr></thead>
               <tbody>
-                <tr><th scope="row">Students</th><td>Fewer wasted trips, less time lost between classes, fewer last-minute delivery orders or snack substitutes.</td><td>Seen in interviews. Priced in the ROI analysis at $13,594 a year under assumed usage.</td></tr>
+                <tr><th scope="row">Students</th><td>Fewer wasted trips, less time lost between classes, fewer last-minute delivery orders or snack substitutes.</td><td>Seen in interviews. Not priced yet.</td></tr>
                 <tr><th scope="row">Dining staff</th><td>Fewer students arriving for something that is gone, and fewer questions at the counter.</td><td>Not tested. Staff also take on a new task: marking items sold out.</td></tr>
                 <tr><th scope="row">Dining services and the university</th><td>A clearer picture of what sells out and when, which could help with stocking.</td><td>Not measured. No savings or revenue has been established.</td></tr>
               </tbody>
@@ -88,10 +88,11 @@ permalink: /sprints/sprint-2/
           </div>
           <div class="prose">
             <p>
-              Money is the weak part of this case. Priced only as student time at
-              minimum wage, the slice returns $40,781 over three years against a
-              three-year cost of $59,959, an ROI of −32%. It breaks even at about
-              735 weekly users. The full numbers are in the <a href="#roi">one-page budget and ROI analysis</a>.
+              DineCheck does not sell anything directly to its users. The return
+              is the time students save and the wasted trips they avoid. The team
+              expects that a paid collaboration with universities could bring in
+              money later; that has not been priced yet. The costs are in the
+              <a href="#budget">one-page budget</a>.
             </p>
             <p>
               The value we can't price yet is trust: whether students believe the
@@ -132,7 +133,7 @@ permalink: /sprints/sprint-2/
                 <tr><th scope="row">Staff don't update on time</th><td>Even if dining services requires it, a busy line at noon comes first. A sold-out mark that shows up after students have already walked over is no better than what they have now. This is the biggest risk to the value, and it isn't in the size count.</td><td>Keep the staff update to one tap per item. Test it with an operational stakeholder before any pilot. Show the update time on every status.</td></tr>
                 <tr><th scope="row">Stale data</th><td>Wrong status costs trust faster than no status.</td><td>Show "last updated" times and a stale state; priced in contingency.</td></tr>
                 <tr><th scope="row">Estimate is off</th><td>The two methods disagree by a factor of 2.09, and both rates are assumed.</td><td>Log hours on the first screen and re-estimate. Contingency covers named risks only.</td></tr>
-                <tr><th scope="row">Low usage</th><td>Below about 735 weekly users the student-time return doesn't cover cost.</td><td>Measure intent to use in the next 13 interviews and in prototype tests.</td></tr>
+                <tr><th scope="row">Low usage</th><td>If few students check DineCheck, little time is saved.</td><td>Measure intent to use in the next 13 interviews and in prototype tests.</td></tr>
                 <tr><th scope="row">Scope growth</th><td>Crowd levels, wait times, and notifications are tempting additions.</td><td>Hold the slice boundary; log any request in the changelog first.</td></tr>
               </tbody>
             </table>
@@ -176,7 +177,7 @@ permalink: /sprints/sprint-2/
   <section id="estimation-appendix" class="doc-part" aria-labelledby="appendix-title">
     <header class="doc-part__header">
       <h2 id="appendix-title">Estimation appendix</h2>
-      <p>One slice of DineCheck estimated twice, with function points and use-case points. Revised October 5, 2026: we added the dining-staff actor and the staff update form, then recounted both methods. First completed September 28, 2026.</p>
+      <p>One slice of DineCheck estimated twice, with function points and use-case points.</p>
       <a class="button" href="{{ '/assets/pdfs/sprint-2-estimation-appendix.pdf' | relative_url }}" download>Download the estimation appendix (PDF)</a>
     </header>
 
@@ -209,9 +210,9 @@ permalink: /sprints/sprint-2/
                 <tr><td>As a student, I want to see whether menu items are available or sold out so that I do not waste time going somewhere for an unavailable item.</td><td>Must</td><td class="num">5</td></tr>
                 <tr><td>As a student, I want to filter dining options based on dietary restrictions or preferences so that I can find suitable food.</td><td>Should</td><td class="num">5</td></tr>
                 <tr><td>As a student, I want the dining information to work well on my phone so that I can quickly check dining options while on campus</td><td>Should</td><td class="num">3</td></tr>
-                <tr class="row-added"><td>As dining staff, I want to mark an item sold out or back in stock so that students see the change before they walk over. <em>(Added October 5.)</em></td><td>Must</td><td class="num">Not sized</td></tr>
+                <tr><td>As dining staff, I want to mark an item sold out or back in stock so that students see the change before they walk over.</td><td>Must</td><td class="num">3</td></tr>
               </tbody>
-              <tfoot><tr><th scope="row">Total points</th><td></td><td class="num">22</td></tr></tfoot>
+              <tfoot><tr><th scope="row">Total points</th><td></td><td class="num">25</td></tr></tfoot>
             </table>
           </div>
         </div>
@@ -387,18 +388,18 @@ permalink: /sprints/sprint-2/
   </section>
 
   <!-- ===================================================================
-       ROI analysis: mirrors "Team 10 — Campus Dining System.docx"
+       One-page budget: mirrors "Team 10 — Campus Dining System.docx"
        =================================================================== -->
-  <section id="roi" class="doc-part" aria-labelledby="roi-title">
+  <section id="budget" class="doc-part" aria-labelledby="budget-title">
     <header class="doc-part__header">
-      <h2 id="roi-title">One-page budget and ROI analysis</h2>
+      <h2 id="budget-title">One-page budget</h2>
       <p>Revised October 5, 2026. Loaded rate: $60/hour, the instructor-provided rate for CS 4390/5388.</p>
-      <a class="button" href="{{ '/assets/pdfs/sprint-2-roi-analysis.pdf' | relative_url }}" download>Download the one-page budget and ROI analysis (PDF)</a>
+      <a class="button" href="{{ '/assets/pdfs/sprint-2-one-page-budget.pdf' | relative_url }}" download>Download the one-page budget (PDF)</a>
     </header>
 
     <div class="charter-page__sections">
-      <section id="roi-assumptions" class="charter-section" aria-labelledby="roi-assumptions-title">
-        <header class="charter-section__heading"><h3 id="roi-assumptions-title">1. Write the assumptions</h3></header>
+      <section id="budget-assumptions" class="charter-section" aria-labelledby="budget-assumptions-title">
+        <header class="charter-section__heading"><h3 id="budget-assumptions-title">1. Write the assumptions</h3></header>
         <div class="charter-section__content">
           <div class="charter-table-wrap">
             <table class="charter-table">
@@ -415,13 +416,10 @@ permalink: /sprints/sprint-2/
         </div>
       </section>
 
-      <section id="roi-staff" class="charter-section" aria-labelledby="roi-staff-title">
-        <header class="charter-section__heading"><h3 id="roi-staff-title">2. Convert and staff</h3></header>
+      <section id="budget-staff" class="charter-section" aria-labelledby="budget-staff-title">
+        <header class="charter-section__heading"><h3 id="budget-staff-title">2. Convert and staff</h3></header>
         <div class="charter-section__content">
-          <div class="prose">
-            <p>From Session 9, our planning estimate is 694 team hours. This is the expected (PERT) value from our revised estimation worksheet, which gives a range of 294 to 1,150 hours.</p>
-            <p>694 ÷ 130 = 5.34 FTE-months (130 productive hours per FTE-month)</p>
-          </div>
+          <div class="prose"><p>Planning estimate: 694 team hours (Session 9, PERT) ÷ 130 = 5.34 FTE-months.</p></div>
           <div class="charter-table-wrap">
             <table class="charter-table charter-table--numbers">
               <caption>Staffing plan in FTE-months</caption>
@@ -438,12 +436,9 @@ permalink: /sprints/sprint-2/
         </div>
       </section>
 
-      <section id="roi-price" class="charter-section" aria-labelledby="roi-price-title">
-        <header class="charter-section__heading"><h3 id="roi-price-title">3. Price it</h3></header>
+      <section id="budget-price" class="charter-section" aria-labelledby="budget-price-title">
+        <header class="charter-section__heading"><h3 id="budget-price-title">3. Price it</h3></header>
         <div class="charter-section__content">
-          <div class="prose">
-            <p>694 hours × $60/hour = $41,640 (5.34 FTE-months at $7,800 per FTE-month, which is $60 × 130 hours)</p>
-          </div>
           <div class="charter-table-wrap">
             <table class="charter-table charter-table--numbers">
               <caption>Labor</caption>
@@ -457,25 +452,15 @@ permalink: /sprints/sprint-2/
               <tfoot><tr><th scope="row">Labor Total</th><td>5.34 (694 h)</td><td></td><td>$41,640</td></tr></tfoot>
             </table>
           </div>
-          <div class="charter-table-wrap">
-            <table class="charter-table charter-table--numbers">
-              <caption>Non-labor costs</caption>
-              <thead><tr><th scope="col">Item</th><th scope="col">How computed</th><th scope="col">Cost</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Hosting / infrastructure</th><td>$150/month × 2 months</td><td>$300</td></tr>
-                <tr><th scope="row">Developer / Testing tools</th><td>Project allowance</td><td>$300</td></tr>
-                <tr><th scope="row">Domain/deployment setup</th><td>Project allowance</td><td>$100</td></tr>
-                <tr><th scope="row">Database/cloud services</th><td>Project allowance</td><td>$300</td></tr>
-              </tbody>
-              <tfoot><tr><th scope="row">Non-Labor Total</th><td></td><td>$1,000</td></tr></tfoot>
-            </table>
+          <div class="prose">
+            <p>Non-labor: hosting $150/month × 2 = $300; tools $300; domain/deployment $100; database/cloud $300; total $1,000. Base build estimate = $41,640 + $1,000 = $42,640.</p>
+            <p>Operating cost per year: hosting $150 × 12 = $1,800 + maintenance 4 h/month × 12 × $60 = $2,880 = $4,680.</p>
           </div>
-          <p class="lead-line"><strong>Base Build Estimate</strong> = Labor + Non-Labor = $41,640 + $1,000 = $42,640</p>
         </div>
       </section>
 
-      <section id="roi-risks" class="charter-section" aria-labelledby="roi-risks-title">
-        <header class="charter-section__heading"><h3 id="roi-risks-title">4. Price the risks</h3></header>
+      <section id="budget-risks" class="charter-section" aria-labelledby="budget-risks-title">
+        <header class="charter-section__heading"><h3 id="budget-risks-title">4. Price the risks</h3></header>
         <div class="charter-section__content">
           <div class="charter-table-wrap">
             <table class="charter-table charter-table--numbers">
@@ -486,102 +471,11 @@ permalink: /sprints/sprint-2/
                 <tr><th scope="row">Stale availability data needs more testing and rework</th><td>25%</td><td>20</td><td>$300</td></tr>
                 <tr><th scope="row">Requests grow the agreed slice</th><td>20%</td><td>30</td><td>$360</td></tr>
               </tbody>
-              <tfoot><tr><th scope="row">Contingency reserve</th><td></td><td></td><td>$1,092</td></tr></tfoot>
-            </table>
-          </div>
-          <p class="source-note">EMV = chance × extra hours × $60. Chances and extra hours are team assumptions carried from our September 29 draft budget. The project manager controls contingency; the sponsor controls management reserve.</p>
-          <div class="charter-table-wrap">
-            <table class="charter-table charter-table--numbers">
-              <caption>Budget request</caption>
-              <thead><tr><th scope="col">Line</th><th scope="col">How computed</th><th scope="col">Amount</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Base build estimate</th><td>Labor + non-labor</td><td>$42,640</td></tr>
-                <tr><th scope="row">Contingency reserve</th><td>Sum of EMV</td><td>$1,092</td></tr>
-                <tr class="row-subtotal"><th scope="row">Cost baseline</th><td>Base + contingency</td><td>$43,732</td></tr>
-                <tr><th scope="row">Management reserve</th><td>5% of the cost baseline</td><td>$2,187</td></tr>
-              </tbody>
-              <tfoot><tr><th scope="row">Total budget request</th><td>Baseline + management reserve</td><td>$45,919</td></tr></tfoot>
-            </table>
-          </div>
-          <div class="charter-note">
-            <p><strong>Sanity check:</strong> one PERT spread from the estimate is about 143 hours ($8,560). Contingency covers the three named risks, not a normal estimating miss.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="roi-operating" class="charter-section" aria-labelledby="roi-operating-title">
-        <header class="charter-section__heading"><h3 id="roi-operating-title">5. Operating cost</h3></header>
-        <div class="charter-section__content">
-          <div class="charter-table-wrap">
-            <table class="charter-table charter-table--numbers">
-              <caption>Per year, separate from the build</caption>
-              <thead><tr><th scope="col">Item</th><th scope="col">How computed</th><th scope="col">Cost</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Hosting / infrastructure</th><td>$150/month × 12 months</td><td>$1,800</td></tr>
-                <tr><th scope="row">Maintenance</th><td>4 hours/month × 12 × $60</td><td>$2,880</td></tr>
-              </tbody>
-              <tfoot><tr><th scope="row">Operating Total</th><td></td><td>$4,680</td></tr></tfoot>
-            </table>
-          </div>
-          <p class="source-note">Staff time spent marking items sold out is not included. It is an adoption risk covered in the <a href="#risks">business case</a>.</p>
-        </div>
-      </section>
-
-      <section id="roi-return" class="charter-section" aria-labelledby="roi-return-title">
-        <header class="charter-section__heading"><h3 id="roi-return-title">6. ROI analysis</h3></header>
-        <div class="charter-section__content">
-          <div class="prose">
-            <p>DineCheck does not sell anything, so the return is the value of wasted trips students no longer make. Every input below is an assumption except the wage.</p>
-          </div>
-          <div class="charter-table-wrap">
-            <table class="charter-table">
-              <caption>Return model inputs</caption>
-              <thead><tr><th scope="col">Input</th><th scope="col">Value</th><th scope="col">Basis</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Students who check DineCheck in a week</th><td>500</td><td>Assumption</td></tr>
-                <tr><th scope="row">Wasted trips avoided per user per week</th><td>0.5</td><td>Assumption (one every two weeks)</td></tr>
-                <tr><th scope="row">Minutes saved per avoided trip</th><td>15</td><td>Assumption, below the 25-minute walk in our interviews</td></tr>
-                <tr><th scope="row">Value of an hour of student time</th><td>$7.25</td><td>U.S. federal minimum wage</td></tr>
-                <tr><th scope="row">Teaching weeks per year</th><td>30</td><td>Assumption (two 15-week semesters)</td></tr>
-                <tr><th scope="row">Benefit horizon</th><td>3 years</td><td>Assumption, as in Session 11</td></tr>
-              </tbody>
             </table>
           </div>
           <div class="prose">
-            <p>Return: 500 × 0.5 × 30 = 7,500 avoided trips a year. 7,500 × 15 minutes ÷ 60 = 1,875 hours × $7.25 = $13,594 a year, or $40,781 over three years.</p>
+            <p>EMV = chance × extra hours × $60. Contingency reserve = $1,092. Cost baseline = $42,640 + $1,092 = $43,732. Management reserve (5%) = $2,187. Total budget request = $45,919.</p>
           </div>
-          <div class="charter-table-wrap">
-            <table class="charter-table charter-table--numbers">
-              <caption>Three-year ROI</caption>
-              <thead><tr><th scope="col">Line</th><th scope="col">How computed</th><th scope="col">Amount</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Total cost, 3 years</th><td>$45,919 + 3 × $4,680</td><td>$59,959</td></tr>
-                <tr><th scope="row">Total return, 3 years</th><td>3 × $13,594</td><td>$40,781</td></tr>
-                <tr><th scope="row">Net</th><td>Return − cost</td><td>−$19,177</td></tr>
-              </tbody>
-              <tfoot><tr><th scope="row">ROI</th><td>Net ÷ cost</td><td>−32%</td></tr></tfoot>
-            </table>
-          </div>
-          <p class="source-note">Break-even: about 735 weekly users, or about 22 minutes saved per avoided trip, with the other inputs unchanged.</p>
-        </div>
-      </section>
-
-      <section id="roi-sensitivity" class="charter-section" aria-labelledby="roi-sensitivity-title">
-        <header class="charter-section__heading"><h3 id="roi-sensitivity-title">7. Sensitivity</h3></header>
-        <div class="charter-section__content">
-          <p class="lead-line">Every 100 weekly users is worth about $8,156 over three years. Build size matters as well: at the low end of the estimate (294 hours) the three-year ROI is +17%; at the high end (1,150 hours) it is −54%.</p>
-          <div class="charter-table-wrap">
-            <table class="charter-table charter-table--numbers">
-              <caption>Three-year ROI by weekly users and minutes saved</caption>
-              <thead><tr><th scope="col">Weekly users</th><th scope="col">10 min saved</th><th scope="col">15 min saved</th><th scope="col">25 min saved</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">250</th><td>−77%</td><td>−66%</td><td>−43%</td></tr>
-                <tr><th scope="row">500</th><td>−55%</td><td class="cell-base">−32%</td><td>+13%</td></tr>
-                <tr><th scope="row">1,000</th><td>−9%</td><td>+36%</td><td>+127%</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="source-note">Left out on purpose: money students spend when a plan falls through and any benefit to dining services. We have no basis for averaging them yet. Sources: Session 11 Part 1, <em>Building the Budget</em>, slides 27 to 39; U.S. Department of Labor, <a href="https://www.dol.gov/agencies/whd/minimum-wage">federal minimum wage</a>.</p>
         </div>
       </section>
     </div>
@@ -590,9 +484,7 @@ permalink: /sprints/sprint-2/
   <aside class="disclosure disclosure--page" aria-labelledby="sprint-2-ai-title">
     <h2 id="sprint-2-ai-title" class="disclosure__title">AI use disclosure</h2>
     <p>
-      Claude Code, an AI coding assistant, helped revise the estimate, edit the
-      Word documents, and draft the value analysis, ROI model, changelog, and
-      this page. The go/no-go decision and its reasoning are the team's own.
+      Claude Opus 5.5 & GPT-Sol 6.1, both AI coding assistants, helped revise the webpage styling, organize the changelog, and this page. The go/no-go decision and its reasoning and the work that pushed the project forward are the team's own.
     </p>
   </aside>
 
