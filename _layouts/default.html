@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#041e42">
+    <meta name="color-scheme" content="light">
     <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 
     <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
@@ -35,10 +36,11 @@
       <a
         class="brand"
         href="{{ '/' | relative_url }}"
-        aria-label="Campus Dining Availability System home"
+        aria-label="{{ site.title }} home"
       >
-        <span class="brand__name">Campus Dining</span>
-        <span class="brand__descriptor">Availability System</span>
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">{{ site.title }}</span>
+        <span class="brand__descriptor">{{ site.descriptor }}</span>
       </a>
 
       <button
@@ -66,11 +68,27 @@
     </header>
 
     <main id="main-content">
+      {% assign crumbs = page.url | split: '/' %}
+      {% if crumbs.size > 2 and crumbs[1] == 'sprints' %}
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{{ '/sprints/' | relative_url }}">Sprints</a></li>
+            {% assign sprint_url = '/sprints/' | append: crumbs[2] | append: '/' %}
+            {% assign sprint_label = crumbs[2] | replace: 'sprint-', 'Sprint ' %}
+            {% if crumbs.size > 3 %}
+              <li><a href="{{ sprint_url | relative_url }}">{{ sprint_label }}</a></li>
+              <li><span aria-current="page">{{ page.title }}</span></li>
+            {% else %}
+              <li><span aria-current="page">{{ sprint_label }}</span></li>
+            {% endif %}
+          </ol>
+        </nav>
+      {% endif %}
       {{ content }}
     </main>
 
     <footer class="site-footer">
-      <p class="site-footer__brand">Campus Dining Availability System</p>
+      <p class="site-footer__brand"><strong>{{ site.title }}</strong> <span>{{ site.tagline }}</span></p>
       <nav class="site-footer__nav" aria-label="Footer navigation">
         <ul>
           <li><a href="{{ '/about/' | relative_url }}">Team</a></li>
@@ -81,7 +99,7 @@
         </ul>
       </nav>
       <p class="site-footer__meta">
-        CS 4390/5388 Software Project Management. Living project website.
+        {{ site.descriptor }} · Team 10 · CS 4390/5388 Software Project Management. Living project website.
       </p>
     </footer>
   </body>

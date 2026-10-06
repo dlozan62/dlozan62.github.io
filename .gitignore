@@ -8,3 +8,5 @@ AGENTS.md
 .omp/
 output/
 tmp/
+~$*
+__pycache__/

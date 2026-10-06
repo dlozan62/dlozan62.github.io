@@ -1,6 +1,6 @@
-# Campus Dining Availability System
+# DineCheck
 
-A living project website for CS 4390/5388 Software Project Management. Sprint 1 records the team's move from meal-plan research to a campus dining availability system. Sprint 2 links a PDF conversion of Team 10's original estimation starter and reserves a page for the unfinished Estimation Activity 2.
+*What's open, what's left.* DineCheck is Team 10's campus dining availability system, and this repository holds its living project website for CS 4390/5388 Software Project Management. Sprint 1 records the move from meal-plan research to dining availability. Sprint 2 holds the business case, estimation appendix, and ROI analysis on one page, plus a changelog subpage. Each document has one PDF, converted from its Word file in `assets/documents/`.
 
 [View the website](https://dlozan62.github.io)
 
@@ -30,4 +30,4 @@ The [GitHub Actions workflow](.github/workflows/site-check.yml) checks the site 
 
 ## AI use
 
-AI assisted with website design, development, and drafts of the web summaries. The Sprint 1 source research and charter are linked on the site. Individual AI-use disclosures are pending.
+AI assisted with website design, development, and drafts of the web summaries. The Sprint 1 source research and charter are linked on the site.

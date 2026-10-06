@@ -19,7 +19,7 @@ REQUIRED_PAGES = (
     "sprints/sprint-1/business-strategy/index.html",
     "sprints/sprint-1/project-charter/index.html",
     "sprints/sprint-2/index.html",
-    "sprints/sprint-2/estimation-activity-2/index.html",
+    "sprints/sprint-2/changelog/index.html",
 )
 CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)
 ORPHAN_HEADING_TEXT = re.compile(r"</h[1-6]>\s*[A-Za-z](?=\s*<)")
