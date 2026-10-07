@@ -1,8 +1,12 @@
 title: DineCheck
 tagline: "What's open, what's left."
 descriptor: Campus Dining Availability System
-description: "DineCheck shows students what is open and what is sold out at campus dining locations before they walk over. Team 10's living project portal for CS 4390/5388."
+description: "Team 10's project portal for DineCheck, a proposed campus dining availability system. Explore the research, scope, estimates, and decisions."
 url: "https://dlozan62.github.io"
+baseurl: ""
+lang: en
+encoding: utf-8
+strict_front_matter: true
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -12,3 +16,4 @@ exclude:
   - scripts
   - tests
   - tmp
+  - REDESIGN_README.md

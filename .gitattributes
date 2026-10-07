@@ -1,0 +1,17 @@
+# Keep source diffs consistent and preserve downloaded documents byte-for-byte.
+* text=auto
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.svg text eol=lf
+*.ps1 text eol=crlf
+*.pdf binary
+*.docx binary
+*.png binary
+*.PNG binary
+*.jpg binary
+*.jpeg binary
+*.woff2 binary

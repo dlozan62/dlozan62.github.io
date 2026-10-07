@@ -2,7 +2,7 @@
 
 The text in this small script follows market-research.html. Keeping the layout
 in a few named sections makes it easier for a new developer to update later.
-Run with the bundled Codex Python that includes ReportLab:
+Install ReportLab (`python3 -m pip install reportlab`), then run:
 
     python3 scripts/generate_market_research_pdf.py
 """
