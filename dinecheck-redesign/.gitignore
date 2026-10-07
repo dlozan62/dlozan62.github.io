@@ -1,0 +1,14 @@
+_site/
+.jekyll-cache/
+.cursor/
+.jevgrepignore
+.sass-cache/
+.DS_Store
+AGENTS.md
+.agents/
+.codex/
+.omp/
+output/
+tmp/
+~$*
+__pycache__/
