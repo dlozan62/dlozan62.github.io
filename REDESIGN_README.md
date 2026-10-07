@@ -11,6 +11,3 @@ This is a GitHub Pages / Jekyll version of the redesigned DineCheck website.
 The research, team profiles, sprint documents, and download files are retained. The homepage has been rebuilt, and the shared redesign styles are in `assets/css/redesign.css`.
 
 This package does not change your GitHub repository automatically.
-
-## October 7 improvements
-Report contents sidebar with active section highlighting; collapsible contents on phones; sprint summaries; budget charts using the existing project figures; download format, size and known revision dates; keyboard-accessible scrolling tables; consistent team profiles. Unknown document revision dates are explicitly marked.
