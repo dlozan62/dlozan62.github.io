@@ -95,3 +95,84 @@ if (sections.length) {
   }, { passive: true });
   highlight();
 }
+
+// Fictional concept demo. All updates stay in this page; no data is submitted.
+const demo = document.querySelector('.demo-shell');
+if (demo) {
+  const openFilter = document.getElementById('demo-open');
+  const dietFilter = document.getElementById('demo-diet');
+  const results = document.getElementById('demo-results');
+  const staffButton = document.getElementById('demo-staff-button');
+  const locations = [...demo.querySelectorAll('.demo-location')];
+  const items = [...demo.querySelectorAll('.demo-items li')];
+  const initialSold = items.map((item) => item.dataset.sold === 'true');
+  const timestamps = locations.map((location) => location.querySelector('.demo-updated')?.textContent);
+  let staffMode = false;
+
+  demo.querySelector('.demo-filters').hidden = false;
+  staffButton.hidden = false;
+
+  const filter = (announcement = '') => {
+    let locationCount = 0;
+    let itemCount = 0;
+    locations.forEach((location) => {
+      const locationItems = [...location.querySelectorAll('.demo-items li')];
+      locationItems.forEach((item) => {
+        item.hidden = dietFilter.value !== 'all' && item.dataset.diet !== dietFilter.value;
+      });
+      const visibleItems = locationItems.filter((item) => !item.hidden);
+      location.hidden = (openFilter.checked && location.dataset.open !== 'true') ||
+        (dietFilter.value !== 'all' && visibleItems.length === 0);
+      if (!location.hidden) {
+        locationCount++;
+        itemCount += visibleItems.length;
+      }
+    });
+    results.textContent = `${announcement}${locationCount} sample location${locationCount === 1 ? '' : 's'} · ${itemCount} matching menu item${itemCount === 1 ? '' : 's'}.`;
+  };
+  const updateItem = (item, sold) => {
+    item.dataset.sold = String(sold);
+    const status = item.querySelector('.item-status');
+    status.textContent = sold ? 'Sold out' : 'Available';
+    status.classList.toggle('status--sold', sold);
+    status.classList.toggle('status--open', !sold);
+    const button = item.querySelector('.staff-toggle');
+    const action = sold ? 'available' : 'sold out';
+    button.textContent = `Mark ${action}`;
+    button.setAttribute('aria-label', `Mark ${item.querySelector('strong').textContent} ${action}`);
+  };
+  openFilter.addEventListener('change', () => filter());
+  dietFilter.addEventListener('change', () => filter());
+  staffButton.addEventListener('click', () => {
+    staffMode = !staffMode;
+    staffButton.setAttribute('aria-pressed', String(staffMode));
+    staffButton.textContent = staffMode ? 'Hide staff controls' : 'Show staff controls';
+    demo.querySelectorAll('.staff-toggle').forEach((button) => { button.hidden = !staffMode; });
+    filter(`Staff controls ${staffMode ? 'shown' : 'hidden'}. `);
+  });
+  items.forEach((item) => {
+    item.querySelector('.staff-toggle').addEventListener('click', () => {
+      const sold = item.dataset.sold !== 'true';
+      updateItem(item, sold);
+      item.closest('.demo-location').querySelector('.demo-updated').textContent = 'Last updated: just now (simulated staff update)';
+      filter(`${item.querySelector('strong').textContent} marked ${sold ? 'sold out' : 'available'}. `);
+    });
+  });
+  document.getElementById('demo-reset').addEventListener('click', () => {
+    openFilter.checked = false;
+    dietFilter.value = 'all';
+    staffMode = false;
+    staffButton.setAttribute('aria-pressed', 'false');
+    staffButton.textContent = 'Show staff controls';
+    items.forEach((item, index) => {
+      updateItem(item, initialSold[index]);
+      item.querySelector('.staff-toggle').hidden = true;
+    });
+    locations.forEach((location, index) => {
+      const timestamp = location.querySelector('.demo-updated');
+      if (timestamp) timestamp.textContent = timestamps[index];
+    });
+    filter('Demo reset. ');
+  });
+  filter();
+}

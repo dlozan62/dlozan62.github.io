@@ -19,7 +19,8 @@ Research statements and cost figures come from the team's existing records. Spri
 | `_layouts/default.html` | Shared document metadata, header, navigation, breadcrumbs, and footer |
 | `assets/css/style.css` | The complete responsive design system; no separate override stylesheet |
 | `assets/js/site.js` | Mobile menu, keyboard-accessible table scrolling, and active report links |
-| `index.html` | Project introduction and routes into the sprint records |
+| `index.html` | Project introduction, illustrative product preview, evidence, and progress |
+| `demo.html` | Browser-only concept demo with fictional data, filters, and simulated staff updates |
 | `about.html` | Team portraits, responsibilities, and biographies |
 | `sprints.html` | Published and planned sprint archive |
 | `sprint-1.html`, `sprint-2.html` | Sprint overviews and reports |
@@ -49,7 +50,7 @@ bundle exec jekyll build --strict_front_matter
 python3 scripts/check_site.py
 ```
 
-The checker validates all nine required routes, local links, anchor targets, CSS assets, unique IDs, and image alternative text.
+The checker validates the required routes, local links, anchor targets, CSS assets, unique IDs, and image alternative text.
 
 ## Publish
 
@@ -67,3 +68,7 @@ In the repository's **Settings → Pages**, set the build source to **GitHub Act
 ## AI use
 
 AI assisted with website design, development, and drafts of the web summaries. Source research and the current charter are linked on Sprint 1. The team's contribution statements describe its use of AI.
+
+## Concept demo
+
+`/demo/` is an illustrative concept, not a released product or live campus feed. Its location names, menus, hours, and timestamps are fictional. Staff controls simulate updates only in the current browser page; reload or Reset demo restores the initial scenario. The demo works without JavaScript as a static sample; its controls appear when JavaScript is available.

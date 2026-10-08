@@ -14,9 +14,16 @@ permalink: /sprints/sprint-2/
   </p>
 </header>
 
+<section class="decision-summary" aria-labelledby="summary-title">
+  <div><p class="eyebrow">Sprint 2 at a glance</p><h2 id="summary-title">Go, with conditions.</h2><p>The team’s recommendation depends on reliable staff updates and collaboration with campus dining. These are planning estimates, not committed funding or a delivery promise.</p><a class="text-link" href="#go-no-go">Read the recommendation →</a></div>
+  <dl class="summary-metrics"><div><dt>Expected team effort</dt><dd>694 <span>hours</span></dd></div><div><dt>Total budget request</dt><dd>$45,919</dd></div><div><dt>Estimated schedule</dt><dd>5.8 <span>weeks</span></dd></div><div><dt>Effort range</dt><dd>294–1,150 <span>hours</span></dd></div></dl>
+  <p class="summary-assumptions">Schedule assumes four people at 30 productive hours each per week. Budget includes non-labor costs, contingency, and management reserve. <a href="#final-range">Estimate assumptions</a> · <a href="#budget">Budget breakdown</a></p>
+</section>
+
 <nav class="on-page-nav" aria-label="Sprint 2 documents">
   <ul>
     <li><a href="#business-case">Business case</a></li>
+    <li><a href="#go-no-go">Recommendation</a></li>
     <li><a href="#estimation-appendix">Estimation appendix</a></li>
     <li><a href="#budget">One-page budget</a></li>
     <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Changelog</a></li>
@@ -354,7 +361,7 @@ permalink: /sprints/sprint-2/
             <p>For Method 2, the middle value is: (690 + 1,150) ÷ 2 = 920 hours, the same as 46 UCP × 20 hours.</p>
             <p>Gap 920 ÷ 441 = 2.09</p>
             <p><strong>Do your two methods depend on the same assumption?</strong> No. Function Points depend on the system's inputs, outputs, inquiries, stored data, and productivity rate, while Use-Case Points depend on the actors, use-case complexity, and hours per UCP.</p>
-            <p><strong>Which single input moves the answer most?</strong> The Function Point productivity rate moves the answer the most. At 6 hours per FP, the estimate is 294 hours, while at 12 hours per FP, it increases to 588 hours. For use-case points, moving from 15 to 25 hours per UCP takes the estimate from 690 to 1,150 hours.</p>
+            <p><strong>Which single input moves the answer most?</strong> Across the stated ranges, the use-case-point productivity rate produces the larger absolute change: 690 to 1,150 hours, a difference of 460 hours. The function-point rate changes the estimate from 294 to 588 hours, a difference of 294 hours. Function points have the larger proportional change (100%, compared with about 67% for use-case points). Both rates need actual team productivity data.</p>
             <p><strong>What information would narrow the gap, and when could you get it?</strong> Actual team productivity data would narrow the gap. Once development begins, we could measure the actual hours needed to complete features and use cases instead of relying on assumed productivity rates.</p>
             <p><strong>Our explanation of the gap:</strong> The Function Point method produced an estimate of 294–588 hours with a middle value of 441 hours, while the Use-Case Point method produced 690–1,150 hours with a middle value of 920 hours. The gap between the middle values is about 2.09; it was 1.38 before we added the dining-staff actor. Adding the staff side added one input to the function points (+4 FP) but an actor and two use cases to the use-case points (+18 UCP), and use-case points give every use case at least 5 points even when it is a small lookup. Both methods also rely on assumed productivity rates because we do not yet have actual development data. Collecting real productivity data during development would help reduce this uncertainty.</p>
           </div>

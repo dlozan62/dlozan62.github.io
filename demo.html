@@ -1,0 +1,24 @@
+---
+layout: default
+title: Concept Demo
+description: Explore an interactive DineCheck concept with fictional dining locations, dietary filters, and simulated staff availability updates.
+permalink: /demo/
+---
+<header class="page-intro"><p class="course-line">Interactive concept · Fictional sample data</p><h1>A better decision before the walk.</h1><p>Explore how students could check dining availability and how a staff update could change what they see. This demonstration runs only in your browser; it does not represent real campus hours, menus, or inventory.</p></header>
+<section class="demo-shell" aria-labelledby="demo-title">
+ <div class="demo-toolbar"><div><p class="eyebrow">Student view</p><h2 id="demo-title">Where would you eat?</h2></div><span class="badge">Sample campus</span></div>
+ <div class="demo-filters" hidden><label><input type="checkbox" id="demo-open"> Open locations only</label><label for="demo-diet">Dietary preference <select id="demo-diet"><option value="all">All items</option><option value="vegetarian">Vegetarian</option></select></label><button class="button button--outline" id="demo-reset" type="button">Reset demo</button></div>
+ <p class="source-note">Dietary tags are illustrative. Allergen verification and dietary suitability require confirmation from dining staff.</p>
+ <p id="demo-results" role="status" aria-live="polite">3 sample locations. Enable JavaScript to try filters and staff updates.</p>
+ <div class="demo-locations">
+  <article class="demo-location" data-open="true"><header><div><h3>Campus Kitchen</h3><p>Sample hours: 11 am–3 pm</p></div><span class="status status--open">Open</span></header><ul class="demo-items">
+   <li data-diet="other"><div><strong>Grilled chicken bowl</strong><span class="item-status status status--open">Available</span></div><button type="button" class="staff-toggle" aria-label="Mark grilled chicken bowl sold out" hidden>Mark sold out</button></li>
+   <li data-diet="vegetarian"><div><strong>Vegetable wrap</strong><span class="diet-tag">Vegetarian</span><span class="item-status status status--open">Available</span></div><button type="button" class="staff-toggle" aria-label="Mark vegetable wrap sold out" hidden>Mark sold out</button></li>
+   <li data-diet="vegetarian" data-sold="true"><div><strong>Margherita pizza</strong><span class="diet-tag">Vegetarian</span><span class="item-status status status--sold">Sold out</span></div><button type="button" class="staff-toggle" aria-label="Mark margherita pizza available" hidden>Mark available</button></li>
+  </ul><p class="demo-updated">Last updated: 2 minutes ago (example)</p></article>
+  <article class="demo-location" data-open="true"><header><div><h3>Library Cafe</h3><p>Sample hours: 8 am–5 pm</p></div><span class="status status--open">Open</span></header><ul class="demo-items"><li data-diet="vegetarian"><div><strong>Tomato mozzarella sandwich</strong><span class="diet-tag">Vegetarian</span><span class="item-status status status--open">Available</span></div><button type="button" class="staff-toggle" aria-label="Mark tomato mozzarella sandwich sold out" hidden>Mark sold out</button></li></ul><p class="demo-updated">Last updated: 4 minutes ago (example)</p></article>
+  <article class="demo-location" data-open="false"><header><div><h3>Evening Grill</h3><p>Sample hours: 5 pm–9 pm</p></div><span class="status status--sold">Closed</span></header><p class="source-note">Closed in this scenario. Menu availability is not shown.</p></article>
+ </div>
+ <aside class="demo-staff"><h3>Try the staff workflow</h3><p>Show the simulated staff controls, then mark an item sold out or available. Watch its status and update time change. Changes are temporary and reset when you reload.</p><button id="demo-staff-button" class="button button--outline" type="button" aria-pressed="false" hidden>Show staff controls</button><noscript><p>Enable JavaScript to try the interactive controls. Sample menus remain readable above.</p></noscript></aside>
+</section>
+<section class="home-section"><div class="section-top"><div><p class="eyebrow">What this helps us test</p><h2>Clarity, freshness, and trust.</h2></div><a class="text-link" href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">Read the project scope</a></div><div class="evidence-cards"><article><h3>Can students choose quickly?</h3><p>Open status and menu availability should be understandable at a glance.</p></article><article><h3>Can staff update easily?</h3><p>A quick update should reach the student view with a visible timestamp.</p></article><article><h3>What still needs validation?</h3><p>Real data access, staff participation, stale-data handling, and usability testing remain project work.</p></article></div></section>

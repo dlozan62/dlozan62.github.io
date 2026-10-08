@@ -13,6 +13,8 @@ SITE = ROOT / "_site"
 REQUIRED_PAGES = (
     "index.html",
     "about/index.html",
+    "demo/index.html",
+    "404.html",
     "sprints/index.html",
     "sprints/sprint-1/index.html",
     "sprints/sprint-1/market-research/index.html",
