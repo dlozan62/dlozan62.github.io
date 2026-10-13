@@ -11,7 +11,7 @@ permalink: /sprints/
   <p>
     Each sprint adds a page; earlier ones stay as they were. Sprint 1 holds the
     research and charter. Sprint 2 holds the business case, estimate, one-page budget, and
-    changelog. Retrospectives and peer evaluations go to Blackboard only.
+    changelog. Sprint 3 is in progress and contains three sample interviews. Retrospectives and peer evaluations go to Blackboard only.
   </p>
 </header>
 
@@ -24,13 +24,14 @@ permalink: /sprints/
     </a>
   </li>
   <li>
-    <a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-2/' | relative_url }}">
+    <a class="sprint-index__active" href="{{ '/sprints/sprint-2/' | relative_url }}">
       <span>Sprint 2</span>
       <strong>Business case, estimate, and budget</strong>
-      <small>Current</small>
+      <small>Published</small>
     </a>
   </li>
-  {% for sprint in (3..6) %}
+  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Campus dining sample interviews</strong><small>In progress</small></a></li>
+  {% for sprint in (4..6) %}
     <li class="sprint-index__planned">
       <span>Sprint {{ sprint }}</span>
       <strong>Coming later</strong>
