@@ -1,3 +1,0 @@
-Replace the matching files in dlozan62/dlozan62.github.io with the files in this archive, and add how-it-works.html. Use a new branch and open a pull request. The interactive demo is replaced by a static How it works page; the old /demo/ address links to it.
-
-Validation: existing Python unit tests and JavaScript syntax check passed. Full Jekyll build was not run locally because Ruby/Bundler are unavailable. The repository GitHub Actions workflow will build and validate the pages on the pull request.

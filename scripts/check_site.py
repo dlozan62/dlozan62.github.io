@@ -14,6 +14,7 @@ REQUIRED_PAGES = (
     "index.html",
     "about/index.html",
     "demo/index.html",
+    "how-it-works/index.html",
     "404.html",
     "sprints/index.html",
     "sprints/sprint-1/index.html",
