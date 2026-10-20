@@ -29,6 +29,14 @@ if (menuButton && siteNav) {
     }
   });
 
+  // Dismiss the expanded menu when navigating outside the header.
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.site-header')) closeMenu();
+  });
+  document.addEventListener('focusin', (event) => {
+    if (!event.target.closest('.site-header')) closeMenu();
+  });
+
   const desktop = window.matchMedia('(min-width: 761px)');
   desktop.addEventListener('change', () => closeMenu());
 }
