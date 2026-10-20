@@ -27,6 +27,7 @@ REQUIRED_PAGES = (
 )
 CONFLICT_MARKER = re.compile(r"^(?:<{7}|={7}|>{7})(?:\s|$)", re.MULTILINE)
 ORPHAN_HEADING_TEXT = re.compile(r"</h[1-6]>\s*[A-Za-z](?=\s*<)")
+ENCODED_LIQUID = re.compile(r"\{\{%(?:20|09)|%7b%7b", re.IGNORECASE)
 CSS_URL = re.compile(r"url\(\s*['\"]?([^)'\"]+)['\"]?\s*\)")
 SOURCE_TYPES = {".css", ".html", ".js", ".md", ".yml", ".py"}
 IGNORED_SOURCE_DIRS = {".git", "_site", ".jekyll-cache", "vendor", "node_modules", ".venv"}
@@ -38,6 +39,7 @@ class Page(HTMLParser):
         self.ids = []
         self.references = []
         self.images_without_alt = 0
+        self.invalid_links = []
 
     def handle_starttag(self, tag, attributes):
         values = dict(attributes)
@@ -45,6 +47,12 @@ class Page(HTMLParser):
             self.images_without_alt += 1
         if values.get("id"):
             self.ids.append(values["id"])
+        if tag == "a" and ("href" in values or "download" in values):
+            href = (values.get("href") or "").strip()
+            if not href:
+                self.invalid_links.append("anchor has an empty href")
+            elif "{{" in unquote(href) or "{%" in unquote(href):
+                self.invalid_links.append("anchor contains an unresolved template expression")
         for attribute in ("href", "src", "poster"):
             if values.get(attribute):
                 self.references.append(values[attribute])
@@ -76,6 +84,8 @@ def main():
             errors.append(f"{source.relative_to(ROOT)} contains a merge-conflict marker")
         if source.suffix == ".html" and ORPHAN_HEADING_TEXT.search(contents):
             errors.append(f"{source.relative_to(ROOT)} contains text outside a heading")
+        if source.suffix == ".html" and ENCODED_LIQUID.search(contents):
+            errors.append(f"{source.relative_to(ROOT)} contains a percent-encoded Liquid expression")
 
     for relative_path in REQUIRED_PAGES:
         if not (SITE / relative_path).is_file():
@@ -86,7 +96,9 @@ def main():
         relative_path = page_path.relative_to(SITE)
         page = Page()
         page.feed(page_path.read_text(encoding="utf-8"))
-        parsed_pages[page_path] = page
+        # Resolve macOS temporary-directory aliases before comparing link targets.
+        parsed_pages[page_path.resolve()] = page
+        errors.extend(f"{relative_path}: {message}" for message in page.invalid_links)
         duplicates = [identifier for identifier, count in Counter(page.ids).items() if count > 1]
         if duplicates:
             errors.append(f"{relative_path} has duplicate IDs: {', '.join(duplicates)}")
@@ -100,9 +112,9 @@ def main():
                 continue
             target, fragment = resolved
             if not target.is_file():
-                errors.append(f"{page_path.relative_to(SITE)} has missing target: {reference}")
+                errors.append(f"{page_path.relative_to(SITE.resolve())} has missing target: {reference}")
             elif fragment and target in parsed_pages and fragment not in parsed_pages[target].ids:
-                errors.append(f"{page_path.relative_to(SITE)} has missing anchor: {reference}")
+                errors.append(f"{page_path.relative_to(SITE.resolve())} has missing anchor: {reference}")
 
     css_path = SITE / "assets/css/style.css"
     if not css_path.is_file():
