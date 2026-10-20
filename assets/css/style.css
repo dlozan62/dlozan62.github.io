@@ -364,7 +364,23 @@ section[id] {
 }
 
 .home-hero--intro {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+}
+
+.home-dining-photo {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.home-dining-photo img {
+  width: 100%;
+  height: clamp(26rem, 42vw, 34rem);
+  object-fit: cover;
+  object-position: 68% center;
+}
+@media (max-width: 760px) {
+  .home-dining-photo img { height: auto; aspect-ratio: 4 / 3; }
 }
 
 .home-hero h1 {
