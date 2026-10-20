@@ -8,7 +8,7 @@ DineCheck is Team 10's campus dining availability project for CS 4390 / CS 5388 
 
 - **Sprint 1:** market research, business strategy, current project charter, and individual contribution statements.
 - **Sprint 2:** business case and recommendation, estimation appendix, one-page budget, and a separate project changelog.
-- **Sprint 3:** in progress; three interviews with a PDF download.
+- **Sprint 3:** in progress; interviews, team notes and contradiction memos, competitor research, evidence log, candidate risks, and a change note.
 - **Sprints 4–6:** planned; pages are added when the team has work to publish.
 
 Research statements and cost figures come from the team's existing records. Sprint 1 retains the earlier project name where it belongs to that historical record. The PDFs and Word files remain available under `assets/`.
@@ -48,6 +48,7 @@ Open `http://127.0.0.1:4000`. Pages use Jekyll front matter and Liquid filters; 
 ```sh
 python3 -m unittest discover -s tests -v
 node --check assets/js/site.js
+node --test tests/site.test.cjs
 bundle exec jekyll build --strict_front_matter
 python3 scripts/check_site.py
 ```

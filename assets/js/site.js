@@ -103,3 +103,35 @@ if (sections.length) {
   }, { passive: true });
   highlight();
 }
+
+// A direct link to a team member should reveal their notes, even inside a closed entry.
+const revealLinkedSection = () => {
+  let target;
+  try {
+    target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+  } catch {
+    return;
+  }
+  if (!target) return;
+  let opened = false;
+  for (let element = target; element; element = element.parentElement) {
+    if (element.tagName === 'DETAILS' && !element.open) {
+      element.open = true;
+      opened = true;
+    }
+  }
+  if (opened) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+};
+window.addEventListener('hashchange', revealLinkedSection);
+revealLinkedSection();
+
+// Print the answers as well as the questions, then restore the reader's open entries.
+let entriesOpenedForPrint = [];
+window.addEventListener('beforeprint', () => {
+  entriesOpenedForPrint = [...document.querySelectorAll('details:not([open])')];
+  entriesOpenedForPrint.forEach((entry) => { entry.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  entriesOpenedForPrint.forEach((entry) => { entry.open = false; });
+  entriesOpenedForPrint = [];
+});

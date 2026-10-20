@@ -60,7 +60,7 @@ def target_for(page_path, reference):
         target = page_path
     if target.is_dir() or path.endswith("/"):
         target /= "index.html"
-    return target, url.fragment
+    return target.resolve(), unquote(url.fragment)
 
 
 def main():

@@ -28,6 +28,8 @@ jobs:
           bundler-cache: true
       - name: Test the site validator
         run: python3 -m unittest discover -s tests -v
+      - name: Test notes navigation and printing
+        run: node --test tests/site.test.cjs
       - name: Check JavaScript syntax
         run: node --check assets/js/site.js
       - name: Build Jekyll pages

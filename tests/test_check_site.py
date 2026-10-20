@@ -61,3 +61,22 @@ class GeneratedSiteTests(TestCase):
 
             self.assertEqual(result, 1)
             self.assertIn("sprints/sprint-2/index.html has 1 image(s) without alt text", errors.getvalue())
+
+    def test_relative_links_check_the_destination_anchor(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            site = root / "_site"
+            for relative_path in check_site.REQUIRED_PAGES:
+                page = site / relative_path
+                page.parent.mkdir(parents=True, exist_ok=True)
+                page.write_text("<html><body></body></html>", encoding="utf-8")
+            css = site / "assets/css/style.css"
+            css.parent.mkdir(parents=True)
+            css.write_text("", encoding="utf-8")
+            page = site / "sprints/sprint-3/index.html"
+            page.write_text('<a href="../sprint-2/#missing">Report</a>', encoding="utf-8")
+            errors = StringIO()
+            with patch.object(check_site, "ROOT", root), patch.object(check_site, "SITE", site), redirect_stderr(errors):
+                result = check_site.main()
+            self.assertEqual(result, 1)
+            self.assertIn("missing anchor: ../sprint-2/#missing", errors.getvalue())

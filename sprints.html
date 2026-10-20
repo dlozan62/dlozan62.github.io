@@ -1,17 +1,17 @@
 ---
 layout: default
 title: Sprints
-description: Every DineCheck sprint and its documents, from the Sprint 1 research to the Sprint 3 interviews. Find reports and PDF downloads in one place.
+description: Our DineCheck sprint pages, research, reports, and PDF downloads.
 permalink: /sprints/
 ---
 
 <header class="page-intro">
-  <p class="course-line">Project archive</p>
-  <h1>A record of the project, sprint by sprint.</h1>
+  <p class="course-line">Our sprints</p>
+  <h1>Our work, sprint by sprint.</h1>
   <p>
-    Each sprint adds a page; earlier ones stay as they were. Sprint 1 holds the
-    research and charter. Sprint 2 holds the business case, estimate, one-page budget, and
-    changelog. Sprint 3 is in progress and contains three interviews.
+    Sprint 1 covers our research and charter. Sprint 2 covers the business case,
+    estimates, budget, and changelog. In Sprint 3, we’re adding interviews, competitor
+    research, team notes, and changes based on what we found.
   </p>
   <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
 </header>
@@ -31,7 +31,7 @@ permalink: /sprints/
       <small>Complete</small>
     </a>
   </li>
-  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Campus dining interviews</strong><small>In progress</small></a></li>
+  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>In progress</small></a></li>
   {% for sprint in (4..6) %}
     <li class="sprint-index__planned">
       <span>Sprint {{ sprint }}</span>
@@ -43,7 +43,7 @@ permalink: /sprints/
 
 <section class="home-section document-index" id="documents" aria-labelledby="documents-title">
   <header class="section-top"><div><p class="eyebrow">Reports &amp; downloads</p><h2 id="documents-title">Find the document you need.</h2></div></header>
-  <p>Read the web reports or open the original PDFs. Documents are grouped by the sprint that produced them.</p>
+  <p>Read the reports here or download the PDFs. They’re grouped by sprint.</p>
   <div class="document-grid">
     <article class="document-group"><p class="eyebrow">Sprint 1</p><h3>Research &amp; scope</h3><ul>
       <li><a href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Market research</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-1-market-research.pdf' | relative_url }}" aria-label="Market research (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
@@ -56,8 +56,15 @@ permalink: /sprints/
       <li><a href="{{ '/sprints/sprint-2/#budget' | relative_url }}">One-page budget</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-one-page-budget.pdf' | relative_url }}" aria-label="One-page budget (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Project changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-changelog.pdf' | relative_url }}" aria-label="Project changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
-    <article class="document-group"><p class="eyebrow">Sprint 3</p><h3>Dining interviews</h3><ul>
-      <li><a href="{{ '/sprints/sprint-3/' | relative_url }}">Three interview perspectives</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Three interview perspectives (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    <article class="document-group"><p class="eyebrow">Sprint 3</p><h3>Research &amp; findings</h3><ul>
+      <li><a href="{{ '/sprints/sprint-3/' | relative_url }}">Campus dining interviews</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Campus dining interviews (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#interview-notes' | relative_url }}">Interview notes</a></li>
+      <li><a href="{{ '/sprints/sprint-3/#contradiction-memo' | relative_url }}">Contradiction memos</a></li>
+      <li><a href="{{ '/sprints/sprint-3/#competitor-analysis' | relative_url }}">Competitor analysis</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" aria-label="Competitor analysis (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#competitive-landscape' | relative_url }}">Competitive landscape</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" aria-label="Competitive landscape (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#evidence-log' | relative_url }}">Team evidence log</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" aria-label="Team evidence log (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#candidate-risks' | relative_url }}">Candidate risk entries</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Candidate risk entries (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#change-note' | relative_url }}">Change note</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Change note (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
   </div>
   <p class="source-note">Sprint 3 is in progress. Materials for Sprints 4–6 will appear when published.</p>

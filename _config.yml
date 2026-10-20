@@ -17,3 +17,6 @@ exclude:
   - tests
   - tmp
   - REDESIGN_README.md
+  - "*.patch"
+  - "*.zip"
+  - SPRINT-3-UPDATE-INSTRUCTIONS.txt

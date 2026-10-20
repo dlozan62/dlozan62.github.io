@@ -602,6 +602,10 @@ section[id] {
   margin-top: auto;
 }
 
+.sprint-card > .text-link {
+  margin-top: .9rem;
+}
+
 .sprint-card.current {
   background: linear-gradient(145deg,#303030,#202020);
   border-color: #404040;
@@ -750,17 +754,22 @@ section[id] {
 .on-page-nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: .6rem 1.6rem;
   margin: 0;
-  padding: 0;
+  padding: .2rem .25rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
 }
 
 .on-page-nav li {
   margin: 0;
+  flex: 0 0 auto;
 }
 
 .on-page-nav a {
+  white-space: nowrap;
   font-size: .875rem;
   text-decoration: none;
   color: var(--muted);
@@ -1809,7 +1818,7 @@ html { scroll-padding-top:7rem; }
 }
 .sprint-research .charter-section__heading { padding-bottom: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
 .sprint-research .charter-section__heading h2 { max-width: 32ch; font-size: clamp(1.45rem, 3vw, 2rem); }
-.sprint-research .prose { max-width: none; }
+.sprint-research .prose { max-width: none; min-width: 0; overflow-wrap: break-word; }
 .sprint-research .prose .hero-actions { margin-bottom: 1.75rem; }
 .sprint-downloads { padding-block: 1.5rem; scroll-margin-top: 8rem; }
 .research-download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
@@ -1817,7 +1826,7 @@ html { scroll-padding-top:7rem; }
 .research-download h3 { font-size: 1.35rem; margin-top: .5rem; }
 .research-download p { color: var(--muted); font-size: .9375rem; }
 .research-download__links { display: flex; flex-wrap: wrap; gap: .75rem 1.4rem; margin-top: auto; font-weight: 600; font-size: .875rem; }
-.research-download__links a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.research-download__links a { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .35rem; }
 .interview-question { border-top: 1px solid var(--line); }
 .interview-question:last-child { border-bottom: 1px solid var(--line); }
 .interview-question summary { cursor: pointer; padding: 1.1rem .4rem; font-weight: 650; color: var(--navy); line-height: 1.55; }
@@ -2050,7 +2059,7 @@ html { scroll-padding-top:7rem; }
   }
 
   .on-page-nav {
-    padding: .85rem 0;
+    padding: .35rem 0;
   }
 
   .on-page-nav ul {
