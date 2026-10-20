@@ -1,0 +1,745 @@
+diff --git a/.github/workflows/site-check.yml b/.github/workflows/site-check.yml
+index 080d5c2..70ffab5 100644
+--- a/.github/workflows/site-check.yml
++++ b/.github/workflows/site-check.yml
+@@ -28,6 +28,8 @@ jobs:
+           bundler-cache: true
+       - name: Test the site validator
+         run: python3 -m unittest discover -s tests -v
++      - name: Test notes navigation and printing
++        run: node --test tests/site.test.cjs
+       - name: Check JavaScript syntax
+         run: node --check assets/js/site.js
+       - name: Build Jekyll pages
+diff --git a/404.html b/404.html
+index 11140dd..73c3725 100644
+--- a/404.html
++++ b/404.html
+@@ -4,4 +4,4 @@ title: Page Not Found
+ description: Find your way back to the DineCheck project portal.
+ permalink: /404.html
+ ---
+-<header class="page-intro"><p class="course-line">404 · Page not found</p><h1>Let’s get you back on track.</h1><p>This page may have moved, or the address may be incomplete. Explore the current project records or return to the homepage.</p><div class="hero-actions"><a class="button button--orange" href="{{ '/' | relative_url }}">Go to the homepage</a><a class="button button--outline" href="{{ '/sprints/' | relative_url }}">Browse project work</a></div></header>
++<header class="page-intro"><p class="course-line">404 · Page not found</p><h1>We couldn’t find that page.</h1><p>The link may be old or the address may be wrong. Head back to the homepage or find what you need under Project work.</p><div class="hero-actions"><a class="button button--orange" href="{{ '/' | relative_url }}">Go to the homepage</a><a class="button button--outline" href="{{ '/sprints/' | relative_url }}">Browse project work</a></div></header>
+diff --git a/README.md b/README.md
+index 1e7160c..bbdb74c 100644
+--- a/README.md
++++ b/README.md
+@@ -8,7 +8,7 @@ DineCheck is Team 10's campus dining availability project for CS 4390 / CS 5388
+ 
+ - **Sprint 1:** market research, business strategy, current project charter, and individual contribution statements.
+ - **Sprint 2:** business case and recommendation, estimation appendix, one-page budget, and a separate project changelog.
+-- **Sprint 3:** in progress; three interviews with a PDF download.
++- **Sprint 3:** in progress; interviews, team notes and contradiction memos, competitor research, evidence log, candidate risks, and a change note.
+ - **Sprints 4–6:** planned; pages are added when the team has work to publish.
+ 
+ Research statements and cost figures come from the team's existing records. Sprint 1 retains the earlier project name where it belongs to that historical record. The PDFs and Word files remain available under `assets/`.
+@@ -48,6 +48,7 @@ Open `http://127.0.0.1:4000`. Pages use Jekyll front matter and Liquid filters;
+ ```sh
+ python3 -m unittest discover -s tests -v
+ node --check assets/js/site.js
++node --test tests/site.test.cjs
+ bundle exec jekyll build --strict_front_matter
+ python3 scripts/check_site.py
+ ```
+diff --git a/_config.yml b/_config.yml
+index c621e77..d89ceba 100644
+--- a/_config.yml
++++ b/_config.yml
+@@ -17,3 +17,6 @@ exclude:
+   - tests
+   - tmp
+   - REDESIGN_README.md
++  - "*.patch"
++  - "*.zip"
++  - SPRINT-3-UPDATE-INSTRUCTIONS.txt
+diff --git a/_layouts/default.html b/_layouts/default.html
+index f02b973..93e9e30 100644
+--- a/_layouts/default.html
++++ b/_layouts/default.html
+@@ -15,8 +15,8 @@
+     <meta property="og:image" content="{{ '/assets/images/campus-dining-work-session.jpg' | absolute_url }}">
+     <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+     <link rel="preload" href="{{ '/assets/fonts/CabinetGrotesk-Bold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=charcoal-1">
+-    <script src="{{ '/assets/js/site.js' | relative_url }}?v=charcoal-1" defer></script>
++    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=site-review-2">
++    <script src="{{ '/assets/js/site.js' | relative_url }}?v=site-review-2" defer></script>
+   </head>
+   <body id="page-top">
+     <a class="skip-link" href="#main-content">Skip to content</a>
+@@ -64,7 +64,7 @@
+         <nav aria-label="Footer navigation"><p class="footer-label">Explore</p><ul><li><a href="{{ '/sprints/' | relative_url }}">Project work</a></li><li><a href="{{ '/how-it-works/' | relative_url }}">How it works</a></li><li><a href="{{ '/about/' | relative_url }}">Our team</a></li><li><a href="https://github.com/dlozan62/dlozan62.github.io">Source repository</a></li></ul></nav>
+         <div><p class="footer-label">Team 10</p><p class="footer-course">CS 4390 / CS 5388<br>Software Project Management</p></div>
+       </div>
+-      <div class="footer-bottom"><span>DineCheck · Project portal</span><span>Research, planning, and project decisions.</span></div>
++      <div class="footer-bottom"><span>DineCheck · Course project</span><span>A student project by Team 10.</span></div>
+     </footer>
+   </body>
+ </html>
+diff --git a/about.html b/about.html
+index 3fedcbb..1e75d1c 100644
+--- a/about.html
++++ b/about.html
+@@ -9,8 +9,8 @@ permalink: /about/
+   <p class="course-line">Meet the team</p>
+   <h1>The team behind DineCheck.</h1>
+   <p>
+-    Our team combines research, planning, documentation, and web development
+-    to study whether timely availability information can improve campus dining decisions.
++    We’re Team 10. For our Software Project Management class, we’re researching
++    campus dining problems and planning DineCheck.
+   </p>
+ </header>
+ 
+@@ -35,9 +35,8 @@ permalink: /about/
+     </div>
+ 
+     <p>
+-      Zachary focuses on the website and documentation. The current charter
+-      assigns him to maintain project documentation and present the research
+-      and scope clearly.
++      Zachary works on the website and project documents, including how we
++      organize and share our research.
+     </p>
+   </article>
+ 
+@@ -61,8 +60,7 @@ permalink: /about/
+     </div>
+ 
+     <p>
+-      Salvador focuses on research and development. The current charter
+-      assigns him to support interviews, research synthesis, charter work,
++      Salvador works on interviews, research findings, the project charter,
+       and prototype development.
+     </p>
+   </article>
+@@ -87,9 +85,8 @@ permalink: /about/
+     </div>
+ 
+     <p>
+-      Daniel focuses on database and development work. The current charter
+-      assigns him to support requirements, data design, documentation, and
+-      technical development.
++      Daniel works on the database, requirements, data design,
++      documentation, and development.
+     </p>
+   </article>
+ 
+@@ -111,9 +108,8 @@ permalink: /about/
+     </div>
+ 
+     <p>
+-      Jacob focuses on website development. The current charter assigns him
+-      to support the website and prototype and help present dining
+-      information clearly.
++      Jacob works on the website and prototype, helping organize
++      the dining information students would see.
+     </p>
+   </article>
+ </section>
+diff --git a/assets/css/style.css b/assets/css/style.css
+index 4571536..71b95bf 100644
+--- a/assets/css/style.css
++++ b/assets/css/style.css
+@@ -602,6 +602,10 @@ section[id] {
+   margin-top: auto;
+ }
+ 
++.sprint-card > .text-link {
++  margin-top: .9rem;
++}
++
+ .sprint-card.current {
+   background: linear-gradient(145deg,#303030,#202020);
+   border-color: #404040;
+@@ -750,17 +754,22 @@ section[id] {
+ .on-page-nav ul {
+   list-style: none;
+   display: flex;
+-  flex-wrap: wrap;
++  flex-wrap: nowrap;
+   gap: .6rem 1.6rem;
+   margin: 0;
+-  padding: 0;
++  padding: .2rem .25rem;
++  overflow-x: auto;
++  scrollbar-width: thin;
++  overscroll-behavior-x: contain;
+ }
+ 
+ .on-page-nav li {
+   margin: 0;
++  flex: 0 0 auto;
+ }
+ 
+ .on-page-nav a {
++  white-space: nowrap;
+   font-size: .875rem;
+   text-decoration: none;
+   color: var(--muted);
+@@ -1809,7 +1818,7 @@ html { scroll-padding-top:7rem; }
+ }
+ .sprint-research .charter-section__heading { padding-bottom: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+ .sprint-research .charter-section__heading h2 { max-width: 32ch; font-size: clamp(1.45rem, 3vw, 2rem); }
+-.sprint-research .prose { max-width: none; }
++.sprint-research .prose { max-width: none; min-width: 0; overflow-wrap: break-word; }
+ .sprint-research .prose .hero-actions { margin-bottom: 1.75rem; }
+ .sprint-downloads { padding-block: 1.5rem; scroll-margin-top: 8rem; }
+ .research-download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+@@ -1817,7 +1826,7 @@ html { scroll-padding-top:7rem; }
+ .research-download h3 { font-size: 1.35rem; margin-top: .5rem; }
+ .research-download p { color: var(--muted); font-size: .9375rem; }
+ .research-download__links { display: flex; flex-wrap: wrap; gap: .75rem 1.4rem; margin-top: auto; font-weight: 600; font-size: .875rem; }
+-.research-download__links a { min-height: 2.75rem; display: inline-flex; align-items: center; }
++.research-download__links a { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .35rem; }
+ .interview-question { border-top: 1px solid var(--line); }
+ .interview-question:last-child { border-bottom: 1px solid var(--line); }
+ .interview-question summary { cursor: pointer; padding: 1.1rem .4rem; font-weight: 650; color: var(--navy); line-height: 1.55; }
+@@ -2050,7 +2059,7 @@ html { scroll-padding-top:7rem; }
+   }
+ 
+   .on-page-nav {
+-    padding: .85rem 0;
++    padding: .35rem 0;
+   }
+ 
+   .on-page-nav ul {
+diff --git a/assets/js/site.js b/assets/js/site.js
+index cfddac7..96a1a3a 100644
+--- a/assets/js/site.js
++++ b/assets/js/site.js
+@@ -103,3 +103,35 @@ if (sections.length) {
+   }, { passive: true });
+   highlight();
+ }
++
++// A direct link to a team member should reveal their notes, even inside a closed entry.
++const revealLinkedSection = () => {
++  let target;
++  try {
++    target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
++  } catch {
++    return;
++  }
++  if (!target) return;
++  let opened = false;
++  for (let element = target; element; element = element.parentElement) {
++    if (element.tagName === 'DETAILS' && !element.open) {
++      element.open = true;
++      opened = true;
++    }
++  }
++  if (opened) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
++};
++window.addEventListener('hashchange', revealLinkedSection);
++revealLinkedSection();
++
++// Print the answers as well as the questions, then restore the reader's open entries.
++let entriesOpenedForPrint = [];
++window.addEventListener('beforeprint', () => {
++  entriesOpenedForPrint = [...document.querySelectorAll('details:not([open])')];
++  entriesOpenedForPrint.forEach((entry) => { entry.open = true; });
++});
++window.addEventListener('afterprint', () => {
++  entriesOpenedForPrint.forEach((entry) => { entry.open = false; });
++  entriesOpenedForPrint = [];
++});
+diff --git a/demo.html b/demo.html
+index 1e72330..a9745f8 100644
+--- a/demo.html
++++ b/demo.html
+@@ -4,4 +4,4 @@ title: How it works
+ description: The DineCheck concept demo has been replaced with a guide to the planned workflow.
+ permalink: /demo/
+ ---
+-<header class="page-intro"><p class="course-line">DineCheck project guide</p><h1>Explore the planned workflow.</h1><p>The interactive demo has been replaced with an overview of how DineCheck could help students check dining availability before leaving.</p><a class="button button--orange" href="{{ '/how-it-works/' | relative_url }}">See how it works <span aria-hidden="true">→</span></a></header>
++<header class="page-intro"><p class="course-line">DineCheck project guide</p><h1>See how we plan for DineCheck to work.</h1><p>We replaced the old demo with a page explaining our plan for student searches and dining staff updates.</p><a class="button button--orange" href="{{ '/how-it-works/' | relative_url }}">See how it works <span aria-hidden="true">→</span></a></header>
+diff --git a/how-it-works.html b/how-it-works.html
+index 8992a4e..5d8cc32 100644
+--- a/how-it-works.html
++++ b/how-it-works.html
+@@ -4,9 +4,9 @@ title: How it works
+ description: Learn how DineCheck proposes to connect dining-staff updates with better student dining decisions.
+ permalink: /how-it-works/
+ ---
+-<header class="page-intro"><p class="course-line">The DineCheck approach · Planned workflow</p><h1>Check first.<br>Walk with a plan.</h1><p>DineCheck proposes to bring dining hours, menu availability, and update times into one place so students can decide where to eat before crossing campus.</p><p class="source-note">This page describes the proposed system. Live campus data and staff integration are still to be validated.</p></header>
++<header class="page-intro"><p class="course-line">Our plan for DineCheck</p><h1>Check before you walk.</h1><p>Our idea is to put dining hours, item availability, and update times in one place so students can choose where to eat before leaving.</p><p class="source-note">This is how we plan for DineCheck to work. It isn’t connected to live campus dining data yet.</p></header>
+ <section class="home-section" aria-labelledby="student-title">
+-  <header class="section-top"><div><p class="eyebrow">For students</p><h2 id="student-title">Three steps to a more informed choice.</h2></div></header>
++  <header class="section-top"><div><p class="eyebrow">For students</p><h2 id="student-title">How students would use it.</h2></div></header>
+   <ol class="progress-track">
+     <li><span class="badge">01 · Find</span><h3>Check what's open</h3><p>Review a dining location's hours and service status before leaving. An open building may have different kitchen hours.</p></li>
+     <li><span class="badge">02 · Compare</span><h3>Look for your meal</h3><p>Check which menu items are available and review dietary information. Confirm allergens and suitability with dining staff.</p></li>
+@@ -14,19 +14,19 @@ permalink: /how-it-works/
+   </ol>
+ </section>
+ <section class="home-section" aria-labelledby="staff-title">
+-  <header class="section-top"><div><p class="eyebrow">For dining staff</p><h2 id="staff-title">A small update that helps the next student.</h2></div></header>
++  <header class="section-top"><div><p class="eyebrow">For dining staff</p><h2 id="staff-title">How staff would keep it updated.</h2></div></header>
+   <div class="evidence-cards">
+     <article><h3>Update service status</h3><p>Record changes to hours or service so students can see when a kitchen closes or a location stops serving.</p></article>
+     <article><h3>Keep availability current</h3><p>Mark an item unavailable when it sells out and available again when it returns to the menu.</p></article>
+-    <article><h3>Show when it changed</h3><p>Pair each update with a visible timestamp so students can assess the freshness of the information.</p></article>
++    <article><h3>Show when it changed</h3><p>Show when each status was last updated so students can tell how old the information is.</p></article>
+   </div>
+ </section>
+ <section class="home-section" aria-labelledby="validation-title">
+-  <header class="section-top"><div><p class="eyebrow">The next questions</p><h2 id="validation-title">What the team still needs to validate.</h2></div></header>
++  <header class="section-top"><div><p class="eyebrow">The next questions</p><h2 id="validation-title">What we still need to test.</h2></div></header>
+   <div class="evidence-cards">
+-    <article><h3>Reliable information</h3><p>Confirm access to campus dining data and define how outdated or missing information should appear.</p></article>
+-    <article><h3>A practical staff workflow</h3><p>Determine who can maintain updates and whether the process fits a busy dining shift.</p></article>
+-    <article><h3>Clear student decisions</h3><p>Evaluate whether students understand the status information and can use it to choose where to eat.</p></article>
++    <article><h3>Reliable information</h3><p>Find out what dining data we can access and how to label missing or outdated information.</p></article>
++    <article><h3>A practical staff workflow</h3><p>Find out who would post updates and whether they could keep up during a busy shift.</p></article>
++    <article><h3>Clear student decisions</h3><p>Test whether students understand the statuses and find them useful when choosing where to eat.</p></article>
+   </div>
+-  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">Read the project scope</a><a class="button button--outline" href="{{ '/sprints/sprint-3/' | relative_url }}">Explore the interviews</a></div>
++  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">Read the project scope</a><a class="button button--outline" href="{{ '/sprints/sprint-3/' | relative_url }}">Read the Sprint 3 research</a></div>
+ </section>
+diff --git a/index.html b/index.html
+index f2ffbcb..be67803 100644
+--- a/index.html
++++ b/index.html
+@@ -6,52 +6,52 @@ permalink: /
+ ---
+ <section class="home-hero home-hero--intro" aria-labelledby="hero-title">
+   <div class="hero-copy">
+-    <p class="eyebrow">Team 10 · DineCheck project portal</p>
++    <p class="eyebrow">Team 10 · Campus dining project</p>
+     <h1 id="hero-title">What's open.<br>What's left.<br><span>Before you go.</span></h1>
+-    <p class="hero-description">Better information for a better dining decision. We're exploring how current hours and menu availability can help students avoid wasted trips across campus.</p>
+-    <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">Explore Sprint 3</a><a class="button button--outline" href="{{ '/how-it-works/' | relative_url }}">See how it works</a></div>
+-    <p class="hero-note">A student project in research, planning, and prototype evaluation.</p>
++    <p class="hero-description">Finding food between classes shouldn’t mean walking across campus for something that’s already sold out. We’re working on DineCheck to help students check what’s open and what’s available before they go.</p>
++    <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">View Sprint 3</a><a class="button button--outline" href="{{ '/how-it-works/' | relative_url }}">See how it works</a></div>
++    <p class="hero-note">Our Software Project Management class project. We’re still researching and planning the system.</p>
+   </div>
+   <figure class="home-dining-photo">
+     <img src="{{ '/assets/images/campus-dining-work-session.jpg' | relative_url }}" alt="Meals, notebooks, and a campus map arranged on a dining table" width="1536" height="1024" fetchpriority="high">
+   </figure>
+ </section>
+ <section class="project-strip" aria-label="Project overview">
+-  <div><strong>12</strong><span>Focused availability interviews</span></div><div><strong>4</strong><span>Team members</span></div><div><strong>6</strong><span>Planned project sprints</span></div><div><strong>Sprint 3</strong><span>Current sprint · In progress</span></div>
++  <div><strong>12</strong><span>Sprint 1 interviews</span></div><div><strong>4</strong><span>Team members</span></div><div><strong>6</strong><span>Planned project sprints</span></div><div><strong>Sprint 3</strong><span>Current sprint · In progress</span></div>
+ </section>
+ <section class="home-section" aria-labelledby="project-record-title">
+-  <header class="section-top"><div><p class="eyebrow">The project record</p><h2 id="project-record-title">Research first. A plan next.</h2></div><a class="text-link" href="{{ '/sprints/' | relative_url }}">View all sprints &amp; documents</a></header>
++  <header class="section-top"><div><p class="eyebrow">Our work</p><h2 id="project-record-title">What we’ve worked on so far.</h2></div><a class="text-link" href="{{ '/sprints/' | relative_url }}">View all sprints &amp; documents</a></header>
+   <div class="sprint-cards">
+-    <article class="sprint-card"><div class="card-top"><span class="card-number">Sprint 01</span><span class="badge">Complete</span></div><h3>Research &amp; charter</h3><p>The interview findings, change in direction, and scope behind the campus dining availability project.</p><ul><li>Market research</li><li>Business strategy</li><li>Project charter</li></ul><a class="button button--outline" href="{{ '/sprints/sprint-1/' | relative_url }}">Read Sprint 1</a></article>
+-    <article class="sprint-card"><div class="card-top"><span class="card-number">Sprint 02</span><span class="badge">Complete</span></div><h3>The business case</h3><p>One slice of DineCheck, estimated two ways and evaluated against its costs, risks, and potential value.</p><ul><li>Business case &amp; recommendation</li><li>Estimation appendix &amp; budget</li><li>Project changelog</li></ul><a class="button button--outline" href="{{ '/sprints/sprint-2/' | relative_url }}">Read Sprint 2</a></article>
++    <article class="sprint-card"><div class="card-top"><span class="card-number">Sprint 01</span><span class="badge">Complete</span></div><h3>Research &amp; charter</h3><p>Why we chose this problem and what we plan to build.</p><ul><li>Market research</li><li>Business strategy</li><li>Project charter</li></ul><a class="button button--outline" href="{{ '/sprints/sprint-1/' | relative_url }}">Read Sprint 1</a></article>
++    <article class="sprint-card"><div class="card-top"><span class="card-number">Sprint 02</span><span class="badge">Complete</span></div><h3>The business case</h3><p>Our cost and effort estimates, budget, and reasons for moving forward.</p><ul><li>Business case &amp; recommendation</li><li>Estimation appendix &amp; budget</li><li>Project changelog</li></ul><a class="button button--outline" href="{{ '/sprints/sprint-2/' | relative_url }}">Read Sprint 2</a></article>
+     <article class="sprint-card current">
+       <div class="card-top">
+         <span class="card-number">Sprint 03</span>
+         <span class="badge">In progress</span>
+       </div>
+-      <h3>Campus dining interviews</h3>
+-      <p>Explore three sample interviews about time between classes, dietary preferences, and familiar dining routines.</p>
++      <h3>Interviews &amp; findings</h3>
++      <p>Three sample interviews, competitor research, and what those findings mean for DineCheck.</p>
+       <ul>
+-        <li>Three interview perspectives</li>
+-        <li>Full questions and responses</li>
+-        <li>Downloadable PDF</li>
++        <li>Team interview notes &amp; contradiction memos</li>
++        <li>Competitor analysis &amp; evidence log</li>
++        <li>Candidate risks &amp; change note</li>
+       </ul>
+       <a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">Read Sprint 3</a>
+       <a class="text-link" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" download>Download interviews · PDF</a>
+     </article>
+ 
+   </div>
+-  <p class="next-sprints">Sprints 4–6 are planned. Their materials will be published as the project progresses.</p>
++  <p class="next-sprints">We’ll add Sprints 4–6 as we finish the work.</p>
+ </section>
+-<section class="research-feature" aria-labelledby="research-title"><div class="research-feature__inner"><div><p class="eyebrow">The research question</p><h2 id="research-title">Can timely status information prevent a wasted trip?</h2><p>Twelve focused interviews documented dining experiences where the food or service available on arrival did not always match earlier information.</p><p>The team is testing whether students can make a more informed choice before they leave.</p><a class="text-link" href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Read the research</a></div><img src="{{ '/assets/images/team-work-session.jpg' | relative_url }}" alt="Notebooks and laptops arranged for a campus dining research work session" width="1536" height="864" loading="lazy"></div></section>
++<section class="research-feature" aria-labelledby="research-title"><div class="research-feature__inner"><div><p class="eyebrow">Why we chose this</p><h2 id="research-title">Can we help students avoid a wasted trip?</h2><p>In our twelve Sprint 1 interviews, students described arriving to find food sold out or a kitchen no longer serving.</p><p>We want to find out whether checking availability before leaving would make those trips easier.</p><a class="text-link" href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Read the research</a></div><img src="{{ '/assets/images/team-work-session.jpg' | relative_url }}" alt="Notebooks and laptops arranged for a campus dining research work session" width="1536" height="864" loading="lazy"></div></section>
+ <section class="home-section" aria-labelledby="evidence-title">
+-  <header class="section-top"><div><p class="eyebrow">What we heard</p><h2 id="evidence-title">The cost of finding out too late.</h2></div><a class="text-link" href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Explore the evidence</a></header>
+-  <div class="evidence-cards"><article><strong>25 minutes</strong><h3>A walk across campus</h3><p>One student walked for pizza after finding an empty grab-and-go case.</p></article><article><strong>About $18</strong><h3>An unexpected delivery order</h3><p>One student found a cafe open after its kitchen had closed.</p></article><article><strong>12 interviews</strong><h3>A focused research round</h3><p>These examples establish a problem to investigate, not its campus-wide frequency.</p></article></div>
+-  <p class="source-note">Anonymized examples summarized from the Sprint 1 research, also documented in the <a href="{{ '/sprints/sprint-2/#problem' | relative_url }}">Sprint 2 business case</a>.</p>
++  <header class="section-top"><div><p class="eyebrow">What we heard</p><h2 id="evidence-title">What happens when the information is wrong.</h2></div><a class="text-link" href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Read the findings</a></header>
++  <div class="evidence-cards"><article><strong>25 minutes</strong><h3>A walk across campus</h3><p>One student walked for pizza after finding an empty grab-and-go case.</p></article><article><strong>About $18</strong><h3>An unexpected delivery order</h3><p>One student found a cafe open after its kitchen had closed.</p></article><article><strong>12 interviews</strong><h3>A small research sample</h3><p>These interviews help us understand the problem, but don’t tell us how often it happens across campus.</p></article></div>
++  <p class="source-note">These examples come from our Sprint 1 research and are also discussed in the <a href="{{ '/sprints/sprint-2/#problem' | relative_url }}">Sprint 2 business case</a>.</p>
+ </section>
+ <section class="home-section progress-section" aria-labelledby="progress-title">
+-  <header class="section-top"><div><p class="eyebrow">Where the project stands</p><h2 id="progress-title">From evidence to a testable idea.</h2></div><a class="text-link" href="{{ '/sprints/' | relative_url }}">Open the project archive</a></header>
+-  <ol class="progress-track"><li><span class="badge">Complete · Sprint 1</span><h3>Understand the problem</h3><p>Interviews, research synthesis, strategy, and charter.</p></li><li ><span class="badge">Complete · Sprint 2</span><h3>Evaluate the investment</h3><p>Business case, estimates, and budget. Record revised October 5, 2026.</p></li><li><span class="badge">In progress · Sprint 3</span><h3>Explore dining decisions</h3><p>Three interviews are available to read and download. Sprints 4–6 remain planned. <a href="{{ '/sprints/sprint-3/' | relative_url }}">Read Sprint 3</a></p></li></ol>
++  <header class="section-top"><div><p class="eyebrow">Project progress</p><h2 id="progress-title">Where we are now.</h2></div><a class="text-link" href="{{ '/sprints/' | relative_url }}">View all sprints</a></header>
++  <ol class="progress-track"><li><span class="badge">Complete · Sprint 1</span><h3>Understand the problem</h3><p>Interviews, findings, project strategy, and charter.</p></li><li ><span class="badge">Complete · Sprint 2</span><h3>Estimate the work</h3><p>Business case, estimates, and budget. Record revised October 5, 2026.</p></li><li class="progress-current"><span class="badge">In progress · Sprint 3</span><h3>Review the latest findings</h3><p>Interviews, team notes, competitor research, risks, and proposed changes are available. <a href="{{ '/sprints/sprint-3/' | relative_url }}">Read Sprint 3</a></p></li></ol>
+ </section>
+-<section class="home-team"><div><p class="eyebrow">The people behind the project</p><h2>Four students.<br>One shared direction.</h2><p>Research, documentation, data design, and development come together in Team 10.</p><a class="button button--outline" href="{{ '/about/' | relative_url }}">Meet the team</a></div><div class="team-preview"><a href="{{ '/about/' | relative_url }}#zachary"><img src="{{ '/assets/images/team/zachary.PNG' | relative_url }}" alt="Zachary Carrejo" loading="lazy"><span>Zachary</span></a><a href="{{ '/about/' | relative_url }}#salvador"><img src="{{ '/assets/images/team/salvador-rodarte.png' | relative_url }}" alt="Salvador Rodarte" loading="lazy"><span>Salvador</span></a><a href="{{ '/about/' | relative_url }}#daniel"><img src="{{ '/assets/images/team/daniel.PNG' | relative_url }}" alt="Daniel Lozano" loading="lazy"><span>Daniel</span></a><a href="{{ '/about/' | relative_url }}#jacob"><img src="{{ '/assets/images/team/Jacob.png' | relative_url }}" alt="Jacob Ordonez" loading="lazy"><span>Jacob</span></a></div></section>
+-<aside class="disclosure" aria-labelledby="ai-disclosure-title"><h2 id="ai-disclosure-title" class="disclosure__title">AI use disclosure</h2><p>AI assisted with website design, development, and drafts of these web summaries. The source research and current charter are linked on Sprint 1.</p></aside>
++<section class="home-team"><div><p class="eyebrow">Our team</p><h2>Meet Team 10.</h2><p>We’re four students working on the research, planning, documentation, and website for DineCheck.</p><a class="button button--outline" href="{{ '/about/' | relative_url }}">Meet the team</a></div><div class="team-preview"><a href="{{ '/about/' | relative_url }}#zachary"><img src="{{ '/assets/images/team/zachary.PNG' | relative_url }}" alt="Zachary Carrejo" loading="lazy"><span>Zachary</span></a><a href="{{ '/about/' | relative_url }}#salvador"><img src="{{ '/assets/images/team/salvador-rodarte.png' | relative_url }}" alt="Salvador Rodarte" loading="lazy"><span>Salvador</span></a><a href="{{ '/about/' | relative_url }}#daniel"><img src="{{ '/assets/images/team/daniel.PNG' | relative_url }}" alt="Daniel Lozano" loading="lazy"><span>Daniel</span></a><a href="{{ '/about/' | relative_url }}#jacob"><img src="{{ '/assets/images/team/Jacob.png' | relative_url }}" alt="Jacob Ordonez" loading="lazy"><span>Jacob</span></a></div></section>
++<aside class="disclosure" aria-labelledby="ai-disclosure-title"><h2 id="ai-disclosure-title" class="disclosure__title">AI use disclosure</h2><p>We used AI to help with the website, code, and drafts of the page summaries. Our source documents and project charter are linked in Sprint 1.</p></aside>
+diff --git a/scripts/check_site.py b/scripts/check_site.py
+index 2bd5e74..72ee3b2 100644
+--- a/scripts/check_site.py
++++ b/scripts/check_site.py
+@@ -60,7 +60,7 @@ def target_for(page_path, reference):
+         target = page_path
+     if target.is_dir() or path.endswith("/"):
+         target /= "index.html"
+-    return target, url.fragment
++    return target.resolve(), unquote(url.fragment)
+ 
+ 
+ def main():
+diff --git a/sprint-1.html b/sprint-1.html
+index 3a177ec..17948a8 100644
+--- a/sprint-1.html
++++ b/sprint-1.html
+@@ -12,8 +12,7 @@ permalink: /sprints/sprint-1/
+     We started out working on meal-plan preferences. A later round of
+     research turned up a more immediate problem: students sometimes find out
+     that food or a service is unavailable only after they reach a dining
+-    location. Sprint 1 records that change in direction and the charter for
+-    the next round of validation.
++    location. This page explains why we changed direction and what we planned to test next.
+   </p>
+ </header>
+ 
+@@ -50,7 +49,7 @@ permalink: /sprints/sprint-1/
+         <span class="research-timeline__step">Current Direction</span>
+         <div>
+           <h3>Test a Dining Availability System</h3>
+-          <p>The team compared five candidate ideas and selected availability as the problem to validate further. The present charter covers research, requirements, and prototype evaluation.</p>
++          <p>We compared five ideas and chose to focus on dining availability. Our charter covers the research, requirements, and prototype testing.</p>
+         </div>
+       </li>
+     </ol>
+@@ -126,7 +125,7 @@ permalink: /sprints/sprint-1/
+         </dl>
+       </article>
+     </div>
+-    <p class="source-note">The Sprint 1 retrospective and peer evaluations go to Blackboard and are not part of this public portal.</p>
++    <p class="source-note">We submit the Sprint 1 retrospective and peer evaluations through Blackboard.</p>
+   </section>
+   <nav class="sprint-pager" aria-label="Sprint navigation">
+     <a href="{{ '/sprints/' | relative_url }}"><span>All sprints</span>Sprint archive</a>
+diff --git a/sprint-2.html b/sprint-2.html
+index 78fcea2..cd16ceb 100644
+--- a/sprint-2.html
++++ b/sprint-2.html
+@@ -9,13 +9,13 @@ permalink: /sprints/sprint-2/
+   <p class="course-line">Sprint 2 · Business case · Revised October 5, 2026</p>
+   <h1>The business case for DineCheck.</h1>
+   <p>
+-    The team estimated one slice of DineCheck using function points and use-case
+-    points, priced it at $60 per hour, and evaluated its costs, risks, and potential value.
++    We estimated the first part of DineCheck using function points and use-case
++    points, used a rate of $60 per hour, and compared the expected costs and benefits.
+   </p>
+ </header>
+ 
+ <section class="decision-summary" aria-labelledby="summary-title">
+-  <div><p class="eyebrow">Sprint 2 at a glance</p><h2 id="summary-title">Go, with conditions.</h2><p>The team’s recommendation depends on reliable staff updates and collaboration with campus dining. These are planning estimates, not committed funding or a delivery promise.</p><a class="text-link" href="#go-no-go">Read the recommendation →</a></div>
++  <div><p class="eyebrow">Sprint 2 at a glance</p><h2 id="summary-title">Go, with conditions.</h2><p>We recommend moving forward if we can arrange reliable staff updates and work with campus dining. The numbers below are estimates; we haven’t secured funding or promised a delivery date.</p><a class="text-link" href="#go-no-go">Read the recommendation →</a></div>
+   <dl class="summary-metrics"><div><dt>Expected team effort</dt><dd>694 <span>hours</span></dd></div><div><dt>Total budget request</dt><dd>$45,919</dd></div><div><dt>Estimated schedule</dt><dd>5.8 <span>weeks</span></dd></div><div><dt>Effort range</dt><dd>294–1,150 <span>hours</span></dd></div></dl>
+   <p class="summary-assumptions">Schedule assumes four people at 30 productive hours each per week. Budget includes non-labor costs, contingency, and management reserve. <a href="#final-range">Estimate assumptions</a> · <a href="#budget">Budget breakdown</a></p>
+ </section>
+diff --git a/sprint-3.html b/sprint-3.html
+index adc2b2e..7dac9ca 100644
+--- a/sprint-3.html
++++ b/sprint-3.html
+@@ -6,10 +6,10 @@ permalink: /sprints/sprint-3/
+ ---
+ <header class="page-intro page-intro--sprint sprint-lead sprint-research-intro">
+  <p class="course-line">Sprint 3 · In progress</p>
+- <h1>Dining research, evidence &amp; next steps.</h1>
+- <p>Explore the interviews, revised notes, contradiction memo, team evidence log, competitive landscape, candidate risks, and change note. Open or download the original PDFs below.</p>
+- <div class="hero-actions"><a class="button button--orange" href="#interview-1">Read the interviews</a><a class="button button--outline" href="#sprint-downloads">Browse all PDFs</a></div>
+- <p class="source-note">Sprint 3 brings the interview record, supporting notes, and competitor review together.</p>
++ <h1>What we learned about campus dining.</h1>
++ <p>This sprint looks at how students choose where to eat, what existing services offer, and where DineCheck might help. Read our notes and findings below, or download the PDFs.</p>
++ <div class="hero-actions"><a class="button button--orange" href="#interview-1">Read the interviews</a><a class="button button--outline" href="#sprint-downloads">Find a document</a></div>
++ <p class="source-note">Team interview notes and contradiction memos are grouped by member. Files that haven’t been added yet are marked below.</p>
+ </header>
+ <nav class="on-page-nav" aria-label="Sprint 3 sections"><ul>
+ <li><a href="#interview-1">Interview 1</a></li>
+@@ -25,16 +25,16 @@ permalink: /sprints/sprint-3/
+ </ul></nav>
+ <div class="charter-page sprint-research"><div class="charter-page__sections">
+ <section class="sprint-downloads" id="sprint-downloads" aria-labelledby="downloads-title">
+-  <div class="section-top"><div><p class="eyebrow">Sprint 3 documents</p><h2 id="downloads-title">Read here. Keep a copy.</h2></div></div>
++  <div class="section-top"><div><p class="eyebrow">Sprint 3 documents</p><h2 id="downloads-title">Sprint 3 files and notes.</h2></div></div>
+   <div class="research-download-grid">
+-    <article class="research-download"><span class="eyebrow">01 · Interview record</span><h3>Campus dining interviews</h3><p>Three perspectives on choosing food between campus activities.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" download aria-label="Download Campus dining interviews PDF">Download <span aria-hidden="true">↓</span></a></div></article>
+-    <article class="research-download"><span class="eyebrow">02 · Supporting notes</span><h3><a href="#interview-notes">Interview notes</a></h3><p>Browse each team member’s interview notes and download their available PDFs.</p><div class="research-download__links"><a href="#interview-notes">View team interview notes</a></div></article>
+-    <article class="research-download"><span class="eyebrow">03 · Market context</span><h3>Competitor analysis</h3><p>A review of UTEP Dining, Nutrislice, and Google Maps.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" download aria-label="Download Competitor analysis PDF">Download <span aria-hidden="true">↓</span></a></div></article>
+-<article class="research-download"><span class="eyebrow">Research &amp; synthesis</span><h3><a href="#contradiction-memo">Contradiction memo</a></h3><p>Browse each team member’s contradiction memo and download their available PDFs.</p><div class="research-download__links"><a href="#contradiction-memo">View team contradiction memos</a></div></article>
+-<article class="research-download"><span class="eyebrow">Research &amp; synthesis</span><h3>Candidate risk entries</h3><p>Three proposed risks address outdated availability, limited adoption, and insufficient advantage over existing alternatives. Owners and mitigations are proposed.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" download aria-label="Download Candidate risk entries PDF">Download PDF</a></div></article>
+-<article class="research-download"><span class="eyebrow">Research &amp; synthesis</span><h3>Change note</h3><p>Proposes clearer serving and item status, narrower initial use cases, and validation of information maintenance. The evidence alone does not justify budget or schedule changes.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" download aria-label="Download Change note PDF">Download PDF</a></div></article>
+-<article class="research-download"><span class="eyebrow">Research &amp; synthesis</span><h3>Competitive landscape</h3><p>Compares campus services, Google Maps, and familiar routines; proposes switching priorities and a target competitive position that remains unvalidated.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" download aria-label="Download Competitive landscape PDF">Download PDF</a></div></article>
+-<article class="research-download"><span class="eyebrow">Research &amp; synthesis</span><h3>Team evidence log</h3><p>Six entries connect interviews and competitor reviews to implications and evidence limits. Documentation gaps are distinguished from confirmed weaknesses.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" download aria-label="Download Team evidence log PDF">Download PDF</a></div></article>
++    <article class="research-download"><span class="eyebrow">01 · Interview record</span><h3>Campus dining interviews</h3><p>Three interviews about finding food between classes.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Open Campus dining interviews PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" download aria-label="Download Campus dining interviews PDF">Download <span aria-hidden="true">↓</span></a></div></article>
++    <article class="research-download"><span class="eyebrow">02 · Supporting notes</span><h3><a href="#interview-notes">Interview notes</a></h3><p>Read each member’s notes and download the files they’ve added.</p><div class="research-download__links"><a href="#interview-notes">Choose a team member</a></div></article>
++    <article class="research-download"><span class="eyebrow">03 · Market context</span><h3>Competitor analysis</h3><p>A review of UTEP Dining, Nutrislice, and Google Maps.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" aria-label="Open Competitor analysis PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" download aria-label="Download Competitor analysis PDF">Download <span aria-hidden="true">↓</span></a></div></article>
++<article class="research-download"><span class="eyebrow">Findings &amp; follow-up</span><h3><a href="#contradiction-memo">Contradiction memo</a></h3><p>Read how each member’s findings challenge our assumptions.</p><div class="research-download__links"><a href="#contradiction-memo">Choose a team member</a></div></article>
++<article class="research-download"><span class="eyebrow">Findings &amp; follow-up</span><h3>Candidate risk entries</h3><p>Three risks we need to plan for: outdated information, students not using the tool, and existing services already meeting the need. Suggested owners and responses are included.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Open Candidate risk entries PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" download aria-label="Download Candidate risk entries PDF">Download PDF</a></div></article>
++<article class="research-download"><span class="eyebrow">Findings &amp; follow-up</span><h3>Change note</h3><p>What we think should change after the research: clearer status labels, a smaller set of starting use cases, and a plan for staff updates. We haven’t changed the budget or schedule based on these findings.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Open Change note PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" download aria-label="Download Change note PDF">Download PDF</a></div></article>
++<article class="research-download"><span class="eyebrow">Findings &amp; follow-up</span><h3>Competitive landscape</h3><p>How DineCheck compares with dining websites, Google Maps, and students’ usual routines. We also list reasons students might try it, which still need testing.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" aria-label="Open Competitive landscape PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" download aria-label="Download Competitive landscape PDF">Download PDF</a></div></article>
++<article class="research-download"><span class="eyebrow">Findings &amp; follow-up</span><h3>Team evidence log</h3><p>Six entries track what we found, where it came from, and what we can and can’t conclude.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" aria-label="Open Team evidence log PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" download aria-label="Download Team evidence log PDF">Download PDF</a></div></article>
+   </div>
+ </section>
+ <section id="interview-1" class="charter-section" aria-labelledby="interview-1-title"><header class="charter-section__heading"><h2 id="interview-1-title">Interview 1 — Student with a tight class schedule</h2></header><div class="prose"><p class="source-note">Select a question to read the response.</p>
+@@ -65,42 +65,42 @@ permalink: /sprints/sprint-3/
+ <details class="interview-question"><summary>7. What does your current method do well, and what problem would a new tool have to solve for you to change it?</summary><div class="interview-answer"><p>“My current method takes very little effort and usually works. I would use a new tool when I wanted a specific item or needed to check unusual hours, but I probably wouldn’t check it before every visit.”</p></div></details>
+ </div></section>
+ 
+-<section id="interview-notes" class="charter-section" aria-labelledby="interview-notes-title"><header class="charter-section__heading"><h2 id="interview-notes-title">Interview notes</h2></header><div class="prose"><p>Select a team member to read their interview notes and download the available PDF.</p><details class="interview-question" id="zachary-interview-notes"><summary>Zachary Carrejo — Interview notes</summary><div class="interview-answer">
+-<div class="hero-actions"><a class="button button--outline" href="{{ '/assets/pdfs/sprint-3-zachary-interview-notes.pdf' | relative_url }}">Read original PDF</a><a class="button button--orange" href="{{ '/assets/pdfs/sprint-3-zachary-interview-notes.pdf' | relative_url }}" download>Download Zachary’s interview notes · PDF</a></div>
+-<div class="research-note-list"><article class="research-note"><h3>Interview 1 Student with a Tight Class Schedule</h3><ul><li>Behavior: Had only 35 minutes between classes and chose the food court because it was closer.</li><li>Behavior: Encountered a long line and bought a packaged sandwich instead of the preferred meal.</li><li>Opinion: Prioritized time over food choice and was willing to compromise on the meal.</li><li>Behavior: Usually does not research familiar dining locations. Uses the university dining website to check hours and maps to estimate walking distance.</li><li>Behavior: Sometimes visits a location without confirming service because checking takes additional time.</li><li>Behavior: Visited a cafe that was open after its kitchen had stopped serving. The unsuccessful trip took about 12 minutes, and the student went without eating.</li><li>Opinion: Considers university information more trustworthy than map listings when operating hours conflict.</li><li>Opinion: Would consider a new tool if it helped avoid unsuccessful trips and find food within a short break.</li><li>Key finding: Limited time can lead students to accept less desirable meals or visit without confirming service. Location hours alone may not provide enough information for a successful dining decision.</li></ul></article><article class="research-note"><h3>Interview 2 Student Balancing Budget and Dietary Preferences</h3><ul><li>Behavior: Selected a vegetarian bowl shown online but found it sold out upon arrival.</li><li>Behavior: Went off campus for an alternative, walked farther, spent about $4 more, and used most of the break.</li><li>Opinion: Prioritized a suitable, filling meal over price and convenience.</li><li>Behavior: Checks menus and compares prices before choosing where to eat.</li><li>Behavior: Asks employees for clarification when ingredient information is unclear.</li><li>Behavior: Chose a different meal when an online menu did not list the ingredients in a sauce.</li><li>Behavior: Asked an employee to resolve conflicting descriptions of a menu item.</li><li>Opinion: Would consider a new tool that provided accurate ingredient information and current food availability before walking to a location.</li><li>Key finding: Scheduled menus and incomplete ingredient descriptions can leave students unable to confirm a suitable meal. The consequences may include additional spending, walking, and lost break time.</li></ul></article><article class="research-note"><h3>Interview 3 Student Who Prefers Familiar Routines</h3><ul><li>Behavior: Usually visits a familiar cafe after class because it is already along the student’s route.</li><li>Behavior: Does not check online before regular visits and chooses from the food available upon arrival.</li><li>Opinion: Prioritizes convenience and minimal effort over finding a particular item.</li><li>Behavior: Uses maps to check directions and hours when visiting an unfamiliar location.</li><li>Behavior: Was unsure about school-break hours but walked past the cafe anyway because it was on the way.</li><li>Behavior: Found no pastries available on one visit, bought coffee, and ate food from their bag.</li><li>Opinion: Considered the unavailable pastries a minor inconvenience.</li><li>Opinion: Trusts date-specific campus announcements more than regular map hours for holiday or school-break schedules.</li><li>Opinion: Might use a new tool to check a specific item or unusual hours, but probably would not check it before every visit.</li></ul></article></div></div></details><details class="interview-question"><summary>Salvador Rodarte — Interview notes</summary><div class="interview-answer"><p>Not uploaded yet. Interview notes and a PDF download will appear here when provided.</p></div></details><details class="interview-question"><summary>Daniel Lozano — Interview notes</summary><div class="interview-answer"><p>Not uploaded yet. Interview notes and a PDF download will appear here when provided.</p></div></details><details class="interview-question"><summary>Jacob Ordonez — Interview notes</summary><div class="interview-answer"><p>Not uploaded yet. Interview notes and a PDF download will appear here when provided.</p></div></details></div></section>
++<section id="interview-notes" class="charter-section" aria-labelledby="interview-notes-title"><header class="charter-section__heading"><h2 id="interview-notes-title">Interview notes</h2></header><div class="prose"><p>Choose a team member to see their notes and PDF download.</p><details class="interview-question" id="zachary-interview-notes"><summary>Zachary Carrejo — Interview notes</summary><div class="interview-answer">
++<div class="hero-actions"><a class="button button--outline" href="{{ '/assets/pdfs/sprint-3-zachary-interview-notes.pdf' | relative_url }}">Open PDF</a><a class="button button--orange" href="{{ '/assets/pdfs/sprint-3-zachary-interview-notes.pdf' | relative_url }}" download>Download Zachary’s interview notes · PDF</a></div>
++<div class="research-note-list"><article class="research-note"><h3>Interview 1 Student with a Tight Class Schedule</h3><ul><li>Behavior: Had only 35 minutes between classes and chose the food court because it was closer.</li><li>Behavior: Encountered a long line and bought a packaged sandwich instead of the preferred meal.</li><li>Opinion: Prioritized time over food choice and was willing to compromise on the meal.</li><li>Behavior: Usually does not research familiar dining locations. Uses the university dining website to check hours and maps to estimate walking distance.</li><li>Behavior: Sometimes visits a location without confirming service because checking takes additional time.</li><li>Behavior: Visited a cafe that was open after its kitchen had stopped serving. The unsuccessful trip took about 12 minutes, and the student went without eating.</li><li>Opinion: Considers university information more trustworthy than map listings when operating hours conflict.</li><li>Opinion: Would consider a new tool if it helped avoid unsuccessful trips and find food within a short break.</li><li>Key finding: Limited time can lead students to accept less desirable meals or visit without confirming service. Location hours alone may not provide enough information for a successful dining decision.</li></ul></article><article class="research-note"><h3>Interview 2 Student Balancing Budget and Dietary Preferences</h3><ul><li>Behavior: Selected a vegetarian bowl shown online but found it sold out upon arrival.</li><li>Behavior: Went off campus for an alternative, walked farther, spent about $4 more, and used most of the break.</li><li>Opinion: Prioritized a suitable, filling meal over price and convenience.</li><li>Behavior: Checks menus and compares prices before choosing where to eat.</li><li>Behavior: Asks employees for clarification when ingredient information is unclear.</li><li>Behavior: Chose a different meal when an online menu did not list the ingredients in a sauce.</li><li>Behavior: Asked an employee to resolve conflicting descriptions of a menu item.</li><li>Opinion: Would consider a new tool that provided accurate ingredient information and current food availability before walking to a location.</li><li>Key finding: Scheduled menus and incomplete ingredient descriptions can leave students unable to confirm a suitable meal. The consequences may include additional spending, walking, and lost break time.</li></ul></article><article class="research-note"><h3>Interview 3 Student Who Prefers Familiar Routines</h3><ul><li>Behavior: Usually visits a familiar cafe after class because it is already along the student’s route.</li><li>Behavior: Does not check online before regular visits and chooses from the food available upon arrival.</li><li>Opinion: Prioritizes convenience and minimal effort over finding a particular item.</li><li>Behavior: Uses maps to check directions and hours when visiting an unfamiliar location.</li><li>Behavior: Was unsure about school-break hours but walked past the cafe anyway because it was on the way.</li><li>Behavior: Found no pastries available on one visit, bought coffee, and ate food from their bag.</li><li>Opinion: Considered the unavailable pastries a minor inconvenience.</li><li>Opinion: Trusts date-specific campus announcements more than regular map hours for holiday or school-break schedules.</li><li>Opinion: Might use a new tool to check a specific item or unusual hours, but probably would not check it before every visit.</li></ul></article></div></div></details><details class="interview-question"><summary>Salvador Rodarte — Interview notes</summary><div class="interview-answer"><p>These notes haven’t been added yet.</p></div></details><details class="interview-question"><summary>Daniel Lozano — Interview notes</summary><div class="interview-answer"><p>These notes haven’t been added yet.</p></div></details><details class="interview-question"><summary>Jacob Ordonez — Interview notes</summary><div class="interview-answer"><p>These notes haven’t been added yet.</p></div></details></div></section>
+ 
+ <section id="competitor-analysis" class="charter-section" aria-labelledby="competitor-analysis-title"><header class="charter-section__heading"><h2 id="competitor-analysis-title">Competitor analysis</h2></header><div class="prose">
+-<div class="hero-actions"><a class="button button--outline" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}">Read original PDF</a><a class="button button--orange" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" download>Download Competitor analysis · PDF</a></div>
++<div class="hero-actions"><a class="button button--outline" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}">Open PDF</a><a class="button button--orange" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" download>Download Competitor analysis · PDF</a></div>
+ <div class="competitor-card-list"><article class="competitor-card"><h3>Competitor 1: UTEP Dining Website</h3>
+ <p><strong>Type:</strong> Direct competitor and existing campus alternative.</p>
+ <p><strong>What it offers:</strong> The portal lists dining locations and hours and includes a “What’s Open Now” section. The Pick N’ Shovel page also provides a menu date selector, nutrition information, and dietary and allergen filters.</p>
+ <p><strong>Walkthrough observation:</strong> I opened the hours page, selected Pick N’ Shovel, changed the menu date, and enabled the vegetarian filter. The filter accepted the selection, but the reviewed menu area did not provide enough item information to confirm current availability.</p>
+ <p><strong>Strength:</strong> It already brings campus-specific information together. DineCheck cannot claim that campus hours or dietary filters are unique features.</p>
+-<p><strong>Weakness:</strong> The reviewed menu area did not clearly distinguish scheduled menu items from food currently available at the counter. There was not enough item information to verify availability before visiting.</p>
++<p><strong>Weakness:</strong> The menu area I reviewed didn’t make it clear whether the listed food was still available at the counter.</p>
+ <p><strong>Question to investigate:</strong> Can students distinguish a scheduled menu from food that is actually available at the counter?</p>
+ <p><strong>Possible DineCheck advantage:</strong> Clearly distinguish location open, counter serving, and item available, with visible update times. This advantage still needs testing.</p>
+ </article><article class="competitor-card"><h3>Competitor 2: Nutrislice</h3>
+ <p><strong>Type:</strong> Direct competitor offering digital dining menus. Whether it is available at UTEP still needs to be confirmed.</p>
+ <p><strong>What it offers:</strong> The University of New Hampshire’s implementation provides daily menus, food descriptions, nutrition information, allergen and dietary filters, a nutrition calculator, and favorite locations.</p>
+ <p><strong>Walkthrough limitation:</strong> This review used UNH’s published feature descriptions. It did not verify how a live campus menu displays sold-out items, update times, or outdated information.</p>
+-<p><strong>Strength:</strong> Its documented menus, nutrition tools, and filters overlap with DineCheck’s proposed features. DineCheck cannot claim these features are unique.</p>
+-<p><strong>Weakness to investigate:</strong> The reviewed documentation does not establish whether students can distinguish scheduled menu items from food currently available at the counter. This is an evidence gap, not a confirmed platform weakness.</p>
++<p><strong>Strength:</strong> Nutrislice already lists many of the features we’re considering, including menus, nutrition tools, and dietary filters.</p>
++<p><strong>Weakness to investigate:</strong> The documentation I read didn’t explain how current item availability appears. I’d need to check a live menu before calling this a weakness.</p>
+ <p><strong>Question to investigate:</strong> Does a campus implementation clearly communicate sold-out items, when availability was last updated, and when information may be outdated?</p>
+ <p><strong>Possible DineCheck advantage:</strong> A simpler, campus-specific workflow that clearly separates location open, counter serving, and item available, with visible update times. This advantage still needs testing.</p>
+-<p><strong>Where DineCheck falls short:</strong> DineCheck is currently a proposed solution and has not demonstrated dependable availability updates or a working staff update process. It also has not shown that its workflow is easier to use than Nutrislice’s existing tools.</p>
++<p><strong>Where DineCheck falls short:</strong> We still need to build and test a reliable update process. We also haven’t shown that DineCheck would be easier to use than Nutrislice.</p>
+ </article><article class="competitor-card"><h3>Competitor 3: Google Maps</h3>
+ <p><strong>Type:</strong> Indirect competitor; a general restaurant-discovery and navigation alternative.</p>
+ <p><strong>What it offers:</strong> Google Maps helps users find restaurants and get directions. Restaurant profiles can include opening status, hours, addresses, reviews, website links, and menu information.</p>
+ <p><strong>Walkthrough observation:</strong> I searched for restaurants near UTEP and opened Crave Kitchen &amp; Bar. The profile displayed opening status, hours, an address, reviews, directions, and a restaurant website link. The session also displayed a limited-view notice, which restricted the review.</p>
+ <p><strong>Strength:</strong> It combines restaurant discovery with practical information students need to choose and reach a location, including options on and off campus.</p>
+-<p><strong>Weakness:</strong> The reviewed profile did not establish whether a particular food item was currently available. Opening status and general restaurant information alone were insufficient to confirm item availability.</p>
++<p><strong>Weakness:</strong> The profile I reviewed showed whether the restaurant was open, but I couldn’t confirm whether a specific food item was still available.</p>
+ <p><strong>Question to investigate:</strong> Can students confirm that a particular food item is available without leaving Maps or contacting the restaurant?</p>
+ <p><strong>Possible DineCheck advantage:</strong> Staff-confirmed campus item availability presented alongside dining hours and visible update times. A campus-specific workflow could help students decide where to eat between classes, but this advantage still needs testing.</p>
+-<p><strong>Where DineCheck falls short:</strong> DineCheck’s proposed scope covers campus dining locations. Google Maps supports a broader search for restaurants on and off campus and combines discovery with directions and reviews. DineCheck has also not yet demonstrated a dependable process for keeping item availability current.</p>
++<p><strong>Where DineCheck falls short:</strong> Our plan only covers campus dining. Maps helps students find places on and off campus, get directions, and read reviews. We still need to show that we can keep DineCheck’s item availability accurate.</p>
+ </article></div></div></section>
+-<section id="contradiction-memo" class="charter-section" aria-labelledby="contradiction-memo-title"><header class="charter-section__heading"><h2 id="contradiction-memo-title">Contradiction memo</h2></header><div class="prose"><p>Select a team member to read their contradiction memo and download the available PDF.</p><details class="interview-question" id="zachary-contradiction-memo"><summary>Zachary Carrejo — Contradiction memo</summary><div class="interview-answer"><p>Challenges the assumption that students will check DineCheck before every visit. Regular use remains a hypothesis to test.</p><p class="source-note">Document summary. The complete submitted record is available in the PDF.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-contradiction-memo.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-contradiction-memo.pdf' | relative_url }}" download aria-label="Download Zachary’s contradiction memo PDF">Download PDF</a></div></div></details><details class="interview-question"><summary>Salvador Rodarte — Contradiction memo</summary><div class="interview-answer"><p>Not uploaded yet. A contradiction memo and PDF download will appear here when provided.</p></div></details><details class="interview-question"><summary>Daniel Lozano — Contradiction memo</summary><div class="interview-answer"><p>Not uploaded yet. A contradiction memo and PDF download will appear here when provided.</p></div></details><details class="interview-question"><summary>Jacob Ordonez — Contradiction memo</summary><div class="interview-answer"><p>Not uploaded yet. A contradiction memo and PDF download will appear here when provided.</p></div></details></div></section>
+-<section id="candidate-risks" class="charter-section" aria-labelledby="candidate-risks-title"><header class="charter-section__heading"><h2 id="candidate-risks-title">Candidate risk entries</h2></header><div class="prose"><p>Three proposed risks address outdated availability, limited adoption, and insufficient advantage over existing alternatives. Owners and mitigations are proposed.</p><p class="source-note">Document summary. The complete submitted record is available in the PDF.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" download aria-label="Download Candidate risk entries PDF">Download PDF</a></div></div></section>
+-<section id="change-note" class="charter-section" aria-labelledby="change-note-title"><header class="charter-section__heading"><h2 id="change-note-title">Change note</h2></header><div class="prose"><p>Proposes clearer serving and item status, narrower initial use cases, and validation of information maintenance. The evidence alone does not justify budget or schedule changes.</p><p class="source-note">Document summary. The complete submitted record is available in the PDF.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" download aria-label="Download Change note PDF">Download PDF</a></div></div></section>
+-<section id="competitive-landscape" class="charter-section" aria-labelledby="competitive-landscape-title"><header class="charter-section__heading"><h2 id="competitive-landscape-title">Competitive landscape</h2></header><div class="prose"><p>Compares campus services, Google Maps, and familiar routines; proposes switching priorities and a target competitive position that remains unvalidated.</p><p class="source-note">Document summary. The complete submitted record is available in the PDF.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" download aria-label="Download Competitive landscape PDF">Download PDF</a></div></div></section>
+-<section id="evidence-log" class="charter-section" aria-labelledby="evidence-log-title"><header class="charter-section__heading"><h2 id="evidence-log-title">Team evidence log</h2></header><div class="prose"><p>Six entries connect interviews and competitor reviews to implications and evidence limits. Documentation gaps are distinguished from confirmed weaknesses.</p><p class="source-note">Document summary. The complete submitted record is available in the PDF.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" download aria-label="Download Team evidence log PDF">Download PDF</a></div></div></section>
++<section id="contradiction-memo" class="charter-section" aria-labelledby="contradiction-memo-title"><header class="charter-section__heading"><h2 id="contradiction-memo-title">Contradiction memo</h2></header><div class="prose"><p>Choose a team member to see their memo and PDF download.</p><details class="interview-question" id="zachary-contradiction-memo"><summary>Zachary Carrejo — Contradiction memo</summary><div class="interview-answer"><p>Some students already have routines that work. This memo questions whether they would check DineCheck before every visit and suggests situations where it might be more useful.</p><p class="source-note">This is a short summary. The PDF has the full document.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-contradiction-memo.pdf' | relative_url }}" aria-label="Open Zachary’s contradiction memo PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-contradiction-memo.pdf' | relative_url }}" download aria-label="Download Zachary’s contradiction memo PDF">Download PDF</a></div></div></details><details class="interview-question"><summary>Salvador Rodarte — Contradiction memo</summary><div class="interview-answer"><p>This memo hasn’t been added yet.</p></div></details><details class="interview-question"><summary>Daniel Lozano — Contradiction memo</summary><div class="interview-answer"><p>This memo hasn’t been added yet.</p></div></details><details class="interview-question"><summary>Jacob Ordonez — Contradiction memo</summary><div class="interview-answer"><p>This memo hasn’t been added yet.</p></div></details></div></section>
++<section id="candidate-risks" class="charter-section" aria-labelledby="candidate-risks-title"><header class="charter-section__heading"><h2 id="candidate-risks-title">Candidate risk entries</h2></header><div class="prose"><p>Three risks we need to plan for: outdated information, students not using the tool, and existing services already meeting the need. Suggested owners and responses are included.</p><p class="source-note">This is a short summary. The PDF has the full document.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Open Candidate risk entries PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" download aria-label="Download Candidate risk entries PDF">Download PDF</a></div></div></section>
++<section id="change-note" class="charter-section" aria-labelledby="change-note-title"><header class="charter-section__heading"><h2 id="change-note-title">Change note</h2></header><div class="prose"><p>What we think should change after the research: clearer status labels, a smaller set of starting use cases, and a plan for staff updates. We haven’t changed the budget or schedule based on these findings.</p><p class="source-note">This is a short summary. The PDF has the full document.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Open Change note PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" download aria-label="Download Change note PDF">Download PDF</a></div></div></section>
++<section id="competitive-landscape" class="charter-section" aria-labelledby="competitive-landscape-title"><header class="charter-section__heading"><h2 id="competitive-landscape-title">Competitive landscape</h2></header><div class="prose"><p>How DineCheck compares with dining websites, Google Maps, and students’ usual routines. We also list reasons students might try it, which still need testing.</p><p class="source-note">This is a short summary. The PDF has the full document.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" aria-label="Open Competitive landscape PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" download aria-label="Download Competitive landscape PDF">Download PDF</a></div></div></section>
++<section id="evidence-log" class="charter-section" aria-labelledby="evidence-log-title"><header class="charter-section__heading"><h2 id="evidence-log-title">Team evidence log</h2></header><div class="prose"><p>Six entries track what we found, where it came from, and what we can and can’t conclude.</p><p class="source-note">This is a short summary. The PDF has the full document.</p><div class="research-download__links"><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" aria-label="Open Team evidence log PDF">Open PDF</a><a href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" download aria-label="Download Team evidence log PDF">Download PDF</a></div></div></section>
+ </div><nav class="sprint-pager" aria-label="Sprint navigation"><a href="{{ '/sprints/sprint-2/' | relative_url }}" rel="prev"><span>Previous</span>Sprint 2: Business case</a><a href="{{ '/sprints/' | relative_url }}"><span>All sprints</span>Sprint archive</a></nav></div>
+diff --git a/sprints.html b/sprints.html
+index 3b5454c..98ee7b5 100644
+--- a/sprints.html
++++ b/sprints.html
+@@ -1,17 +1,17 @@
+ ---
+ layout: default
+ title: Sprints
+-description: Every DineCheck sprint and its documents, from the Sprint 1 research to the Sprint 3 interviews. Find reports and PDF downloads in one place.
++description: Our DineCheck sprint pages, research, reports, and PDF downloads.
+ permalink: /sprints/
+ ---
+ 
+ <header class="page-intro">
+-  <p class="course-line">Project archive</p>
+-  <h1>A record of the project, sprint by sprint.</h1>
++  <p class="course-line">Our sprints</p>
++  <h1>Our work, sprint by sprint.</h1>
+   <p>
+-    Each sprint adds a page; earlier ones stay as they were. Sprint 1 holds the
+-    research and charter. Sprint 2 holds the business case, estimate, one-page budget, and
+-    changelog. Sprint 3 is in progress and contains three interviews.
++    Sprint 1 covers our research and charter. Sprint 2 covers the business case,
++    estimates, budget, and changelog. In Sprint 3, we’re adding interviews, competitor
++    research, team notes, and changes based on what we found.
+   </p>
+   <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
+ </header>
+@@ -31,7 +31,7 @@ permalink: /sprints/
+       <small>Complete</small>
+     </a>
+   </li>
+-  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Campus dining interviews</strong><small>In progress</small></a></li>
++  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>In progress</small></a></li>
+   {% for sprint in (4..6) %}
+     <li class="sprint-index__planned">
+       <span>Sprint {{ sprint }}</span>
+@@ -43,7 +43,7 @@ permalink: /sprints/
+ 
+ <section class="home-section document-index" id="documents" aria-labelledby="documents-title">
+   <header class="section-top"><div><p class="eyebrow">Reports &amp; downloads</p><h2 id="documents-title">Find the document you need.</h2></div></header>
+-  <p>Read the web reports or open the original PDFs. Documents are grouped by the sprint that produced them.</p>
++  <p>Read the reports here or download the PDFs. They’re grouped by sprint.</p>
+   <div class="document-grid">
+     <article class="document-group"><p class="eyebrow">Sprint 1</p><h3>Research &amp; scope</h3><ul>
+       <li><a href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Market research</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-1-market-research.pdf' | relative_url }}" aria-label="Market research (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+@@ -56,8 +56,15 @@ permalink: /sprints/
+       <li><a href="{{ '/sprints/sprint-2/#budget' | relative_url }}">One-page budget</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-one-page-budget.pdf' | relative_url }}" aria-label="One-page budget (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+       <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Project changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-changelog.pdf' | relative_url }}" aria-label="Project changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+     </ul></article>
+-    <article class="document-group"><p class="eyebrow">Sprint 3</p><h3>Dining interviews</h3><ul>
+-      <li><a href="{{ '/sprints/sprint-3/' | relative_url }}">Three interview perspectives</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Three interview perspectives (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++    <article class="document-group"><p class="eyebrow">Sprint 3</p><h3>Research &amp; findings</h3><ul>
++      <li><a href="{{ '/sprints/sprint-3/' | relative_url }}">Campus dining interviews</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Campus dining interviews (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++      <li><a href="{{ '/sprints/sprint-3/#interview-notes' | relative_url }}">Interview notes</a></li>
++      <li><a href="{{ '/sprints/sprint-3/#contradiction-memo' | relative_url }}">Contradiction memos</a></li>
++      <li><a href="{{ '/sprints/sprint-3/#competitor-analysis' | relative_url }}">Competitor analysis</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-competitors.pdf' | relative_url }}" aria-label="Competitor analysis (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++      <li><a href="{{ '/sprints/sprint-3/#competitive-landscape' | relative_url }}">Competitive landscape</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" aria-label="Competitive landscape (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++      <li><a href="{{ '/sprints/sprint-3/#evidence-log' | relative_url }}">Team evidence log</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" aria-label="Team evidence log (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++      <li><a href="{{ '/sprints/sprint-3/#candidate-risks' | relative_url }}">Candidate risk entries</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Candidate risk entries (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
++      <li><a href="{{ '/sprints/sprint-3/#change-note' | relative_url }}">Change note</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Change note (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+     </ul></article>
+   </div>
+   <p class="source-note">Sprint 3 is in progress. Materials for Sprints 4–6 will appear when published.</p>
+diff --git a/sprints/sprint-1/business-strategy.html b/sprints/sprint-1/business-strategy.html
+index 824a737..997493d 100644
+--- a/sprints/sprint-1/business-strategy.html
++++ b/sprints/sprint-1/business-strategy.html
+@@ -7,12 +7,11 @@ permalink: /sprints/sprint-1/business-strategy/
+ 
+ <header class="page-intro page-intro--sprint">
+   <p class="course-line">Sprint 1 / Business Strategy</p>
+-  <h1>A strategy built around timely information.</h1>
++  <h1>Why we’re focusing on dining availability.</h1>
+   <p>
+-    This strategy explains what value the current Campus Dining Availability
+-    System will test, what the interview evidence can support, and what the
+-    team still needs to learn. It does not make a launch decision or estimate
+-    financial returns.
++    Here’s why we think DineCheck could help, what our interviews tell us,
++    and what we still need to test. This Sprint 1 strategy doesn’t include
++    a launch decision or financial estimates.
+   </p>
+   <a
+     class="button"
+@@ -108,7 +107,7 @@ permalink: /sprints/sprint-1/business-strategy/
+   <section id="value" class="charter-detail">
+     <div class="charter-detail__heading">
+       <p class="document-label">Value hypothesis</p>
+-      <h2>Useful information depends on trust and a workable update process</h2>
++      <h2>The information has to stay accurate</h2>
+     </div>
+     <p class="prose">
+       If students can see an item's or service's status, location, and update
+@@ -147,7 +146,7 @@ permalink: /sprints/sprint-1/business-strategy/
+   <section id="evidence" class="sprint-summary" aria-labelledby="evidence-title">
+     <div>
+       <p class="document-label">What the evidence can support</p>
+-      <h2 id="evidence-title">Early signals, not a forecast</h2>
++      <h2 id="evidence-title">What our interviews tell us so far</h2>
+       <p>
+         The submitted packet contains separate interview groups. The focused
+         availability interviews are the primary evidence for today's project.
+diff --git a/tests/site.test.cjs b/tests/site.test.cjs
+new file mode 100644
+index 0000000..37f1295
+--- /dev/null
++++ b/tests/site.test.cjs
+@@ -0,0 +1,61 @@
++'use strict';
++const { test } = require('node:test');
++const assert = require('node:assert/strict');
++const vm = require('node:vm');
++const fs = require('node:fs');
++const path = require('node:path');
++const source = fs.readFileSync(path.join(__dirname, '../assets/js/site.js'), 'utf8');
++
++function runSite({ hash = '', elements = {}, entries = [] } = {}) {
++  const events = new Map();
++  const window = {
++    location: { hash },
++    addEventListener(name, callback) { events.set(name, callback); },
++  };
++  const document = {
++    documentElement: { classList: { add() {} } },
++    querySelector() { return null; },
++    querySelectorAll(selector) {
++      return selector === 'details:not([open])' ? entries.filter(entry => !entry.open) : [];
++    },
++    getElementById(id) { return elements[id] || null; },
++  };
++  vm.runInNewContext(source, { window, document, requestAnimationFrame: callback => callback() });
++  return { window, events };
++}
++
++test('a direct link opens both the member entry and its closed parent', () => {
++  const parent = { tagName: 'DETAILS', open: false, parentElement: null };
++  const member = { tagName: 'DETAILS', open: false, parentElement: parent };
++  let scrolled = 0;
++  const target = { tagName: 'H3', parentElement: member, scrollIntoView() { scrolled++; } };
++  runSite({ hash: '#member%20notes', elements: { 'member notes': target } });
++  assert.equal(parent.open, true);
++  assert.equal(member.open, true);
++  assert.equal(scrolled, 1);
++});
++
++test('hash navigation reveals a previously closed entry', () => {
++  const target = { tagName: 'DETAILS', open: false, parentElement: null, scrollIntoView() {} };
++  const { window, events } = runSite({ elements: { memo: target } });
++  window.location.hash = '#memo';
++  events.get('hashchange')();
++  assert.equal(target.open, true);
++});
++
++test('missing and malformed anchors leave the page usable', () => {
++  assert.doesNotThrow(() => runSite({ hash: '#missing' }));
++  assert.doesNotThrow(() => runSite({ hash: '#%broken' }));
++});
++
++test('printing includes closed answers and restores the reader’s existing entries', () => {
++  const open = { open: true };
++  const closed = { open: false };
++  const { events } = runSite({ entries: [open, closed] });
++  events.get('beforeprint')();
++  assert.equal(open.open, true);
++  assert.equal(closed.open, true);
++  events.get('afterprint')();
++  assert.equal(open.open, true);
++  assert.equal(closed.open, false);
++});
+diff --git a/tests/test_check_site.py b/tests/test_check_site.py
+index 9f3140d..f55a134 100644
+--- a/tests/test_check_site.py
++++ b/tests/test_check_site.py
+@@ -61,3 +61,22 @@ class GeneratedSiteTests(TestCase):
+ 
+             self.assertEqual(result, 1)
+             self.assertIn("sprints/sprint-2/index.html has 1 image(s) without alt text", errors.getvalue())
++
++    def test_relative_links_check_the_destination_anchor(self):
++        with TemporaryDirectory() as directory:
++            root = Path(directory)
++            site = root / "_site"
++            for relative_path in check_site.REQUIRED_PAGES:
++                page = site / relative_path
++                page.parent.mkdir(parents=True, exist_ok=True)
++                page.write_text("<html><body></body></html>", encoding="utf-8")
++            css = site / "assets/css/style.css"
++            css.parent.mkdir(parents=True)
++            css.write_text("", encoding="utf-8")
++            page = site / "sprints/sprint-3/index.html"
++            page.write_text('<a href="../sprint-2/#missing">Report</a>', encoding="utf-8")
++            errors = StringIO()
++            with patch.object(check_site, "ROOT", root), patch.object(check_site, "SITE", site), redirect_stderr(errors):
++                result = check_site.main()
++            self.assertEqual(result, 1)
++            self.assertIn("missing anchor: ../sprint-2/#missing", errors.getvalue())
