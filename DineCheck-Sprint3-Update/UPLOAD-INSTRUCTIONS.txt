@@ -1,1 +1,0 @@
-Extract this ZIP. Copy the included files into your existing repository, preserving their folders and replacing matching files. Commit and push to main. The existing GitHub Actions workflow builds and publishes the website. Sprint 3 will appear at /sprints/sprint-3/. No live publication has been performed from ChatGPT.
