@@ -76,7 +76,6 @@ permalink: /sprints/sprint-4/
       <ul>
         <li><a href="#service-levels">01 Service levels</a></li>
         <li><a href="#error-budgets">02 Error budgets</a></li>
-        <li><a href="#incident-review">03 Incident review</a></li>
         <li><a href="#interface-sketch">04 Interface sketch</a></li>
         <li><a href="#retrospective">05 Retrospective</a></li>
         <li><a href="#sprint4-changelog">06 Changelog</a></li>
@@ -291,49 +290,6 @@ permalink: /sprints/sprint-4/
             <p class="source-note">
               These are proposed policies and example calculations,
               not measured performance or implemented release controls.
-            </p>
-          </div>
-        </section>
-
-        <!-- SECTION 3: INCIDENT REVIEW -->
-        <section class="charter-section" id="incident-review"
-                 aria-labelledby="incident-review-title">
-          <header class="charter-section__heading">
-            <p class="eyebrow">03 · Incident analysis</p>
-            <h2 id="incident-review-title">Blameless incident review</h2>
-            <p>Reviewing the Sprint 3 document-download problem.</p>
-          </header>
-
-          <div class="prose">
-            <h3>Problem reviewed</h3>
-            <p>
-              Some Sprint 3 download links contained percent-encoded
-              Liquid template expressions, creating a potential
-              problem for visitors downloading PDFs.
-            </p>
-            <p>
-              Commit 6596c7b, "Fix Sprint 3 PDF downloads,"
-              corrected the links, added PDF files, and
-              expanded validation.
-            </p>
-
-            <h3>What we learned</h3>
-            <p>
-              The review identified a publishing and validation gap.
-              It recommended checking generated website links and
-              verifying that documents can be downloaded correctly.
-            </p>
-
-            <h3>Limitations</h3>
-            <p>
-              The reviewed evidence does not confirm the exact
-              detection time, how long the problem existed on the
-              deployed website, or how many visitors were affected.
-            </p>
-
-            <p class="source-note">
-              This review is part of the submitted Service Levels
-              document. Follow-up actions are not presented as completed.
             </p>
           </div>
         </section>

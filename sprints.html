@@ -11,9 +11,10 @@ permalink: /sprints/
   <p>
     Sprint 1 covers our research and charter. Sprint 2 covers the business case,
     estimates, budget, and changelog. In Sprint 3, we’re adding interviews, competitor
-    research, team notes, and changes based on what we found.
+    research, team notes, and changes based on what we found. Sprint 4 covers
+    service levels, error budgets, an interface sketch, and our team retrospective.
   </p>
-  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-3/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
+  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-4/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
 </header>
 
 <ol class="sprint-index" aria-label="Sprint index">
@@ -31,8 +32,9 @@ permalink: /sprints/
       <small>Complete</small>
     </a>
   </li>
-  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>In progress</small></a></li>
-  {% for sprint in (4..6) %}
+  <li><a class="sprint-index__active" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>Complete</small></a></li>
+  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-4/' | relative_url }}"><span>Sprint 4</span><strong>Reliability planning and team reflection</strong><small>Current sprint</small></a></li>
+  {% for sprint in (5..6) %}
     <li class="sprint-index__planned">
       <span>Sprint {{ sprint }}</span>
       <strong>Coming later</strong>
@@ -73,6 +75,13 @@ permalink: /sprints/
       <li><a href="{{ '/sprints/sprint-3/#candidate-risks' | relative_url }}">Candidate risk entries</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Candidate risk entries (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-3/#change-note' | relative_url }}">Change note</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Change note (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
+    <article class="document-group"><p class="eyebrow">Sprint 4</p><h3>Reliability &amp; planning</h3><ul>
+      <li><a href="{{ '/sprints/sprint-4/#service-levels' | relative_url }}">Service Levels</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" aria-label="Service Levels (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#error-budgets' | relative_url }}">Error Budgets — Two-Week Period</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-error-budgets.pdf' | relative_url }}" aria-label="Error Budgets — Two-Week Period (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#interface-sketch' | relative_url }}">Interface Sketch</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-sketch.pdf' | relative_url }}" aria-label="Interface Sketch (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#retrospective' | relative_url }}">Team Retrospective</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-retrospective.pdf' | relative_url }}" aria-label="Team Retrospective (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    </ul></article>
   </div>
-  <p class="source-note">Sprint 3 is in progress. Materials for Sprints 4–6 will appear when published.</p>
+
+  <p class="source-note">Sprint 4 documents are available. Materials for Sprints 5–6 will appear when published.</p>
 </section>
