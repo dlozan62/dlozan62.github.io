@@ -1,0 +1,577 @@
+---
+layout: default
+title: Sprint 4
+description: DineCheck Sprint 4 service levels, error budgets, interface sketch, and team retrospective.
+permalink: /sprints/sprint-4/
+---
+
+<div class="sprint3-hub">
+
+  <!-- INTRODUCTION -->
+  <header class="page-intro page-intro--sprint sprint-lead sprint-research-intro sprint3-intro">
+    <p class="course-line">Sprint 4 · Team 10</p>
+    <h1>Planning a more reliable DineCheck.</h1>
+    <p>
+      During Sprint 4, our team prepared a Service Levels plan, an Error Budgets
+      document, an early interface sketch, and a team retrospective. These
+      deliverables focused on reliability planning, design ideas, and improving
+      how we work together.
+    </p>
+    <div class="hero-actions">
+      <a class="button button--orange" href="#service-levels">Explore our work</a>
+      <a class="button button--outline" href="#sprint4-documents">View documents</a>
+    </div>
+    <p class="source-note">
+      Team 10 · November 2, 2026. Reliability targets and procedures are
+      proposed plans, not measured performance or implemented systems.
+    </p>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section class="sprint3-overview" aria-labelledby="overview-title">
+    <div class="sprint3-overview-heading">
+      <p class="eyebrow">At a glance</p>
+      <h2 id="overview-title">Our Sprint 4 work.</h2>
+    </div>
+
+    <div class="sprint3-findings">
+      <article>
+        <span>01 / Reliability</span>
+        <h3>Defining service expectations.</h3>
+        <p>
+          Proposed service targets, incident responsibilities, and
+          response procedures for the DineCheck project portal.
+        </p>
+        <a href="#service-levels">View service levels →</a>
+      </article>
+
+      <article>
+        <span>02 / Planning</span>
+        <h3>Understanding error budgets.</h3>
+        <p>
+          Calculating acceptable failure allowances and considering
+          how reliability should affect future releases.
+        </p>
+        <a href="#error-budgets">View error budgets →</a>
+      </article>
+
+      <article>
+        <span>03 / Design and reflection</span>
+        <h3>Preparing for the next sprint.</h3>
+        <p>
+          An early interface sketch and a retrospective covering
+          teamwork, communication, and future improvements.
+        </p>
+        <a href="#interface-sketch">Explore our planning →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="sprint3-layout">
+
+    <!-- SIDE NAVIGATION -->
+    <nav class="on-page-nav sprint3-nav" aria-label="Sprint 4 sections">
+      <p class="eyebrow">On this page</p>
+      <ul>
+        <li><a href="#service-levels">01 Service levels</a></li>
+        <li><a href="#error-budgets">02 Error budgets</a></li>
+        <li><a href="#incident-review">03 Incident review</a></li>
+        <li><a href="#interface-sketch">04 Interface sketch</a></li>
+        <li><a href="#retrospective">05 Retrospective</a></li>
+        <li><a href="#sprint4-changelog">06 Changelog</a></li>
+        <li><a href="#sprint4-documents">07 Documents</a></li>
+      </ul>
+      <a class="sprint3-back" href="#page-top">Back to top ↑</a>
+    </nav>
+
+    <div class="charter-page sprint-research sprint3-content">
+      <div class="charter-page__sections">
+
+        <!-- SECTION 1: SERVICE LEVELS -->
+        <section class="charter-section" id="service-levels"
+                 aria-labelledby="service-levels-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">01 · Reliability</p>
+            <h2 id="service-levels-title">Service level objectives</h2>
+            <p>Reliability expectations proposed in our Service Levels document.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              Our team documented two proposed service level objectives (SLOs)
+              for the project portal. Both use a rolling 14-day measurement window.
+            </p>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>SLO 1 — Portal availability</span>
+                <span class="sprint3-entry-meta">99.5% target</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  At least 99.5% of scheduled one-minute checks should succeed.
+                  A successful check requires the homepage and all published
+                  sprint pages to return HTTP 200.
+                </p>
+                <p><strong>Proposed measurement owner:</strong> Zachary Carrejo.</p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>SLO 2 — Document downloads</span>
+                <span class="sprint3-entry-meta">99% target</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  At least 99% of daily checks of published document links
+                  should succeed. Success requires HTTP 200 and a nonempty
+                  file matching the advertised format.
+                </p>
+                <p><strong>Proposed measurement owner:</strong> Jacob Ordonez.</p>
+              </div>
+            </details>
+
+            <h3>Measurement planning</h3>
+            <p>
+              The plan calls for scheduled checks with recorded timestamps
+              and results. Monitoring has not been confirmed as operational,
+              so the team is not claiming SLO compliance.
+            </p>
+
+            <h3>Incident severity and response</h3>
+            <p>
+              We documented three proposed severity levels for problems
+              affecting the project portal.
+            </p>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Severity 1 — Critical</span>
+                <span class="sprint3-entry-meta">1 support hour</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  <strong>Example:</strong> The entire portal is unavailable.
+                </p>
+                <p>
+                  <strong>Proposed response:</strong> Begin investigating
+                  and fixing within one support hour.
+                </p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Severity 2 — Major</span>
+                <span class="sprint3-entry-meta">4 support hours</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  <strong>Example:</strong> A sprint page or required
+                  PDF download is inaccessible.
+                </p>
+                <p>
+                  <strong>Proposed response:</strong> Begin investigating
+                  within four support hours.
+                </p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Severity 3 — Minor</span>
+                <span class="sprint3-entry-meta">1 school day</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  <strong>Example:</strong> A typo or visual problem
+                  that does not prevent access.
+                </p>
+                <p>
+                  <strong>Proposed response:</strong> Begin addressing
+                  the issue within one school day.
+                </p>
+              </div>
+            </details>
+
+            <h3>Proposed team responsibilities</h3>
+            <p>
+              <strong>Zachary Carrejo — Incident commander:</strong>
+              Classifies incidents and assigns work.
+            </p>
+            <p>
+              <strong>Jacob Ordonez — Operations lead:</strong>
+              Investigates website issues and verifies repairs.
+            </p>
+            <p>
+              <strong>Daniel Lozano — Backup fixer:</strong>
+              Tracks follow-up work and assists when assigned.
+            </p>
+            <p>
+              <strong>Salvador Rodarte — Communicator:</strong>
+              Coordinates incident and recovery updates.
+            </p>
+
+            <p class="source-note">
+              These responsibilities and response expectations are proposed
+              procedures described in the submitted Service Levels document.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 2: ERROR BUDGETS -->
+        <section class="charter-section" id="error-budgets"
+                 aria-labelledby="error-budgets-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">02 · Reliability planning</p>
+            <h2 id="error-budgets-title">Error budgets</h2>
+            <p>Calculating acceptable failures over a two-week period.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              Our error budget work focused on how much failure could
+              be allowed while still meeting the proposed SLOs.
+            </p>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Portal availability budget</span>
+                <span class="sprint3-entry-meta">14 days</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  A 14-day period contains 20,160 minutes. At 99.5%
+                  availability, the allowed failure budget is 0.5%,
+                  or 100.8 minutes.
+                </p>
+                <p>
+                  With whole one-minute checks, no more than 100
+                  failures are allowed while meeting the target.
+                </p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Document download budget</span>
+                <span class="sprint3-entry-meta">1% allowance</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  The allowed failures equal the floor of the total
+                  document checks multiplied by 0.01.
+                </p>
+                <p>
+                  For example, 15 documents checked daily for 14 days
+                  produce 210 checks and allow 2 failures.
+                  This is an example, not an actual measurement.
+                </p>
+              </div>
+            </details>
+
+            <h3>Proposed error budget policy</h3>
+            <p>
+              At 50% budget consumption, the team would prioritize
+              reliability work. If a budget is exhausted, feature
+              releases would pause until the affected service is
+              repaired and the target is met again.
+            </p>
+
+            <h3>Connection to software delivery</h3>
+            <p>
+              The Service Levels plan connects error budgets with
+              deployment frequency, lead time, and change failure rate.
+              It proposes reviewed pull requests and validation for
+              future releases when a budget is exhausted.
+            </p>
+
+            <p class="source-note">
+              These are proposed policies and example calculations,
+              not measured performance or implemented release controls.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 3: INCIDENT REVIEW -->
+        <section class="charter-section" id="incident-review"
+                 aria-labelledby="incident-review-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">03 · Incident analysis</p>
+            <h2 id="incident-review-title">Blameless incident review</h2>
+            <p>Reviewing the Sprint 3 document-download problem.</p>
+          </header>
+
+          <div class="prose">
+            <h3>Problem reviewed</h3>
+            <p>
+              Some Sprint 3 download links contained percent-encoded
+              Liquid template expressions, creating a potential
+              problem for visitors downloading PDFs.
+            </p>
+            <p>
+              Commit 6596c7b, "Fix Sprint 3 PDF downloads,"
+              corrected the links, added PDF files, and
+              expanded validation.
+            </p>
+
+            <h3>What we learned</h3>
+            <p>
+              The review identified a publishing and validation gap.
+              It recommended checking generated website links and
+              verifying that documents can be downloaded correctly.
+            </p>
+
+            <h3>Limitations</h3>
+            <p>
+              The reviewed evidence does not confirm the exact
+              detection time, how long the problem existed on the
+              deployed website, or how many visitors were affected.
+            </p>
+
+            <p class="source-note">
+              This review is part of the submitted Service Levels
+              document. Follow-up actions are not presented as completed.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 4: INTERFACE SKETCH -->
+        <section class="charter-section" id="interface-sketch"
+                 aria-labelledby="interface-sketch-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">04 · Design</p>
+            <h2 id="interface-sketch-title">Interface sketch</h2>
+            <p>An early mobile interface concept for DineCheck.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              Salvador Rodarte prepared a hand-drawn sketch showing
+              how students could navigate a possible DineCheck
+              mobile interface.
+            </p>
+
+            <h3>Ideas shown in the sketch</h3>
+            <p>
+              <strong>Campus selection:</strong> A screen for choosing
+              a campus.
+            </p>
+            <p>
+              <strong>Dining locations:</strong> A list of dining
+              options and whether locations are open or closed.
+            </p>
+            <p>
+              <strong>Menu information:</strong> Food items,
+              ingredients, allergens, calories, and availability.
+            </p>
+            <p>
+              <strong>Navigation:</strong> Searching locations,
+              browsing menus, and viewing a map.
+            </p>
+
+            <p class="source-note">
+              This is a design concept, not a completed application.
+              The sketch is available in the documents section below.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 5: RETROSPECTIVE -->
+        <section class="charter-section" id="retrospective"
+                 aria-labelledby="retrospective-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">05 · Reflection</p>
+            <h2 id="retrospective-title">Sprint 4 retrospective</h2>
+            <p>Reviewing teamwork, progress, and improvements for Sprint 5.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              Our team retrospective covered how responsibilities
+              were divided, the communication challenges we
+              experienced, and what we plan to improve.
+            </p>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>What went well</span>
+                <span class="sprint3-entry-meta">Teamwork</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Responsibilities were divided more clearly,
+                  allowing each member to focus on assigned tasks.
+                </p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>What could have gone better</span>
+                <span class="sprint3-entry-meta">Communication</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Team updates were not always communicated early
+                  enough, which affected coordination and timing.
+                </p>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Improvement for Sprint 5</span>
+                <span class="sprint3-entry-meta">Next steps</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  We plan to set clearer internal deadlines,
+                  communicate progress more frequently, and
+                  ask for help earlier when needed.
+                </p>
+              </div>
+            </details>
+
+            <p class="source-note">
+              This summary reflects the team's submitted
+              Sprint 4 retrospective.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 6: CHANGELOG -->
+        <section class="charter-section" id="sprint4-changelog"
+                 aria-labelledby="sprint4-changelog-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">06 · Track</p>
+            <h2 id="sprint4-changelog-title">Sprint 4 changelog</h2>
+            <p>A summary of our submitted work.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              During Sprint 4, Team 10 submitted four documents:
+              a Service Levels plan, an Error Budgets document,
+              an interface sketch, and a team retrospective.
+            </p>
+            <p>
+              Together, these covered proposed reliability procedures,
+              failure allowances, early interface design, and
+              improvements to team coordination.
+            </p>
+            <p>
+              Monitoring and incident-response procedures remain
+              proposed plans rather than verified implementations.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 7: DOCUMENTS -->
+        <section class="charter-section" id="sprint4-documents"
+                 aria-labelledby="sprint4-documents-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">07 · Documentation</p>
+            <h2 id="sprint4-documents-title">Sprint 4 documents</h2>
+            <p>Download the four PDFs submitted by Team 10.</p>
+          </header>
+
+          <div class="prose">
+
+            <details class="sprint3-entry" open>
+              <summary>
+                <span>Service Levels</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Proposed reliability targets, escalation procedures,
+                  team responsibilities, and incident review.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" download>
+                    Download Service Levels PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Error Budgets — Two-Week Period</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Error budget calculations and proposed reliability
+                  policies for a 14-day measurement window.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/assets/pdfs/sprint-4-error-budgets.pdf' | relative_url }}" download>
+                    Download Error Budgets PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Interface Sketch</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  A hand-drawn mobile interface concept for DineCheck.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/assets/pdfs/sprint-4-sketch.pdf' | relative_url }}" download>
+                    Download Interface Sketch PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Team Retrospective</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Our reflection on teamwork, communication,
+                  project progress, and plans for improvement.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/assets/pdfs/sprint-4-retrospective.pdf' | relative_url }}" download>
+                    Download Retrospective PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <p class="source-note">
+              These are the four documents included in
+              Team 10's Sprint 4 submission.
+            </p>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- BOTTOM NAVIGATION -->
+      <nav class="sprint-pager" aria-label="Sprint navigation">
+        <a href="{{ '/sprints/sprint-3/' | relative_url }}" rel="prev">
+          <span>Previous</span>
+          Sprint 3: Research and findings
+        </a>
+        <a href="{{ '/sprints/' | relative_url }}">
+          <span>All sprints</span>
+          Sprint archive
+        </a>
+      </nav>
+
+    </div>
+  </div>
+</div>
