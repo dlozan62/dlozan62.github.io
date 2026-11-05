@@ -1,0 +1,59 @@
+---
+layout: default
+title: Sprint 5
+description: Explore the DineCheck four-screen wireframe and tasks for outside-user review.
+permalink: /sprints/sprint-5/
+---
+
+<header class="page-intro page-intro--sprint">
+  <p class="course-line">Sprint 5 · Team 10 · In progress</p>
+  <h1>From interface sketch to a testable flow.</h1>
+  <p>Our low-fidelity DineCheck wireframe connects campus selection, dining options, menu details, and a campus map. It gives outside users a way to explore the proposed student experience and identify confusing steps.</p>
+  <div class="hero-actions">
+    <a class="button button--orange" href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Try the interactive wireframe →</a>
+    <a class="button button--outline" href="#review-tasks">View review tasks</a>
+  </div>
+  <p class="source-note">November 5, 2026 · Based on the supplied Team 10 HTML/CSS wireframe. All venue, menu, stock, hours, and map information is illustrative. User feedback has not yet been recorded.</p>
+</header>
+
+<section class="home-section" aria-labelledby="screens-title">
+  <header class="section-top"><div><p class="eyebrow">The student journey</p><h2 id="screens-title">Four screens, one dining decision.</h2></div></header>
+  <div class="document-grid">
+    <article class="document-group"><p class="eyebrow">01 · Campus</p><h3>Find your campus.</h3><p>Search for UTEP, select the example result, or try a nonmatching search to see the empty state.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen1' | relative_url }}">Open campus picker →</a></article>
+    <article class="document-group"><p class="eyebrow">02 · Dining</p><h3>Compare dining options.</h3><p>Read a venue’s sample open or closed status, review its hours placeholder, and open its menu.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen2' | relative_url }}">Open dining list →</a></article>
+    <article class="document-group"><p class="eyebrow">03 · Menu</p><h3>Check before you go.</h3><p>Compare in-stock and out-of-stock examples. Ingredient, allergen, and calorie fields remain placeholders for review.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen3' | relative_url }}">Open menu view →</a></article>
+    <article class="document-group"><p class="eyebrow">04 · Map</p><h3>Explore nearby options.</h3><p>Select a numbered pin to open its matching venue. Preview the location-unavailable state without sharing device location.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen4' | relative_url }}">Open schematic map →</a></article>
+  </div>
+</section>
+
+<section class="home-section" id="review-tasks" aria-labelledby="review-title">
+  <header class="section-top"><div><p class="eyebrow">Outside-user review</p><h2 id="review-title">Try the flow. Tell us where you hesitate.</h2></div></header>
+  <div class="prose">
+    <ol>
+      <li>Find the University of Texas at El Paso and open the campus dining list.</li>
+      <li>Find an open venue and identify where you would check its hours.</li>
+      <li>Open a menu and distinguish an available item from an unavailable one.</li>
+      <li>Open Dining Option #2. What tells you that the venue is closed?</li>
+      <li>Switch to Maps and choose a venue using its numbered pin.</li>
+      <li>Preview location unavailable. Can you still find dining information?</li>
+      <li>Change campus and search for a name with no results. What would you do next?</li>
+    </ol>
+    <p>For each task, record whether it was completed independently, where the reviewer hesitated, and their exact comments. Ask whether they preferred the list or map and what information was missing. These are planned review tasks; no completed sessions or findings are claimed here.</p>
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="changes-title">
+  <header class="section-top"><div><p class="eyebrow">Wireframe updates</p><h2 id="changes-title">What this version improves.</h2></div></header>
+  <div class="prose"><ul>
+    <li>Responsive phone layouts, larger reading text, and clearer touch targets.</li>
+    <li>Working Dining, Maps, and Search navigation with visible keyboard focus.</li>
+    <li>Venue-specific menu headings and closed-state behavior from dining rows and map pins.</li>
+    <li>Search empty-state feedback and a reversible location-unavailable preview.</li>
+    <li>All four annotated screens remain visible for comparison and printing.</li>
+  </ul><p>Next: conduct outside-user reviews, record observations, and revise the flow based on evidence. Live campus feeds, actual location services, and verified menu details remain future work.</p></div>
+</section>
+
+<nav class="sprint-pager" aria-label="Sprint navigation">
+  <a href="{{ '/sprints/sprint-4/' | relative_url }}" rel="prev"><span>Previous</span>Sprint 4: Reliability and planning</a>
+  <a href="{{ '/sprints/' | relative_url }}"><span>All sprints</span>Sprint archive</a>
+</nav>

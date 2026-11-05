@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      DineCheck Wireframe · Team 10
+    </title>
+    <link rel="stylesheet" href="wireframe.css">
+  </head>
+  <body id="page-top">
+    <a class="skip-link" href="#main-content">Skip to wireframe</a>
+    <header>
+      <a href="/sprints/sprint-5/">← Back to Sprint 5</a>
+      <h1>
+        DineCheck Wireframe · Team 10
+      </h1>
+      <p>
+        Low-fidelity wireframe for outside-user review. Not a visual mockup.
+      </p>
+      <p class="small">
+        Start with Screen 1. Search for UTEP, choose a venue, and compare the list with the map. All content is illustrative; hours, menus, stock, and locations are not live.
+      </p>
+    <div class="screen-links" aria-label="Wireframe screens">
+        <a href="#screen1">01 Campus</a><a href="#screen2">02 Dining</a><a href="#screen3">03 Menu</a><a href="#screen4">04 Map</a><a href="#review">Review tasks</a>
+      </div></header>
+    <main id="main-content">
+      <div class="artboards">
+        <section class="board" id="screen1">
+          <h2>
+            Screen 1 · Campus picker
+          </h2>
+          <div class="phone">
+            <div class="screen">
+              <div class="island" aria-hidden="true"></div>
+              <div class="status">
+                <span>DineCheck</span>
+                <span>9:41</span>
+              </div>
+            <div class="content">
+              <h3 class="screen-title">
+                Find your Campus
+              </h3>
+              <p>
+                Choose a university to see dining options.
+              </p>
+              <label for="campus">
+                Search campus
+              </label>
+              <input id="campus" type="search" placeholder="University or campus name">
+              <p class="small">
+                Example result
+              </p>
+              <a class="campus" href="#screen2">
+                <span class="logo">
+                  Univ.
+                  <br>
+                  logo
+                </span>
+                <strong>
+                  University of Texas
+                  <br>
+                  at El Paso
+                </strong>
+                <span>
+                  →
+                </span>
+              </a>
+              <p id="empty" role="status" hidden>
+                No matching campus. Try another search.
+              </p>
+              <p class="example-note">Prototype campus: UTEP. Try “UTEP”, “Texas”, or a nonmatching name to review the empty state.</p>
+              <p class="small">
+                Select a campus to continue.
+                <br>
+                You can change it later.
+              </p>
+            </div>
+            <nav aria-label="Screen navigation"><a href="#screen2">Dining</a><a href="#screen4">Maps</a><a href="#screen1" class="current" aria-current="true">Search</a></nav>
+            <div class="home" aria-hidden="true"></div>
+            </div>
+          </div>
+          <aside aria-label="Screen 1 annotations">
+            <h3>
+              Review notes
+            </h3>
+            <ul>
+              <li>
+                Entry point: search, then select a campus.
+              </li>
+              <li>
+                University logo remains a placeholder.
+              </li>
+              <li>
+                Bottom bar links to Dining, Maps, and Search. All four screens remain visible for review.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section class="board" id="screen2">
+          <h2>
+            Screen 2 · Dining list
+          </h2>
+          <div class="phone">
+            <div class="screen">
+              <div class="island" aria-hidden="true"></div>
+              <div class="status">
+                <span>DineCheck</span>
+                <span>9:41</span>
+              </div>
+            <div class="content">
+              <h3 class="screen-title">
+                University of Texas
+                <br>
+                at El Paso
+              </h3>
+              <a href="#screen1">
+                Change campus
+              </a>
+              <p class="small">
+                Campus stays selected until changed.
+              </p>
+              <h4>
+                Campus dining
+              </h4>
+              <div class="dining-list" tabindex="0" aria-label="Scrollable dining options">
+                <a class="dining" data-venue="venue1" href="#screen3">
+                  <span class="logo">
+                    Logo
+                  </span>
+                  <span>
+                    <strong>
+                      Dining Option #1
+                    </strong>
+                    <br>
+                    <b>
+                      OPEN
+                    </b>
+                    <br>
+                    Hours: [opening] to [closing]
+                    <br>
+                    <small>
+                      Tap to expand menu →
+                    </small>
+                  </span>
+                </a>
+                <a class="dining" data-venue="venue2" href="#screen3">
+                  <span class="logo">
+                    Logo
+                  </span>
+                  <span>
+                    <strong>
+                      Dining Option #2
+                    </strong>
+                    <br>
+                    <b>
+                      CLOSED
+                    </b>
+                    <br>
+                    Hours: [opening] to [closing]
+                    <br>
+                    <small>
+                      Tap to expand menu →
+                    </small>
+                  </span>
+                </a>
+                <a class="dining" data-venue="venue3" href="#screen3">
+                  <span class="logo">
+                    Logo
+                  </span>
+                  <span>
+                    <strong>
+                      Chick-fil-A
+                    </strong>
+                    <br>
+                    <b>
+                      OPEN
+                    </b>
+                    <br>
+                    Hours: [opening] to [closing]
+                    <br>
+                    <small>
+                      Tap to expand menu →
+                    </small>
+                  </span>
+                </a>
+              </div>
+              <p class="small">
+                Scroll list for more dining options.
+              </p>
+            </div>
+            <nav aria-label="Screen navigation"><a href="#screen2" class="current" aria-current="true">Dining</a><a href="#screen4">Maps</a><a href="#screen1">Search</a></nav>
+            <div class="home" aria-hidden="true"></div>
+            </div>
+          </div>
+          <aside aria-label="Screen 2 annotations">
+            <h3>
+              Review notes
+            </h3>
+            <ul>
+              <li>
+                Keep the chosen campus until changed.
+              </li>
+              <li>
+                Show logo, status word, and operating hours.
+              </li>
+              <li>
+                Scrollable rows open the dining menu. Status is text rather than color for low fidelity.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section class="board" id="screen3" aria-label="Selected dining menu">
+          <h2>
+            Screen 3 · Item / menu view
+          </h2>
+          <div class="phone">
+            <div class="screen">
+              <div class="island" aria-hidden="true"></div>
+              <div class="status">
+                <span>DineCheck</span>
+                <span>9:41</span>
+              </div>
+            <div class="content">
+              <a href="#screen2">
+                ← Back to dining
+              </a>
+              <h3 class="screen-title" id="venue-title">
+                Chick-fil-A at
+                <br>
+                University of Texas
+                <br>
+                at El Paso
+              </h3>
+              <p id="venue-status"><b>OPEN</b> · [opening] to [closing]</p>
+              <p id="closed-note" class="example-note" hidden>This sample venue is closed. Menu items can be reviewed, but availability is unconfirmed.</p>
+              <p class="small">
+                Illustrative menu. Allergen, ingredient, calorie, and availability details are placeholders.
+              </p>
+              <div class="menu-list" tabindex="0" aria-label="Scrollable menu">
+                <article class="item">
+                  <div>
+                    <h4 id="first-item-name">
+                      Chicken sandwich
+                    </h4>
+                    <p>
+                      Allergens: [list]
+                      <br>
+                      Ingredients: [list]
+                    </p>
+                    <p>
+                      Calories: [value]
+                      <br>
+                      Availability: <span data-stock="available">In stock (example)</span>
+                    </p>
+                    <p class="rating" aria-label="Rating placeholder">
+                      □ □ □ □ □
+                    </p>
+                  </div>
+                  <div class="picture">
+                    Picture
+                    <br>
+                    placeholder
+                  </div>
+                </article>
+                <article class="item">
+                  <div>
+                    <h4>
+                      [Item name]
+                    </h4>
+                    <p>
+                      Allergens: [list]
+                      <br>
+                      Ingredients: [list]
+                    </p>
+                    <p>
+                      Calories: [value]
+                      <br>
+                      Availability: <span data-stock="unavailable">Out of stock (example)</span>
+                    </p>
+                    <p class="rating" aria-label="Rating placeholder">
+                      □ □ □ □ □
+                    </p>
+                  </div>
+                  <div class="picture">
+                    Picture
+                    <br>
+                    placeholder
+                  </div>
+                </article>
+              </div>
+            </div>
+            <nav aria-label="Screen navigation"><a href="#screen2" class="current" aria-current="true">Dining</a><a href="#screen4">Maps</a><a href="#screen1">Search</a></nav>
+            <div class="home" aria-hidden="true"></div>
+            </div>
+          </div>
+          <aside aria-label="Screen 3 annotations">
+            <h3>
+              Review notes
+            </h3>
+            <ul>
+              <li>
+                Show item name, allergens, ingredients, calories, and stock.
+              </li>
+              <li>
+                Picture rectangles and five rating squares follow the sketch.
+              </li>
+              <li>
+                Both in-stock and out-of-stock states are shown.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section class="board" id="screen4">
+          <h2>
+            Screen 4 · Nearby dining map
+          </h2>
+          <div class="phone">
+            <div class="screen">
+              <div class="island" aria-hidden="true"></div>
+              <div class="status">
+                <span>DineCheck</span>
+                <span>9:41</span>
+              </div>
+            <div class="content">
+              <h3 class="screen-title">
+                Maps
+              </h3>
+              <p>
+                University of Texas at El Paso
+              </p>
+              <div class="map" aria-label="Schematic campus map, not real locations">
+                <div class="road r1">
+                </div>
+                <div class="road r2">
+                </div>
+                <span class="building b1">
+                  Building
+                </span>
+                <span class="building b2">
+                  Building
+                </span>
+                <a class="pin p1" data-venue="venue1" href="#screen3" aria-label="Pin 1: Dining Option #1 menu">
+                  1
+                </a>
+                <a class="pin p2" data-venue="venue2" href="#screen3" aria-label="Pin 2: Dining Option #2 menu, closed">
+                  2
+                </a>
+                <a class="pin p3" data-venue="venue3" href="#screen3" aria-label="Pin 3: Chick-fil-A menu">
+                  3
+                </a>
+                <span class="you" id="example-location">
+                  ⊙ You
+                </span>
+              </div>
+              <p class="small">
+                Schematic only. Pins do not show real locations. No device location is requested.
+              </p>
+              <button type="button" id="location-toggle" aria-pressed="false">Preview location unavailable</button>
+              <p id="location-message" role="status" hidden>Location unavailable. You can still browse the campus dining list or select a pin.</p>
+              <div class="map-key">
+                1 Dining Option #1
+                <br>
+                2 Dining Option #2
+                <br>
+                3 Chick-fil-A
+              </div>
+              <p>
+                Tap a dining pin to open its menu.
+              </p>
+            </div>
+            <nav aria-label="Screen navigation"><a href="#screen2">Dining</a><a href="#screen4" class="current" aria-current="true">Maps</a><a href="#screen1">Search</a></nav>
+            <div class="home" aria-hidden="true"></div>
+            </div>
+          </div>
+          <aside aria-label="Screen 4 annotations">
+            <h3>
+              Review notes
+            </h3>
+            <ul>
+              <li>
+                Show dining positions near the user.
+              </li>
+              <li>
+                Each pin updates Screen 3 with that venue’s name and open or closed state.
+              </li>
+              <li>
+                Each pin selects its matching sample venue. The map is schematic; no directions or live location are provided.
+              </li>
+            </ul>
+          </aside>
+        </section>
+      </div>
+      <section class="review" id="review">
+        <h2>
+          Questions for outside users
+        </h2>
+        <ol>
+          <li>
+            Where would you start to find food on your campus?
+          </li>
+          <li>
+            Can you find a restaurant's hours and an item's availability?
+          </li>
+          <li>
+            Would you use the list or the map? What is missing or confusing?
+          </li>
+        </ol>
+        <p>
+          Try these states: search for a nonmatching campus; select Dining Option #2 (closed); compare in-stock and out-of-stock menu examples; then use “Preview location unavailable” on the map. These are demonstrations for review, not real service data. Record what was confusing before suggesting changes.
+        </p>
+      </section>
+    </main>
+    <script src="wireframe.js" defer></script>
+  </body>
+</html>

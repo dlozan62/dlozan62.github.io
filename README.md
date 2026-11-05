@@ -9,7 +9,9 @@ DineCheck is Team 10's campus dining availability project for CS 4390 / CS 5388 
 - **Sprint 1:** market research, business strategy, current project charter, and individual contribution statements.
 - **Sprint 2:** business case and recommendation, estimation appendix, one-page budget, and a separate project changelog.
 - **Sprint 3:** in progress; interviews, team notes and contradiction memos, competitor research, evidence log, candidate risks, and a change note.
-- **Sprints 4–6:** planned; pages are added when the team has work to publish.
+- **Sprint 4:** reliability planning, error budgets, interface sketch, and retrospective.
+- **Sprint 5:** in progress; interactive four-screen wireframe and outside-user review tasks at `/sprints/sprint-5/`.
+- **Sprint 6:** planned.
 
 Research statements and cost figures come from the team's existing records. Sprint 1 retains the earlier project name where it belongs to that historical record. The PDFs and Word files remain available under `assets/`.
 

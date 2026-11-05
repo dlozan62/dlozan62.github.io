@@ -12,9 +12,9 @@ permalink: /sprints/
     Sprint 1 covers our research and charter. Sprint 2 covers the business case,
     estimates, budget, and changelog. In Sprint 3, we’re adding interviews, competitor
     research, team notes, and changes based on what we found. Sprint 4 covers
-    service levels, error budgets, an interface sketch, and our team retrospective.
+    service levels, error budgets, an interface sketch, and our team retrospective. Sprint 5 turns the interface concept into an interactive wireframe for outside-user review.
   </p>
-  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-4/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
+  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-5/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
 </header>
 
 <ol class="sprint-index" aria-label="Sprint index">
@@ -33,8 +33,9 @@ permalink: /sprints/
     </a>
   </li>
   <li><a class="sprint-index__active" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>Complete</small></a></li>
-  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-4/' | relative_url }}"><span>Sprint 4</span><strong>Reliability planning and team reflection</strong><small>Current sprint</small></a></li>
-  {% for sprint in (5..6) %}
+  <li><a class="sprint-index__active" href="{{ '/sprints/sprint-4/' | relative_url }}"><span>Sprint 4</span><strong>Reliability planning and team reflection</strong><small>Published</small></a></li>
+  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-5/' | relative_url }}"><span>Sprint 5</span><strong>Interactive wireframe and review tasks</strong><small>In progress · Current sprint</small></a></li>
+  {% for sprint in (6..6) %}
     <li class="sprint-index__planned">
       <span>Sprint {{ sprint }}</span>
       <strong>Coming later</strong>
@@ -81,7 +82,11 @@ permalink: /sprints/
       <li><a href="{{ '/sprints/sprint-4/#interface-sketch' | relative_url }}">Interface Sketch</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-sketch.pdf' | relative_url }}" aria-label="Interface Sketch (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-4/#retrospective' | relative_url }}">Team Retrospective</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-retrospective.pdf' | relative_url }}" aria-label="Team Retrospective (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
+  <article class="document-group"><p class="eyebrow">Sprint 5</p><h3>Wireframe &amp; review</h3><ul>
+    <li><a href="{{ '/sprints/sprint-5/' | relative_url }}">Sprint 5 overview and review tasks</a></li>
+    <li><a href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Interactive four-screen wireframe</a></li>
+  </ul></article>
   </div>
-
-  <p class="source-note">Sprint 4 documents are available. Materials for Sprints 5–6 will appear when published.</p>
+  <p class="source-note">Sprint 5 is in progress. The wireframe is available for review; feedback has not yet been recorded. Sprint 6 materials will appear when published.</p>
 </section>
+
