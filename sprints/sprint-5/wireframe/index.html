@@ -120,9 +120,42 @@
               <p class="small">
                 Campus stays selected until changed.
               </p>
+              <details class="diet-panel" id="diet-preferences" open>
+                <summary>Dietary needs &amp; preferences</summary>
+                <form id="diet-form">
+                  <label for="diet-style">Eating preference</label>
+                  <select id="diet-style" name="diet">
+                    <option value="">No preference</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="gluten-free">Gluten-free</option>
+                    <option value="halal">Halal</option>
+                  </select>
+                  <fieldset>
+                    <legend>Avoid these allergens</legend>
+                    <div class="allergen-options">
+                      <label><input type="checkbox" name="avoid" value="milk">Milk</label>
+                      <label><input type="checkbox" name="avoid" value="eggs">Eggs</label>
+                      <label><input type="checkbox" name="avoid" value="fish">Fish</label>
+                      <label><input type="checkbox" name="avoid" value="shellfish">Shellfish</label>
+                      <label><input type="checkbox" name="avoid" value="tree-nuts">Tree nuts</label>
+                      <label><input type="checkbox" name="avoid" value="peanuts">Peanuts</label>
+                      <label><input type="checkbox" name="avoid" value="wheat">Wheat</label>
+                      <label><input type="checkbox" name="avoid" value="soy">Soy</label>
+                      <label><input type="checkbox" name="avoid" value="sesame">Sesame</label>
+                    </div>
+                  </fieldset>
+                  <label class="check-option"><input type="checkbox" id="in-stock-only">Only show in-stock examples</label>
+                  <button type="reset">Clear filters</button>
+                  <p class="small">Preferences apply to all sample menus during this visit. They are not saved or sent anywhere.</p>
+                </form>
+              </details>
+              <p id="diet-summary" class="example-note" role="status" aria-live="polite">All sample menu items shown.</p>
+              <p class="small">Menu matches use fictional example labels. Unknown dietary or allergen details are excluded when that filter is active. Confirm ingredients and cross-contact with dining staff.</p>
               <h4>
                 Campus dining
               </h4>
+              <p class="small">Matching menu items are counted below each venue. Venues stay visible even when no items match.</p>
               <div class="dining-list" tabindex="0" aria-label="Scrollable dining options">
                 <a class="dining" data-venue="venue1" href="#screen3">
                   <span class="logo">
@@ -139,7 +172,7 @@
                     <br>
                     Hours: [opening] to [closing]
                     <br>
-                    <small>
+                    <span class="match-count" data-match-count="venue1"></span><br><small>
                       Tap to expand menu →
                     </small>
                   </span>
@@ -159,7 +192,7 @@
                     <br>
                     Hours: [opening] to [closing]
                     <br>
-                    <small>
+                    <span class="match-count" data-match-count="venue2"></span><br><small>
                       Tap to expand menu →
                     </small>
                   </span>
@@ -179,7 +212,7 @@
                     <br>
                     Hours: [opening] to [closing]
                     <br>
-                    <small>
+                    <span class="match-count" data-match-count="venue3"></span><br><small>
                       Tap to expand menu →
                     </small>
                   </span>
@@ -235,8 +268,11 @@
               <p id="venue-status"><b>OPEN</b> · [opening] to [closing]</p>
               <p id="closed-note" class="example-note" hidden>This sample venue is closed. Menu items can be reviewed, but availability is unconfirmed.</p>
               <p class="small">
-                Illustrative menu. Allergen, ingredient, calorie, and availability details are placeholders.
+                Illustrative menu. Fictional items demonstrate dietary filtering. Chick-fil-A information remains unverified.
               </p>
+              <p id="menu-filter-note" class="example-note"></p>
+              <a href="#diet-preferences">Edit dietary filters ←</a>
+              <p id="menu-empty" role="status" hidden>No sample items match your filters. Change your preferences or choose another venue.</p>
               <div class="menu-list" tabindex="0" aria-label="Scrollable menu">
                 <article class="item">
                   <div>
@@ -303,10 +339,10 @@
                 Show item name, allergens, ingredients, calories, and stock.
               </li>
               <li>
-                Picture rectangles and five rating squares follow the sketch.
+                Menu cards prioritize dietary labels, ingredients, allergens, and stock.
               </li>
               <li>
-                Both in-stock and out-of-stock states are shown.
+                Dietary and allergen filters carry over from the dining list. Items with unknown details are excluded when a relevant filter is active.
               </li>
             </ul>
           </aside>
@@ -403,7 +439,7 @@
             Can you find a restaurant's hours and an item's availability?
           </li>
           <li>
-            Would you use the list or the map? What is missing or confusing?
+            Choose Vegan and avoid Milk. Can you find a matching item? Then try Halal and check the no-match state. Would you use the list or the map?
           </li>
         </ol>
         <p>
@@ -411,6 +447,8 @@
         </p>
       </section>
     </main>
+    <script src="dietary.js" defer></script>
     <script src="wireframe.js" defer></script>
   </body>
 </html>
+
