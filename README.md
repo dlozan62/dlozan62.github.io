@@ -21,8 +21,8 @@ Research statements and cost figures come from the team's existing records. Spri
 | --- | --- |
 | `_layouts/default.html` | Shared document metadata, header, navigation, breadcrumbs, and footer |
 | `assets/css/style.css` | The complete responsive design system; no separate override stylesheet |
-| `assets/js/site.js` | Mobile menu, keyboard-accessible table scrolling, and active report links |
-| `index.html` | Project introduction, illustrative product preview, evidence, and progress |
+| `assets/js/site.js` | Mobile menu, document search, keyboard-accessible table scrolling, and active report links |
+| `index.html` | Project introduction, current wireframe, research evidence, and sprint overview |
 | `how-it-works.html` | Static overview of the planned student and dining-staff workflows |
 | `demo.html` | Compatibility page linking the former demo route to the workflow overview |
 | `about.html` | Team portraits, responsibilities, and biographies |

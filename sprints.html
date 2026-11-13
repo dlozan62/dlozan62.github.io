@@ -8,12 +8,7 @@ permalink: /sprints/
 <header class="page-intro">
   <p class="course-line">Our sprints</p>
   <h1>Our work, sprint by sprint.</h1>
-  <p>
-    Sprint 1 covers our research and charter. Sprint 2 covers the business case,
-    estimates, budget, and changelog. In Sprint 3, we’re adding interviews, competitor
-    research, team notes, and changes based on what we found. Sprint 4 covers
-    service levels, error budgets, an interface sketch, and our team retrospective. Sprint 5 turns the interface concept into an interactive wireframe for outside-user review.
-  </p>
+  <p>Follow DineCheck from early research to an interactive wireframe. Browse the sprint records below, or jump to the reports and downloads.</p>
   <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-5/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
 </header>
 
@@ -47,7 +42,12 @@ permalink: /sprints/
 <section class="home-section document-index" id="documents" aria-labelledby="documents-title">
   <header class="section-top"><div><p class="eyebrow">Reports &amp; downloads</p><h2 id="documents-title">Find the document you need.</h2></div></header>
   <p>Read the reports here or download the PDFs. They’re grouped by sprint.</p>
-  <div class="document-grid">
+  <div class="document-search" hidden>
+    <label for="document-search">Search project documents</label>
+    <div class="document-search__controls"><input id="document-search" type="search" placeholder="Try budget, interview, or Sprint 4" aria-controls="document-results" aria-describedby="document-count"><button class="button button--outline" id="document-clear" type="button">Clear</button></div>
+    <p id="document-count" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+  <div class="document-grid" id="document-results">
     <article class="document-group"><p class="eyebrow">Sprint 1</p><h3>Research &amp; scope</h3><ul>
       <li><a href="{{ '/sprints/sprint-1/market-research/' | relative_url }}">Market research</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-1-market-research.pdf' | relative_url }}" aria-label="Market research (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-1/business-strategy/' | relative_url }}">Business strategy</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-1-business-strategy.pdf' | relative_url }}" aria-label="Business strategy (PDF)">PDF <span aria-hidden="true">↗</span></a></li>

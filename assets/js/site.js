@@ -37,7 +37,7 @@ if (menuButton && siteNav) {
     if (!event.target.closest('.site-header')) closeMenu();
   });
 
-  const desktop = window.matchMedia('(min-width: 761px)');
+  const desktop = window.matchMedia('(min-width: 961px)');
   desktop.addEventListener('change', () => closeMenu());
 }
 
@@ -135,3 +135,41 @@ window.addEventListener('afterprint', () => {
   entriesOpenedForPrint.forEach((entry) => { entry.open = false; });
   entriesOpenedForPrint = [];
 });
+
+// Search the document directory in place; all links remain available without JavaScript.
+const documentSearch = document.querySelector('.document-search');
+if (documentSearch) {
+  const input = document.getElementById('document-search');
+  const clear = document.getElementById('document-clear');
+  const count = document.getElementById('document-count');
+  const groups = [...document.querySelectorAll('.document-group')].map((group) => ({
+    group,
+    context: group.querySelector('.eyebrow').textContent.toLowerCase(),
+    rows: [...group.querySelectorAll('li')],
+  }));
+  const filterDocuments = () => {
+    const words = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let matches = 0;
+    groups.forEach(({ group, context, rows }) => {
+      let visible = 0;
+      rows.forEach((row) => {
+        const text = `${context} ${row.textContent.toLowerCase()}`;
+        row.hidden = !words.every((word) => text.includes(word));
+        if (!row.hidden) visible++;
+      });
+      group.hidden = visible === 0;
+      matches += visible;
+    });
+    count.textContent = matches === 0
+      ? 'No documents found. Try another search or clear the filter.'
+      : `${matches} document${matches === 1 ? '' : 's'} shown.`;
+  };
+  input.addEventListener('input', filterDocuments);
+  clear.addEventListener('click', () => {
+    input.value = '';
+    filterDocuments();
+    input.focus();
+  });
+  documentSearch.hidden = false;
+  filterDocuments();
+}
