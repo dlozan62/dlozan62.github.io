@@ -12,11 +12,26 @@ permalink: /sprints/sprint-5/
   <div class="hero-actions">
     <a class="button button--orange" href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Try the interactive wireframe →</a>
     <a class="button button--outline" href="#review-tasks">View review tasks</a>
+    <a class="button button--outline" href="#sprint5-documents">View documents</a>
   </div>
   <p class="source-note">November 5, 2026 · Based on the supplied Team 10 HTML/CSS wireframe. All venue, menu, stock, hours, and map information is illustrative. User feedback has not yet been recorded.</p>
 </header>
 
-<section class="home-section" aria-labelledby="screens-title">
+<section class="home-section" id="figma-mockup" aria-labelledby="figma-mockup-title">
+  <header class="section-top"><div><p class="eyebrow">Figma mockup</p><h2 id="figma-mockup-title">From wireframe to mockup.</h2></div></header>
+  <div class="prose">
+    <p>The Figma mockup is the step after the wireframe below.</p>
+    <!-- FIGMA EMBED: replace the embed-slot div below with the Figma embed iframe or a link to the Figma file. -->
+    <div class="embed-slot" id="figma-embed-slot">
+      <div class="todo-note">
+        <p><span class="todo-tag">TODO</span> <strong>Figma embed or link goes here.</strong> Salvador supplies the Figma file link.</p>
+        <p><span class="todo-tag">TODO</span> Add a PDF export of the Figma frames to the Sprint 5 documents below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-section" id="screens" aria-labelledby="screens-title">
   <header class="section-top"><div><p class="eyebrow">The student journey</p><h2 id="screens-title">Four screens, one dining decision.</h2></div></header>
   <div class="document-grid">
     <article class="document-group"><p class="eyebrow">01 · Campus</p><h3>Find your campus.</h3><p>Search for UTEP, select the example result, or try a nonmatching search to see the empty state.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen1' | relative_url }}">Open campus picker →</a></article>
@@ -43,7 +58,7 @@ permalink: /sprints/sprint-5/
   </div>
 </section>
 
-<section class="home-section" aria-labelledby="changes-title">
+<section class="home-section" id="wireframe-updates" aria-labelledby="changes-title">
   <header class="section-top"><div><p class="eyebrow">Wireframe updates</p><h2 id="changes-title">What this version improves.</h2></div></header>
   <div class="prose"><ul>
     <li>Dietary preferences (vegetarian, vegan, gluten-free, halal), nine allergen exclusions, matching item counts, and an in-stock filter.</li>
@@ -54,6 +69,59 @@ permalink: /sprints/sprint-5/
     <li>Search empty-state feedback and a reversible location-unavailable preview.</li>
     <li>All four annotated screens remain visible for comparison and printing.</li>
   </ul><p>Next: conduct outside-user reviews, record observations, and revise the flow based on evidence. Live campus feeds, actual location services, and verified menu details remain future work.</p></div>
+</section>
+
+<section class="home-section" id="sprint5-changelog" aria-labelledby="sprint5-changelog-title">
+  <header class="section-top"><div><p class="eyebrow">Changelog</p><h2 id="sprint5-changelog-title">Sprint 5 changelog.</h2></div></header>
+  <div class="prose">
+    <p>What we revised in pages published before Sprint 5, why, and which other pages each change affected. Dates and commit IDs come from the repository history.</p>
+  </div>
+  <div class="charter-table-wrap">
+    <table class="charter-table">
+      <caption>Revisions made during Sprint 5</caption>
+      <thead><tr><th scope="col">Date and commit</th><th scope="col">What was revised</th><th scope="col">Why</th><th scope="col">Downstream pages affected</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Nov 5, 2026 · 933ed79</th>
+          <td>Home page, primary navigation, sprint index, and the Sprint 4 page were updated to point to Sprint 5. Sprint 4 changed from “Current sprint” to “Published.”</td>
+          <td>The Sprint 5 page and interactive wireframe were published.</td>
+          <td>Home (hero, project strip, sprint cards), Sprints index and document list, Sprint 4 page navigation, site navigation, README.</td>
+        </tr>
+        <tr>
+          <th scope="row">Nov 5, 2026 · d52e6b1</th>
+          <td>The Sprint 5 wireframe gained dietary preferences, nine allergen exclusions, matching item counts, and an in-stock filter. Review tasks 3 and 4 were rewritten to use them.</td>
+          <td><span class="todo-tag">TODO</span> Zachary confirms the reason. The commit records what was added, not why.</td>
+          <td>Sprint 5 page (screen 02 summary, review tasks, wireframe updates) and the wireframe.</td>
+        </tr>
+        <tr>
+          <th scope="row">Nov 12, 2026 · 9f30535</th>
+          <td>The home page was rebuilt around the wireframe (new hero and “latest work” section; the project-progress section was removed). The sprint index gained document search. The primary navigation link “Latest sprint” became “Try the wireframe.”</td>
+          <td><span class="todo-tag">TODO</span> Zachary confirms the reason. The commit is titled “Clean up website and add document search.”</td>
+          <td>Home, Sprints index, navigation on every page, README.</td>
+        </tr>
+        <tr>
+          <th scope="row">Nov 16, 2026 · 04fbc16</th>
+          <td>The Sprint 4 team retrospective was removed from the public site: its page section, document entry, home page card item, document-index entry, and its mention in the Sprint 4 changelog.</td>
+          <td>The course handout requires retrospectives to stay private and go to Blackboard only.</td>
+          <td>Sprint 4 page, Home (Sprint 4 card), Sprints document index, README.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% include contribution-statements.html sprint="5" pdf="/assets/pdfs/sprint-5-contribution-statements.pdf" class="home-section" %}
+
+<section class="home-section" id="sprint5-documents" aria-labelledby="sprint5-documents-title">
+  <header class="section-top"><div><p class="eyebrow">Documents</p><h2 id="sprint5-documents-title">Sprint 5 documents.</h2></div></header>
+  <p>Every Sprint 5 document is on this page as text and as a PDF.</p>
+  <div class="document-grid">
+    <article class="document-group"><p class="eyebrow">Overview</p><h3>Wireframe overview and review tasks</h3><p>The four screens, the outside-user review tasks, and what this version improves.</p><p><a href="#screens">Read on this page →</a> · <a href="{{ '/assets/pdfs/sprint-5-overview-review-tasks.pdf' | relative_url }}" download>Download PDF ↓</a></p></article>
+    <article class="document-group"><p class="eyebrow">Wireframe</p><h3>Four annotated wireframe screens</h3><p>The interactive wireframe, and a PDF of its four annotated screens.</p><p><a href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Open the wireframe →</a> · <a href="{{ '/assets/pdfs/sprint-5-wireframe-screens.pdf' | relative_url }}" download>Download PDF ↓</a></p></article>
+    <article class="document-group"><p class="eyebrow">Mockup</p><h3>Figma mockup</h3><p><span class="todo-tag">TODO</span> Figma link and PDF export of the frames.</p><p><a href="#figma-mockup">Go to the mockup section →</a></p></article>
+    <article class="document-group"><p class="eyebrow">Changelog</p><h3>Sprint 5 changelog</h3><p>What we revised in earlier pages, why, and what it affected.</p><p><a href="#sprint5-changelog">Read on this page →</a> · <a href="{{ '/assets/pdfs/sprint-5-changelog.pdf' | relative_url }}" download>Download PDF ↓</a></p></article>
+    <article class="document-group"><p class="eyebrow">Accountability</p><h3>Contribution statements</h3><p>What each member owned and reviewed, with an AI use disclosure.</p><p><a href="#sprint5-contributions">Read on this page →</a> · <a href="{{ '/assets/pdfs/sprint-5-contribution-statements.pdf' | relative_url }}" download>Download PDF ↓</a></p></article>
+  </div>
 </section>
 
 <nav class="sprint-pager" aria-label="Sprint navigation">
