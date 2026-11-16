@@ -2027,6 +2027,10 @@ section.charter-detail.home-section {
   margin: 2rem 0 0;
 }
 
+.figma-embed--proto {
+  height: clamp(36rem, 85vh, 52rem);
+}
+
 .sketch-figure.figma-flow img {
   width: 100%;
   height: auto;
