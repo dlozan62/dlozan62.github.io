@@ -1999,6 +1999,49 @@ section.charter-detail.home-section {
   min-width: 52rem;
 }
 
+.sprint-card--wide {
+  grid-column: 1 / -1;
+}
+
+.document-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .document-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .document-grid--four {
+    grid-template-columns: 1fr;
+  }
+}
+
+.figma-flows {
+  margin-top: 1.5rem;
+}
+
+.figma-flow {
+  margin: 2rem 0 0;
+}
+
+.sketch-figure.figma-flow img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Narrower flows would otherwise grow very tall at full width. */
+.sketch-figure.figma-flow--3 img {
+  max-width: 63rem;
+}
+
+.sketch-figure.figma-flow--4 img {
+  max-width: 44rem;
+}
+
 .figma-embed {
   display: block;
   width: 100%;
