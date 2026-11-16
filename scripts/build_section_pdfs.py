@@ -48,6 +48,12 @@ LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf", "s
 
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("sprint-2-contribution-statements.pdf", "/sprints/sprint-2/", ["sprint2-contributions"], 2,
+     "Sprint 2 contribution statements"),
+    ("sprint-3-contribution-statements.pdf", "/sprints/sprint-3/", ["sprint3-contributions"], 3,
+     "Sprint 3 contribution statements"),
+    ("sprint-4-contribution-statements.pdf", "/sprints/sprint-4/", ["sprint4-contributions"], 4,
+     "Sprint 4 contribution statements"),
     ("sprint-2-business-case.pdf", "/sprints/sprint-2/", ["business-case"], 2, "Business case"),
     ("sprint-2-roi-analysis.pdf", "/sprints/sprint-2/", ["roi"], 2, "ROI analysis"),
     ("sprint-3-changelog.pdf", "/sprints/sprint-3/", ["sprint3-changelog"], 3, "Sprint 3 changelog"),

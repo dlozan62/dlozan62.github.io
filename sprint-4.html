@@ -80,7 +80,8 @@ permalink: /sprints/sprint-4/
         <li><a href="#agile-roadmap">05 Agile roadmap</a></li>
         <li><a href="#delivery-dashboard">06 Delivery dashboard</a></li>
         <li><a href="#sprint4-changelog">07 Changelog</a></li>
-        <li><a href="#sprint4-documents">08 Documents</a></li>
+        <li><a href="#sprint4-contributions">08 Contributions</a></li>
+        <li><a href="#sprint4-documents">09 Documents</a></li>
       </ul>
       <a class="sprint3-back" href="#page-top">Back to top ↑</a>
     </nav>
@@ -456,7 +457,7 @@ permalink: /sprints/sprint-4/
               <p><span class="todo-tag">TODO</span> The team writes each sprint objective and sets a velocity target and unit (for example, pages or documents published per sprint). Nothing below is a target until the team fills it in.</p>
             </div>
             <div class="charter-table-wrap">
-              <table class="charter-table">
+              <table class="charter-table charter-table--wide">
                 <caption>Sprint objectives and velocity targets</caption>
                 <thead><tr><th scope="col">Sprint</th><th scope="col">Published scope (from its portal page)</th><th scope="col">Sprint objective</th><th scope="col">Velocity target</th><th scope="col">Actual</th></tr></thead>
                 <tbody>
@@ -498,7 +499,7 @@ permalink: /sprints/sprint-4/
 
             <h3>DORA delivery metrics</h3>
             <div class="charter-table-wrap">
-              <table class="charter-table">
+              <table class="charter-table charter-table--wide">
                 <caption>Delivery metrics by sprint</caption>
                 <thead><tr><th scope="col">Metric</th><th scope="col">On our portal</th><th scope="col">Sprint 1</th><th scope="col">Sprint 2</th><th scope="col">Sprint 3</th><th scope="col">Sprint 4</th><th scope="col">Decision it triggers</th></tr></thead>
                 <tbody>
@@ -513,7 +514,7 @@ permalink: /sprints/sprint-4/
 
             <h3>Service level objectives</h3>
             <div class="charter-table-wrap">
-              <table class="charter-table">
+              <table class="charter-table charter-table--wide">
                 <caption>SLO attainment by sprint</caption>
                 <thead><tr><th scope="col">Objective</th><th scope="col">Target and window</th><th scope="col">Sprints 1–3</th><th scope="col">Sprint 4</th><th scope="col">Decision it triggers</th></tr></thead>
                 <tbody>
@@ -550,7 +551,7 @@ permalink: /sprints/sprint-4/
               Sprint 4 revision below is dated November 3.
             </p>
             <div class="charter-table-wrap">
-              <table class="charter-table">
+              <table class="charter-table charter-table--wide">
                 <caption>Revisions to published pages during Sprint 4</caption>
                 <thead><tr><th scope="col">Date and commit</th><th scope="col">What was revised</th><th scope="col">Why</th><th scope="col">Downstream pages affected</th></tr></thead>
                 <tbody>
@@ -590,11 +591,14 @@ permalink: /sprints/sprint-4/
           </div>
         </section>
 
-        <!-- SECTION 8: DOCUMENTS -->
+        <!-- SECTION 8: CONTRIBUTION STATEMENTS -->
+        {% include contribution-statements.html sprint="4" pdf="/assets/pdfs/sprint-4-contribution-statements.pdf" %}
+
+        <!-- SECTION 9: DOCUMENTS -->
         <section class="charter-section" id="sprint4-documents"
                  aria-labelledby="sprint4-documents-title">
           <header class="charter-section__heading">
-            <p class="eyebrow">08 · Documentation</p>
+            <p class="eyebrow">09 · Documentation</p>
             <h2 id="sprint4-documents-title">Sprint 4 documents</h2>
             <p>Read each document above, or download its PDF.</p>
           </header>
@@ -704,6 +708,22 @@ permalink: /sprints/sprint-4/
                   <a href="{{ '/sprints/sprint-4/#sprint4-changelog' | relative_url }}">Read on this page →</a>
                   <a href="{{ '/assets/pdfs/sprint-4-changelog.pdf' | relative_url }}" download>
                     Download Changelog PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Sprint 4 Contribution Statements</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>What each member owned and reviewed, with an AI use disclosure.</p>
+                <div class="research-download__links">
+                  <a href="{{ '/sprints/sprint-4/#sprint4-contributions' | relative_url }}">Read on this page →</a>
+                  <a href="{{ '/assets/pdfs/sprint-4-contribution-statements.pdf' | relative_url }}" download>
+                    Download Contribution Statements PDF ↓
                   </a>
                 </div>
               </div>

@@ -2018,6 +2018,10 @@ section.charter-detail.home-section {
   border-bottom: 0;
 }
 
+.charter-table--wide {
+  min-width: 52rem;
+}
+
 .embed-slot {
   display: grid;
   place-items: center;
