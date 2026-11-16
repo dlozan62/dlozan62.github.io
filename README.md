@@ -11,7 +11,7 @@ DineCheck is Team 10's campus dining availability project for CS 4390 / CS 5388 
 - **Sprint 3:** in progress; interviews, team notes and contradiction memos, competitor research, evidence log, candidate risks, and a change note.
 - **Sprint 4:** reliability planning, error budgets, and interface sketch. Retrospectives and peer evaluations are private and go to Blackboard only.
 - **Sprint 5:** in progress; interactive four-screen wireframe and outside-user review tasks at `/sprints/sprint-5/`.
-- **Sprint 6:** planned.
+- **Sprint 6:** planned; sections are set up at `/sprints/sprint-6/`.
 
 Research statements and cost figures come from the team's existing records. Sprint 1 retains the earlier project name where it belongs to that historical record. The PDFs and Word files remain available under `assets/`.
 
@@ -27,9 +27,10 @@ Research statements and cost figures come from the team's existing records. Spri
 | `demo.html` | Compatibility page linking the former demo route to the workflow overview |
 | `about.html` | Team portraits, responsibilities, and biographies |
 | `sprints.html` | Published and planned sprint archive |
-| `sprint-1.html`, `sprint-2.html` | Sprint overviews and reports |
+| `sprint-1.html` … `sprint-6.html` | Sprint overviews and reports |
 | `market-research.html` | Research evidence and its limitations |
 | `sprints/` | Business strategy, charter, and changelog pages |
+| `_includes/contribution-statements.html`, `_data/team.yml` | Per-sprint contribution statements with AI-use disclosure fields |
 | `assets/documents/`, `assets/pdfs/` | Original downloadable project records |
 | `scripts/check_site.py`, `tests/` | Generated-page and internal-link validation |
 | `.github/workflows/site-check.yml` | Build, validation, and GitHub Pages deployment |
@@ -69,6 +70,8 @@ In the repository's **Settings → Pages**, set the build source to **GitHub Act
 - Add alternative text to meaningful images. Decorative images use an empty `alt` attribute.
 - Wide report tables scroll within their own container on small screens.
 - Keep downloadable files aligned with their source documents. The optional PDF generators require `reportlab`; they are not run during website deployment.
+- `scripts/build_section_pdfs.py` builds the PDF copy of each listed page section from the generated site, so the PDF and the web text match. Run `bundle exec jekyll build`, then the script (it needs LibreOffice, Firefox, and `pypdf`), then build again so `_site` includes the new PDFs.
+- Text marked with a TODO tag is a placeholder for the team to fill in.
 
 ## AI use
 
