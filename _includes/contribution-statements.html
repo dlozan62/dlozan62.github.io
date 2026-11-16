@@ -1,8 +1,9 @@
 {%- comment -%}
   Per-sprint contribution statements (Living Portal handout, sections 9 and 10).
   Usage: {% include contribution-statements.html sprint="5" pdf="/assets/pdfs/..." class="home-section" %}
-  Each member writes their own statement. Replace a TODO line with the member's
-  own words, then rebuild the matching PDF with scripts/build_section_pdfs.py.
+  Each member writes their own statement. Replace the comment inside each empty
+  field with the member's own words, then rebuild the matching PDF with
+  scripts/build_section_pdfs.py.
 {%- endcomment -%}
 {%- assign s = include.sprint -%}
 <section id="sprint{{ s }}-contributions" class="charter-detail{% if include.class %} {{ include.class }}{% endif %}" aria-labelledby="sprint{{ s }}-contributions-title">
@@ -16,9 +17,9 @@
     <article class="statement" id="sprint{{ s }}-statement-{{ member.slug }}">
       <h3>{{ member.name }}</h3>
       <dl>
-        <dt>What I owned</dt><dd><span class="todo-tag">TODO</span> {{ member.first }} writes this.</dd>
-        <dt>What I reviewed</dt><dd><span class="todo-tag">TODO</span> {{ member.first }} writes this.</dd>
-        <dt>AI use disclosure</dt><dd><span class="todo-tag">TODO</span> {{ member.first }} writes this: tool used, PM AI Protocol stage, and what was changed or rejected.</dd>
+        <dt>What I owned</dt><dd><!-- TODO: {{ member.first }} writes this. --></dd>
+        <dt>What I reviewed</dt><dd><!-- TODO: {{ member.first }} writes this. --></dd>
+        <dt>AI use disclosure</dt><dd><!-- TODO: {{ member.first }} writes this: tool used, PM AI Protocol stage, and what was changed or rejected. --></dd>
       </dl>
     </article>
     {%- endfor %}

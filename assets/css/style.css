@@ -1984,33 +1984,10 @@ html { scroll-padding-top:7rem; }
  .sprint3-entry-body { max-width: none; }
 }
 
-/* Placeholders that the team still has to fill in */
-.todo-tag {
-  display: inline-block;
-  padding: 0 .4rem;
-  margin-right: .25rem;
-  border-radius: 4px;
-  background: var(--orange);
-  color: var(--navy);
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  line-height: 1.6;
-  vertical-align: .08em;
-}
-
-.todo-note {
-  margin: 1rem 0;
-  padding: .85rem 1rem;
-  border: 1px dashed var(--orange-ink);
-  border-left: 4px solid var(--orange);
-  border-radius: 6px;
-  background: #fff7ee;
-  color: var(--ink);
-}
-
-.todo-note p {
-  margin: .35rem 0;
+/* Per-sprint records: blank statement fields, wide tables, and embeds */
+.statement dd:empty {
+  min-height: 1.6rem;
+  border-bottom: 1px dashed var(--line);
 }
 
 section.charter-detail.home-section {
@@ -2022,16 +1999,14 @@ section.charter-detail.home-section {
   min-width: 52rem;
 }
 
-.embed-slot {
-  display: grid;
-  place-items: center;
-  min-height: 16rem;
-  margin: 1.25rem 0;
-  padding: 1.5rem;
-  border: 2px dashed var(--orange-ink);
+.figma-embed {
+  display: block;
+  width: 100%;
+  height: clamp(28rem, 70vh, 45rem);
+  margin: 1.25rem 0 .75rem;
+  border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--mist);
-  text-align: center;
 }
 
 .sketch-figure {

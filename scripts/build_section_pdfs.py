@@ -43,11 +43,12 @@ FIREFOX = "/Applications/Firefox.app/Contents/MacOS/firefox"
 AUTHOR = "Team 10"
 
 # Wide tables print on landscape pages.
-LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf", "sprint-3-changelog.pdf",
+LANDSCAPE = {"sprint-5-figma-mockup.pdf", "sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf", "sprint-3-changelog.pdf",
              "sprint-4-changelog.pdf", "sprint-5-changelog.pdf"}
 
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("sprint-5-figma-mockup.pdf", "/sprints/sprint-5/", ["figma-mockup"], 5, "Figma mockup"),
     ("sprint-2-contribution-statements.pdf", "/sprints/sprint-2/", ["sprint2-contributions"], 2,
      "Sprint 2 contribution statements"),
     ("sprint-3-contribution-statements.pdf", "/sprints/sprint-3/", ["sprint3-contributions"], 3,
@@ -55,9 +56,11 @@ DOCUMENTS = [
     ("sprint-4-contribution-statements.pdf", "/sprints/sprint-4/", ["sprint4-contributions"], 4,
      "Sprint 4 contribution statements"),
     ("sprint-2-business-case.pdf", "/sprints/sprint-2/", ["business-case"], 2, "Business case"),
+    ("sprint-2-one-page-budget.pdf", "/sprints/sprint-2/", ["budget"], 2, "One-page budget"),
     ("sprint-2-roi-analysis.pdf", "/sprints/sprint-2/", ["roi"], 2, "ROI analysis"),
     ("sprint-3-changelog.pdf", "/sprints/sprint-3/", ["sprint3-changelog"], 3, "Sprint 3 changelog"),
     ("sprint-4-changelog.pdf", "/sprints/sprint-4/", ["sprint4-changelog-record"], 4, "Sprint 4 changelog"),
+    ("sprint-4-error-budgets.pdf", "/sprints/sprint-4/", ["error-budgets"], 4, "Error budgets: two-week period"),
     ("sprint-4-agile-roadmap.pdf", "/sprints/sprint-4/", ["agile-roadmap"], 4, "Agile roadmap"),
     ("sprint-4-delivery-dashboard.pdf", "/sprints/sprint-4/", ["delivery-dashboard"], 4, "Delivery dashboard"),
     ("sprint-5-overview-review-tasks.pdf", "/sprints/sprint-5/",
@@ -77,7 +80,7 @@ SCREENSHOTS = [
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 DROP = {"script", "style", "nav", "button", "svg", "iframe", "form", "input", "select", "label"}
-DROP_CLASSES = {"button", "document-pdf", "research-download__links", "todo-skip-print", "skip-link"}
+DROP_CLASSES = {"button", "document-pdf", "research-download__links", "skip-link"}
 
 PRINT_CSS = """
 @page { size: 8.5in 11in; margin: 0.75in; }
@@ -91,7 +94,6 @@ h3, h4 { color: #041e42; font-size: 11.5pt; margin: 10pt 0 3pt; }
 caption { font-weight: bold; color: #041e42; text-align: left; }
 th { background: #eef2f7; color: #041e42; text-align: left; }
 dt { font-weight: bold; color: #041e42; margin-top: 6pt; }
-.todo { color: #a84400; font-weight: bold; }
 """
 
 
@@ -106,6 +108,7 @@ class SectionExtractor(HTMLParser):
         self.depth = 0
         self.skip_depth = 0
         self.out = []
+        self.links = []
 
     def _attrs(self, attrs):
         return dict(attrs)
@@ -129,15 +132,13 @@ class SectionExtractor(HTMLParser):
             if tag not in VOID:
                 self.skip_depth = 1
             return
-        if "todo-tag" in classes:
-            self.out.append('<span class="todo">[')
-            return
         if tag == "img":
             src = values.get("src", "")
             local = SITE / src.lstrip("/") if src.startswith("/") else None
             if local and local.is_file():
-                width = values.get("width")
-                size = ' width="420"' if not width or int(width) > 420 else f' width="{width}"'
+                width = values.get("data-print-width") or values.get("width")
+                limit = 880 if values.get("data-print-width") else 420
+                size = f' width="{min(int(width), limit)}"' if width else f' width="{limit}"'
                 self.out.append(f'<p><img src="{data_uri(local)}" alt="{escape(values.get("alt", ""))}"{size}></p>')
             return
         if tag == "table":
@@ -150,6 +151,8 @@ class SectionExtractor(HTMLParser):
             self.out.append("<h4>")
             return
         if tag == "a":
+            href = values.get("href", "")
+            self.links.append(href if href.startswith("http") else "")
             self.out.append("<span>")
             return
         keep = {k: v for k, v in attrs if k in ("colspan", "rowspan", "scope")}
@@ -173,10 +176,11 @@ class SectionExtractor(HTMLParser):
             self.sections[self.current] = "".join(self.out)
             self.current = None
             return
-        mapping = {"details": "</div>", "summary": "</h4>", "a": "</span>"}
-        if tag == "span" and self.out and self.out[-1].endswith("TODO"):
-            self.out.append("]</span>")
+        if tag == "a" and self.links:
+            href = self.links.pop()
+            self.out.append(f" ({escape(href)})</span>" if href else "</span>")
             return
+        mapping = {"details": "</div>", "summary": "</h4>", "a": "</span>"}
         self.out.append(mapping.get(tag, f"</{tag}>"))
 
     def handle_data(self, data):
