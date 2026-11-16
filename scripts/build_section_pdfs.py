@@ -48,6 +48,10 @@ LANDSCAPE = {"sprint-5-figma-mockup.pdf", "sprint-4-agile-roadmap.pdf", "sprint-
 
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("campus-dining-availability-system-project-charter.pdf", "/sprints/sprint-1/project-charter/",
+     ["project-title", "decision-evidence", "problem-objective", "scope", "approach", "assumptions",
+      "stakeholders", "risks", "success-criteria", "governance", "appendix-a", "appendix-b"], 1,
+     "Project charter: Campus Dining Availability System"),
     ("sprint-5-figma-mockup.pdf", "/sprints/sprint-5/", ["figma-mockup"], 5, "Figma mockup"),
     ("sprint-2-contribution-statements.pdf", "/sprints/sprint-2/", ["sprint2-contributions"], 2,
      "Sprint 2 contribution statements"),

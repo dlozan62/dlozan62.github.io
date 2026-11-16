@@ -11,7 +11,6 @@ DineCheck is Team 10's campus dining availability project for CS 4390 / CS 5388 
 - **Sprint 3:** in progress; interviews, team notes and contradiction memos, competitor research, evidence log, candidate risks, and a change note.
 - **Sprint 4:** reliability planning, error budgets, and interface sketch. Retrospectives and peer evaluations are private and go to Blackboard only.
 - **Sprint 5:** complete; interactive four-screen wireframe, Figma mockup, and outside-user review tasks at `/sprints/sprint-5/`.
-- **Sprint 6:** planned; sections are set up at `/sprints/sprint-6/`.
 
 Research statements and cost figures come from the team's existing records. Sprint 1 retains the earlier project name where it belongs to that historical record. The PDFs and Word files remain available under `assets/`.
 
@@ -27,7 +26,7 @@ Research statements and cost figures come from the team's existing records. Spri
 | `demo.html` | Compatibility page linking the former demo route to the workflow overview |
 | `about.html` | Team portraits, responsibilities, and biographies |
 | `sprints.html` | Published and planned sprint archive |
-| `sprint-1.html` … `sprint-6.html` | Sprint overviews and reports |
+| `sprint-1.html` … `sprint-5.html` | Sprint overviews and reports |
 | `market-research.html` | Research evidence and its limitations |
 | `sprints/` | Business strategy, charter, and changelog pages |
 | `_includes/contribution-statements.html`, `_data/team.yml` | Per-sprint contribution statements with AI-use disclosure fields |
