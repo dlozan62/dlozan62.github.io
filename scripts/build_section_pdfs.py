@@ -43,10 +43,13 @@ FIREFOX = "/Applications/Firefox.app/Contents/MacOS/firefox"
 AUTHOR = "Team 10"
 
 # Wide tables print on landscape pages.
-LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf"}
+LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf", "sprint-3-changelog.pdf",
+             "sprint-4-changelog.pdf", "sprint-5-changelog.pdf"}
 
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("sprint-3-changelog.pdf", "/sprints/sprint-3/", ["sprint3-changelog"], 3, "Sprint 3 changelog"),
+    ("sprint-4-changelog.pdf", "/sprints/sprint-4/", ["sprint4-changelog-record"], 4, "Sprint 4 changelog"),
     ("sprint-4-agile-roadmap.pdf", "/sprints/sprint-4/", ["agile-roadmap"], 4, "Agile roadmap"),
     ("sprint-4-delivery-dashboard.pdf", "/sprints/sprint-4/", ["delivery-dashboard"], 4, "Delivery dashboard"),
     ("sprint-5-overview-review-tasks.pdf", "/sprints/sprint-5/",

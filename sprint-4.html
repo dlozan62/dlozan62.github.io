@@ -536,23 +536,57 @@ permalink: /sprints/sprint-4/
           <header class="charter-section__heading">
             <p class="eyebrow">07 · Track</p>
             <h2 id="sprint4-changelog-title">Sprint 4 changelog</h2>
-            <p>A summary of our submitted work.</p>
+            <p>What we revised in pages published before Sprint 4, why, and what it affected downstream.</p>
           </header>
 
           <div class="prose">
+            <div class="research-download__links">
+              <a href="{{ '/assets/pdfs/sprint-4-changelog.pdf' | relative_url }}" download>Download changelog PDF ↓</a>
+            </div>
+            <div id="sprint4-changelog-record">
             <p>
-              During Sprint 4, Team 10 published three documents:
-              a Service Levels plan, an Error Budgets document,
-              and an interface sketch.
+              Dates and commit IDs come from the repository history. The repository
+              has no commits between October 20 and November 3, 2026, so every
+              Sprint 4 revision below is dated November 3.
+            </p>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>Revisions to published pages during Sprint 4</caption>
+                <thead><tr><th scope="col">Date and commit</th><th scope="col">What was revised</th><th scope="col">Why</th><th scope="col">Downstream pages affected</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Nov 3, 2026 · 245cb99 (pull request #5, merged in 6c6622b)</th>
+                    <td>The sprint index marked Sprint 3 “Complete,” added Sprint 4 as the current sprint with its document list, and added a Sprint 4 summary to its introduction.</td>
+                    <td>The Sprint 4 page and documents were published.</td>
+                    <td>Sprints index and its document list.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nov 3, 2026 · 7dc8876</th>
+                    <td>Home: the hero button, project strip, and sprint cards moved to Sprint 4, and the Sprint 3 card changed from “In progress” to “Complete.” The primary navigation’s “Latest sprint” link moved from Sprint 3 to Sprint 4.</td>
+                    <td>Commit title: “Feature Sprint 4 on homepage and navigation.”</td>
+                    <td>Home, navigation on every page.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nov 3, 2026 · 3f8fee7 → 245cb99</th>
+                    <td>Within the Sprint 4 page itself, the blameless incident review section added in 3f8fee7 was removed 17 minutes later in 245cb99, before pull request #5 merged it into the published site.</td>
+                    <td><span class="todo-tag">TODO</span> Jacob confirms the reason.</td>
+                    <td>Sprint 4 page. The review was restored in Sprint 5; see below.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Sprint 4 did not change the business case, estimates, budget, or
+              charter. The Service Levels plan sets new targets and procedures; it
+              does not revise earlier documents.
             </p>
             <p>
-              Together, these covered proposed reliability procedures,
-              failure allowances, and early interface design.
+              Later revisions to this page are recorded in the
+              <a href="{{ '/sprints/sprint-5/#sprint5-changelog' | relative_url }}">Sprint 5 changelog</a>:
+              the retrospective was removed, the incident review was restored, the
+              sketch is shown as an image, and the roadmap and dashboard were added.
             </p>
-            <p>
-              Monitoring and incident-response procedures remain
-              proposed plans rather than verified implementations.
-            </p>
+            </div>
           </div>
         </section>
 
@@ -654,6 +688,22 @@ permalink: /sprints/sprint-4/
                   <a href="{{ '/sprints/sprint-4/#delivery-dashboard' | relative_url }}">Read on this page →</a>
                   <a href="{{ '/assets/pdfs/sprint-4-delivery-dashboard.pdf' | relative_url }}" download>
                     Download Delivery Dashboard PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Sprint 4 Changelog</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>What we revised in earlier pages during Sprint 4, why, and what it affected.</p>
+                <div class="research-download__links">
+                  <a href="{{ '/sprints/sprint-4/#sprint4-changelog' | relative_url }}">Read on this page →</a>
+                  <a href="{{ '/assets/pdfs/sprint-4-changelog.pdf' | relative_url }}" download>
+                    Download Changelog PDF ↓
                   </a>
                 </div>
               </div>
