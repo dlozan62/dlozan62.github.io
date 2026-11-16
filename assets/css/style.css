@@ -1984,6 +1984,50 @@ html { scroll-padding-top:7rem; }
  .sprint3-entry-body { max-width: none; }
 }
 
+/* Per-sprint records: blank statement fields, wide tables, and embeds */
+.statement dd:empty {
+  min-height: 1.6rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+section.charter-detail.home-section {
+  padding: 4rem var(--gutter);
+  border-bottom: 0;
+}
+
+.charter-table--wide {
+  min-width: 52rem;
+}
+
+.figma-embed {
+  display: block;
+  width: 100%;
+  height: clamp(28rem, 70vh, 45rem);
+  margin: 1.25rem 0 .75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--mist);
+}
+
+.sketch-figure {
+  margin: 1.25rem 0;
+}
+
+.sketch-figure img {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.sketch-figure figcaption {
+  margin-top: .5rem;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
 /* Responsive layouts */
 @media(max-width:1100px) {
   .home-hero {

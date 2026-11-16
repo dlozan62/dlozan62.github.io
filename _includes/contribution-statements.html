@@ -1,0 +1,31 @@
+{%- comment -%}
+  Per-sprint contribution statements (Living Portal handout, sections 9 and 10).
+  Usage: {% include contribution-statements.html sprint="5" pdf="/assets/pdfs/..." class="home-section" %}
+  Each member writes their own statement. Replace the comment inside each empty
+  field with the member's own words, then rebuild the matching PDF with
+  scripts/build_section_pdfs.py.
+{%- endcomment -%}
+{%- assign s = include.sprint -%}
+<section id="sprint{{ s }}-contributions" class="charter-detail{% if include.class %} {{ include.class }}{% endif %}" aria-labelledby="sprint{{ s }}-contributions-title">
+  <div class="charter-detail__heading">
+    <p class="document-label">Individual accountability</p>
+    <h2 id="sprint{{ s }}-contributions-title">Sprint {{ s }} contribution statements</h2>
+  </div>
+  <p class="statement-intro">Each member states what they owned, what they reviewed, and how they used AI: which tool, at which stage of the PM AI Protocol, and what they changed or rejected. Each member writes their own statement.</p>
+  <div class="statement-grid">
+    {%- for member in site.data.team %}
+    <article class="statement" id="sprint{{ s }}-statement-{{ member.slug }}">
+      <h3>{{ member.name }}</h3>
+      <dl>
+        <dt>What I owned</dt><dd><!-- TODO: {{ member.first }} writes this. --></dd>
+        <dt>What I reviewed</dt><dd><!-- TODO: {{ member.first }} writes this. --></dd>
+        <dt>AI use disclosure</dt><dd><!-- TODO: {{ member.first }} writes this: tool used, PM AI Protocol stage, and what was changed or rejected. --></dd>
+      </dl>
+    </article>
+    {%- endfor %}
+  </div>
+  {%- if include.pdf %}
+  <div class="research-download__links"><a href="{{ include.pdf | relative_url }}" download>Download Sprint {{ s }} contribution statements PDF ↓</a></div>
+  {%- endif %}
+  <p class="source-note">Retrospectives and peer evaluations are private and are submitted through Blackboard only.</p>
+</section>

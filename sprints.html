@@ -9,7 +9,7 @@ permalink: /sprints/
   <p class="course-line">Our sprints</p>
   <h1>Our work, sprint by sprint.</h1>
   <p>Follow DineCheck from early research to an interactive wireframe. Browse the sprint records below, or jump to the reports and downloads.</p>
-  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-5/' | relative_url }}">Read the current sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
+  <div class="hero-actions"><a class="button button--orange" href="{{ '/sprints/sprint-5/' | relative_url }}">Read the latest sprint</a><a class="button button--outline" href="#documents">Find a document</a></div>
 </header>
 
 <ol class="sprint-index" aria-label="Sprint index">
@@ -28,15 +28,8 @@ permalink: /sprints/
     </a>
   </li>
   <li><a class="sprint-index__active" href="{{ '/sprints/sprint-3/' | relative_url }}"><span>Sprint 3</span><strong>Interviews, competitors, and findings</strong><small>Complete</small></a></li>
-  <li><a class="sprint-index__active" href="{{ '/sprints/sprint-4/' | relative_url }}"><span>Sprint 4</span><strong>Reliability planning and team reflection</strong><small>Published</small></a></li>
-  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-5/' | relative_url }}"><span>Sprint 5</span><strong>Interactive wireframe and review tasks</strong><small>In progress · Current sprint</small></a></li>
-  {% for sprint in (6..6) %}
-    <li class="sprint-index__planned">
-      <span>Sprint {{ sprint }}</span>
-      <strong>Coming later</strong>
-      <small>Planned</small>
-    </li>
-  {% endfor %}
+  <li><a class="sprint-index__active" href="{{ '/sprints/sprint-4/' | relative_url }}"><span>Sprint 4</span><strong>Reliability planning and interface sketch</strong><small>Published</small></a></li>
+  <li><a class="sprint-index__active sprint-index__current" href="{{ '/sprints/sprint-5/' | relative_url }}"><span>Sprint 5</span><strong>Wireframe, Figma mockup, and review tasks</strong><small>Complete · Latest sprint</small></a></li>
 </ol>
 
 <section class="home-section document-index" id="documents" aria-labelledby="documents-title">
@@ -54,10 +47,12 @@ permalink: /sprints/
       <li><a href="{{ '/sprints/sprint-1/project-charter/' | relative_url }}">Current project charter</a><a class="document-pdf" href="{{ '/assets/pdfs/campus-dining-availability-system-project-charter.pdf' | relative_url }}" aria-label="Current project charter (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
     <article class="document-group"><p class="eyebrow">Sprint 2</p><h3>Business case &amp; planning</h3><ul>
-      <li><a href="{{ '/sprints/sprint-2/' | relative_url }}">Business case</a></li>
+      <li><a href="{{ '/sprints/sprint-2/#business-case' | relative_url }}">Business case</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-business-case.pdf' | relative_url }}" aria-label="Business case (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-2/#estimation-appendix' | relative_url }}">Estimation appendix</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-estimation-appendix.pdf' | relative_url }}" aria-label="Estimation appendix (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-2/#budget' | relative_url }}">One-page budget</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-one-page-budget.pdf' | relative_url }}" aria-label="One-page budget (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-2/#roi' | relative_url }}">ROI analysis</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-roi-analysis.pdf' | relative_url }}" aria-label="ROI analysis (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Project changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-changelog.pdf' | relative_url }}" aria-label="Project changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-2/#sprint2-contributions' | relative_url }}">Sprint 2 contribution statements</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-2-contribution-statements.pdf' | relative_url }}" aria-label="Sprint 2 contribution statements (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
     <article class="document-group"><p class="eyebrow">Sprint 3</p><h3>Research &amp; findings</h3><ul>
       <li><a href="{{ '/sprints/sprint-3/' | relative_url }}">Campus dining interviews</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-interviews.pdf' | relative_url }}" aria-label="Campus dining interviews (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
@@ -74,19 +69,28 @@ permalink: /sprints/
       <li><a href="{{ '/sprints/sprint-3/#competitive-landscape' | relative_url }}">Competitive landscape</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-competitive-landscape.pdf' | relative_url }}" aria-label="Competitive landscape (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-3/#evidence-log' | relative_url }}">Team evidence log</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-evidence-log.pdf' | relative_url }}" aria-label="Team evidence log (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-3/#candidate-risks' | relative_url }}">Candidate risk entries</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-candidate-risks.pdf' | relative_url }}" aria-label="Candidate risk entries (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
-      <li><a href="{{ '/sprints/sprint-3/#change-note' | relative_url }}">Change note</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Change note (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#change-note' | relative_url }}">Sprint 3 changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-changelog.pdf' | relative_url }}" aria-label="Sprint 3 changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#original-change-note' | relative_url }}">Original change note</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-change-note.pdf' | relative_url }}" aria-label="Original change note (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-3/#sprint3-contributions' | relative_url }}">Sprint 3 contribution statements</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-3-contribution-statements.pdf' | relative_url }}" aria-label="Sprint 3 contribution statements (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
     <article class="document-group"><p class="eyebrow">Sprint 4</p><h3>Reliability &amp; planning</h3><ul>
       <li><a href="{{ '/sprints/sprint-4/#service-levels' | relative_url }}">Service Levels</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" aria-label="Service Levels (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-4/#error-budgets' | relative_url }}">Error Budgets — Two-Week Period</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-error-budgets.pdf' | relative_url }}" aria-label="Error Budgets — Two-Week Period (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
       <li><a href="{{ '/sprints/sprint-4/#interface-sketch' | relative_url }}">Interface Sketch</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-sketch.pdf' | relative_url }}" aria-label="Interface Sketch (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
-      <li><a href="{{ '/sprints/sprint-4/#retrospective' | relative_url }}">Team Retrospective</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-retrospective.pdf' | relative_url }}" aria-label="Team Retrospective (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#incident-review' | relative_url }}">Blameless incident review</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" aria-label="Blameless incident review, section 4 of Service Levels (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#agile-roadmap' | relative_url }}">Agile Roadmap</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-agile-roadmap.pdf' | relative_url }}" aria-label="Agile Roadmap (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#sprint4-changelog' | relative_url }}">Sprint 4 changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-changelog.pdf' | relative_url }}" aria-label="Sprint 4 changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#delivery-dashboard' | relative_url }}">Delivery Dashboard</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-delivery-dashboard.pdf' | relative_url }}" aria-label="Delivery Dashboard (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/sprints/sprint-4/#sprint4-contributions' | relative_url }}">Sprint 4 contribution statements</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-4-contribution-statements.pdf' | relative_url }}" aria-label="Sprint 4 contribution statements (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
     </ul></article>
   <article class="document-group"><p class="eyebrow">Sprint 5</p><h3>Wireframe &amp; review</h3><ul>
-    <li><a href="{{ '/sprints/sprint-5/' | relative_url }}">Sprint 5 overview and review tasks</a></li>
-    <li><a href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Interactive four-screen wireframe</a></li>
+    <li><a href="{{ '/sprints/sprint-5/#screens' | relative_url }}">Sprint 5 overview and review tasks</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-5-overview-review-tasks.pdf' | relative_url }}" aria-label="Sprint 5 overview and review tasks (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    <li><a href="{{ '/sprints/sprint-5/wireframe/' | relative_url }}">Interactive four-screen wireframe</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-5-wireframe-screens.pdf' | relative_url }}" aria-label="Interactive four-screen wireframe (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    <li><a href="{{ '/sprints/sprint-5/#figma-mockup' | relative_url }}">Figma mockup</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-5-figma-mockup.pdf' | relative_url }}" aria-label="Figma mockup (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    <li><a href="{{ '/sprints/sprint-5/#sprint5-changelog' | relative_url }}">Sprint 5 changelog</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-5-changelog.pdf' | relative_url }}" aria-label="Sprint 5 changelog (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
+    <li><a href="{{ '/sprints/sprint-5/#sprint5-contributions' | relative_url }}">Sprint 5 contribution statements</a><a class="document-pdf" href="{{ '/assets/pdfs/sprint-5-contribution-statements.pdf' | relative_url }}" aria-label="Sprint 5 contribution statements (PDF)">PDF <span aria-hidden="true">↗</span></a></li>
   </ul></article>
   </div>
-  <p class="source-note">Sprint 5 is in progress. The wireframe is available for review; feedback has not yet been recorded. Sprint 6 materials will appear when published.</p>
+  <p class="source-note">Sprint 5 is complete. The wireframe and Figma mockup are available for review; outside-user feedback has not been recorded.</p>
 </section>
 

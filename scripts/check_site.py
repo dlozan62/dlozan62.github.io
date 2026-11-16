@@ -24,6 +24,7 @@ REQUIRED_PAGES = (
     "sprints/sprint-2/index.html",
     "sprints/sprint-2/changelog/index.html",
     "sprints/sprint-3/index.html",
+    "sprints/sprint-4/index.html",
     "sprints/sprint-5/index.html",
     "sprints/sprint-5/wireframe/index.html",
 )
