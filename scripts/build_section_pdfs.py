@@ -48,6 +48,8 @@ LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf", "s
 
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("sprint-2-business-case.pdf", "/sprints/sprint-2/", ["business-case"], 2, "Business case"),
+    ("sprint-2-roi-analysis.pdf", "/sprints/sprint-2/", ["roi"], 2, "ROI analysis"),
     ("sprint-3-changelog.pdf", "/sprints/sprint-3/", ["sprint3-changelog"], 3, "Sprint 3 changelog"),
     ("sprint-4-changelog.pdf", "/sprints/sprint-4/", ["sprint4-changelog-record"], 4, "Sprint 4 changelog"),
     ("sprint-4-agile-roadmap.pdf", "/sprints/sprint-4/", ["agile-roadmap"], 4, "Agile roadmap"),
@@ -69,7 +71,7 @@ SCREENSHOTS = [
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 DROP = {"script", "style", "nav", "button", "svg", "iframe", "form", "input", "select", "label"}
-DROP_CLASSES = {"document-pdf", "research-download__links", "todo-skip-print", "skip-link"}
+DROP_CLASSES = {"button", "document-pdf", "research-download__links", "todo-skip-print", "skip-link"}
 
 PRINT_CSS = """
 @page { size: 8.5in 11in; margin: 0.75in; }

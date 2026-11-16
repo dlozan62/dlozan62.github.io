@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sprint 2
-description: Team 10's Sprint 2 record for DineCheck, covering the business case, estimation appendix, and one-page budget.
+description: Team 10's Sprint 2 record for DineCheck, covering the business case, estimation appendix, one-page budget, and ROI analysis.
 permalink: /sprints/sprint-2/
 ---
 
@@ -26,6 +26,7 @@ permalink: /sprints/sprint-2/
     <li><a href="#go-no-go">Recommendation</a></li>
     <li><a href="#estimation-appendix">Estimation appendix</a></li>
     <li><a href="#budget">One-page budget</a></li>
+    <li><a href="#roi">ROI analysis</a></li>
     <li><a href="{{ '/sprints/sprint-2/changelog/' | relative_url }}">Changelog</a></li>
   </ul>
 </nav>
@@ -39,6 +40,7 @@ permalink: /sprints/sprint-2/
     <header class="doc-part__header">
       <h2 id="business-case-title">Business case</h2>
       <p>Who would gain from DineCheck and what the first slice would cost, then what could go wrong. Our go/no-go recommendation is at the end.</p>
+      <a class="button" href="{{ '/assets/pdfs/sprint-2-business-case.pdf' | relative_url }}" download>Business case · PDF</a>
     </header>
 
     <div class="charter-page__sections">
@@ -482,6 +484,84 @@ permalink: /sprints/sprint-2/
           </div>
           <div class="prose">
             <p>EMV = chance × extra hours × $60. Contingency reserve = $1,092. Cost baseline = $42,640 + $1,092 = $43,732. Management reserve (5%) = $2,187. Total budget request = $45,919.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ROI analysis: costs come from the one-page budget and estimation
+       appendix above. Benefit values are still to be supplied by the team.
+       =================================================================== -->
+  <section id="roi" class="doc-part" aria-labelledby="roi-title">
+    <header class="doc-part__header">
+      <h2 id="roi-title">ROI analysis</h2>
+      <p>What the slice costs against what it could return. Costs below come from our one-page budget and estimation appendix; the benefit side is still to be written.</p>
+      <a class="button" href="{{ '/assets/pdfs/sprint-2-roi-analysis.pdf' | relative_url }}" download>ROI analysis · PDF</a>
+    </header>
+
+    <div class="charter-page__sections">
+      <section id="roi-costs" class="charter-section" aria-labelledby="roi-costs-title">
+        <header class="charter-section__heading"><h3 id="roi-costs-title">1. Cost side</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table charter-table--numbers">
+              <caption>Costs from the one-page budget (loaded rate $60/hour)</caption>
+              <tbody>
+                <tr><th scope="row">Labor (694 team hours, PERT)</th><td>$41,640</td></tr>
+                <tr><th scope="row">Non-labor</th><td>$1,000</td></tr>
+                <tr><th scope="row">Base build estimate</th><td>$42,640</td></tr>
+                <tr><th scope="row">Contingency reserve</th><td>$1,092</td></tr>
+                <tr><th scope="row">Management reserve (5%)</th><td>$2,187</td></tr>
+                <tr><th scope="row">Total budget request</th><td>$45,919</td></tr>
+                <tr><th scope="row">Operating cost</th><td>$4,680 a year</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p>Estimation appendix effort range: 294 to 1,150 team hours, with 694 hours expected.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="roi-benefits" class="charter-section" aria-labelledby="roi-benefits-title">
+        <header class="charter-section__heading"><h3 id="roi-benefits-title">2. Benefit side</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>Benefit assumptions</caption>
+              <thead><tr><th scope="col">Input</th><th scope="col">Value</th><th scope="col">Source</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">What benefit is priced (for example, student time saved)</th><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Expected weekly users</th><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Value per user per week</th><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Annual benefit</th><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="roi-result" class="charter-section" aria-labelledby="roi-result-title">
+        <header class="charter-section__heading"><h3 id="roi-result-title">3. Return, break-even, and sensitivity</h3></header>
+        <div class="charter-section__content">
+          <div class="charter-table-wrap">
+            <table class="charter-table">
+              <caption>ROI result</caption>
+              <tbody>
+                <tr><th scope="row">Analysis period (years)</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Total cost over the period ($45,919 + years × $4,680)</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Total benefit over the period</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">ROI = (benefit − cost) ÷ cost</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Break-even weekly users</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Which input moves the ROI most</th><td><span class="todo-tag">TODO</span></td></tr>
+                <tr><th scope="row">Cost of doing nothing</th><td>$0 to build (options table above); value forgone: <span class="todo-tag">TODO</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="todo-note">
+            <p><span class="todo-tag">TODO</span> The team supplies the benefit assumptions and the analysis period, then computes the ROI, break-even, and sensitivity and updates this section and its PDF. No benefit figure is shown until the team provides it.</p>
           </div>
         </div>
       </section>
