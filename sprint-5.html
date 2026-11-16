@@ -20,11 +20,13 @@ permalink: /sprints/sprint-5/
 <section class="home-section" id="figma-mockup" aria-labelledby="figma-mockup-title">
   <header class="section-top"><div><p class="eyebrow">Figma mockup</p><h2 id="figma-mockup-title">From wireframe to mockup.</h2></div></header>
   <div class="prose">
-    <p>The Figma mockup is the step after the wireframe below. It is organized as four flows. Explore it in the embedded viewer, open it in Figma, or read the four flows as images below.</p>
+    <p>The Figma mockup comes after the wireframe further down this page and is split into four flows. Use the viewer, open the file in Figma, or scroll to the flow images.</p>
+    <p><a href="https://www.figma.com/design/Efv9l5SmLe23QWoINOEiGR/DineCheck-App-Mockup?node-id=28-1068">Open the DineCheck mockup in Figma →</a></p>
+  </div>
+  <div class="figma-flows">
     <iframe class="figma-embed" title="DineCheck app mockup in Figma"
             src="https://embed.figma.com/design/Efv9l5SmLe23QWoINOEiGR/DineCheck-App-Mockup?node-id=28-1068&amp;embed-host=share"
             loading="lazy" allowfullscreen></iframe>
-    <p><a href="https://www.figma.com/design/Efv9l5SmLe23QWoINOEiGR/DineCheck-App-Mockup?node-id=28-1068">Open the DineCheck mockup in Figma →</a></p>
     <figure class="sketch-figure figma-flow">
       <img src="{{ '/assets/images/sprint-5/figma-flow-1.jpg' | relative_url }}" width="2052" height="1092" loading="lazy" data-print-width="880"
            alt="Figma mockup screens for flow 1: Main flow: campus → dining → menu → item.">
@@ -35,12 +37,12 @@ permalink: /sprints/sprint-5/
            alt="Figma mockup screens for flow 2: Dietary filtering: sheet → filtered list → filtered menu → no matches.">
       <figcaption>Flow 2 · Dietary filtering: sheet → filtered list → filtered menu → no matches</figcaption>
     </figure>
-    <figure class="sketch-figure figma-flow">
+    <figure class="sketch-figure figma-flow figma-flow--3">
       <img src="{{ '/assets/images/sprint-5/figma-flow-3.jpg' | relative_url }}" width="1579" height="1092" loading="lazy" data-print-width="677"
            alt="Figma mockup screens for flow 3: Venue and search states: closed, unverified, no campus results.">
       <figcaption>Flow 3 · Venue and search states: closed, unverified, no campus results</figcaption>
     </figure>
-    <figure class="sketch-figure figma-flow">
+    <figure class="sketch-figure figma-flow figma-flow--4">
       <img src="{{ '/assets/images/sprint-5/figma-flow-4.jpg' | relative_url }}" width="1106" height="1092" loading="lazy" data-print-width="474"
            alt="Figma mockup screens for flow 4: Nearby map: schematic pins, location unavailable.">
       <figcaption>Flow 4 · Nearby map: schematic pins, location unavailable</figcaption>
@@ -50,7 +52,7 @@ permalink: /sprints/sprint-5/
 
 <section class="home-section" id="screens" aria-labelledby="screens-title">
   <header class="section-top"><div><p class="eyebrow">The student journey</p><h2 id="screens-title">Four screens, one dining decision.</h2></div></header>
-  <div class="document-grid">
+  <div class="document-grid document-grid--four">
     <article class="document-group"><p class="eyebrow">01 · Campus</p><h3>Find your campus.</h3><p>Search for UTEP, select the example result, or try a nonmatching search to see the empty state.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen1' | relative_url }}">Open campus picker →</a></article>
     <article class="document-group"><p class="eyebrow">02 · Dining</p><h3>Compare dining options.</h3><p>Set dietary preferences and allergens to avoid, compare matching sample item counts, and open a venue’s menu.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen2' | relative_url }}">Open dining list →</a></article>
     <article class="document-group"><p class="eyebrow">03 · Menu</p><h3>Check before you go.</h3><p>Compare in-stock and out-of-stock examples. Ingredient, allergen, and calorie fields remain placeholders for review.</p><a href="{{ '/sprints/sprint-5/wireframe/#screen3' | relative_url }}">Open menu view →</a></article>
@@ -91,84 +93,54 @@ permalink: /sprints/sprint-5/
 <section class="home-section" id="sprint5-changelog" aria-labelledby="sprint5-changelog-title">
   <header class="section-top"><div><p class="eyebrow">Changelog</p><h2 id="sprint5-changelog-title">Sprint 5 changelog.</h2></div></header>
   <div class="prose">
-    <p>What we revised in pages published before Sprint 5, why, and which other pages each change affected. Dates and commit IDs come from the repository history.</p>
+    <p>What we revised in pages published before Sprint 5, why, and which other pages each change affected. Dates come from the repository history.</p>
   </div>
   <div class="charter-table-wrap">
     <table class="charter-table charter-table--wide">
       <caption>Revisions made during Sprint 5</caption>
-      <thead><tr><th scope="col">Date and commit</th><th scope="col">What was revised</th><th scope="col">Why</th><th scope="col">Downstream pages affected</th></tr></thead>
+      <thead><tr><th scope="col">Date</th><th scope="col">What was revised</th><th scope="col">Why</th><th scope="col">Downstream pages affected</th></tr></thead>
       <tbody>
         <tr>
-          <th scope="row">Nov 5, 2026 · 933ed79</th>
+          <th scope="row">Nov 5, 2026</th>
           <td>Home page, primary navigation, sprint index, and the Sprint 4 page were updated to point to Sprint 5. Sprint 4 changed from “Current sprint” to “Published.”</td>
           <td>The Sprint 5 page and interactive wireframe were published.</td>
           <td>Home (hero, project strip, sprint cards), Sprints index and document list, Sprint 4 page navigation, site navigation, README.</td>
         </tr>
         <tr>
-          <th scope="row">Nov 5, 2026 · d52e6b1</th>
+          <th scope="row">Nov 5, 2026</th>
           <td>The Sprint 5 wireframe gained dietary preferences, nine allergen exclusions, matching item counts, and an in-stock filter. Review tasks 3 and 4 were rewritten to use them.</td>
           <td><!-- TODO: Zachary confirms the reason. The commit records what was added, not why. --></td>
           <td>Sprint 5 page (screen 02 summary, review tasks, wireframe updates) and the wireframe.</td>
         </tr>
         <tr>
-          <th scope="row">Nov 12, 2026 · 9f30535</th>
+          <th scope="row">Nov 12, 2026</th>
           <td>The home page was rebuilt around the wireframe (new hero and “latest work” section; the project-progress section was removed). The sprint index gained document search. The primary navigation link “Latest sprint” became “Try the wireframe.”</td>
           <td><!-- TODO: Zachary confirms the reason. The commit is titled “Clean up website and add document search.” --></td>
           <td>Home, Sprints index, navigation on every page, README.</td>
         </tr>
         <tr>
-          <th scope="row">Nov 16, 2026 · 04fbc16</th>
-          <td>The Sprint 4 team retrospective was removed from the public site: its page section, document entry, home page card item, document-index entry, and its mention in the Sprint 4 changelog.</td>
-          <td>The course handout requires retrospectives to stay private and go to Blackboard only.</td>
-          <td>Sprint 4 page, Home (Sprint 4 card), Sprints document index, README.</td>
+          <th scope="row">Nov 16, 2026</th>
+          <td>Sprint 4: the team retrospective was taken off the site (page section, document entry, home page card item, document index, changelog mention, and the PDF file). The blameless incident review was restored as page text with all six sections, the interface sketch is shown as an image, Agile Roadmap and Delivery Dashboard sections were added, and the service levels and error budgets now follow the team’s latest documents.</td>
+          <td>Retrospectives are private and go to Blackboard only. The course handout requires every public document as page text and as a PDF, and the Session 15 and 17 slides ask Sprint 4 for a roadmap, a dashboard, and a six-part blameless review. The page text had drifted from the source documents.</td>
+          <td>Sprint 4 page and its PDFs, Home (Sprint 4 card), Sprints document index, README.</td>
         </tr>
         <tr>
-          <th scope="row">Nov 16, 2026 · 7363efd</th>
-          <td>Sprint 4 page: the blameless incident review is back as page text with all six sections, the interface sketch is shown as an image, and new Agile Roadmap and Delivery Dashboard sections were added with their PDFs.</td>
-          <td>The course handout requires every public document as page text and as a PDF. The Session 15 and 17 slides ask Sprint 4 for a roadmap, a dashboard, and one blameless review with six sections.</td>
-          <td>Sprint 4 page and its documents list, Sprints document index.</td>
+          <th scope="row">Nov 16, 2026</th>
+          <td>Sprint 2: the business case gained a PDF, the one-page budget now follows the team’s Word file section by section, and an ROI analysis section was added with its figures (3-year ROI −32%, break-even about 735 weekly users). The business case now cites the ROI and notes that the only possible revenue is through collaborations with universities and with places near campus. The estimation appendix answer to “Which single input moves the answer most?” was returned to the submitted wording.</td>
+          <td>The course handout lists an ROI analysis for Sprint 2, and the page text had drifted from the team’s budget and estimation documents.</td>
+          <td>Sprint 2 page and its business case, budget, and ROI PDFs; Sprints document index.</td>
         </tr>
         <tr>
-          <th scope="row">Nov 16, 2026 · 60cc53d</th>
-          <td>Sprint 3: the forward-looking change note became a changelog of revisions to earlier pages, with the original note kept below it. Sprint 4: the changelog was rewritten from the repository history.</td>
-          <td>The course handout asks each sprint’s changelog to record what was revised, why, and what it affected downstream.</td>
-          <td>Sprint 3 page, Sprint 4 page, Sprints document index, Home (Sprint 3 card).</td>
+          <th scope="row">Nov 16, 2026</th>
+          <td>Sprint 3’s forward-looking change note became a changelog of revisions to earlier pages, with the original note kept below it, and Sprint 3 was marked Complete. Sprint 4’s changelog was rewritten from the repository history. Sprints 2, 3, and 4 each gained contribution statements with an AI use disclosure field for every member.</td>
+          <td>The course handout asks each sprint for a changelog of what was revised, why, and what it affected, and for an AI use disclosure in each contribution statement.</td>
+          <td>Sprint 2, 3, and 4 pages and their PDFs, Sprints document index, Home (Sprint 3 card).</td>
         </tr>
         <tr>
-          <th scope="row">Nov 16, 2026 · 18c0e49</th>
-          <td>Sprint 2: the business case gained a PDF built from its page text, and a new ROI analysis section was added. Its costs come from the one-page budget; its benefit inputs and results are still to be supplied.</td>
-          <td>The course handout lists an ROI analysis for Sprint 2 and requires every public document as page text and as a PDF.</td>
-          <td>Sprint 2 page and its section links, Sprints document index.</td>
-        </tr>
-        <tr>
-          <th scope="row">Nov 16, 2026 · 08f57b5</th>
-          <td>Sprints 2, 3, and 4 each gained a contribution-statement block, with an AI use disclosure field for every member, and a matching PDF.</td>
-          <td>The course handout requires each sprint’s contribution statement to include an AI use disclosure.</td>
-          <td>Sprint 2, 3, and 4 pages and their section links, Sprints document index.</td>
-        </tr>
-        <tr>
-          <th scope="row">Nov 16, 2026 · 5592277</th>
-          <td>Sprint 2: the one-page budget now follows the team’s Word file section by section, and the ROI analysis shows its figures (3-year ROI −32%, break-even about 735 weekly users). Sprint 4: the service levels follow the November 2 revision, and the error budgets section was rebuilt from the Error Budgets document. Both sections’ PDFs were rebuilt from the page text.</td>
-          <td>The page text had drifted from the latest source documents, and the ROI analysis had no figures.</td>
-          <td>Sprint 2 page and its budget and ROI PDFs, Sprint 4 page and its error budgets PDF.</td>
-        </tr>
-        <tr>
-          <th scope="row">Nov 16, 2026 · 52f5fff</th>
-          <td>The Sprint 4 retrospective PDF was deleted from the site’s files.</td>
-          <td>Retrospectives are private and go to Blackboard only.</td>
-          <td>None; nothing linked to it after 04fbc16.</td>
-        </tr>
-        <tr>
-          <th scope="row">Nov 16, 2026 · a89bdbe</th>
-          <td>Sprint 2: the business case now cites the ROI analysis ($13,594 a year in student time; −32% over three years; break-even about 735 weekly users), and both state that the only possible revenue is through collaborations with universities and with places near campus. Sprint 5 was marked complete on the home page, the sprint index, and this page.</td>
-          <td>The business case still said the student value was not priced after the ROI figures were restored. Sprint 5 closes with the final portal submission.</td>
-          <td>Sprint 2 page and its business case and ROI PDFs, Home, Sprints index, this page.</td>
-        </tr>
-        <tr>
-          <th scope="row">Nov 16, 2026 · 3eab818, e0af3e4</th>
-          <td>Project charter: added the Word file’s opening statement, the project-lead wording, the immediate next steps, a project-lead open decision, and Appendices A and B; the charter PDF is rebuilt from the page. Sprint 2 estimation appendix: the “which single input moves the answer most” answer was returned to the submitted wording. Market research: linked the full Phase 1 report. Sprint 3: header changed to Complete. The planned Sprint 6 page was removed, with its links and the home page’s six-sprint count.</td>
-          <td>The pages had drifted from the team’s latest source files; Sprint 6 is no longer due.</td>
-          <td>Project charter and its PDF, Sprint 2, Market research, Sprint 3, Home, Sprints index, Sprint 4 roadmap.</td>
+          <th scope="row">Nov 16, 2026</th>
+          <td>Project charter: added the Word file’s opening statement, project-lead wording, immediate next steps, a project-lead open decision, and Appendices A and B; the charter PDF was rebuilt from the page. Market research: linked the full Phase 1 report. Sprint 5 was marked complete, a Sprint 5 card was added to the home page, and the top navigation now points to the Figma design. A planned Sprint 6 page was removed with its links and the home page’s six-sprint count.</td>
+          <td>The pages had drifted from the team’s latest source files. Sprint 5 closes with the final portal submission, and Sprint 6 is no longer due.</td>
+          <td>Project charter and its PDF, Market research, Home, Sprints index, site navigation on every page, Sprint 4 roadmap.</td>
         </tr>
       </tbody>
     </table>
