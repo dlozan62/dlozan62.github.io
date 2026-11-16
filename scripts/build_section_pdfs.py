@@ -6,6 +6,7 @@ come from one source. Edit the page, rebuild the site, then rebuild the PDFs:
     bundle exec jekyll build
     python3 scripts/build_section_pdfs.py            # every document below
     python3 scripts/build_section_pdfs.py sprint-5   # only names containing "sprint-5"
+    bundle exec jekyll build                         # copy the new PDFs into _site
 
 Requirements (macOS):
   * LibreOffice (`soffice`) converts the extracted HTML to PDF.
@@ -41,8 +42,13 @@ SOFFICE = shutil.which("soffice") or "/Applications/LibreOffice.app/Contents/Mac
 FIREFOX = "/Applications/Firefox.app/Contents/MacOS/firefox"
 AUTHOR = "Team 10"
 
+# Wide tables print on landscape pages.
+LANDSCAPE = {"sprint-4-agile-roadmap.pdf", "sprint-4-delivery-dashboard.pdf"}
+
 # output file, page route, section IDs (in order), sprint, document title
 DOCUMENTS = [
+    ("sprint-4-agile-roadmap.pdf", "/sprints/sprint-4/", ["agile-roadmap"], 4, "Agile roadmap"),
+    ("sprint-4-delivery-dashboard.pdf", "/sprints/sprint-4/", ["delivery-dashboard"], 4, "Delivery dashboard"),
     ("sprint-5-overview-review-tasks.pdf", "/sprints/sprint-5/",
      ["screens", "review-tasks", "wireframe-updates"], 5,
      "Wireframe overview and outside-user review tasks"),
@@ -180,10 +186,11 @@ def page_file(route):
     return SITE / route.strip("/") / "index.html"
 
 
-def wrap(title, sprint, route, ids, body):
+def wrap(title, sprint, route, ids, body, landscape=False):
     anchor = f"{SITE_URL}{route}#{ids[0]}"
+    css = PRINT_CSS.replace("size: 8.5in 11in", "size: 11in 8.5in") if landscape else PRINT_CSS
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<title>{escape(title)}</title><style>{PRINT_CSS}</style></head><body>
+<title>{escape(title)}</title><style>{css}</style></head><body>
 <p class="running">Team 10 · DineCheck · CS 4390/5388 Software Project Management · Sprint {sprint}</p>
 <h1>{escape(title)}</h1>
 <p class="source">This PDF is built from the same text as the portal page: {escape(anchor)}</p>
@@ -223,7 +230,7 @@ def build_document(name, route, ids, sprint, title, work):
         raise SystemExit(f"{name}: section(s) not found in {source}: {', '.join(missing)}")
     body = "\n".join(parser.sections[i] for i in ids)
     html_path = work / (Path(name).stem + ".html")
-    html_path.write_text(wrap(title, sprint, route, ids, body), encoding="utf-8")
+    html_path.write_text(wrap(title, sprint, route, ids, body, name in LANDSCAPE), encoding="utf-8")
     set_metadata(convert(html_path, work), PDFS / name, title, sprint)
 
 

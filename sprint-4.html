@@ -75,9 +75,12 @@ permalink: /sprints/sprint-4/
       <ul>
         <li><a href="#service-levels">01 Service levels</a></li>
         <li><a href="#error-budgets">02 Error budgets</a></li>
+        <li><a href="#incident-review">03 Incident review</a></li>
         <li><a href="#interface-sketch">04 Interface sketch</a></li>
-        <li><a href="#sprint4-changelog">06 Changelog</a></li>
-        <li><a href="#sprint4-documents">07 Documents</a></li>
+        <li><a href="#agile-roadmap">05 Agile roadmap</a></li>
+        <li><a href="#delivery-dashboard">06 Delivery dashboard</a></li>
+        <li><a href="#sprint4-changelog">07 Changelog</a></li>
+        <li><a href="#sprint4-documents">08 Documents</a></li>
       </ul>
       <a class="sprint3-back" href="#page-top">Back to top ↑</a>
     </nav>
@@ -292,6 +295,105 @@ permalink: /sprints/sprint-4/
           </div>
         </section>
 
+        <!-- SECTION 3: INCIDENT REVIEW -->
+        <section class="charter-section" id="incident-review"
+                 aria-labelledby="incident-review-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">03 · Incident analysis</p>
+            <h2 id="incident-review-title">Blameless incident review: Sprint 3 document download links</h2>
+            <p>Section 4 of our Service Levels document, in full.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              <strong>Evidence-based draft.</strong> The repository records the link
+              defect and repair. The actual detection time, live exposure duration,
+              and number of affected users are not recorded in the reviewed evidence.
+              Confirm these details from team records before publishing.
+            </p>
+            <div class="todo-note">
+              <p><span class="todo-tag">TODO</span> Zachary confirms detection time, live exposure, and actual impact from team records (follow-up action 1 below), then updates this review and its PDF.</p>
+            </div>
+
+            <h3 id="incident-summary">1. Summary</h3>
+            <p>
+              Sprint 3 source contained download URLs with percent-encoded Liquid
+              template expressions. Commit 6596c7b, titled “Fix Sprint 3 PDF
+              downloads,” replaced these with valid PDF links, added PDF files, and
+              expanded validation. The issue is reviewed as a publishing and
+              validation gap.
+            </p>
+
+            <h3 id="incident-impact">2. Impact</h3>
+            <p>
+              The malformed links could prevent visitors from downloading Sprint 3
+              records. The reviewed source confirms defective URLs; it does not
+              establish which deployed versions users encountered or how many
+              download attempts failed. No data loss is established by the
+              reviewed evidence.
+            </p>
+
+            <h3 id="incident-timeline">3. Timeline</h3>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>Incident timeline</caption>
+                <thead><tr><th scope="col">Stage</th><th scope="col">Details</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Before repair</th><td>Sprint 3 source contained encoded template expressions in document links.</td></tr>
+                  <tr><th scope="row">Detection</th><td>Exact time and reporting method are not recorded in the reviewed evidence.</td></tr>
+                  <tr><th scope="row">Repair</th><td>Commit 6596c7b corrected download URLs, added PDF assets, and strengthened checks and tests.</td></tr>
+                  <tr><th scope="row">Live recovery</th><td>Deployment and recovery timestamps must be confirmed from the deployment history; a source commit alone does not confirm restoration.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 id="incident-causes">4. Contributing causes</h3>
+            <p>
+              The publishing process allowed encoded template syntax into link
+              attributes. Existing validation did not reject this pattern before the
+              repair. A final download check was needed to verify that generated
+              links resolved to the intended files. The validator does not block
+              publishing, because the branch-based GitHub Pages build deploys on
+              every push (to verify in Settings &gt; Pages &gt; Source).
+            </p>
+
+            <h3 id="incident-went-well">5. What went well</h3>
+            <p>
+              Version history preserved the defect and repair for review. The fix
+              addressed both the links and the validation gap. Added tests cover
+              empty URLs and unresolved or encoded template expressions, reducing
+              the chance of the same defect recurring.
+            </p>
+
+            <h3 id="incident-actions">6. Follow-up actions</h3>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>Follow-up actions, each with an owner and a date</caption>
+                <thead><tr><th scope="col">Action</th><th scope="col">Owner</th><th scope="col">Due</th></tr></thead>
+                <tbody>
+                  <tr><td>Confirm detection, deployment, recovery, and actual impact from team records.</td><td>Zachary Carrejo</td><td>Nov 6, 2026 (proposed)</td></tr>
+                  <tr><td>Run generated-site validation and open every Sprint 3 PDF on the deployed site; log results.</td><td>Jacob Ordonez</td><td>Nov 6, 2026 (proposed)</td></tr>
+                  <tr><td>Confirm required checks gate publishing; record the validation procedure.</td><td>Daniel Lozano</td><td>Nov 6, 2026 (proposed)</td></tr>
+                  <tr><td>Set Pages source to GitHub Actions so check_site.py gates deployment.</td><td>Daniel Lozano (proposed)</td><td>Nov 6, 2026 (proposed)</td></tr>
+                  <tr><td>Confirm team roles and support hours; add the completed Service Levels section and review to Sprint 4.</td><td>Salvador Rodarte</td><td>Nov 6, 2026 (proposed)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="todo-note">
+              <p><span class="todo-tag">TODO</span> Each owner records whether their follow-up action was done, and when. Statuses are not recorded in the repository.</p>
+            </div>
+
+            <p class="source-note">
+              Sources: Session 17, Errors &amp; Postmortems, slides 38 and 42–48;
+              repository commit 6596c7b. Repository dates: the encoded links first
+              appear in commit 4ef41e6 (Oct 20, 2026, 12:34 MDT) and are corrected in
+              commit 6596c7b (Oct 20, 2026, 13:04 MDT). These are commit times, not
+              confirmed live-site times. The PDF of this review is section 4 of the
+              <a href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" download>Service Levels PDF</a>.
+            </p>
+          </div>
+        </section>
+
         <!-- SECTION 4: INTERFACE SKETCH -->
         <section class="charter-section" id="interface-sketch"
                  aria-labelledby="interface-sketch-title">
@@ -326,18 +428,113 @@ permalink: /sprints/sprint-4/
               browsing menus, and viewing a map.
             </p>
 
+            <figure class="sketch-figure">
+              <img src="{{ '/assets/images/sprint-4/interface-sketch.jpg' | relative_url }}"
+                   width="997" height="1430" loading="lazy"
+                   alt="Hand-drawn sketch titled Team 10 DineCheck with four numbered phone views: 1, a Find your Campus screen with a floating bottom bar for university logo, maps, and search; 2, a University of Texas at El Paso list of dining options with open or closed words and operating hours; 3, a Chick-fil-A menu with item cards showing name, allergens and ingredients, calories, and availability; and a fourth map view showing dining locations near the user, where tapping one opens the menu from view 3.">
+              <figcaption>Salvador Rodarte’s four-view interface sketch, rendered from the
+                <a href="{{ '/assets/pdfs/sprint-4-sketch.pdf' | relative_url }}" download>Interface Sketch PDF</a>.</figcaption>
+            </figure>
+
             <p class="source-note">
               This is a design concept, not a completed application.
-              The sketch is available in the documents section below.
             </p>
           </div>
         </section>
 
-        <!-- SECTION 6: CHANGELOG -->
+        <!-- SECTION 5: AGILE ROADMAP -->
+        <section class="charter-section" id="agile-roadmap"
+                 aria-labelledby="agile-roadmap-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">05 · Planning</p>
+            <h2 id="agile-roadmap-title">Agile roadmap</h2>
+            <p>Sprint objectives and velocity targets.</p>
+          </header>
+
+          <div class="prose">
+            <div class="todo-note">
+              <p><span class="todo-tag">TODO</span> The team writes each sprint objective and sets a velocity target and unit (for example, pages or documents published per sprint). Nothing below is a target until the team fills it in.</p>
+            </div>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>Sprint objectives and velocity targets</caption>
+                <thead><tr><th scope="col">Sprint</th><th scope="col">Published scope (from its portal page)</th><th scope="col">Sprint objective</th><th scope="col">Velocity target</th><th scope="col">Actual</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Sprint 1</th><td>Market research, business strategy, project charter, contribution statements</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Sprint 2</th><td>Business case, estimation appendix, one-page budget, changelog</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Sprint 3</th><td>Interviews, team notes, contradiction memos, competitor research, evidence log, candidate risks, change note</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Sprint 4</th><td>Service levels, error budgets, incident review, interface sketch</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Sprint 5</th><td>Interactive wireframe, outside-user review tasks, Figma mockup</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Sprint 6</th><td>Planned</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="source-note">
+              Capacity on record: the Sprint 2 schedule assumes four people at 30
+              productive hours each per week. That is an estimation assumption, not a
+              velocity target.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 6: DELIVERY DASHBOARD -->
+        <section class="charter-section" id="delivery-dashboard"
+                 aria-labelledby="delivery-dashboard-title">
+          <header class="charter-section__heading">
+            <p class="eyebrow">06 · Measurement</p>
+            <h2 id="delivery-dashboard-title">Delivery dashboard</h2>
+            <p>DORA metrics and service level objectives for Sprints 1–4, each tied to a decision.</p>
+          </header>
+
+          <div class="prose">
+            <p>
+              This dashboard compares our team with itself from Sprint 1 through
+              Sprint 4. Each metric names the decision it triggers. Delivery metrics
+              describe the team and are not used in peer evaluation.
+            </p>
+            <div class="todo-note">
+              <p><span class="todo-tag">TODO</span> The team counts each value from the repository’s commit history and the site’s publish history, writes down how it counted, and sets every threshold marked TODO. No value is shown until it has been counted.</p>
+            </div>
+
+            <h3>DORA delivery metrics</h3>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>Delivery metrics by sprint</caption>
+                <thead><tr><th scope="col">Metric</th><th scope="col">On our portal</th><th scope="col">Sprint 1</th><th scope="col">Sprint 2</th><th scope="col">Sprint 3</th><th scope="col">Sprint 4</th><th scope="col">Decision it triggers</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Change lead time</th><td>First commit on a page change until it is live on the public site</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>If either error budget is exhausted, the next sprint publishes only through reviewed pull requests that pass the validator, accepting a longer lead time. Other threshold: <span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Deployment frequency</th><td>Publishes to the live site per week</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>Same budget rule: reviewed pull requests only, accepting lower deployment frequency. Other threshold: <span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Change fail rate</th><td>Share of publishes that broke a page, a link, or the layout</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>One known defect: the encoded download links (<a href="#incident-review">incident review</a>). Whether it reached the live site is unconfirmed. Rate: <span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>Same budget rule: reviewed pull requests that pass the validator, for a lower change fail rate. Other threshold: <span class="todo-tag">TODO</span></td></tr>
+                  <tr><th scope="row">Rework rate</th><td>Share of publishes that were unplanned fixes</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span> Threshold and action</td></tr>
+                  <tr><th scope="row">Recovery time</th><td>From a broken page being noticed until it is fixed on the live site</td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td>Not recorded: detection and live-recovery times for the encoded-link incident are unconfirmed. <span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span></td><td><span class="todo-tag">TODO</span> Threshold and action</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Service level objectives</h3>
+            <div class="charter-table-wrap">
+              <table class="charter-table">
+                <caption>SLO attainment by sprint</caption>
+                <thead><tr><th scope="col">Objective</th><th scope="col">Target and window</th><th scope="col">Sprints 1–3</th><th scope="col">Sprint 4</th><th scope="col">Decision it triggers</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Portal availability (owner: Zachary Carrejo)</th><td>99.5% of scheduled one-minute checks succeed, rolling 14 days. Budget: 100 failed checks.</td><td>No SLO defined before Sprint 4</td><td>Not measured: scheduled checks were not yet running. <span class="todo-tag">TODO</span></td><td>At 50% of budget used, prioritize reliability work and review upcoming changes. When exhausted, pause feature releases until the fix is verified and the target is met again.</td></tr>
+                  <tr><th scope="row">Document downloads (owner: Jacob Ordonez)</th><td>99% of daily document-link checks succeed, rolling 14 days. Budget: floor(checks × 0.01).</td><td>No SLO defined before Sprint 4</td><td>Not measured: scheduled checks were not yet running. <span class="todo-tag">TODO</span></td><td>Same policy as availability. Salvador informs the team and instructor within 4 support hours of budget exhaustion.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="source-note">
+              Metric definitions: Session 15, Delivery Metrics. Targets, budgets, and
+              policies: our Service Levels document (sections 1–2). The incident
+              comes from the review above.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 7: CHANGELOG -->
         <section class="charter-section" id="sprint4-changelog"
                  aria-labelledby="sprint4-changelog-title">
           <header class="charter-section__heading">
-            <p class="eyebrow">06 · Track</p>
+            <p class="eyebrow">07 · Track</p>
             <h2 id="sprint4-changelog-title">Sprint 4 changelog</h2>
             <p>A summary of our submitted work.</p>
           </header>
@@ -359,13 +556,13 @@ permalink: /sprints/sprint-4/
           </div>
         </section>
 
-        <!-- SECTION 7: DOCUMENTS -->
+        <!-- SECTION 8: DOCUMENTS -->
         <section class="charter-section" id="sprint4-documents"
                  aria-labelledby="sprint4-documents-title">
           <header class="charter-section__heading">
-            <p class="eyebrow">07 · Documentation</p>
+            <p class="eyebrow">08 · Documentation</p>
             <h2 id="sprint4-documents-title">Sprint 4 documents</h2>
-            <p>Download the three public PDFs from Team 10.</p>
+            <p>Read each document above, or download its PDF.</p>
           </header>
 
           <div class="prose">
@@ -378,7 +575,8 @@ permalink: /sprints/sprint-4/
               <div class="sprint3-entry-body">
                 <p>
                   Proposed reliability targets, escalation procedures,
-                  team responsibilities, and incident review.
+                  team responsibilities, and the blameless incident review
+                  (section 4), which also appears on this page.
                 </p>
                 <div class="research-download__links">
                   <a href="{{ '/assets/pdfs/sprint-4-service-levels.pdf' | relative_url }}" download>
@@ -423,10 +621,48 @@ permalink: /sprints/sprint-4/
               </div>
             </details>
 
+            <details class="sprint3-entry">
+              <summary>
+                <span>Agile Roadmap</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  Sprint objectives and velocity targets. Values are still to be
+                  written by the team.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/sprints/sprint-4/#agile-roadmap' | relative_url }}">Read on this page →</a>
+                  <a href="{{ '/assets/pdfs/sprint-4-agile-roadmap.pdf' | relative_url }}" download>
+                    Download Agile Roadmap PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
+            <details class="sprint3-entry">
+              <summary>
+                <span>Delivery Dashboard</span>
+                <span class="sprint3-entry-meta">PDF available</span>
+              </summary>
+              <div class="sprint3-entry-body">
+                <p>
+                  DORA metrics and SLOs for Sprints 1–4, each tied to a decision.
+                  Values are still to be counted by the team.
+                </p>
+                <div class="research-download__links">
+                  <a href="{{ '/sprints/sprint-4/#delivery-dashboard' | relative_url }}">Read on this page →</a>
+                  <a href="{{ '/assets/pdfs/sprint-4-delivery-dashboard.pdf' | relative_url }}" download>
+                    Download Delivery Dashboard PDF ↓
+                  </a>
+                </div>
+              </div>
+            </details>
+
             <p class="source-note">
-              These are the three public documents from Team 10's
-              Sprint 4 submission. The Sprint 4 retrospective is
-              private and is submitted through Blackboard only.
+              Every public Sprint 4 document appears on this page as text and
+              as a PDF. The Sprint 4 retrospective is private and is submitted
+              through Blackboard only.
             </p>
           </div>
         </section>
