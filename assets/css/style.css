@@ -2587,3 +2587,129 @@ section.charter-detail.home-section {
 
 }
 
+
+/* DineCheck campus editorial design */
+@media screen {
+  :root {
+    --navy: #041e42;
+    --orange: #ff8200;
+    --orange-ink: #994000;
+    --mist: #ece9e1;
+    --line: #d6d3ca;
+    --container: 80rem;
+  }
+
+  body { background: #f7f4ed; }
+  h1,h2,h3 { letter-spacing: -.045em; }
+  h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+
+  .site-header {
+    background: #f7f4ed;
+    border-top: 0;
+    border-bottom: 1px solid var(--navy);
+  }
+  .brand__name { font-size: 1.8rem; letter-spacing: -.06em; }
+  .site-nav a.nav-featured {
+    background: var(--navy);
+    color: white;
+    border-radius: .5rem;
+  }
+
+  .button { border-radius: .5rem; min-height: 3.25rem; }
+  .button--outline { background: transparent; }
+  .button--orange { box-shadow: 3px 3px 0 var(--navy); }
+
+  .home-hero { padding-block: clamp(3rem, 6vw, 6rem); }
+  .home-hero h1 {
+    font-size: clamp(3.2rem, 6.7vw, 6.3rem);
+    line-height: .98;
+    letter-spacing: -.065em;
+  }
+  .home-hero h1 span {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-decoration-thickness: .12em;
+    text-underline-offset: .03em;
+    text-decoration-skip-ink: none;
+  }
+  .home-dining-photo {
+    border-radius: 7rem 1rem 1rem 1rem;
+    border: 1px solid var(--navy);
+    transform: rotate(2deg);
+  }
+  .home-dining-photo figcaption strong {
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+  }
+
+  .project-strip { border-block-color: var(--navy); }
+  .project-strip strong { font-size: 2.6rem; letter-spacing: -.05em; }
+  .latest-work { border-radius: 1.25rem; padding: clamp(1.5rem, 4vw, 4rem); }
+  .latest-work h2 { font-size: clamp(2rem, 3.5vw, 3.3rem); }
+  .latest-work__steps li {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #ffffff35;
+    border-radius: 0;
+  }
+
+  .home-section { padding-block: clamp(3rem, 6vw, 5rem); }
+  .sprint-card {
+    background: #fffdf8;
+    border-radius: 1.25rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .sprint-card:hover {
+    border-color: var(--navy);
+    box-shadow: 0 6px 0 var(--mist);
+  }
+  .sprint-card h3 { font-size: 2rem; }
+  .badge { border-radius: 999px; }
+  .card-number { color: var(--orange-ink); }
+
+  .research-feature { background: #ece9df; }
+  .research-feature h2,.home-team h2 {
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+  }
+  .research-feature img { border-radius: 1.25rem; }
+  .evidence-cards article {
+    background: #fffdf8;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+  }
+  .team-preview img { border-radius: 5rem 5rem .75rem .75rem; }
+
+  .page-intro h1 {
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+    line-height: 1.05;
+  }
+  .people-list article {
+    background: #fffdf8;
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+  .document-search { background: #ece9df; border-radius: 1rem; }
+  .charter-table-wrap { background: #fffdf8; border-radius: .75rem; }
+  .charter-table caption,.charter-table thead th,
+  .charter-table tbody tr:nth-child(even) { background: #eeece5; }
+  .decision-panel { border-radius: 1.25rem; }
+  .sprint3-hub .charter-section { background: #fffdf8; }
+  .sprint3-hub .sprint3-nav { background: #f7f4ed; }
+
+  .site-footer { border-top: 8px solid var(--orange); }
+  .footer-brand {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: -.065em;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .home-hero h1 { font-size: clamp(3rem, 11vw, 5rem); }
+  .home-dining-photo { transform: none; border-top-left-radius: 4rem; }
+  .project-strip strong { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprint-card { transition: none; }
+}
